@@ -1,3 +1,5 @@
+let mapleader = " "
+
 " Better nav for omnicomplete
 inoremap <expr> <c-j> ("\<C-n>")
 inoremap <expr> <c-k> ("\<C-p>")
@@ -7,6 +9,15 @@ nnoremap <M-j> :resize -2<CR>
 nnoremap <M-k> :resize +2<CR>
 nnoremap <M-h> :vertical resize -2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
+
+" Open files
+nnoremap <C-c> <Esc>
+
+" Telescope Remaps
+nnoremap <C-p> :lua require('telescope.builtin').git_files()<Cr>
+nnoremap <leader>tg :lua require('telescope.builtin').live_grep()<Cr>
+
+nnoremap <leader>u :UndotreeShow<CR>
 
 " Hatred for escape key
 inoremap jk <Esc>

@@ -38,3 +38,13 @@ set autochdir
 au! BufWritePost $MYVIMRC source %
 
 cmap w!! w !sudo tee %
+
+set relativenumber
+set nu
+set smartcase
+set noswapfile
+set undofile
+
+filetype plugin on " Auto Indentation Levels
+filetype indent off " Auto Indentation Levels
+

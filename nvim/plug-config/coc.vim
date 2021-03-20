@@ -88,6 +88,10 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
 xmap if <Plug>(coc-funcobj-i)
@@ -111,8 +115,8 @@ endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
-nmap <silent> <C-s> <Plug>(coc-range-select)
-xmap <silent> <C-s> <Plug>(coc-range-select)
+" nmap <silent> <C-s> <Plug>(coc-range-select)
+" xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
@@ -181,6 +185,23 @@ let g:coc_explorer_global_presets = {
 \   }
 \ }
 
+" Coc extensions
+let g:coc_global_extensions = [
+  \ 'coc-pyright',
+  \ 'coc-eslint',
+  \ 'coc-emmet',
+  \ 'coc-discord-rpc',
+  \ 'coc-css',
+  \ 'coc-angular',
+  \ 'coc-json'
+  \ ]
+
 nmap <space>e :CocCommand explorer<CR>
 nmap <space>f :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+if exists('*complete_info')
+  inoremap <<expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  inoremap <<expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u<CR>"
+endif
