@@ -1,0 +1,67 @@
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[init]
+	defaultBranch = main
+[user]
+	useConfigOnly = true
+	email = asajuenitan@gmail.com
+	name = Asaju Enitan Michael
+	signingkey = 2B8843E3
+[color]
+	ui = true
+[alias]
+	# Git Commit, Add all and Push — in one step.
+	cap = "!f() { git commit -m \"$@\"; }; f"
+	# NEW.
+	new = "!f() { git cap \"📦 NEW($1): $2\"; }; f"
+	# IMPROVE.
+	imp = "!f() { git cap \"👌 IMPROVE($1): $2\"; }; f"
+	# UPDATE.
+	up = "!f() { git cap \"✍🏻 UPDATE($1): $2\"; }; f"
+	# FIX.
+	fix = "!f() { git cap \"🐞 FIX($1): $2\"; }; f"
+	# RELEASE.
+	rlz = "!f() { git cap \"🚀 RELEASE($1): $2\"; }; f"
+	# DOC.
+	doc = "!f() { git cap \"📖 DOC($1): $2\"; }; f"
+	# TEST.
+	tst = "!f() { git cap \"🤖 TEST($1): $2\"; }; f"
+	# BREAKING CHANGE.
+	brk = "!f() { git cap \"‼️ BREAKING CHANGES($1): $2\"; }; f"
+	# REMOVE
+	bin = "!f() { git cap \"🗑 REMOVE($1): $2\"; }; f"
+	# REFACTOR
+	ref = "!f() { git cap \"♻️ REFACTOR($1): $2\"; }; f"
+	# INITIAL COMMIT
+	int = "!f() { git cap \"🎉 INITIAL COMMIT($1): $2\"; }; f"
+[core]
+	pager = delta
+	excludesfile = /home/x1k/.gitignore
+[commit]
+	gpgsign = true
+[gpg]
+	program = gpg
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = diff-so-fancy line-numbers
+	file-modified-label = modified:
+	hunk-header-decoration-style = blue box
+	line-numbers-minus-style = red
+	line-numbers-plus-style = green
+	line-numbers-zero-style = 244
+
+[fetch]
+	prune = true
+
+[pull]
+	rebase = true
+
+[merge]
+	tool = vimdiff
+[push]
+	default = upstream
+[tag]
+	gpgSign = true
