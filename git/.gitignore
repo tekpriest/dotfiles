@@ -1,0 +1,34 @@
+# Misc
+.DS_Store
+.AppleDouble
+.LSOverride
+logs
+*.log
+.env
+*.env
+dist
+.git-old
+
+# NodeJS
+/node_modules.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+yarn.loc
+package-lock.json
+pnpm-lock.yaml
+coverage
+.vscode
+
+# Auto generated sitemaps
+/public/sitemap.xml
+/public/sitemap-*.xml
+/public/robots.txt
+.idea/
+yarn.lock
+
+# Ruby
+*.gem
+.bundle
+Gemfile.lock
+pkg/*
