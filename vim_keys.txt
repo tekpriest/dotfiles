@@ -1,0 +1,373 @@
+
+
+
+n  <C-K>       *@<Cmd>lua vim.lsp.buf.signature_help()<CR>
+n  <Space>so   *@<Cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>
+n  <Space>q    *@<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>
+n  <Space>ca   *@<Cmd>lua vim.lsp.buf.code_action()<CR>
+n  <Space>rn   *@<Cmd>lua vim.lsp.buf.rename()<CR>
+n  <Space>D    *@<Cmd>lua vim.lsp.buf.type_definition()<CR>
+n  <Space>wl   *@<Cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
+n  <Space>wr   *@<Cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>
+n  <Space>wa   *@<Cmd>lua vim.lsp.buf.add_workspace_folder()<CR>
+n  <Space>hp    @<Plug>(GitGutterPreviewHunk)
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/autoload/gitgutter.vim line 137
+n  <Space>hu    @<Plug>(GitGutterUndoHunk)
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/autoload/gitgutter.vim line 134
+n  <Space>hs    @<Plug>(GitGutterStageHunk)
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/autoload/gitgutter.vim line 131
+x  <Space>hs    @<Plug>(GitGutterStageHunk)
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/autoload/gitgutter.vim line 128
+n  K           *@<Cmd>lua vim.lsp.buf.hover()<CR>
+n  [d          *@<Cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+n  [c           @<Plug>(GitGutterPrevHunk)
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/autoload/gitgutter.vim line 121
+n  [M          *@:lua require'nvim-treesitter.textobjects.move'.goto_previous_end('@function.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  []          *@:lua require'nvim-treesitter.textobjects.move'.goto_previous_end('@class.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  [[          *@:lua require'nvim-treesitter.textobjects.move'.goto_previous_start('@class.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  [m          *@:lua require'nvim-treesitter.textobjects.move'.goto_previous_start('@function.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  ]d          *@<Cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+n  ]c           @<Plug>(GitGutterNextHunk)
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/autoload/gitgutter.vim line 124
+n  ]M          *@:lua require'nvim-treesitter.textobjects.move'.goto_next_end('@function.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  ][          *@:lua require'nvim-treesitter.textobjects.move'.goto_next_end('@class.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  ]]          *@:lua require'nvim-treesitter.textobjects.move'.goto_next_start('@class.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  ]m          *@:lua require'nvim-treesitter.textobjects.move'.goto_next_start('@function.outer')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+x  ac          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer', 'x')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+o  ac          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.outer', 'o')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+x  af          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer', 'x')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+o  af          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.outer', 'o')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+n  gr          *@<Cmd>lua vim.lsp.buf.references()<CR>
+n  gi          *@<Cmd>lua vim.lsp.buf.implementation()<CR>
+n  gd          *@<Cmd>lua vim.lsp.buf.definition()<CR>
+n  gD          *@<Cmd>lua vim.lsp.buf.declaration()<CR>
+x  ic          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner', 'x')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+o  ic          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@class.inner', 'o')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+x  if          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner', 'x')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+o  if          *@:lua require'nvim-treesitter.textobjects.select'.select_textobject('@function.inner', 'o')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/nvim-treesitter-textobjects/plugin/nvim-treesitter-textobjects.vim line 3
+s  <C-H>       * <C-G>"_c
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 72
+s  <C-L>       * <Esc>:call UltiSnips#ListSnippets()<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 67
+s  <C-R>       * <C-G>"_c<C-R>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 73
+x  <C-S>       * :call UltiSnips#SaveLastVisualSelection()<CR>gvs
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 64
+s  <C-S>       * <Esc>:call UltiSnips#ExpandSnippet()<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 62
+n  <C-W>Þ      * <Nop>
+	Last set from anonymous :source
+n  <C-W>       * <Cmd>lua require("which-key").show("\23", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  <Space>Þ    * <Nop>
+	Last set from anonymous :source
+n  <Space>     * <Cmd>lua require("which-key").show(" ", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  <Space>Þ    * <Nop>
+	Last set from anonymous :source
+x  <Space>     * <Cmd>lua require("which-key").show(" ", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+n  <Space>e    * <Cmd>NvimTreeToggle<CR>
+	Last set from anonymous :source
+n  <Space>s    * <Cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<CR>
+	Last set from ~/.config/nvim/init.lua
+n  <Space>b    * <Cmd>lua require('telescope.builtin').buffers()<CR>
+	Last set from ~/.config/nvim/init.lua
+n  <Space>f    * <Cmd>lua require('telescope.builtin').find_files()<CR>
+	Last set from ~/.config/nvim/init.lua
+n  <Space>h    * <Cmd>nohl<CR>
+	Last set from ~/.config/nvim/init.lua
+os <Space>     * <Nop>
+	Last set from ~/.config/nvim/init.lua
+n  !aÞ         * <Nop>
+	Last set from anonymous :source
+n  !iÞ         * <Nop>
+	Last set from anonymous :source
+n  !Þ          * <Nop>
+	Last set from anonymous :source
+n  !           * <Cmd>lua require("which-key").show("!", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  "           * <Cmd>lua require("which-key").show("\"", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+o  %             <Plug>(MatchitOperationForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 60
+x  %             <Plug>(MatchitVisualForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 58
+n  %             <Plug>(MatchitNormalForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 56
+n  '           * <Cmd>lua require("which-key").show("'", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  <aÞ         * <Nop>
+	Last set from anonymous :source
+n  <iÞ         * <Nop>
+	Last set from anonymous :source
+n  <Þ          * <Nop>
+	Last set from anonymous :source
+n  <           * <Cmd>lua require("which-key").show("<", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  >aÞ         * <Nop>
+	Last set from anonymous :source
+n  >iÞ         * <Nop>
+	Last set from anonymous :source
+n  >Þ          * <Nop>
+	Last set from anonymous :source
+n  >           * <Cmd>lua require("which-key").show(">", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  @Þ          * <Nop>
+	Last set from anonymous :source
+n  @           * <Cmd>lua require("which-key").show("@", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  Y           * y$
+	Last set from ~/.config/nvim/init.lua
+n  [Þ          * <Nop>
+	Last set from anonymous :source
+n  [           * <Cmd>lua require("which-key").show("[", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  [Þ          * <Nop>
+	Last set from anonymous :source
+x  [           * <Cmd>lua require("which-key").show("[", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+o  [%            <Plug>(MatchitOperationMultiBackward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 75
+x  [%            <Plug>(MatchitVisualMultiBackward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 73
+n  [%            <Plug>(MatchitNormalMultiBackward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 71
+n  ]Þ          * <Nop>
+	Last set from anonymous :source
+n  ]           * <Cmd>lua require("which-key").show("]", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  ]Þ          * <Nop>
+	Last set from anonymous :source
+x  ]           * <Cmd>lua require("which-key").show("]", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+o  ]%            <Plug>(MatchitOperationMultiForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 76
+x  ]%            <Plug>(MatchitVisualMultiForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 74
+n  ]%            <Plug>(MatchitNormalMultiForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 72
+n  `           * <Cmd>lua require("which-key").show("`", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  aÞ          * <Nop>
+	Last set from anonymous :source
+x  a           * <Cmd>lua require("which-key").show("a", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+x  a%            <Plug>(MatchitVisualTextObject)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 80
+n  caÞ         * <Nop>
+	Last set from anonymous :source
+n  ciÞ         * <Nop>
+	Last set from anonymous :source
+n  cÞ          * <Nop>
+	Last set from anonymous :source
+n  c           * <Cmd>lua require("which-key").show("c", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  daÞ         * <Nop>
+	Last set from anonymous :source
+n  diÞ         * <Nop>
+	Last set from anonymous :source
+n  dÞ          * <Nop>
+	Last set from anonymous :source
+n  d           * <Cmd>lua require("which-key").show("d", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  g~aÞ        * <Nop>
+	Last set from anonymous :source
+n  g~iÞ        * <Nop>
+	Last set from anonymous :source
+n  g~Þ         * <Nop>
+	Last set from anonymous :source
+n  gUaÞ        * <Nop>
+	Last set from anonymous :source
+n  gUiÞ        * <Nop>
+	Last set from anonymous :source
+n  gUÞ         * <Nop>
+	Last set from anonymous :source
+n  guaÞ        * <Nop>
+	Last set from anonymous :source
+n  guiÞ        * <Nop>
+	Last set from anonymous :source
+n  guÞ         * <Nop>
+	Last set from anonymous :source
+n  gÞ          * <Nop>
+	Last set from anonymous :source
+n  g           * <Cmd>lua require("which-key").show("g", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  gÞ          * <Nop>
+	Last set from anonymous :source
+x  g           * <Cmd>lua require("which-key").show("g", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+o  g%            <Plug>(MatchitOperationBackward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 61
+x  g%            <Plug>(MatchitVisualBackward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 59
+n  g%            <Plug>(MatchitNormalBackward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 57
+x  iÞ          * <Nop>
+	Last set from anonymous :source
+x  i           * <Cmd>lua require("which-key").show("i", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+n  j           * v:count == 0 ? 'gj' : 'j'
+	Last set from ~/.config/nvim/init.lua
+n  k           * v:count == 0 ? 'gk' :'k'
+	Last set from ~/.config/nvim/init.lua
+n  vaÞ         * <Nop>
+	Last set from anonymous :source
+n  viÞ         * <Nop>
+	Last set from anonymous :source
+n  vÞ          * <Nop>
+	Last set from anonymous :source
+n  v           * <Cmd>lua require("which-key").show("v", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  yiÞ         * <Nop>
+	Last set from anonymous :source
+n  yaÞ         * <Nop>
+	Last set from anonymous :source
+n  yÞ          * <Nop>
+	Last set from anonymous :source
+n  y           * <Cmd>lua require("which-key").show("y", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  y<C-G>      & :<C-U>call setreg(v:register, fugitive#Object(@%))<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-fugitive/plugin/fugitive.vim line 682
+n  zfaÞ        * <Nop>
+	Last set from anonymous :source
+n  zfiÞ        * <Nop>
+	Last set from anonymous :source
+n  zfÞ         * <Nop>
+	Last set from anonymous :source
+n  zÞ          * <Nop>
+	Last set from anonymous :source
+n  z           * <Cmd>lua require("which-key").show("z", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  X<fd>R82Þ   * <Nop>
+	Last set from anonymous :source
+n  X<fd>R8Þ    * <Nop>
+	Last set from anonymous :source
+n  X<fd>RÞ     * <Nop>
+	Last set from anonymous :source
+n  X<fd>R      * <Cmd>lua require("which-key").show("<SNR>", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+n  <SNR>82_    * <SNR>82_
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-smartinput/autoload/smartinput.vim line 403
+n  <Plug>GitGutterPreviewHunk * :call gitgutter#utility#warn('Please change your map <Plug>GitGutterPreviewHunk to <Plug>(GitGutterPreviewHunk)')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 217
+n  <Plug>(GitGutterPreviewHunk) * :GitGutterPreviewHunk<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 216
+n  <Plug>GitGutterUndoHunk * :call gitgutter#utility#warn('Please change your map <Plug>GitGutterUndoHunk to <Plug>(GitGutterUndoHunk)')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 215
+n  <Plug>(GitGutterUndoHunk) * :GitGutterUndoHunk<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 214
+n  <Plug>GitGutterStageHunk * :call gitgutter#utility#warn('Please change your map <Plug>GitGutterStageHunk to <Plug>(GitGutterStageHunk)')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 213
+n  <Plug>(GitGutterStageHunk) * :GitGutterStageHunk<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 212
+x  <Plug>GitGutterStageHunk * :call gitgutter#utility#warn('Please change your map <Plug>GitGutterStageHunk to <Plug>(GitGutterStageHunk)')<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 211
+x  <Plug>(GitGutterStageHunk) * :GitGutterStageHunk<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 210
+n  <Plug>GitGutterPrevHunk * &diff ? '[c' : ":\<C-U>call gitgutter#utility#warn('Please change your map \<Plug>GitGutterPrevHunk to \<Plug>(GitGutterPrevHunk)')\<CR>"
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 208
+n  <Plug>(GitGutterPrevHunk) * &diff ? '[c' : ":\<C-U>execute v:count1 . 'GitGutterPrevHunk'\<CR>"
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 207
+n  <Plug>GitGutterNextHunk * &diff ? ']c' : ":\<C-U>call gitgutter#utility#warn('Please change your map \<Plug>GitGutterNextHunk to \<Plug>(GitGutterNextHunk)')\<CR>"
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 206
+n  <Plug>(GitGutterNextHunk) * &diff ? ']c' : ":\<C-U>execute v:count1 . 'GitGutterNextHunk'\<CR>"
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 205
+x  <Plug>(GitGutterTextObjectOuterVisual) * :<C-U>call gitgutter#hunk#text_object(0)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 161
+x  <Plug>(GitGutterTextObjectInnerVisual) * :<C-U>call gitgutter#hunk#text_object(1)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 160
+o  <Plug>(GitGutterTextObjectOuterPending) * :<C-U>call gitgutter#hunk#text_object(0)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 159
+o  <Plug>(GitGutterTextObjectInnerPending) * :<C-U>call gitgutter#hunk#text_object(1)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/vim-gitgutter/plugin/gitgutter.vim line 158
+s  <Del>       * <C-G>"_c
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 71
+s  <BS>        * <C-G>"_c
+	Last set from ~/.local/share/nvim/site/pack/packer/start/ultisnips/autoload/UltiSnips/map_keys.vim line 70
+n  <Plug>PlenaryTestFile * :lua require('plenary.test_harness').test_directory(vim.fn.expand("%:p"))<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/plenary.nvim/plugin/plenary.vim line 9
+s  <Plug>luasnip-jump-prev * <Cmd>lua require'luasnip'.jump(-1)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 16
+s  <Plug>luasnip-jump-next * <Cmd>lua require'luasnip'.jump(1)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 15
+s  <Plug>luasnip-prev-choice * <Cmd>lua require'luasnip'.change_choice(-1)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 14
+s  <Plug>luasnip-next-choice * <Cmd>lua require'luasnip'.change_choice(1)<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 13
+s  <Plug>luasnip-expand-snippet * <Cmd>lua require'luasnip'.expand()<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 12
+s  <Plug>luasnip-expand-or-jump * <Cmd>lua require'luasnip'.expand_or_jump()<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 11
+   <Plug>luasnip-delete-check * <Cmd>lua require'luasnip'.unlink_current_if_deleted()<CR>
+	Last set from ~/.local/share/nvim/site/pack/packer/start/LuaSnip/plugin/luasnip.vim line 8
+x  <Plug>(MatchitVisualTextObject)   <Plug>(MatchitVisualMultiBackward)o<Plug>(MatchitVisualMultiForward)
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 79
+o  <Plug>(MatchitOperationMultiForward) * :<C-U>call matchit#MultiMatch("W",  "o")<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 69
+o  <Plug>(MatchitOperationMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "o")<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 68
+x  <Plug>(MatchitVisualMultiForward) * :<C-U>call matchit#MultiMatch("W",  "n")<CR>m'gv``
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 67
+x  <Plug>(MatchitVisualMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "n")<CR>m'gv``
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 66
+n  <Plug>(MatchitNormalMultiForward) * :<C-U>call matchit#MultiMatch("W",  "n")<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 65
+n  <Plug>(MatchitNormalMultiBackward) * :<C-U>call matchit#MultiMatch("bW", "n")<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 64
+o  <Plug>(MatchitOperationBackward) * :<C-U>call matchit#Match_wrapper('',0,'o')<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 54
+o  <Plug>(MatchitOperationForward) * :<C-U>call matchit#Match_wrapper('',1,'o')<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 53
+x  <Plug>(MatchitVisualBackward) * :<C-U>call matchit#Match_wrapper('',0,'v')<CR>m'gv``
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 52
+x  <Plug>(MatchitVisualForward) * :<C-U>call matchit#Match_wrapper('',1,'v')<CR>m'gv``
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 51
+n  <Plug>(MatchitNormalBackward) * :<C-U>call matchit#Match_wrapper('',0,'n')<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 50
+n  <Plug>(MatchitNormalForward) * :<C-U>call matchit#Match_wrapper('',1,'n')<CR>
+	Last set from /usr/local/Cellar/neovim/0.5.1/share/nvim/runtime/pack/dist/opt/matchit/plugin/matchit.vim line 49
+n  <cb>Þ       * <Nop>
+	Last set from anonymous :source
+n  <cb>        * <Cmd>lua require("which-key").show("<cb>", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  <cb>Þ       * <Nop>
+	Last set from anonymous :source
+x  <cb>        * <Cmd>lua require("which-key").show("<cb>", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+v  ˚           * <Cmd>m '<-2<CR>gv=gv'
+	Last set from ~/.config/nvim/init.lua
+n  ˚           * <Cmd>m .-2<CR>==
+	Last set from ~/.config/nvim/init.lua
+n  <e2><>Þ * <Nop>
+	Last set from anonymous :source
+n  <e2>Þ       * <Nop>
+	Last set from anonymous :source
+n  <e2>        * <Cmd>lua require("which-key").show("<e2>", {mode = "n", auto = true})<CR>
+	Last set from anonymous :source
+x  <e2><>Þ * <Nop>
+	Last set from anonymous :source
+x  <e2>Þ       * <Nop>
+	Last set from anonymous :source
+x  <e2>        * <Cmd>lua require("which-key").show("<e2>", {mode = "v", auto = true})<CR>
+	Last set from anonymous :source
+v  ∆           * <Cmd>m '>+1<CR>gv=gv'
+	Last set from ~/.config/nvim/init.lua
+n  ∆           * <Cmd>m .+1<CR>==
+	Last set from ~/.config/nvim/init.lua
