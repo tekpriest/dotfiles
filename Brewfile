@@ -54,6 +54,8 @@ brew "efm-langserver"
 brew "erlang"
 # Functional metaprogramming aware language built on Erlang VM
 brew "elixir"
+# Modern replacement for 'ls'
+brew "exa"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Play, record, convert, and stream audio and video
