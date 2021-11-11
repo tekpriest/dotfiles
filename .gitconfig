@@ -1,12 +1,18 @@
 [credential "https://github.com"]
 	helper = !gh auth git-credential
-[init]
-	defaultBranch = main
 [user]
 	useConfigOnly = true
-	email = asajuenitan@gmail.com
 	name = Asaju Enitan Michael
-	signingkey = 2B8843E3
+	email = asajuenitan@gmail.com
+	signingkey = 07313B8BC2800D2E
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = /Users/x1k/.gitignore
+	editor = nvim
+  pager = delta
+[init]
+	defaultBranch = main
 [color]
 	ui = true
 [alias]
@@ -34,34 +40,38 @@
 	ref = "!f() { git cap \"♻️ REFACTOR($1): $2\"; }; f"
 	# INITIAL COMMIT
 	int = "!f() { git cap \"🎉 INITIAL COMMIT($1): $2\"; }; f"
-[core]
-	pager = delta
-	excludesfile = /home/x1k/.gitignore
-[commit]
-	gpgsign = true
-[gpg]
-	program = gpg
-
 [interactive]
 	diffFilter = delta --color-only
-
 [delta]
+  side-by-side = true 
 	features = diff-so-fancy line-numbers
 	file-modified-label = modified:
 	hunk-header-decoration-style = blue box
 	line-numbers-minus-style = red
 	line-numbers-plus-style = green
 	line-numbers-zero-style = 244
-
-[fetch]
-	prune = true
-
-[pull]
-	rebase = true
-
-[merge]
-	tool = vimdiff
-[push]
-	default = upstream
 [tag]
 	gpgSign = true
+  line-numbers-left-format = ""
+  line-numbers-right-format = "| "
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+	verbose = true
+[push]
+	default = upstream
+[commit]
+	gpgsign = true
+	verbos = true
+[gpg]
+	program = gpg
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[merge]
+	tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
