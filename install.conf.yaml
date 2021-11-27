@@ -1,0 +1,22 @@
+- clean: ['~']
+
+- link:
+    ~/.vimrc: vimrc
+    ~/.bashrc: bashrc
+    ~/.gitignore: gitignore
+    ~/.jshintrc: jshintrc
+    ~/.tmux: tmux
+    ~/.tmux_darwin.conf: tmux_darwin.conf
+    ~/.config/kitty: kitty
+    ~/.config/nvim: nvim
+    ~/.gitconfig: gitconfig
+    ~/.ctags: ctags
+    ~/.zshrc: zshrc
+
+- create:
+    # ~/downloads
+    # ~/Code
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+    - ["vim +PlugUpdate +PlugClean! +qa", Installing and updating plugins]

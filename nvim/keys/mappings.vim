@@ -1,8 +1,8 @@
-let mapleader = " "
+let mapleader = "\<space>"
 
-" Better nav for omnicomplete
-inoremap <expr> <c-j> ("\<C-n>")
-inoremap <expr> <c-k> ("\<C-p>")
+nmap <leader>ve :edit ~/.config/nvim/init.vim<cr>
+nmap <leader>vc :edit ~/.config/nvim/coc-settings.json<cr>
+nmap <leader>vr :source ~/.config/nvim/init.vim<cr>
 
 " Use alt + hjkl to resize windows
 nnoremap <M-j> :resize -2<CR>
@@ -10,14 +10,12 @@ nnoremap <M-k> :resize +2<CR>
 nnoremap <M-h> :vertical resize -2<CR>
 nnoremap <M-l> :vertical resize +2<CR>
 
-" Open files
-nnoremap <C-c> <Esc>
 
 " Telescope Remaps
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<Cr>
 nnoremap <leader>tg :lua require('telescope.builtin').live_grep()<Cr>
 
-nnoremap <leader>u :UndotreeShow<CR>
+nnoremap <leader>u :UndotreeToggle<CR>
 
 " Hatred for escape key
 inoremap jk <Esc>
@@ -32,12 +30,6 @@ nnoremap <TAB> :bnext<CR>
 " SHIFT-TAB will go back
 nnoremap <S-TAB> :bprevious<CR>
 
-" Alternate way to save
-nnoremap <C-s> <Esc>:w<CR>
-" Alternate way to quit
-nnoremap <C-Q> :wq!<CR>
-" Use Ctrl+c instead of escape
-nnoremap <C-c> <Esc>
 " <TAB>: completion
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -46,21 +38,38 @@ vnoremap < <gv
 vnoremap > >gv
 
 "Better window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nnoremap <silent> <C-h> <C-w>h
+nnoremap <silent> <C-j> <C-w>j
+nnoremap <silent> <C-k> <C-w>k
+nnoremap <silent> <C-l> <C-w>l
 
 nnoremap <Leader>o o<Esc>^Da
 nnoremap <Leader>O O<Esc>^Da
 
-" normal/insert
-"<Plug>MarkdownPreview
-"<Plug>MarkdownPreviewStop
-"<Plug>MarkdownPreviewToggle
+nmap <silent> <Leader>h :nohlsearch<cr>
+nmap <leader>Q :bufdo bdelete<cr>
 
-inoremap <silent><expr> <C-Space> compe#complete()
-inoremap <silent><expr> <CR>      compe#confirm('<CR>')
-inoremap <silent><expr> <C-e>     compe#close('<C-e>')
-inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
-inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+" Allow gf to open non-existent files
+map gf :edit :tabnew <cfile><cr>
+
+" Maintain the cursor position when yanking a virtual selection
+vnoremap y myy`y
+vnoremap Y myY`y
+
+" When text is wrapped, move by terminal rows, not lins, unless a count is
+" provided
+noremap <silent> <expr> j (v:count == 0 ? 'gj':'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk':'k')
+
+" Open the current file in the default program (linux)
+nmap <leader>x :!xdg-open %<cr><cr>
+
+" Paste replace visual selection without copying it
+vnoremap <leader>p "_dP
+
+" Make Y behave like the other capitals
+vnoremap Y y$
+
+" Easy insertion of a trailing ; or , from insert mode
+imap ;; <Esc>A;<Esc>
+imap ;; <Esc>A,<Esc>

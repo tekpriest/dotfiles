@@ -2,13 +2,11 @@
 	helper = !gh auth git-credential
 [user]
 	useConfigOnly = true
-	name = Asaju Enitan Michael
-	email = asajuenitan@gmail.com
-	signingkey = 07313B8BC2800D2E
-[credential]
-	helper = osxkeychain
+	name =
+	email =
+	signingkey =
 [core]
-	excludesfile = /Users/x1k/.gitignore
+	excludesfile = $HOME/.gitignore
 	editor = nvim
   pager = delta
 [init]

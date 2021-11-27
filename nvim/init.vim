@@ -1,23 +1,49 @@
 source $HOME/.config/nvim/general/settings.vim
 source $HOME/.config/nvim/keys/mappings.vim
-source $HOME/.config/nvim/vim-plug/plugins.vim
-source $HOME/.config/nvim/themes/onedark.vim
-source $HOME/.config/nvim/themes/airline.vim
-source $HOME/.config/nvim/plug-config/config.vim
-lua require'plug-colorizer'
-source $HOME/.config/nvim/keys/which-key.vim
 
-let g:far#source='rgnvim'
-" let g:far#source='rg'
-" let g:far#source='vimgrep'
-" let g:far#source='ag'
 
-set lazyredraw            " improve scrolling performance when navigating through large results
+" --------------- Plugins ---------------
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-let g:far#window_width=60
-" Use %:p with buffer option only
-let g:far#file_mask_favorites=['%:p', '**/*.*', '**/*.js', '**/*.py', '**/*.java', '**/*.css', '**/*.html', '**/*.vim', '**/*.cpp', '**/*.c', '**/*.h', '**/*.ts']
-let g:far#window_min_content_width=30
-let g:far#enable_undo=1
 
-autocmd BufWritePre *.lua lua vim.lsp.buf.formatting_sync(nil, 100)
+call plug#begin(data_dir . '/plugins')
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/which-key.vim
+source ~/.config/nvim/plugins/commentstring.vim
+source ~/.config/nvim/plugins/dispatch.vim
+source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/editorconfig.vim
+source ~/.config/nvim/plugins/eunuch.vim
+source ~/.config/nvim/plugins/exchange.vim
+source ~/.config/nvim/plugins/firenvim.vim
+source ~/.config/nvim/plugins/floaterm.vim
+source ~/.config/nvim/plugins/fugitive.vim
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/heritage.vim
+source ~/.config/nvim/plugins/lastplace.vim
+source ~/.config/nvim/plugins/lion.vim
+source ~/.config/nvim/plugins/markdown-preview.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/pasta.vim
+source ~/.config/nvim/plugins/peakaboo.vim
+source ~/.config/nvim/plugins/polyglot.vim
+source ~/.config/nvim/plugins/projectionist.vim
+source ~/.config/nvim/plugins/quickscope.vim
+source ~/.config/nvim/plugins/smoothscroll.vim
+source ~/.config/nvim/plugins/rooter.vim
+source ~/.config/nvim/plugins/sayonara.vim
+source ~/.config/nvim/plugins/splitjoin.vim
+source ~/.config/nvim/plugins/textobj-xmlattr.vim
+source ~/.config/nvim/plugins/unimpaired.vim
+source ~/.config/nvim/plugins/vimtest.vim
+source ~/.config/nvim/plugins/visual_multi.vim
+source ~/.config/nvim/plugins/visual_star_search.vim
+
+call plug#end()

@@ -1,6 +1,34 @@
-call plug#begin('~/.config/nvim/autoload/plugged')
-  Plug 'neoclide/coc.nvim', {'branch':'release'}       " VSCode like features
-  Plug 'liuchengxu/vim-which-key'                     " Show available shortcuts
+" Automatically install vim-plug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+
+call plug#begin(data_dir . '/plugins')
+source ~/.config/nvim/plugins/airline.vim
+source ~/.config/nvim/plugins/coc.vim
+source ~/.config/nvim/plugins/commentary.vim
+source ~/.config/nvim/plugins/whichkey.vim
+source ~/.config/nvim/plugins/commentstring.vim
+source ~/.config/nvim/plugins/dispatch.vim
+source ~/.config/nvim/plugins/dracula.vim
+source ~/.config/nvim/plugins/editorconfig.vim
+source ~/.config/nvim/plugins/eunuch.vim
+source ~/.config/nvim/plugins/exchange.vim
+source ~/.config/nvim/plugins/firenvim.vim
+source ~/.config/nvim/plugins/floaterm.vim
+source ~/.config/nvim/plugins/fugitive.vim
+source ~/.config/nvim/plugins/fzf.vim
+source ~/.config/nvim/plugins/heritage.vim
+source ~/.config/nvim/plugins/lastplace.vim
+source ~/.config/nvim/plugins/lion.vim
+source ~/.config/nvim/plugins/markdown-preview.vim
+source ~/.config/nvim/plugins/nerdtree.vim
+source ~/.config/nvim/plugins/pasta.vim
+
+
   Plug 'mbbill/undotree'                              " Undo logs
   Plug 'airblade/vim-rooter'                          " Open projects in root directory
   Plug 'ryanoasis/vim-devicons'                       " Devicons
@@ -14,14 +42,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'hrsh7th/vim-vsnip-integ'
   Plug 'alvan/vim-closetag'
   Plug 'bluz71/vim-nightfly-guicolors'
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
-  Plug 'tpope/vim-commentary'
   Plug 'junegunn/rainbow_parentheses.vim'
   Plug 'joshdick/onedark.vim'
-  Plug 'kosayoda/nvim-lightbulb'                   " VSCode like Light Bulb
-  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'} " Vim Bottom Line
-  Plug 'kyazdani42/nvim-tree.lua'                     " Explorer for Vim
 
   " Git Tooling
   Plug 'tpope/vim-fugitive'                            " Run `:git` commands
@@ -34,18 +56,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  
   Plug 'nvim-treesitter/playground'   
 
-  Plug 'neovim/nvim-lspconfig'                        " Native Neovim Language Server Protocol
-  Plug 'glepnir/lspsaga.nvim'                         " Code actions and other UI LSP features
   Plug 'kyazdani42/nvim-web-devicons'                 " Devicons for vim
   Plug 'hrsh7th/nvim-compe'                           " Autocompletetion Plugin For Neovim
-  Plug 'anott03/nvim-lspinstall'                      " Easily Install Language Server Protocols
-  Plug 'kyazdani42/nvim-tree.lua'                     " Explorer for Vim
   Plug 'romgrk/barbar.nvim'                           " Tabs for Vim
-  Plug 'kosayoda/nvim-lightbulb'                      " VSCode like Light Bulb
-  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'} " Vim Bottom Line
   Plug 'norcalli/nvim-colorizer.lua'                  " Colorizer for Vim
-  Plug 'p00f/nvim-ts-rainbow'                         " Bracket Pair Colorizer
-  Plug 'b3nj5m1n/kommentary'                          " Comment Things Faster 
   Plug 'windwp/nvim-autopairs'                        " Auto close parenthesis, brackets etc
   Plug 'TimUntersberger/neogit'                       " Git Integration for Neovim
 

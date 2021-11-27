@@ -21,7 +21,7 @@ set smarttab
 set expandtab
 set smartindent
 set autoindent
-set laststatus=0
+set laststatus=2
 set number
 set cursorline
 set background=dark
@@ -30,20 +30,31 @@ set noshowmode
 set nobackup
 set nowritebackup
 set updatetime=300
+set redrawtime=10000
 set timeoutlen=500
 set formatoptions-=cro
 set clipboard=unnamedplus
 set autochdir
-
-au! BufWritePost $MYVIMRC source %
-
-cmap w!! w !sudo tee %
-
 set relativenumber
-set nu
 set smartcase
 set noswapfile
 set undofile
+set scrolloff=2
+set sidescrolloff=8
+set lcs=tab:▸\ ,trail:·
+set title
+set signcolumn=yes:2
+set termguicolors
+set spell
+set ignorecase
+set list
+set nojoinspaces
+set exrc
+
+au! BufWritePost $MYVIMRC source %
+
+cmap w!! %!sudo tee > /dev/null %
+
 
 filetype plugin on " Auto Indentation Levels
 filetype indent off " Auto Indentation Levels
