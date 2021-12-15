@@ -19,6 +19,8 @@ DISABLE_MAGIC_FUNCTIONS=true
 
 plugins=(zsh-syntax-highlighting zsh-autosuggestions ssh-agent)
 
+export LANG="en_US.UTF-8"
+
 source $ZSH/oh-my-zsh.sh
 
 
@@ -119,3 +121,9 @@ export PATH="$PATH:$HOME/.local/bin/lua-language-server/bin/macOS"
 
 # Mono
 export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/"
+
+# Apiary
+APIARY_API_KEY="4dc74db63492eeb1fc8a721bce2b0b9b"
+
+# LANGUAGE SERVERS
+#export PATH="/Users/x1k/"

@@ -8,6 +8,7 @@
     ~/.tmux: tmux
     ~/.tmux_darwin.conf: tmux_darwin.conf
     ~/.config/kitty: kitty
+    ~/.config/alacritty: alacritty
     ~/.config/nvim: nvim
     ~/.gitconfig: gitconfig
     ~/.ctags: ctags
