@@ -11,7 +11,7 @@ local Section = require("yanil/section")
 local nodelib = require("yanil/node")
 local map = require("kr.mappings").map
 local mapBuf = require("kr.mappings").mapBuf
-local dotutil = require("kr.util")
+local dotutil = require("kr/util")
 
 local open_mode = loop.constants.O_CREAT + loop.constants.O_WRONLY + loop.constants.O_TRUNC
 
@@ -99,9 +99,9 @@ end
 local function iconDecorator(node)
   local text = ""
   local hl = ""
-  -- ?
+  -- ﯤ
   if not node.parent then
-     text = ""
+    text = ""
     hl = "YanilTreeDirectory"
   elseif node:is_dir() then
     if node:is_link() then
@@ -475,6 +475,7 @@ function yanilBuffers:total_lines()
   return 2
     -- return yanilBuffers.total_lines
 end
+
 
 yanil.setup {
   git = {

@@ -4,7 +4,6 @@ local lspconfig = require "lspconfig"
 local configs = require "lspconfig/configs"
 local mapBuf = require "kr.mappings".mapBuf
 local autocmd = require "kr.autocmds".autocmd
-local installer = require'nvim-lsp-installer'
 
 require("compe").setup(
   {
@@ -97,52 +96,51 @@ end
 local default_node_modules = get_node_modules(vim.fn.getcwd())
 
 local on_attach = function(client, bufnr)
+  client.resolved_capabilities.document_formatting = false
   -- completion.on_attach()
 
-  mapBuf(bufnr, "n", "gdc", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
-  --mapBuf(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
--- preview definition
-  mapBuf(bufnr, "gd", "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>")
+  mapBuf(bufnr, "n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
+  mapBuf(bufnr, "n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
+  mapBuf(bufnr, "n", "<Leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
 
   --Hover
   -- mapBuf(bufnr, "n", "<Leader>gh", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-  mapBuf(bufnr, "n", "gh", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
+  mapBuf(bufnr, "n", "K", "<CMD>lua require('lspsaga.hover').render_hover_doc()<cr>")
 
-  -- show hover doc
-  mapBuf(bufnr, "n", "K", "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>")
-  mapBuf(bufnr, "n", "gs", "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>")
-  mapBuf(bufnr, "n", "gtd", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-
-  -- scroll down hover doc or scroll in definition preview
-  --mapBuf(bufnr, "n","<c-f>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
-  --mapBuf(bufnr, "n","<c-b>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>")
+  mapBuf(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+  --mapBuf(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
 
   -- rename
-  mapBuf(bufnr, "n", "gr", "<cmd>lua require('lspsaga.rename').rename()<CR>")
+  mapBuf(bufnr, "n", "<Leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
   -- mapBuf(bufnr, "n", "<Leader>rn", "<cmd>lua require('lspsaga.rename').rename()<cr>")
 
   mapBuf(bufnr, "n", "<Leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>")
 
-  --mapBuf(bufnr, "n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
-  --mapBuf(bufnr, "v", "<Leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
-  mapBuf(bufnr, "n", "ga", "<cmd>lua require('lspsaga.codeaction').code_action()<cr>")
-  --mapBuf(bufnr, "v", "ga :<C-u>", "<cmd>lua require('lspsaga.codeaction').range_code_action()<cr>")
+  mapBuf(bufnr, "n", "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>")
+  mapBuf(bufnr, "v", "<Leader>ca", "<cmd>lua vim.lsp.buf.range_code_action()<CR>")
+  mapBuf(bufnr, "n", "<Leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>")
+  mapBuf(bufnr, 'n', '<Leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>')
+  mapBuf(bufnr, 'n', '<Leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>')
+  mapBuf(bufnr, 'n', '<Leader>e', '<cmd>lua vim.diagnostic.open_float()<CR>')
+ -- mapBuf(bufnr, 'n', '<Leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+  -- mapBuf(bufnr, "n", "<Leader>ca", "<cmd>lua require('lspsaga.codeaction').code_action()<cr>")
+  -- mapBuf(bufnr, "v", "<Leader>ca", "<cmd>lua require('lspsaga.codeaction').range_code_action()<cr>")
 
   -- autocmd(
   --   "CursorHold",
   --   "<buffer>",
   --   "lua vim.lsp.diagnostic.show_line_diagnostics({show_header = true})"
   -- )
--- autocmd("CursorHold", "<buffer>", "lua require'lspsaga.diagnostic'.show_line_diagnostics()")
+  --autocmd("CursorHold", "<buffer>", "lua require'lspsaga.diagnostic'.show_line_diagnostics()")
 
   -- if client.name ~= "angularls" then
   --   autocmd("CompleteDone", "<buffer>", "lua require('kr.lsp').on_complete_done()")
   -- end
   vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-  vim.fn.sign_define("LspDiagnosticsSignError", {text = "¥"})
-  vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "¥"})
-  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "¥"})
-  vim.fn.sign_define("LspDiagnosticsSignHint", {text = "¥"})
+  vim.fn.sign_define("LspDiagnosticsSignError", {text = "•"})
+  vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "•"})
+  vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "•"})
+  vim.fn.sign_define("LspDiagnosticsSignHint", {text = "•"})
 
   if client.resolved_capabilities.document_highlight then
     vim.api.nvim_command("autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()")
@@ -151,20 +149,20 @@ local on_attach = function(client, bufnr)
   end
 
 end
-local servers = {"pylsp", "bashls", "sourcekit"}
+local servers = {"pylsp", "bashls", "sourcekit","vuels","emmet_ls"}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     capabilities = capabilities
   }
 end
-lspconfig.vuels.setup {
-  on_attach = on_attach
-}
-lspconfig.sourcekit.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+--lspconfig.vuels.setup {
+--  on_attach = on_attach
+--}
+--lspconfig.sourcekit.setup {
+--  on_attach = on_attach,
+--  capabilities = capabilities
+--}
 
 -- configs.volar = {
 --   default_config = {
@@ -188,10 +186,10 @@ configs.emmet_ls = {
   }
 }
 
-lspconfig.emmet_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities
-}
+--lspconfig.emmet_ls.setup {
+--  on_attach = on_attach,
+--  capabilities = capabilities
+--}
 
 lspconfig.tsserver.setup {
   filetypes = {
@@ -283,9 +281,8 @@ lspconfig.jsonls.setup {
   }
 }
 
---[[
-local ngls_cmd = {
-  "ngserver.cmd",
+--[[local ngls_cmd = {
+  "ngserver",
   "--stdio",
   "--tsProbeLocations",
   default_node_modules,
@@ -303,6 +300,7 @@ lspconfig.angularls.setup {
   end
 }
 ]]
+
 lspconfig.sumneko_lua.setup {
   cmd = {lua_lsp_loc .. "/bin/macOS/lua-language-server", "-E", lua_lsp_loc .. "/main.lua"},
   capabilities = capabilities,

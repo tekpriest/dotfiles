@@ -28,7 +28,7 @@ function foldText()
   local line = vim.fn.substitute(vim.fn.getline(fs), "\t", string.rep(' ', vim.bo.tabstop), 'g')
   local winSize = bufwidth()
   local fillcharcount = winSize - #line - 2
-  return line .. ' ?'.. string.rep(" ", fillcharcount)
+  return line .. ' '.. string.rep(" ", fillcharcount)
 
 end
 --

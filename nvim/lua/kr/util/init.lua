@@ -13,14 +13,14 @@ function M.Augroup(group, fn)
 end
 
 local border_symbols = {
-  vertical = "?",
-  horizontal = "?",
+  vertical = "┃",
+  horizontal = "━",
   fill = " ",
   corner = {
-    topleft = "?",
-    topright = "?",
-    bottomleft = "?",
-    bottomright = "?"
+    topleft = "┏",
+    topright = "┓",
+    bottomleft = "┗",
+    bottomright = "┛"
   }
 }
 
