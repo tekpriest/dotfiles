@@ -13,6 +13,7 @@
     ~/.gitconfig: gitconfig
     ~/.ctags: ctags
     ~/.zshrc: zshrc
+    ~/.config/efm-langserver: efm-langserver
 
 - create:
     # ~/downloads

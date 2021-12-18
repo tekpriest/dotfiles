@@ -52,7 +52,7 @@ Option.g({
 	virtualedit = "onemore",
 	guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
 	complete = ".,w,b,u,t,k",
-	completeopt = "menu,menuone,noinsert,noselect",
+	completeopt = "menu,menuone,noselect",
 	formatoptions = "jtcroql",
 	inccommand = "nosplit",
 	shortmess = "atIcF",

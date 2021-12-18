@@ -100,9 +100,13 @@ M.map("n", "<leader>xq", "<cmd>Trouble quickfix<cr>")
 M.map("n", "<leader>gR", "<cmd>Trouble lsp_references<cr>")
 
 -- NVIM Tree
-M.map("n", "<leader>\\", "cmd>NvimTreeToggle<CR>")
+M.map("n", "<leader>f", "cmd>NvimTreeToggle<CR>")
 
 -- JSDOC
-M.map("n", "<C-l>", "<cmd>JsDoc<CR>")
+--M.map("n", "<C-l>", "<cmd>JsDoc<CR>")
+
+M.map("n", "<leader>c", "<cmd>CommentToggle<CR>", { nowait = true })
+
+vim.cmd([[inoremap <silent><expr> <C-Space> compe#complete()]])
 
 return M

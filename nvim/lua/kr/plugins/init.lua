@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
 		end,
 	})
 	use({ "Xuyuanp/yanil" })
+	--[[
 	use({
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
@@ -65,8 +66,20 @@ return require("packer").startup(function(use)
 			})
 		end,
 	})
+]]
 	use({ "hoob3rt/lualine.nvim" })
-	use({ "akinsho/nvim-bufferline.lua" })
+	use({
+		"akinsho/bufferline.nvim",
+		config = function()
+			require("bufferline").setup({
+				options = {
+					numbrs = "none",
+					tab_size = 10,
+					diagnostics = "nvim_lsp",
+				},
+			})
+		end,
+	})
 
 	-- Colors
 	use({ "morhetz/gruvbox" })
@@ -118,7 +131,7 @@ return require("packer").startup(function(use)
 	--use {"rust-lang/rust.vim"}
 	--use {"racer-rust/vim-racer"}
 	-- Python
-	use({ "tmhedberg/SimpylFold", ft = "python" })
+	--	use({ "tmhedberg/SimpylFold", ft = "python" })
 	-- JS/TS
 	--use {"othree/yajs.vim"}
 	--use {"MaxMEllon/vim-jsx-pretty"}
@@ -142,7 +155,9 @@ return require("packer").startup(function(use)
 	use({
 		"norcalli/nvim-colorizer.lua",
 		config = function()
-			require("colorizer").setup()
+			require("colorizer").setup({
+				css = { rrggbbaa = true },
+			})
 		end,
 	})
 	-- Swift
@@ -156,14 +171,14 @@ return require("packer").startup(function(use)
 	use({ "tbastos/vim-lua" })
 
 	use({ "mhartington/formatter.nvim" })
-	use({ "mhartington/vim-folds" })
+	--	use({ "mhartington/vim-folds" })
 	use({ "mhartington/oceanic-next" })
 
 	use({ "nvim-treesitter/nvim-treesitter" })
 	use({ "nvim-treesitter/nvim-treesitter-angular" })
 	use({ "nvim-treesitter/playground" })
 
-	use({ "hrsh7th/nvim-compe" })
+	--use({ "hrsh7th/nvim-compe" })
 	use({ "neovim/nvim-lspconfig" })
 	use({ "glepnir/lspsaga.nvim" })
 	use({
@@ -172,6 +187,21 @@ return require("packer").startup(function(use)
 			require("trouble").setup({})
 		end,
 	})
+	use({ "jose-elias-alvarez/null-ls.nvim" })
+
+	-- autocomplete
+	use("neovim/nvim-lspconfig")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/nvim-cmp")
+
+	--snip
+	use({ "L3MON4D3/LuaSnip" })
+	use({ "saadparwaiz1/cmp_luasnip" })
+	--
+	--
 	--
 	use({ "nvim-telescope/telescope.nvim" })
 	use({ "nvim-telescope/telescope-github.nvim" })
@@ -189,13 +219,13 @@ return require("packer").startup(function(use)
 		"windwp/nvim-autopairs",
 		config = function()
 			require("nvim-autopairs").setup({
-				check_ts = true,
+				--		check_ts = true,
 				--enable_check_bracket_line = false,
-				ts_config = {
-					--lua = { "string" }, -- it will not add a pair on that treesitter node
-					javascript = { "template_string" },
-					typescript = { "template_string" },
-				},
+				--				ts_config = {
+				--					--lua = { "string" }, -- it will not add a pair on that treesitter node
+				--					javascript = { "template_string" },
+				--					typescript = { "template_string" },
+				--				},
 			})
 		end,
 	})
@@ -208,4 +238,13 @@ return require("packer").startup(function(use)
 	})
 
 	use({ "glepnir/dashboard-nvim" })
+
+	use({ "wakatime/vim-wakatime" })
+
+	use({
+		"Shatur/neovim-session-manager",
+		config = function()
+			require("session_manager").setup({})
+		end,
+	})
 end)
