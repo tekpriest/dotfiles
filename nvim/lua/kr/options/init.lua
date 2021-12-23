@@ -23,9 +23,14 @@ Option.b = function(options)
 end
 
 Option.g({
+  lazyredraw = true,
+	backspace = "indent,eol,start",
 	scrolloff = 4,
+	completeopt = "menu,menuone,noinsert",
+	cursorline = true,
 	sidescrolloff = 4,
 	termguicolors = true,
+	encoding = "utf-8",
 	mouse = "a",
 	clipboard = "unnamedplus",
 	hidden = true,
@@ -34,6 +39,7 @@ Option.g({
 	tabstop = 2,
 	softtabstop = 2,
 	shiftwidth = 2,
+  shiftround = true,
 	expandtab = true,
 	conceallevel = 0,
 	laststatus = 2,
@@ -45,16 +51,16 @@ Option.g({
 	wildmode = "full",
 	wildignore = "*/cache/*,*/tmp/*,*/node_modules/*",
 	autoread = true,
-	updatetime = 500,
+	updatetime = 100,
 	redrawtime = 500,
 	--fillchars = vim.o.fillchars .. "vert:│",
 	undofile = true,
-	virtualedit = "onemore",
 	guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20",
 	complete = ".,w,b,u,t,k",
-	completeopt = "menu,menuone,noselect",
-	formatoptions = "jtcroql",
-	inccommand = "nosplit",
+	-- formatoptions = "jtcroql",
+	formatoptions = "l",
+	inccommand = "split",
+  joinspaces = false,
 	shortmess = "atIcF",
 	isfname = table.concat(
 		vim.tbl_filter(function(entry)
@@ -69,6 +75,7 @@ Option.g({
 	swapfile = false,
 	diffopt = "internal,filler,closeoff,algorithm:patience,iwhiteall",
 	splitbelow = true,
+  splitright = true,
 	emoji = false,
 	indentexpr = "nvim_treesitter#indent()",
 	showmatch = false,
@@ -87,7 +94,7 @@ Option.w({
 	signcolumn = "yes",
 	spell = false,
 	foldlevel = 99,
-	foldmethod = "syntax",
+	foldmethod = "indent",
 	-- foldmethod = "expr",
 	foldexpr = "nvim_treesitter#foldexpr()",
 	foldtext = "v:lua.foldText()",
@@ -107,6 +114,7 @@ vim.g.mapleader = " "
 vim.g.one_allow_italics = true
 vim.g.oceanic_next_terminal_bold = true
 vim.g.oceanic_next_terminal_italic = true
+vim.g.gruvbox_italic = true
 vim.g.vim_monokai_tasty_italic = true
 vim.g.table_mode_corner = "|"
 vim.g.markdown_fold_override_foldtext = false
@@ -114,14 +122,15 @@ vim.g.markdown_syntax_conceal = false
 vim.g.mkdp_auto_start = false
 vim.g.vim_json_syntax_conceal = false
 vim.g.override_nvim_web_devicons = true
-local configs = parsers.get_parser_configs()
-local ft_str = table.concat(
-	vim.tbl_map(function(ft)
-		return configs[ft].filetype or ft
-	end, parsers.available_parsers()),
-	","
-)
-vim.cmd("autocmd Filetype " .. ft_str .. " setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()")
+vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "css", "scss", "lua", "vim" }
+-- local configs = parsers.get_parser_configs()
+-- local ft_str = table.concat(
+-- vim.tbl_map(function(ft)
+-- return configs[ft].filetype or ft
+-- end, parsers.available_parsers()),
+-- ","
+-- )
+-- vim.cmd("autocmd Filetype " .. ft_str .. " setlocal foldmethod=expr foldexpr=nvim_treesitter#foldexpr()")
 
 vim.g.nvim_tree_quit_on_open = 1 -- 0 by default, closes the tree when you open a file
 vim.g.nvim_tree_indent_markers = 1 -- 0 by default, this option shows indent markers when folders are open

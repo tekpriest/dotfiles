@@ -18,7 +18,7 @@ local M = {
 	white = "#ffffff",
 }
 
-vim.cmd("colorscheme OceanicNext")
+vim.cmd("colorscheme gruvbox")
 
 function M.setItalics()
 	vim.cmd("hi Comment gui=italic")

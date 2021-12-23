@@ -1,49 +1,96 @@
 local null = require("null-ls")
+local null_h = require("null-ls.helpers")
+local formatting = null.builtins.formatting
+local diagnostics = null.builtins.diagnostics
+local actions = null.builtins.code_actions
+local completion = null.builtins.completion
+--
+local sources = {
+	-- Formatters
+	formatting.prettier,
+	formatting.stylua,
+	formatting.eslint_d,
+	formatting.deno_fmt,
+	formatting.dart_format,
+	formatting.erlfmt,
+	formatting.fixjson,
+	formatting.gofmt,
+	formatting.goimports,
+	formatting.golines,
+	formatting.taplo,
+	formatting.mix,
+	formatting.prismafmt,
+	formatting.trim_whitespace,
+	formatting.shfmt.with({ args = { "-i=4" } }),
 
-local formatters = {
-	"stylua",
-	"eslint_d",
-	"prettier",
-	"deno_fmt",
-	"dart-format",
-	"erlfmt",
-	"fixjson",
-	"gofmpt",
-	"goimports",
-	"golines",
-	"mix",
-	"prismafmt",
-	"taplo",
+	-- Diagnostics
+	diagnostics.write_good,
+	diagnostics.credo,
+	diagnostics.eslint_d,
+	diagnostics.hadolint,
+	diagnostics.yamllint,
+	diagnostics.revive,
+	diagnostics.tsc,
+	diagnostics.eslint_d,
+	--null.builtins.diagnostics.luacheck,
+
+	-- Actions
+	actions.gitsigns,
+	actions.refactoring,
+	actions.eslint_d,
+
+	-- Completions
+	completion.spell,
+	completion.luasnip,
+
+	-- If eslint exists, don't use prettier for js/ts files
+	null_h.conditional(function(utils)
+		local has_eslint = utils.root_has_file(".eslintrc.js") or utils.root_has_file(".eslintrc.json")
+
+		if has_eslint then
+			return formatting.prettier.with({
+				filetypes = {
+					"vue",
+					"css",
+					"html",
+					"yaml",
+					"markdown",
+					"json",
+				},
+				args = {
+					"--stdin-filepath",
+					"$FILENAME",
+				},
+			})
+		else
+			return formatting.prettier.with({
+				filetypes = {
+					"vue",
+					"css",
+					"html",
+					"yaml",
+					"markdown",
+					"json",
+					"javascript",
+					"javascriptreact",
+					"typescript",
+					"typescriptreact",
+				},
+				args = {
+					"--stdin-filepath",
+					"$FILENAME",
+				},
+			})
+		end
+	end),
 }
 
-null.setup({
-	sources = {
-		null.builtins.formatting.prettier,
-		null.builtins.formatting.stylua,
-		null.builtins.formatting.eslint_d,
-		null.builtins.formatting.deno_fmt,
-		null.builtins.formatting.dart_format,
-		null.builtins.formatting.erlfmt,
-		null.builtins.formatting.fixjson,
-		null.builtins.formatting.gofmt,
-		null.builtins.formatting.goimports,
-		null.builtins.formatting.golines,
-		null.builtins.formatting.taplo,
-		null.builtins.formatting.mix,
-		null.builtins.formatting.prismafmt,
-		null.builtins.formatting.trim_whitespace,
-		null.builtins.diagnostics.write_good,
-		null.builtins.diagnostics.credo,
-		null.builtins.diagnostics.eslint_d,
-		null.builtins.diagnostics.hadolint,
-		null.builtins.diagnostics.yamllint,
-		null.builtins.diagnostics.revive,
-		null.builtins.diagnostics.tsc,
-		null.builtins.diagnostics.eslint_d,
-		--null.builtins.diagnostics.luacheck,
-		null.builtins.code_actions.gitsigns,
-		null.builtins.code_actions.refactoring,
-		null.builtins.completion.spell,
-		null.builtins.completion.luasnip,
-	},
+require("null-ls").setup({
+  sources = sources,
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+  end,
 })
+

@@ -2,14 +2,13 @@ local vim = vim
 local telescope = require("telescope")
 local builtIn = require("telescope.builtin")
 local actions = require("telescope.actions")
-local trouble = require('trouble.providers.telescope')
 local M = {}
 
-telescope.load_extension("gh")
-telescope.load_extension("node_modules")
-telescope.load_extension("packer")
+-- telescope.load_extension("gh")
+-- telescope.load_extension("node_modules")
+-- telescope.load_extension("packer")
 telescope.load_extension("fzy_native")
-telescope.load_extension('octo')
+-- telescope.load_extension('octo')
 
 telescope.setup {
   defaults = {

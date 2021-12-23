@@ -28,7 +28,7 @@ M.autocmd("WinLeave", "*", "if exists('w:last_fdm') | let &l:foldmethod=w:last_f
 --M.autocmd("BufWritePost", "*", "Format")
 M.autocmd("BufWritePost", "*.lua", "luafile %")
 
-M.autocmd("InsertLeave", "*", "Format")
+--M.autocmd("InsertLeave", "*", "Format")
 -- vim.api.nvim_command('autocmd WinEnter * v:lua.kr.autocmds.Preview_func()')
 
 -- autocmd WinEnter * call Preview_func()
