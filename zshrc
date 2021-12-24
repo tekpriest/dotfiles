@@ -17,7 +17,7 @@ ZSH_TMUX_AUTOSTART=true
 HIST_STAMPS='yyyy-mm-dd'
 DISABLE_MAGIC_FUNCTIONS=true
 
-plugins=(zsh-syntax-highlighting zsh-autosuggestions ssh-agent)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions ssh-agent zsh-z)
 
 source $ZSH/oh-my-zsh.sh
 
