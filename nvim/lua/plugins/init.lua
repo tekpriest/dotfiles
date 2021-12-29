@@ -105,15 +105,15 @@ return require("packer").startup({
     })
     use({ "nvim-treesitter/nvim-treesitter-textobjects" })
     use({ "nvim-treesitter/playground" })
-
-    use({ "neovim/nvim-lspconfig" })
-    use({ "glepnir/lspsaga.nvim" })
+    use({ "p00f/nvim-ts-rainbow" })
     use({
-      "folke/trouble.nvim",
+      "romgrk/nvim-treesitter-context",
       config = function()
-        require("trouble").setup({})
+        require("treesitter-context.config").setup({ enable = true })
       end,
     })
+    use({ "neovim/nvim-lspconfig" })
+    use({ "glepnir/lspsaga.nvim" })
     use({ "jose-elias-alvarez/null-ls.nvim" })
     use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
 
@@ -177,19 +177,37 @@ return require("packer").startup({
         })
       end,
     })
-    use({ "windwp/nvim-ts-autotag" })
+    use({
+      "windwp/nvim-ts-autotag",
+      config = function()
+        require("nvim-ts-autotag").setup({ enable = true })
+      end,
+    })
     use({
       "simrat39/symbols-outline.nvim",
       cmd = { "SymbolsOutline" },
     })
-
     use({
-      "numToStr/Comment.nvim",
-      keys = { "gc", "gcc" },
+      "folke/twilight.nvim",
       config = function()
-        require("Coment").setup({})
+        require("twilight").setup({})
       end,
     })
+
+    use({
+      "folke/zen-mode.nvim",
+      config = function()
+        require("zen-mode").setup({
+          window = {
+            width = 0.100,
+          },
+          plugins = {
+            twilight = { enabled = true },
+          },
+        })
+      end,
+    })
+
     if packer_bootstrap then
       require("packer").sync()
     end

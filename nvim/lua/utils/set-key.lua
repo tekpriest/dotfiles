@@ -6,12 +6,12 @@ local Utils = {}
 -- @param action - string
 -- @param opts - object
 function Utils.setKey(mode, key, action, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-		options = vim.tbl_extend("force", options, opts)
-	end
-	mode = mode or "n"
-	vim.api.nvim_set_keymap(mode, key, action, options)
+  local options = { noremap = true, silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  mode = mode or "n"
+  vim.api.nvim_set_keymap(mode, key, action, options)
 end
 
 -- Sets the given keymap with the given properties for buffer
@@ -20,9 +20,9 @@ end
 -- @param action - string
 -- @param opts - object
 function Utils.setBufKey(buf, mode, key, action)
-	local options = { noremap = true, silent = true }
-	mode = mode or "n"
-	vim.api.nvim_buf_set_keymap(buf, mode, key, action, options)
+  local options = { noremap = true, silent = true }
+  mode = mode or "n"
+  vim.api.nvim_buf_set_keymap(buf, mode, key, action, options)
 end
 
 Utils.setKey("n", "<Esc>", "<cmd>nohl<CR>")
@@ -49,9 +49,13 @@ Utils.setKey("n", "<A-j>", "<cmd>m .+1<CR>==")
 Utils.setKey("v", "<A-j>", ":m '>+1<CR>==gv=gv")
 Utils.setKey("v", "<A-k>", ":m '<-2<CR>==gv=gv")
 
+-- switch back to normal
+Utils.setKey("i", "jk", "<Esc>")
+Utils.setKey("i", "kj", "<Esc>")
+
 -- Cycle through 9 open buffers
 for i = 1, 9 do
-	Utils.setKey("n", "<leader>" .. i, "<cmd>lua require'Bufferline'.go_to_buffer(" .. i .. ")<CR>")
+  Utils.setKey("n", "<leader>" .. i, "<cmd>lua require'Bufferline'.go_to_buffer(" .. i .. ")<CR>")
 end
 
 return Utils

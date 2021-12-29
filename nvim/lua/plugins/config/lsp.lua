@@ -82,6 +82,15 @@ lsp.tsserver.setup({
   on_attach = function(client, bufnr)
     client.resolved_capabilities.document_formatting = false
     client.resolved_capabilities.document_range_formatting = false
+
+    local ts_utils = require("nvim-lsp-ts-utils")
+    ts_utils.setup({})
+    ts_utils.setup_client(client)
+
+    mapBuf(bufnr, "n", "tgs", ":TSLspOrganize<CR>")
+    mapBuf(bufnr, "n", "tgr", ":TSLspRenameFile<CR>")
+    mapBuf(bufnr, "n", "tgo", ":TSLspImportAll<CR>")
+
     on_attach(client, bufnr)
   end,
 })
@@ -173,7 +182,7 @@ lsp.yamlls.setup({
 
 vim.lsp.diagnostic.show_line_diagnostics()
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   underline = true,
   update_on_insert = true,

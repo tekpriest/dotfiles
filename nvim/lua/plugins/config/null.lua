@@ -1,11 +1,12 @@
 local null = require("null-ls")
 local formatting = null.builtins.formatting
+local diagnostics = null.builtins.diagnostics
+local on_attach = require("plugins.config.lsp")
 --
 -- local sources = {
 -- 	-- Diagnostics
 -- 	diagnostics.write_good,
 -- 	diagnostics.credo,
--- 	diagnostics.eslint_d,
 -- 	diagnostics.hadolint,
 -- 	diagnostics.yamllint,
 -- 	diagnostics.revive,
@@ -13,6 +14,8 @@ local formatting = null.builtins.formatting
 -- 	diagnostics.eslint_d,
 --
 local sources = {
+  diagnostics.eslint_d,
+  null.builtins.code_actions.eslint_d,
   formatting.dart_format,
   formatting.erlfmt,
   formatting.gofmt,
@@ -21,7 +24,7 @@ local sources = {
   formatting.mix,
   formatting.prismaFmt,
   formatting.eslint_d,
-  null.builtins.formatting.prettier.with({
+  formatting.prettier.with({
     filetypes = {
       "javascript",
       "typescript",
@@ -43,9 +46,6 @@ local sources = {
 
 null.setup({
   sources = sources,
-  on_attach = function(client)
-    if client.resolved_capabilities.document_formatting then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
-    end
-  end,
+  debug = false,
+  on_attach = on_attach,
 })
