@@ -106,17 +106,17 @@
     (evil-set-initial-state 'messages-buffer-mode 'normal)
     (evil-set-initial-state 'dashboard-mode 'normal))
 
-(use-package evil-collection
-  :after evil
-  :config (evil-collection-init))
+        (use-package evil-collection
+          :after evil
+          :config (evil-collection-init))
 
-(use-package hydra)
+        (use-package hydra)
 
-(defhydra hydra-text-scale (:timeout 4)
-  "scale text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("f" nil "finished" :exit t))
+        (defhydra hydra-text-scale (:timeout 4)
+          "scale text"
+          ("j" text-scale-increase "in")
+          ("k" text-scale-decrease "out")
+          ("f" nil "finished" :exit t))
 
 
 
@@ -197,6 +197,7 @@
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
 
 ;; set up ghub
 (setq auth-sources '("~/.authinfo"))

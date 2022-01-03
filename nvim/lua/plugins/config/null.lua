@@ -26,8 +26,8 @@ local sources = {
   formatting.eslint_d,
   formatting.prettier.with({
     filetypes = {
-      -- "javascript",
-      -- "typescript",
+      "javascript",
+      "typescript",
       "css",
       "scss",
       "html",
