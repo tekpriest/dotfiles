@@ -14,7 +14,7 @@ local on_attach = require("plugins.config.lsp")
 -- 	diagnostics.eslint_d,
 --
 local sources = {
-  diagnostics.eslint_d,
+  -- diagnostics.eslint_d,
   null.builtins.code_actions.eslint_d,
   formatting.dart_format,
   formatting.erlfmt,
@@ -26,12 +26,12 @@ local sources = {
   formatting.eslint_d,
   formatting.prettier.with({
     filetypes = {
-      "javascript",
-      "typescript",
+      -- "javascript",
+      -- "typescript",
       "css",
       "scss",
       "html",
-      "json",
+      -- "json",
       "yaml",
       "markdown",
       "graphql",

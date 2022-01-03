@@ -12,6 +12,7 @@
     ~/.config/nvim: nvim
     ~/.gitconfig: gitconfig
     ~/.zshrc: zshrc
+    ~/.emacs.d: emacs
 
 - create:
     # ~/downloads

@@ -208,6 +208,17 @@ return require("packer").startup({
       end,
     })
 
+    -- Orgmode
+    use({
+      "nvim-orgmode/orgmode",
+      config = function()
+        require("orgmode").setup({
+          org_agenda_files = { "~/Code/org/*", "~/agendas/**/*" },
+          org_default_notes_files = "~/Code/org/refile.org",
+        })
+      end,
+    })
+
     if packer_bootstrap then
       require("packer").sync()
     end
