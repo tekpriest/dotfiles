@@ -4,7 +4,7 @@
 	useConfigOnly = true
 	name = Asaju Enitan Michael
 	email = asajuenitan@gmail.com
-	signingkey = 07313B8BC2800D2E
+	signingkey = 
 [credential]
 	helper = osxkeychain
 [core]
