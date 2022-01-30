@@ -8,3 +8,5 @@ require(".config")
 require(".plugins")
 -- Plugin Configurations <plugin>.lua
 require('.plugins.config')
+require('.globals')
+require(".config.options")

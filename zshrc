@@ -3,7 +3,7 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/x1k/.oh-my-zsh"
-export EDITOR=vim
+export EDITOR=nvim
 
 export HISTSIZE=100000000
 export SAVEHIST=$HISTSIZE
@@ -66,7 +66,6 @@ export PROJECT_HOME=$HOME/Code
 export PATH=$PATH:/usr/local/sbin
 source /usr/local/bin/virtualenvwrapper.sh
 
-# Composer
 export PATH=$PATH:$HOME/.composer/vendor/bin
 
 # Golang
@@ -91,26 +90,6 @@ export LDFLAGS="-L/usr/local/opt/qt@5/lib"
 export CPPFLAGS="-I/usr/local/opt/qt@5/include"
 export PKG_CONFIG_PATH="/usr/local/opt/qt@5/lib/pkgconfig"
 
-# Flutter
-export PATH=$PATH:$HOME/.local/bin/flutter/bin
-export PATH=$PATH:$HOME/.local/bin/android-sdk/cmdline-tools/5.0
-export PATH=$PATH:$HOME/.local/bin/android-sdk/cmdline-tools/5.0/bin
-export PATH=$PATH:$HOME/.local/bin/android-sdk/platform-tools
-export ANDROID_HOME=$HOME/.local/bin/android-sdk
-export ANDROID_SDK_ROOT=$HOME/.local/bin/android-sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-
-# android aliases
-
-create_avd() {
-  echo "no" | avdmanager --verbose create avd --force --name $1 --package "system-images;android-29;google_apis;x86_64" --tag "google_apis" --abi "x86_64"
-}
-
-run_avd() {
-  emulator @$1 -no-boot-anim -netdelay none -no-snapshot -wipe-data -skin 1080x1920 &
-}
-
 # Added by Amplify CLI binary installer
 export PATH="$HOME/.amplify/bin:$PATH"
 
@@ -119,3 +98,22 @@ export PATH="$PATH:$HOME/.local/bin/lua-language-server/bin/macOS"
 
 # Mono
 export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/bin/"
+
+# Dotnet
+export PATH="$PATH:/Users/x1k/.dotnet/tools"
+
+# Deno
+fpath=(~/.zsh $fpath)
+autoload -Uz compinit
+compinit -u
+
+# Starship
+eval "$(starship init zsh)"
+
+# Flutter
+export ANDROID_SDK_ROOT=/Users/x1k/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT
+export PATH=$PATH:$HOME/.local/bin/flutter/bin
+export PATH=$PATH:/Users/x1k/Library/Android/sdk/cmdline-tools/latest/bin
+export PATH=$PATH:/Users/x1k/Library/Android/sdk/cmdline-tools/latest
+export JAVA_HOME=$(/usr/libexec/java_home -v 11)
