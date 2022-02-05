@@ -1,12 +1,7 @@
--- Author: Asaju Michael
--- repo  : https://github.com/en1tan/dotfiles/
--- Core Utils
-require(".utils")
--- General System Settings
-require(".config")
--- Plugin Install
-require(".plugins")
--- Plugin Configurations <plugin>.lua
-require('.plugins.config')
-require('.globals')
-require(".config.options")
+require("core.utils") -- load globals
+
+TP.impatient() -- load impatient plugin
+TP.require("core.options")
+TP.require("core.plugins")
+TP.require("core.mappings")
+TP.require("core.autocmds")

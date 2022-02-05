@@ -1,21 +1,21 @@
+local alpha = TP.require("alpha")
 local dashboard = require("alpha.themes.dashboard")
-local plugins = require(".plugins")
 math.randomseed(os.time())
 
-local function button(sc, txt, key, opts)
+local button = function(sc, txt, key, opts)
   local b = dashboard.button(sc, txt, key, opts)
   b.opts.hl = "Function"
   b.opts.hl_shortcut = "Type"
   return b
 end
 
-local function pick_color()
+local pick_color = function()
   local colors = { "String", "Identifier", "Keyword", "Number" }
   return colors[math.random(#colors)]
 end
 
-local function footer()
-  local total_plugins = #vim.tbl_keys(plugins)
+local footer = function()
+  local total_plugins = #vim.tbl_keys(packer_plugins)
   local datetime = os.date(" %d-%m-%Y   %H:%M:%S")
   return datetime
     .. "   "
@@ -51,6 +51,8 @@ dashboard.section.header.val = {
 }
 
 dashboard.section.header.opts.hl = pick_color()
+dashboard.section.footer.val = footer()
+dashboard.section.footer.opts.hl = "Constant"
 
 dashboard.section.buttons.val = {
   button("<Leader>tf", "  File Explorer"),
@@ -63,7 +65,4 @@ dashboard.section.buttons.val = {
   button("q", "  Quit", "<Cmd>qa<CR>"),
 }
 
-dashboard.section.footer.val = footer()
-dashboard.section.footer.opts.hl = "Constant"
-
-require("alpha").setup(dashboard.opts)
+alpha.setup(dashboard.opts)

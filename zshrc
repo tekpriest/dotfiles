@@ -47,7 +47,7 @@ mkcd () {
 
 # Alias
 alias brewup='brew update; brew upgrade; brew cleanup; brew doctor'
-alias zshconfig="vim ~/.zshrc"
+alias zshconfig="nvim ~/.zshrc"
 export PATH="/usr/local/sbin:$PATH"
 
 source <(kubectl completion zsh)
@@ -117,3 +117,7 @@ export PATH=$PATH:$HOME/.local/bin/flutter/bin
 export PATH=$PATH:/Users/x1k/Library/Android/sdk/cmdline-tools/latest/bin
 export PATH=$PATH:/Users/x1k/Library/Android/sdk/cmdline-tools/latest
 export JAVA_HOME=$(/usr/libexec/java_home -v 11)
+
+# PNPM
+# alias npm = pnpm
+# alias npx = pnpx
