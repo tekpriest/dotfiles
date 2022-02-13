@@ -123,5 +123,6 @@ vim.g.markdown_fenced_languages = {
   "console=sh",
 }
 set.synmaxcol = 1024
+set.showtabline = 2
 
 vim.cmd([[colorscheme kanagawa]])

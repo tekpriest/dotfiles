@@ -96,6 +96,7 @@ packer.startup({
         return require("configs.cmp")
       end,
     })
+    use({ after = "nvim-cmp", "hrsh7th/cmp-nvim-lsp-signature-help" })
     -- snippet completion source
     use({
       "saadparwaiz1/cmp_luasnip",
@@ -295,6 +296,16 @@ packer.startup({
         require("configs.orgmode")
       end,
     })
+    use({ "jose-elias-alvarez/nvim-lsp-ts-utils" })
+    use({ "b0o/SchemaStore.nvim" })
+    use({
+      "hoschi/yode-nvim",
+      config = function()
+        require("yode-nvim").setup({})
+      end,
+    })
+    -- Godot
+    use({ "habamax/vim-godot" })
   end,
   config = {
     display = {

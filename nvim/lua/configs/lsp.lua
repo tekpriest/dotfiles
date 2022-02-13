@@ -193,9 +193,26 @@ lsp.gopls.setup({
   on_attach = on_attach,
 })
 -- js/ts
+local ts_utils_settings = {
+  -- debug = true,
+  import_all_scan_buffers = 100,
+  update_imports_on_move = true,
+  -- filter out dumb module warning
+  filter_out_diagnostics_by_code = { 80001 },
+}
+local ts_utils = require("nvim-lsp-ts-utils")
 lsp.tsserver.setup({
+  root_dir = lsp.util.root_pattern("package.json"),
   capabilities = capabilities,
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    ts_utils.setup(ts_utils_settings)
+    ts_utils.setup_client(client)
+  end,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  init_options = ts_utils.init_options,
 })
 
 -- prisma
@@ -204,6 +221,22 @@ lsp.prismals.setup({
   on_attach = on_attach,
   root_dir = lsp.util.root_pattern("prisma"),
 })
+
+lsp.jsonls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+lsp.yamlls.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
+
+-- Godot
+lsp.gdscript.setup({
+  capabilities = capabilities,
+  on_attach = on_attach,
+})
 -- formatting
 local null = TP.require("null-ls")
 local b = null.builtins
@@ -211,16 +244,25 @@ local b = null.builtins
 null.setup({
   sources = {
     b.formatting.stylua,
+    b.formatting.protolint,
     b.formatting.deno_fmt.with({
       extra_args = {
         "--options-single-quote",
       },
     }),
+    b.formatting.prettier.with({
+      filetypes = { "html", "json", "yaml", "markdown" },
+    }),
     ---diagnostics
-    b.diagnostics.shellcheck,
-    b.diagnostics.write_good,
     b.code_actions.eslint_d,
-    b.diagnostics.eslint_d.with({ diagnostics_format = "#{m} [#{c}]" }),
+    b.diagnostics.eslint_d.with({
+      diagnostics_format = "#{m} [#{c}]",
+      condiition = function(utils)
+        print(utils.root_has_file({ ".eslintrc.js" }))
+        return utils.root_has_file({ ".eslintrc", ".eslintrc.json" })
+      end,
+    }),
+    b.diagnostics.protolint,
     -- hover
     b.hover.dictionary,
   },

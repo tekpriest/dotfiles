@@ -94,3 +94,6 @@ map(
 )
 -- treesitter playground
 map("n", "<leader>t", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
+
+-- Yode
+map("n", "<Leader>bd", "<cmd>YodeBufferDelete<cr>", opts)
