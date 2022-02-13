@@ -121,3 +121,6 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 # PNPM
 # alias npm = pnpm
 # alias npx = pnpx
+
+# ISTIO
+export PATH="$PATH:$HOME/.local/bin/istio/bin"
