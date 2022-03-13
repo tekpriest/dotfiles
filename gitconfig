@@ -2,9 +2,9 @@
 	helper = !gh auth git-credential
 [user]
 	useConfigOnly = true
-	name =
-	email =
-	signingkey =
+	name = Asaju Enitan Michael
+	email = asajuenitan@gmail.com
+	signingkey = F981C181DD7E6739
 [core]
 	excludesfile = $HOME/.gitignore
 	editor = nvim

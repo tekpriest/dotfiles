@@ -1,11 +1,11 @@
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.vimrc: vimrc
     ~/.bashrc: bashrc
     ~/.gitignore: gitignore
     ~/.jshintrc: jshintrc
-    ~/.tmux: tmux
+    ~/.tmux.conf: .tmux.conf
     ~/.tmux_darwin.conf: tmux_darwin.conf
     ~/.config/kitty: kitty
     ~/.config/alacritty: alacritty
