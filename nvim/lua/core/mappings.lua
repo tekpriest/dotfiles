@@ -67,3 +67,6 @@ map("n", "<leader>t", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
 
 -- Yode
 map("n", "<Leader>bd", "<cmd>YodeBufferDelete<cr>", opts)
+
+-- Lazygit
+map("n", "<leader>g", "<cmd>LazyGit<cr>", opts)
