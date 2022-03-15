@@ -166,6 +166,9 @@ packer.startup({
 		-- fuzzy finder
 		use({
 			"nvim-telescope/telescope.nvim",
+			requires = {
+				"kdheepak/lazygit.nvim",
+			},
 			config = function()
 				return require("configs.telescope")
 			end,
