@@ -126,10 +126,54 @@ lsp.gopls.setup({
 	on_attach = on_attach,
 })
 
-lsp.zls.setup({
+-- Elixirls
+lsp.elixirls.setup({
+	cmd = { "elixir-ls", "--lsp" },
 	capabilities = capabilities,
 	on_attach = on_attach,
 })
+
+-- JS/TS
+lsp.tsserver.setup({
+	root_dir = lsp.util.root_pattern("package.json"),
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+		on_attach(client, bufnr)
+	end,
+})
+
+-- Prismals
+lsp.prismals.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- Denols
+lsp.denols.setup({
+	root_dir = lsp.util.root_pattern("deno.json"),
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+		client.resolved_capabilities.document_range_formatting = false
+		on_attach(client, bufnr)
+	end,
+})
+
+-- Tailwindcss
+lsp.tailwindcss.setup({
+	root_dir = lsp.util.root_pattern("tailwind.config.js"),
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
+-- Svelte
+lsp.svelte.setup({
+	capabilities = capabilities,
+	on_attach = on_attach,
+})
+
 -- formatting
 local null = TP.require("null-ls")
 local b = null.builtins
@@ -137,14 +181,15 @@ null.setup({
 	sources = {
 		b.formatting.stylua,
 		b.formatting.protolint,
-		-- b.formatting.deno_fmt.with({
-		-- 	extra_args = {
-		-- 		"--options-single-quote",
-		-- 	},
-		-- }),
+		b.formatting.deno_fmt.with({
+			extra_args = {
+				"--options-single-quote",
+			},
+		}),
 		b.formatting.prettier.with({
 			filetypes = { "html", "json", "yaml", "markdown" },
 		}),
+		-- b.formatting.prettier,
 		---diagnostics
 		-- b.code_actions.eslint_d,
 		-- b.diagnostics.eslint_d.with({
