@@ -1,0 +1,5 @@
+require("tp.plugins")
+require("tp.configs")
+require("tp.settings")
+require("tp.mappings")
+require("tp.autocmds")
