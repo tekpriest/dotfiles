@@ -1,8 +1,4 @@
 local neotree = require("neo-tree")
-local ok, wk = pcall(require, "which-key")
-if not ok then
-	return
-end
 
 require("window-picker").setup({
 	autoselect_one = true,

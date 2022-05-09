@@ -14,8 +14,8 @@ map("v", "<A-k>", ":m '<-2<CR>==gv=gv", opts)
 -- NvimTree
 -- map("n", "<leader>o", "<cmd>NvimTreeFocus<CR>", opts)
 -- map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
-map("n", "<leader>e", "<cmd>NeotreeToggle<CR>", opts)
-map("n", "<leader>o", "<cmd>NeoTreeFocusToggle<CR>", opts)
+map("n", "<leader>e", "<cmd>NeoTreeShowToggle<CR>", opts)
+map("n", "<leader>o", "<cmd>NeoTreeReveal<CR>", opts)
 -- use jk/kj to escape
 map("i", "jk", "<Esc>", opts)
 map("i", "kj", "<Esc>", opts)
