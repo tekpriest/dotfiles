@@ -34,4 +34,9 @@ vim.cmd([[
     autocmd FileType gitcommit setlocal wrap
     autocmd FileType gitcommit setlocal spell
   augroup end
+
+  augroup _eslint_auto_save
+    autocmd!
+    autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
+  augroup end
 ]])

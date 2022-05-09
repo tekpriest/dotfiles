@@ -12,8 +12,10 @@ map("n", "<A-k>", "<Esc><cmd>m .-2<CR>==", opts)
 map("v", "<A-j>", ":m '>+1<CR>==gv=gv", opts)
 map("v", "<A-k>", ":m '<-2<CR>==gv=gv", opts)
 -- NvimTree
-map("n", "<leader>o", "<cmd>NvimTreeFocus<CR>", opts)
-map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+-- map("n", "<leader>o", "<cmd>NvimTreeFocus<CR>", opts)
+-- map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", opts)
+map("n", "<leader>e", "<cmd>NeotreeToggle<CR>", opts)
+map("n", "<leader>o", "<cmd>NeoTreeFocusToggle<CR>", opts)
 -- use jk/kj to escape
 map("i", "jk", "<Esc>", opts)
 map("i", "kj", "<Esc>", opts)
@@ -48,6 +50,13 @@ map("n", "fq", "<cmd>Telescope quickfix<CR>", opts)
 --map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
 --map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
 
+map("n", "<leader>xx", "<cmd>Trouble<CR>", opts)
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<CR>", opts)
+map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<CR>", opts)
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<CR>", opts)
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<CR>", opts)
+map("n", "gR", "<cmd>TroubleToggle lsp_references<CR>", opts)
+
 -- Comment
 map("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
 map("v", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", opts)
@@ -60,3 +69,6 @@ map("n", "<leader>t", "<cmd>TSHighlightCapturesUnderCursor<cr>", opts)
 
 -- Lazygit
 map("n", "<leader>g", "<cmd>LazyGit<cr>", opts)
+
+-- Neogen
+map("n", "<leader>cc", "<cmd>lua require('neogen').generate()<CR>", opts)

@@ -35,7 +35,6 @@ set.signcolumn = "yes" -- Always show the sign column
 set.updatetime = 100 -- Length of time to wait before triggering the plugin
 set.clipboard = "unnamedplus" -- Connection to the system clipboard
 set.completeopt = { "menuone", "noinsert" } -- Options for insert mode completion
-set.number = true -- Show numberline
 set.timeout = true
 set.timeoutlen = 300 -- Length of time to wait for a mapped sequence
 set.ttimeoutlen = 10
@@ -48,7 +47,7 @@ set.concealcursor = "niv"
 set.sidescrolloff = 8 -- Number of columns to keep at the sides of the cursor
 set.sidescroll = 2
 -- set.cursorline = true -- Highlight the text line of the cursor
-set.numberwidth = 1
+set.numberwidth = 2
 set.shortmess = "aoOTIcF"
 set.laststatus = 3
 set.softtabstop = 2
@@ -69,9 +68,9 @@ set.formatoptions = {
 	["2"] = true, -- Use indent from 2nd line of a paragraph
 	q = true, -- continue comments with gq"
 	c = true, -- Auto-wrap comments using textwidth
-	r = false, -- Continue comments when pressing Enter
+	r = true, -- Continue comments when pressing Enter
 	n = true, -- Recognize numbered lists
-	t = false, -- autowrap lines using text width value
+	t = true, -- autowrap lines using text width value
 	j = true, -- remove a comment leader when joining lines.
 	-- Only break if the line was not longer than 'textwidth' when the insert
 	-- started and only at a white character that has been entered during the
@@ -103,12 +102,13 @@ set.showtabline = 2
 set.visualbell = true
 set.shada = "!,'300,<50,@100,s10,h"
 set.redrawtime = 1000
-set.complete = ".,w,b,k"
+set.complete = ".,w,b,u,U,i,d,k"
 set.grepprg = "rg --hidden --vimgrep --smart-case --"
 set.breakat = [[\ \	;:,!?]]
 set.whichwrap = "h,l,<,>,[,]"
 set.switchbuf = "useopen"
 --set.diffopt = "filter,iswhite,internal,algorithm:patience"
+set.diffopt = "filler,internal,hiddenoff,algorithm:histogram,indent-heuristic"
 set.jumpoptions = "stack"
 set.pumblend = 10
 set.winblend = 10
@@ -120,6 +120,8 @@ set.display = "lastline"
 set.foldmethod = "expr"
 set.foldexpr = "nvim_treesitter#foldexpr()"
 set.foldlevel = 99
+set.matchtime = 3
+set.selection = "old"
 
 -- Set italics
 vim.cmd("hi Comment gui=italic")
@@ -177,10 +179,11 @@ vim.g.indent_blankline_context_patterns = {
 	"for",
 }
 
-vim.cmd([[colorscheme kanagawa]])
 vim.g.gruvbox_italic = true
 vim.g.kanagawa_allow_italics = true
 vim.g.one_allow_italics = true
 vim.g.oceanic_next_terminal_bold = true
 vim.g.oceanic_next_terminal_italic = true
 vim.g.vim_monokai_tasty_italic = true
+
+vim.cmd([[colorscheme kanagawa]])
