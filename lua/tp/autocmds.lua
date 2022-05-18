@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-	callback = function()
-		vim.highlight.on_yank({ higroup = "Visual", timeout = 100 })
-	end,
+  callback = function()
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 100 })
+  end,
 })
 
 vim.cmd([[
@@ -34,9 +34,8 @@ vim.cmd([[
     autocmd FileType gitcommit setlocal wrap
     autocmd FileType gitcommit setlocal spell
   augroup end
-
-  augroup _eslint_auto_save
-    autocmd!
-    autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
-  augroup end
 ]])
+-- augroup _eslint_auto_save
+--   autocmd!
+--   autocmd BufWritePre *.js,*.ts,javascriptreact, typescriptreact *.tsx,*.ts,*.jsx,*.js EslintFixAll
+-- augroup end

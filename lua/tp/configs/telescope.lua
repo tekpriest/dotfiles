@@ -4,6 +4,7 @@ local actions = require("telescope.actions")
 -- extensions
 telescope.load_extension("lazygit")
 telescope.load_extension("fzf")
+telescope.load_extension("ui-select")
 
 telescope.setup({
 	defaults = {
@@ -33,6 +34,9 @@ telescope.setup({
 			override_generic_sorter = true,
 			override_file_sorter = true,
 			case_mode = "smart_case",
+		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({}),
 		},
 	},
 	pickers = {
