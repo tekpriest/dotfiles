@@ -150,8 +150,19 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_lsp.update_capabilities(capabilities)
 capabilities = vim.tbl_extend("keep", capabilities or {}, status.capabilities)
 
+local function get_node_modules(root_dir)
+  local root_node = root_dir .. "/node_modules"
+  local stats = vim.loop.fs_stat(root_node)
+  if stats == nil then
+    return nil
+  end
+  return root_node
+end
+
+local default_node_modules = get_node_modules(vim.fn.getcwd())
+
 local servers = {
-  gopls = {
+  go = {
     settings = {
       gopls = {
         analyses = {
@@ -299,17 +310,45 @@ local servers = {
     on_attach = on_attach,
     capabilities = capabilities,
   },
+  angular = {
+    cmd = {
+      "ngserver",
+      "--stdio",
+      "--tsProbeLocations",
+      default_node_modules,
+      "--ngProbeLocations",
+      default_node_modules,
+      "--includeCompletionsWithSnippetText",
+      "--includeAutomaticOptionalChainingCompletions",
+    },
+    on_attach = on_attach,
+    capabilities = capabilities,
+    root_dir = lsp.util.root_pattern("angular.json"),
+    on_new_config = function(new_config)
+      new_config.cmd = {
+        "ngserver",
+        "--stdio",
+        "--tsProbeLocations",
+        default_node_modules,
+        "--ngProbeLocations",
+        default_node_modules,
+        "--includeCompletionsWithSnippetText",
+        "--includeAutomaticOptionalChainingCompletions",
+      }
+    end,
+  },
 }
 
 lsp.cmake.setup(servers.cmake)
 lsp.zls.setup(servers.zls)
 lsp.sumneko_lua.setup(servers.sumneko_lua)
 lsp.tsserver.setup(servers.tsserver)
-lsp.gopls.setup(servers.gopls)
+lsp.gopls.setup(servers.go)
 lsp.jsonls.setup(servers.jsonls)
 lsp.eslint.setup(servers.eslint)
 lsp.jdtls.setup(servers.jdtls)
 lsp.prismals.setup(servers.prisma)
+lsp.angularls.setup(servers.angular)
 
 -- rust
 local extension_path = vim.env.HOME

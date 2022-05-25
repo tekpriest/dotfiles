@@ -11,18 +11,18 @@ set.swapfile = false -- Disable use of swapfile for the buffer
 set.termguicolors = true -- Enable 24-bit RGB color in the TUI
 set.list = true
 set.listchars = {
-	eol = nil,
-	tab = "│ ",
-	extends = "›", -- Alternatives: … »
-	precedes = "‹", -- Alternatives: … «
-	trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
+  eol = nil,
+  tab = "│ ",
+  extends = "›", -- Alternatives: … »
+  precedes = "‹", -- Alternatives: … «
+  trail = "•", -- BULLET (U+2022, UTF-8: E2 80 A2)
 }
 set.wildoptions = "pum"
 set.wildmenu = true
 set.wildmode = "longest:full,full"
 set.wildignorecase = true
 set.wildignore =
-	".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
+  ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
 set.number = true -- Show numberline
 set.wrap = false -- Disable wrapping of lines longer than the width of window
 set.undofile = true -- Enable persistent undo
@@ -54,29 +54,29 @@ set.softtabstop = 2
 set.shiftround = true
 set.backspace = "indent,eol,start"
 set.fillchars = {
-	vert = "▕", -- alternatives │
-	fold = " ",
-	eob = " ", -- suppress ~ at EndOfBuffer
-	diff = "░", -- alternatives = ⣿ ░ ─
-	msgsep = "‾",
-	foldopen = "▾",
-	foldsep = "│",
-	foldclose = "▸",
+  vert = "▕", -- alternatives │
+  fold = " ",
+  eob = " ", -- suppress ~ at EndOfBuffer
+  diff = "░", -- alternatives = ⣿ ░ ─
+  msgsep = "‾",
+  foldopen = "▾",
+  foldsep = "│",
+  foldclose = "▸",
 }
 set.formatoptions = {
-	["1"] = true,
-	["2"] = true, -- Use indent from 2nd line of a paragraph
-	q = true, -- continue comments with gq"
-	c = true, -- Auto-wrap comments using textwidth
-	r = true, -- Continue comments when pressing Enter
-	n = true, -- Recognize numbered lists
-	t = true, -- autowrap lines using text width value
-	j = true, -- remove a comment leader when joining lines.
-	-- Only break if the line was not longer than 'textwidth' when the insert
-	-- started and only at a white character that has been entered during the
-	-- current insert command.
-	l = true,
-	v = true,
+  ["1"] = true,
+  ["2"] = true, -- Use indent from 2nd line of a paragraph
+  q = true, -- continue comments with gq"
+  c = true, -- Auto-wrap comments using textwidth
+  r = true, -- Continue comments when pressing Enter
+  n = true, -- Recognize numbered lists
+  t = true, -- autowrap lines using text width value
+  j = true, -- remove a comment leader when joining lines.
+  -- Only break if the line was not longer than 'textwidth' when the insert
+  -- started and only at a white character that has been entered during the
+  -- current insert command.
+  l = true,
+  v = true,
 }
 set.indentexpr = "nvim_treesitter#indent()"
 set.ruler = false
@@ -88,14 +88,15 @@ set.titlestring = " ❐ %t %r %m - %(%{expand('%:~:.:h\\')}%)%(\\ %a%)"
 set.titleold = vim.fn.fnamemodify(vim.loop.os_getenv("SHELL"), ":t")
 set.title = true
 set.titlelen = 70
-set.sessionoptions = "globals,buffers,curdir,help,winpos,folds,cursor,slash,unix"
+set.sessionoptions =
+  "globals,buffers,curdir,help,winpos,folds,cursor,slash,unix"
 set.spellsuggest:prepend({ 12 })
 vim.g.markdown_fenced_languages = {
-	"js=javascript",
-	"ts=typescript",
-	"shell=sh",
-	"bash=sh",
-	"console=sh",
+  "js=javascript",
+  "ts=typescript",
+  "shell=sh",
+  "bash=sh",
+  "console=sh",
 }
 set.synmaxcol = 1024
 set.showtabline = 2
@@ -141,42 +142,42 @@ vim.g.table_mode_corner = "|"
 vim.g.markdown_fold_override_foldtext = false
 vim.g.markdown_syntax_conceal = false
 vim.g.indent_blankline_filetype_exclude = {
-	"startify",
-	"dashboard",
-	"dotooagenda",
-	"log",
-	"fugitive",
-	"gitcommit",
-	"packer",
-	"vimwiki",
-	"markdown",
-	"txt",
-	"vista",
-	"help",
-	"todoist",
-	"NvimTree",
-	"peekaboo",
-	"git",
-	"TelescopePrompt",
-	"undotree",
-	"flutterToolsOutline",
-	"", -- for all buffers without a file type
+  "startify",
+  "dashboard",
+  "dotooagenda",
+  "log",
+  "fugitive",
+  "gitcommit",
+  "packer",
+  "vimwiki",
+  "markdown",
+  "txt",
+  "vista",
+  "help",
+  "todoist",
+  "NvimTree",
+  "peekaboo",
+  "git",
+  "TelescopePrompt",
+  "undotree",
+  "flutterToolsOutline",
+  "", -- for all buffers without a file type
 }
 vim.g.indent_blankline_buftype_exclude = { "terminal", "nofile" }
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_current_context = true
 vim.g.indent_blankline_context_patterns = {
-	"class",
-	"function",
-	"method",
-	"block",
-	"list_literal",
-	"selector",
-	"^if",
-	"^table",
-	"if_statement",
-	"while",
-	"for",
+  "class",
+  "function",
+  "method",
+  "block",
+  "list_literal",
+  "selector",
+  "^if",
+  "^table",
+  "if_statement",
+  "while",
+  "for",
 }
 
 vim.g.gruvbox_italic = true
@@ -187,3 +188,4 @@ vim.g.oceanic_next_terminal_italic = true
 vim.g.vim_monokai_tasty_italic = true
 
 vim.cmd([[colorscheme kanagawa]])
+vim.cmd([[let b:copilot_enabled = v:false]])

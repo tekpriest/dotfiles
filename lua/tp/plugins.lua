@@ -1,6 +1,5 @@
-local vim = vim
+local fn = vim.fn
 local bootstrap_plugin = function()
-  local fn = vim.fn
   -- bootstrap packer
   local install_path = fn.stdpath("data")
     .. "/site/pack/packer/start/packer.nvim"
@@ -217,6 +216,7 @@ require("packer").startup({
     use({ "mattn/webapi-vim" })
     use({ "mfussenegger/nvim-dap" })
     use({ "p00f/clangd_extensions.nvim" })
+    -- use({ "github/copilot.vim" })
   end,
   config = {
     display = {
