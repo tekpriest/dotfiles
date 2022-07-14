@@ -1,10 +1,3 @@
--- Autocommand that reloads neovim whenever you save any lua file
---[[vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost *.lua source <afile>
-  augroup end
-  ]]
 vim.api.nvim_create_autocmd({
 	"BufWritePost",
 }, {

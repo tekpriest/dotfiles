@@ -121,7 +121,10 @@ add_server("prismals", {
 })
 
 add_server("jsonls", {
-	on_attach = on_attach,
+	on_attach = function(client, bufnr)
+		client.resolved_capabilities.document_formatting = false
+		on_attach(client, bufnr)
+	end,
 	capabilities = capabilities,
 })
 
@@ -138,6 +141,26 @@ add_server("eslint", {
 
 add_server("denols", {
 	root_dir = lsp.util.root_pattern("deno.json", "deno.jsonc"),
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+add_server("elixirls", {
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+add_server("dockerls", {
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+add_server("tflint", {
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+add_server("taplo", {
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

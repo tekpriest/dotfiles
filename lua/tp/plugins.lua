@@ -137,6 +137,9 @@ return packer.startup(function(use)
 	use("dart-lang/dart-vim-plugin")
 	use("akinsho/flutter-tools.nvim")
 
+	-- ziglang
+	use({ "ziglang/zig.vim" })
+
 	-- misc
 	use({ "wakatime/vim-wakatime" }) -- code time tracker
 	use({
@@ -146,4 +149,7 @@ return packer.startup(function(use)
 	}) -- buffer tabs with super power
 	use("moll/vim-bbye")
 	use("windwp/nvim-spectre") -- search and replace
+	use("akinsho/toggleterm.nvim")
+	use({ "simrat39/symbols-outline.nvim" })
+	use({ "tzachar/cmp-tabnine", run = "./install.sh", requires = "hrsh7th/nvim-cmp" })
 end)

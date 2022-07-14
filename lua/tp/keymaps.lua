@@ -56,3 +56,6 @@ map("n", "gj", "<cmd>Lspsaga diagnostic_jump_next<cr>", opts)
 map("n", "gk", "<cmd>Lspsaga diagnostic_jump_prev<cr>", opts)
 map("n", "<C-u>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
 map("n", "<C-d>", "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
+
+-- symbols outline
+map("n", "<leader>s", "<cmd>SymbolsOutline<cr>", opts)
