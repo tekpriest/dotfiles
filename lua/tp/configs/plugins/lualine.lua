@@ -50,8 +50,7 @@ local mode = {
 local filename = {
 	"filename",
 	color = function()
-		-- auto change color according to edit mode
-		return { bg = mode_color[vim.fn.mode()], fg = "#000000" }
+		return { fg = mode_color[vim.fn.mode()] }
 	end,
 }
 
@@ -99,10 +98,10 @@ lualine.setup({
 	options = {
 		globalstatus = true,
 		focus_enabled = true,
-		theme = "kanagawa",
+		theme = "github_dark",
 		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "terminal" },
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "terminal", "lazygit" },
 		always_divide_middle = true,
 	},
 	sections = {

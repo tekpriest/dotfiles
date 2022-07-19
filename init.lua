@@ -1,5 +1,6 @@
-require "tp.options"
-require "tp.plugins"
-require "tp.autocmds"
-require "tp.keymaps"
-require "tp.configs.plugins"
+require 'impatient'
+require 'tp.options'
+require 'tp.plugins'
+require 'tp.autocmds'
+require 'tp.keymaps'
+require 'tp.configs.plugins'

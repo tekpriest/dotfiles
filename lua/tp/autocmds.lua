@@ -37,3 +37,9 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 		vim.cmd("tabdo wincmd =")
 	end,
 })
+vim.api.nvim_create_autocmd({ "BufEnter,BufRead" }, {
+	pattern = { "*.conf*" },
+	callback = function()
+		vim.cmd([[setf dosini]])
+	end,
+})
