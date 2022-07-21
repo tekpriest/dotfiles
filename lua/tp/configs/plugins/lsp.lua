@@ -141,12 +141,6 @@ add_server('eslint', {
   capabilities = capabilities,
 })
 
-add_server('denols', {
-  root_dir = lsp.util.root_pattern('deno.json', 'deno.jsonc'),
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
 add_server('elixirls', {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -192,6 +186,11 @@ add_server('emmet_ls', {
     'hbs',
     'handlebars',
   },
+})
+
+add_server('tailwindcss', {
+  on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 flutter.setup {
