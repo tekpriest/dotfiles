@@ -153,6 +153,12 @@ return packer.startup(function(use)
     run = 'cd app && npm install',
   }
   use { 'stevearc/dressing.nvim' }
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require('fidget').setup {}
+    end,
+  }
   -- use({
   -- 	"lewis6991/satellite.nvim",
   -- 	config = function()

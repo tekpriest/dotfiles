@@ -43,8 +43,8 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
   if client.server_capabilities.documentFormattingProvider then
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting_sync()' ]]
-    vim.api.nvim_command 'autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()'
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
+    vim.api.nvim_command 'autocmd BufWritePre <buffer> lua vim.lsp.buf.format()'
   end
   if client.server_capabilities.code_lens then
     vim.api.nvim_command 'autocmd BufEnter,CursorHold,InsertLeave, <buffer> lua vim.lsp.codelens.refresh()'
