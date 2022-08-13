@@ -201,7 +201,7 @@ flutter.setup {
     color = {
       enabled = true,
       foreground = true,
-      background = true,
+      -- background = true,
     },
     on_attach = on_attach,
     capabilities = capabilities,
