@@ -159,6 +159,7 @@ return packer.startup(function(use)
       require('fidget').setup {}
     end,
   }
+  use { 'habamax/vim-godot' }
   -- use({
   -- 	"lewis6991/satellite.nvim",
   -- 	config = function()

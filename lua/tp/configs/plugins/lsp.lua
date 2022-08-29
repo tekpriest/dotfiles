@@ -86,11 +86,11 @@ add_server('sumneko_lua', {
   capabilities = capabilities,
 })
 add_server('tsserver', {
-  on_attach = function(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
-    on_attach(client, bufnr)
-  end,
-  -- on_attach = on_attach,
+  -- on_attach = function(client, bufnr)
+  --   client.server_capabilities.documentFormattingProvider = false
+  --   on_attach(client, bufnr)
+  -- end,
+  on_attach = on_attach,
   capabilities = capabilities,
 })
 
@@ -141,11 +141,6 @@ add_server('eslint', {
   capabilities = capabilities,
 })
 
-add_server('elixirls', {
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
 add_server('dockerls', {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -164,6 +159,23 @@ add_server('taplo', {
 add_server('svelte', {
   on_attach = on_attach,
   capabilities = capabilities,
+})
+
+add_server('gdscript', {
+  on_attach = function(client, bufnr)
+    local _notify = client.notify
+    client.notify = function(method, params)
+      if method == 'textDocument/didClose' then
+        return
+      end
+      _notify(method, params)
+    end
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 150,
+  },
 })
 
 add_server('emmet_ls', {
@@ -188,11 +200,6 @@ add_server('emmet_ls', {
   },
 })
 
-add_server('tailwindcss', {
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
-
 flutter.setup {
   widget_guides = {
     enabled = true,
@@ -211,7 +218,7 @@ flutter.setup {
 local b = null.builtins
 null.setup {
   sources = {
-    b.formatting.prettier,
+    -- b.formatting.prettier,
     b.formatting.stylua,
   },
   on_attach = on_attach,
