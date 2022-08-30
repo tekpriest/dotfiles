@@ -61,6 +61,11 @@ local add_server = function(server_name, opts)
   lsp[server_name].setup(opts)
 end
 
+add_server('csharp_ls', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+
 add_server('sumneko_lua', {
   settings = {
     Lua = {
@@ -198,6 +203,11 @@ add_server('emmet_ls', {
     'hbs',
     'handlebars',
   },
+})
+
+add_server('efm', {
+  on_attach = on_attach,
+  capabilities = capabilities,
 })
 
 flutter.setup {
