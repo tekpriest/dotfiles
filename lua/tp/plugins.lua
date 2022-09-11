@@ -72,6 +72,7 @@ return packer.startup(function(use)
       }
     end,
   }
+  use { 'svrana/neosolarized.nvim' }
 
   -- Treesitter
   use {
@@ -123,7 +124,7 @@ return packer.startup(function(use)
   }
   use { 'kdheepak/lazygit.nvim' }
   use 'editorconfig/editorconfig-vim'
-  use 'karb94/neoscroll.nvim' -- smooth scroll
+  -- use 'karb94/neoscroll.nvim' -- smooth scroll
 
   -- lsp utils
   use 'antoinemadec/FixCursorHold.nvim' -- This is needed to fix lsp doc highlight
@@ -134,9 +135,6 @@ return packer.startup(function(use)
   -- flutter
   use 'akinsho/flutter-tools.nvim'
 
-  -- ziglang
-  use { 'ziglang/zig.vim' }
-
   -- misc
   use { 'wakatime/vim-wakatime' } -- code time tracker
   use {
@@ -145,9 +143,7 @@ return packer.startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons' },
   } -- buffer tabs with super power
   use 'moll/vim-bbye'
-  use 'windwp/nvim-spectre' -- search and replace
   use 'akinsho/toggleterm.nvim'
-  use { 'simrat39/symbols-outline.nvim' }
   use {
     'iamcco/markdown-preview.nvim',
     run = 'cd app && npm install',
@@ -159,7 +155,10 @@ return packer.startup(function(use)
       require('fidget').setup {}
     end,
   }
-  use { 'habamax/vim-godot' }
+  use { 'prettier/vim-prettier', run = 'yarn install && yarn add prettier-plugin-solidity', ft = { 'solidity' } }
+  use { 'MunifTanjim/prettier.nvim' }
+  use { 'williamboman/mason.nvim' }
+  use { 'williamboman/mason-lspconfig.nvim' }
   -- use({
   -- 	"lewis6991/satellite.nvim",
   -- 	config = function()

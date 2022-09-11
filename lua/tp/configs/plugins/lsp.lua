@@ -6,10 +6,15 @@ local utils = require 'tp.configs.plugins.lsp_utils'
 local lsp_installer = require 'nvim-lsp-installer'
 local lsp_util = require 'lspconfig.util'
 local flutter = require 'flutter-tools'
+local prettier = require 'prettier'
+local mason = require 'mason'
+local mason_lsp = require 'mason-lspconfig'
 
 lsp_installer.setup()
 require('lspkind').init()
 require('lspsaga').init_lsp_saga()
+
+local protocol = require 'vim.lsp.protocol'
 
 for type, icon in pairs(utils.signs) do
   local hl = 'DiagnosticSign' .. type
@@ -25,6 +30,11 @@ vim.diagnostic.config(utils.diagnostic)
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded', focusable = false })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
+
+mason.setup {}
+mason_lsp.setup {
+  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'typescript' },
+}
 
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
@@ -43,8 +53,13 @@ local on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_option(0, 'formatexpr', 'v:lua.vim.lsp.formatexpr()')
 
   if client.server_capabilities.documentFormattingProvider then
-    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.format()' ]]
-    vim.api.nvim_command 'autocmd BufWritePre <buffer> lua vim.lsp.buf.format()'
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      group = vim.api.nvim_create_augroup('Format', { clear = true }),
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
   end
   if client.server_capabilities.code_lens then
     vim.api.nvim_command 'autocmd BufEnter,CursorHold,InsertLeave, <buffer> lua vim.lsp.codelens.refresh()'
@@ -91,11 +106,16 @@ add_server('sumneko_lua', {
   capabilities = capabilities,
 })
 add_server('tsserver', {
-  -- on_attach = function(client, bufnr)
-  --   client.server_capabilities.documentFormattingProvider = false
-  --   on_attach(client, bufnr)
-  -- end,
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    -- client.server_capabilities.documentFormattingProvider = false
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      callback = function()
+        vim.cmd [[Prettier]]
+      end,
+    })
+  end,
+  filetypes = { 'typescriptreact', 'typescript', 'javascript', 'javascriptreact', 'typescript.tsx', 'javascript.jsx' },
+  cmd = { 'typescript-language-server', '--stdio' },
   capabilities = capabilities,
 })
 
@@ -166,21 +186,9 @@ add_server('svelte', {
   capabilities = capabilities,
 })
 
-add_server('gdscript', {
-  on_attach = function(client, bufnr)
-    local _notify = client.notify
-    client.notify = function(method, params)
-      if method == 'textDocument/didClose' then
-        return
-      end
-      _notify(method, params)
-    end
-    on_attach(client, bufnr)
-  end,
+add_server('solc', {
+  on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 150,
-  },
 })
 
 add_server('emmet_ls', {
@@ -228,9 +236,34 @@ flutter.setup {
 local b = null.builtins
 null.setup {
   sources = {
-    -- b.formatting.prettier,
+    -- b.formatting.prettierd,
     b.formatting.stylua,
+    b.diagnostics.eslint_d.with {
+      diagnostics_format = '[eslint] #{m}\n(#{c})',
+    },
   },
   on_attach = on_attach,
   capabilities = capabilities,
+}
+
+prettier.setup {
+  bin = 'prettierd',
+  filetypes = {
+    'css',
+    'javascript',
+    'typescript',
+    'typescriptreact',
+    'javascriptreact',
+    'json',
+    'scss',
+    'less',
+  },
+  cli_options = {
+    config_precedence = 'prefer-file',
+    jsx_single_quote = true,
+    semi = true,
+    single_quote = true,
+    trailing_comman = 'es5',
+    embedded_language_formatting = 'auto',
+  },
 }
