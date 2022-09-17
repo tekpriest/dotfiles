@@ -33,7 +33,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 
 mason.setup {}
 mason_lsp.setup {
-  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'typescript' },
+  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'typescript', 'solidity' },
 }
 
 local function lsp_keymaps(bufnr)
@@ -68,18 +68,13 @@ local on_attach = function(client, bufnr)
   lsp_keymaps(bufnr)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities = cmp_lsp.update_capabilities(capabilities)
 
 local add_server = function(server_name, opts)
   lsp[server_name].setup(opts)
 end
-
-add_server('csharp_ls', {
-  on_attach = on_attach,
-  capabilities = capabilities,
-})
 
 add_server('sumneko_lua', {
   settings = {
@@ -99,7 +94,7 @@ add_server('sumneko_lua', {
     },
   },
   on_attach = function(client, bufnr)
-    client.server_capabilities.documentFormattingProvider = false
+    -- client.server_capabilities.documentFormattingProvider = false
     on_attach(client, bufnr)
   end,
   -- on_attach = on_attach,
@@ -113,6 +108,7 @@ add_server('tsserver', {
         vim.cmd [[Prettier]]
       end,
     })
+    on_attach(client, bufnr)
   end,
   filetypes = { 'typescriptreact', 'typescript', 'javascript', 'javascriptreact', 'typescript.tsx', 'javascript.jsx' },
   cmd = { 'typescript-language-server', '--stdio' },
