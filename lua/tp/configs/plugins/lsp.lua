@@ -33,7 +33,7 @@ vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.s
 
 mason.setup {}
 mason_lsp.setup {
-  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'typescript', 'solidity' },
+  ensure_installed = { 'sumneko_lua', 'tailwindcss', 'typescript', 'solidity', 'rust_analyzer' },
 }
 
 local function lsp_keymaps(bufnr)
@@ -112,6 +112,11 @@ add_server('tsserver', {
   end,
   filetypes = { 'typescriptreact', 'typescript', 'javascript', 'javascriptreact', 'typescript.tsx', 'javascript.jsx' },
   cmd = { 'typescript-language-server', '--stdio' },
+  capabilities = capabilities,
+})
+
+add_server('rust_analyzer', {
+  on_attach = on_attach,
   capabilities = capabilities,
 })
 
