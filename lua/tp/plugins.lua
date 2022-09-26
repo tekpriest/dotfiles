@@ -12,8 +12,8 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path,
   }
   vim.notify 'Installing packer close and reopen Neovim...'
-  vim.cmd [[packadd packer.nvim]]
 end
+vim.cmd [[packadd packer.nvim]]
 
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, 'packer')
@@ -159,6 +159,12 @@ return packer.startup(function(use)
   use { 'MunifTanjim/prettier.nvim' }
   use { 'williamboman/mason.nvim' }
   use { 'williamboman/mason-lspconfig.nvim' }
+  use 'mfussenegger/nvim-dap'
+  use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+  use 'folke/lua-dev.nvim'
+
+  -- personal
+  use '/Users/tp/Code/stackmap.nvim'
   -- use({
   -- 	"lewis6991/satellite.nvim",
   -- 	config = function()

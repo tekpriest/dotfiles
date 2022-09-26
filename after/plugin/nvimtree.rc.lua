@@ -3,15 +3,15 @@ if not status_ok then
   return
 end
 
-local nvim_tree_config = require"nvim-tree.config"
+local nvim_tree_config = require "nvim-tree.config"
 
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
-nvim_tree.setup{
+nvim_tree.setup {
   view = {
     side = 'right',
     hide_root_folder = false,
-     mappings = {
+    mappings = {
       custom_only = false,
       list = {
         { key = { "l", "<CR>", "o" }, cb = tree_cb "edit" },
@@ -23,7 +23,7 @@ nvim_tree.setup{
   },
   filters = {
     dotfiles = false,
-        custom = {
+    custom = {
       ".git",
       "node_modules",
       "dist",

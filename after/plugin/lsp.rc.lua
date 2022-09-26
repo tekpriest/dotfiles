@@ -2,7 +2,6 @@ local lsp = require 'lspconfig'
 local cmp_lsp = require 'cmp_nvim_lsp'
 local null = require 'null-ls'
 local illuminate = require 'illuminate'
-local utils = require 'tp.configs.plugins.lsp_utils'
 local lsp_installer = require 'nvim-lsp-installer'
 local lsp_util = require 'lspconfig.util'
 local flutter = require 'flutter-tools'
@@ -10,13 +9,22 @@ local prettier = require 'prettier'
 local mason = require 'mason'
 local mason_lsp = require 'mason-lspconfig'
 
-lsp_installer.setup()
+require('lua-dev').setup {}
+
+lsp_installer.setup({})
 require('lspkind').init()
 require('lspsaga').init_lsp_saga()
 
 local protocol = require 'vim.lsp.protocol'
 
-for type, icon in pairs(utils.signs) do
+local signs = {
+  Error = '',
+  Warn = '',
+  Hint = '',
+  Info = '',
+}
+
+for type, icon in pairs(signs) do
   local hl = 'DiagnosticSign' .. type
   vim.fn.sign_define(hl, {
     text = icon,
@@ -25,8 +33,50 @@ for type, icon in pairs(utils.signs) do
   })
 end
 
+protocol.CompletionItemKind = {
+  '', -- Text
+  '', -- Method
+  '', -- Function
+  '', -- Constructor
+  '', -- Field
+  '', -- Variable
+  '', -- Class
+  'ﰮ', -- Interface
+  '', -- Module
+  '', -- Property
+  '', -- Unit
+  '', -- Value
+  '', -- Enum
+  '', -- Keyword
+  '﬌', -- Snippet
+  '', -- Color
+  '', -- File
+  '', -- Reference
+  '', -- Folder
+  '', -- EnumMember
+  '', -- Constant
+  '', -- Struct
+  '', -- Event
+  'ﬦ', -- Operator
+  '', -- TypeParameter
+}
+
 -- diagnostic
-vim.diagnostic.config(utils.diagnostic)
+vim.diagnostic.config {
+  virtual_text = false,
+  signs = { active = true },
+  update_in_insert = true,
+  underline = true,
+  severity_sort = true,
+  float = {
+    focusable = false,
+    style = 'minimal',
+    border = 'rounded',
+    source = 'always',
+    header = '',
+    prefix = '',
+  },
+}
 
 vim.lsp.handlers['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'rounded', focusable = false })
 vim.lsp.handlers['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'rounded' })
@@ -79,6 +129,9 @@ end
 add_server('sumneko_lua', {
   settings = {
     Lua = {
+      completion = {
+        callSnippet = 'Replace',
+      },
       diagnostics = {
         globals = { 'vim' },
       },
@@ -94,23 +147,22 @@ add_server('sumneko_lua', {
     },
   },
   on_attach = function(client, bufnr)
-    -- client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentFormattingProvider = false
     on_attach(client, bufnr)
   end,
   -- on_attach = on_attach,
   capabilities = capabilities,
 })
 add_server('tsserver', {
-  on_attach = function(client, bufnr)
-    -- client.server_capabilities.documentFormattingProvider = false
-    vim.api.nvim_create_autocmd('BufWritePre', {
-      callback = function()
-        vim.cmd [[Prettier]]
-      end,
-    })
-    on_attach(client, bufnr)
-  end,
-  filetypes = { 'typescriptreact', 'typescript', 'javascript', 'javascriptreact', 'typescript.tsx', 'javascript.jsx' },
+  on_attach = on_attach,
+  filetypes = {
+    'typescriptreact',
+    'typescript',
+    'javascript',
+    'javascriptreact',
+    'typescript.tsx',
+    'javascript.jsx',
+  },
   cmd = { 'typescript-language-server', '--stdio' },
   capabilities = capabilities,
 })
@@ -243,22 +295,22 @@ null.setup {
       diagnostics_format = '[eslint] #{m}\n(#{c})',
     },
   },
-  on_attach = on_attach,
-  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    if client.server_capabilities.documentFormattingProvider then
+      vim.cmd 'nnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.format()<CR>'
+
+      -- format on save
+      vim.cmd 'autocmd BufWritePost <buffer> lua vim.lsp.buf.format()'
+    end
+
+    if client.server_capabilities.documentRangeFormattingProvider then
+      vim.cmd 'xnoremap <silent><buffer> <Leader>f :lua vim.lsp.buf.range_format({})<CR>'
+    end
+  end,
 }
 
 prettier.setup {
   bin = 'prettierd',
-  filetypes = {
-    'css',
-    'javascript',
-    'typescript',
-    'typescriptreact',
-    'javascriptreact',
-    'json',
-    'scss',
-    'less',
-  },
   cli_options = {
     config_precedence = 'prefer-file',
     jsx_single_quote = true,
