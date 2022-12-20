@@ -66,7 +66,8 @@ local function lsp_keymaps(bufnr)
 	map(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 	map(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
 	map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-	map(bufnr, 'n', 'gla', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+	map(bufnr, 'n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+	map(bufnr, 'n', 'gla', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
 	map(bufnr, 'n', 'gj', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
 	map(bufnr, 'n', 'gk', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	map(bufnr, 'n', '<leader>p', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
@@ -129,6 +130,14 @@ lspconfig.jsonls.setup {
 }
 lspconfig.cmake.setup {
 	on_attach = server_config.on_attach,
+	capabilities = server_config.capabilities,
+}
+lspconfig.gopls.setup {
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+		server_config.on_attach(client, bufnr)
+	end,
 	capabilities = server_config.capabilities,
 }
 

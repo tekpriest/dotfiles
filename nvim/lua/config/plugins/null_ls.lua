@@ -9,6 +9,7 @@ M.setup_null = function(config)
 			b.formatting.stylua,
 			b.formatting.prettierd,
 			b.formatting.prismaFmt,
+			b.formatting.gofumpt,
 			-- b.formatting.prettier,
 			---diagnostics
 			-- b.code_actions.eslint_d,

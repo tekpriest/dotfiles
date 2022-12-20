@@ -99,6 +99,11 @@ _G.packer_plugins = {
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/auto-session",
     url = "https://github.com/rmagatti/auto-session"
   },
+  ["cmake-tools.nvim"] = {
+    loaded = true,
+    path = "/Users/tp/.local/share/nvim/site/pack/packer/start/cmake-tools.nvim",
+    url = "https://github.com/Civitasv/cmake-tools.nvim"
+  },
   ["cmp-buffer"] = {
     after_files = { "/Users/tp/.local/share/nvim/site/pack/packer/opt/cmp-buffer/after/plugin/cmp_buffer.lua" },
     load_after = {
@@ -196,11 +201,6 @@ _G.packer_plugins = {
     path = "/Users/tp/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim",
     url = "https://github.com/lewis6991/gitsigns.nvim"
   },
-  ["go.nvim"] = {
-    loaded = true,
-    path = "/Users/tp/.local/share/nvim/site/pack/packer/start/go.nvim",
-    url = "https://github.com/ray-x/go.nvim"
-  },
   ["guihua.lua"] = {
     loaded = true,
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/guihua.lua",
@@ -261,7 +261,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-npm", "cmp-nvim-lsp-signature-help", "cmp-nvim-lsp-document-symbol", "cmp_luasnip", "cmp-nvim-lsp", "cmp-path", "cmp-buffer" },
+    after = { "cmp-nvim-lsp", "cmp-npm", "cmp-nvim-lsp-signature-help", "cmp-nvim-lsp-document-symbol", "cmp-buffer", "cmp-path", "cmp_luasnip" },
     loaded = false,
     needs_bufread = false,
     only_cond = false,
@@ -279,13 +279,18 @@ _G.packer_plugins = {
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
+  ["nvim-spectre"] = {
+    loaded = true,
+    path = "/Users/tp/.local/share/nvim/site/pack/packer/start/nvim-spectre",
+    url = "https://github.com/windwp/nvim-spectre"
+  },
   ["nvim-tree.lua"] = {
     loaded = true,
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/nvim-tree.lua",
     url = "https://github.com/kyazdani42/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
-    after = { "nvim-ts-rainbow", "playground", "nvim-ts-context-commentstring", "nvim-ts-autotag" },
+    after = { "nvim-ts-rainbow", "nvim-ts-context-commentstring", "playground", "nvim-ts-autotag" },
     config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30config.plugins.treesitter\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -350,6 +355,11 @@ _G.packer_plugins = {
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/popup.nvim",
     url = "https://github.com/nvim-lua/popup.nvim"
   },
+  ["sad.nvim"] = {
+    loaded = true,
+    path = "/Users/tp/.local/share/nvim/site/pack/packer/start/sad.nvim",
+    url = "https://github.com/ray-x/sad.nvim"
+  },
   ["telescope-fzf-native.nvim"] = {
     load_after = {},
     loaded = true,
@@ -372,6 +382,11 @@ _G.packer_plugins = {
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["trouble.nvim"] = {
+    loaded = true,
+    path = "/Users/tp/.local/share/nvim/site/pack/packer/start/trouble.nvim",
+    url = "https://github.com/folke/trouble.nvim"
+  },
   ["vim-clap"] = {
     loaded = true,
     path = "/Users/tp/.local/share/nvim/site/pack/packer/start/vim-clap",
@@ -389,14 +404,14 @@ time([[Defining packer_plugins]], false)
 time([[Config for auto-session]], true)
 try_loadstring("\27LJ\2\n>\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\17auto-session\frequire\0", "config", "auto-session")
 time([[Config for auto-session]], false)
--- Config for: LuaSnip
-time([[Config for LuaSnip]], true)
-try_loadstring("\27LJ\2\nM\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14lazy_load luasnip/loaders/from_vscode\frequire\0", "config", "LuaSnip")
-time([[Config for LuaSnip]], false)
 -- Config for: nvim-colorizer.lua
 time([[Config for nvim-colorizer.lua]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0D\0\2\0\nsetup\14colorizer\frequire\0", "config", "nvim-colorizer.lua")
 time([[Config for nvim-colorizer.lua]], false)
+-- Config for: LuaSnip
+time([[Config for LuaSnip]], true)
+try_loadstring("\27LJ\2\nM\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\14lazy_load luasnip/loaders/from_vscode\frequire\0", "config", "LuaSnip")
+time([[Config for LuaSnip]], false)
 -- Load plugins in order defined by `after`
 time([[Sequenced loading]], true)
 vim.cmd [[ packadd telescope.nvim ]]
@@ -407,9 +422,9 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'FixCursorHold.nvim', 'nvim-cmp'}, { event = "BufRead *" }, _G.packer_plugins)]]
-vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufRead * ++once lua require("packer.load")({'gitsigns.nvim', 'nvim-cmp', 'FixCursorHold.nvim'}, { event = "BufRead *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au BufWinEnter * ++once lua require("packer.load")({'nvim-treesitter'}, { event = "BufWinEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 

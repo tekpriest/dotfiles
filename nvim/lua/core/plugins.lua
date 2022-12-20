@@ -172,7 +172,6 @@ require('packer').startup {
 		-- formatting and linting
 		use { 'jose-elias-alvarez/null-ls.nvim' }
 		use { 'liuchengxu/vim-clap' }
-		use { 'ray-x/go.nvim' }
 		use {
 			'ray-x/navigator.lua',
 			requires = {
@@ -186,6 +185,10 @@ require('packer').startup {
 		use { 'wakatime/vim-wakatime' } -- code time tracker
 		use { 'akinsho/toggleterm.nvim' }
 		use { 'TimUntersberger/neogit' }
+		use { 'ray-x/sad.nvim', requires = { 'ray-x/guihua.lua' } }
+		use { 'windwp/nvim-spectre' }
+		use { 'Civitasv/cmake-tools.nvim' }
+		use { 'folke/trouble.nvim' }
 	end,
 	config = {
 		display = {

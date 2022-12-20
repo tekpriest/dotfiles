@@ -38,3 +38,5 @@ vim.api.nvim_create_autocmd({ 'BufEnter,BufRead' }, {
 		vim.cmd [[setf dosini]]
 	end,
 })
+
+
