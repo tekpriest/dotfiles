@@ -153,12 +153,7 @@ require('packer').startup {
 			event = 'BufRead',
 		}
 		-- Color highlighting
-		use {
-			'norcalli/nvim-colorizer.lua',
-			config = function()
-				return require('colorizer').setup {}
-			end,
-		}
+		use 'NvChad/nvim-colorizer.lua'
 		use {
 			'lukas-reineke/indent-blankline.nvim',
 		}
@@ -171,24 +166,13 @@ require('packer').startup {
 
 		-- formatting and linting
 		use { 'jose-elias-alvarez/null-ls.nvim' }
-		use { 'liuchengxu/vim-clap' }
-		use {
-			'ray-x/navigator.lua',
-			requires = {
-				{ 'ray-x/guihua.lua', run = 'cd lua/fzy && make' },
-				{ 'neovim/nvim-lspconfig' },
-			},
-		}
 		use { 'glepnir/galaxyline.nvim' }
 		use { 'numToStr/Comment.nvim' }
 		use { 'editorconfig/editorconfig-vim' }
 		use { 'wakatime/vim-wakatime' } -- code time tracker
 		use { 'akinsho/toggleterm.nvim' }
 		use { 'TimUntersberger/neogit' }
-		use { 'ray-x/sad.nvim', requires = { 'ray-x/guihua.lua' } }
 		use { 'windwp/nvim-spectre' }
-		use { 'Civitasv/cmake-tools.nvim' }
-		use { 'folke/trouble.nvim' }
 	end,
 	config = {
 		display = {

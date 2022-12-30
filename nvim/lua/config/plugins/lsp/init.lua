@@ -16,7 +16,7 @@ require('mason-lspconfig').setup {
 		'dockerls',
 		'sqlls',
 	},
-	automatic_installation = true,
+	automatic_installation = false,
 }
 
 -- diagnostic signs
@@ -68,9 +68,9 @@ local function lsp_keymaps(bufnr)
 	map(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	map(bufnr, 'n', 'gl', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
 	map(bufnr, 'n', 'gla', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-	map(bufnr, 'n', 'gj', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
-	map(bufnr, 'n', 'gk', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
-	map(bufnr, 'n', '<leader>p', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
+	map(bufnr, 'n', 'gk', '<cmd>lua vim.diagnostic.goto_prev({ border = "rounded" })<CR>', opts)
+	map(bufnr, 'n', 'gj', '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
+	map(bufnr, 'n', 'rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
 	map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
 end
 
@@ -138,6 +138,19 @@ lspconfig.gopls.setup {
 		client.server_capabilities.documentRangeFormattingProvider = false
 		server_config.on_attach(client, bufnr)
 	end,
+	capabilities = server_config.capabilities,
+}
+lspconfig.zls.setup {
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		client.server_capabilities.documentRangeFormattingProvider = false
+		server_config.on_attach(client, bufnr)
+	end,
+	capabilities = server_config.capabilities,
+}
+
+lspconfig.solang.setup {
+	on_attach = server_config.on_attach,
 	capabilities = server_config.capabilities,
 }
 

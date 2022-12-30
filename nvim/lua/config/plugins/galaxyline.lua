@@ -45,14 +45,14 @@ gls.left[1] = {
 		highlight = { colors.red, colors.bg, 'bold' },
 	},
 }
-gls.left[3] = {
-	FileSize = {
-		provider = 'FileSize',
-		condition = condition.buffer_not_empty,
-		highlight = { colors.fg, colors.bg },
-	},
-}
-gls.left[4] = {
+-- gls.left[3] = {
+-- 	FileSize = {
+-- 		provider = 'FileSize',
+-- 		condition = condition.buffer_not_empty,
+-- 		highlight = { colors.fg, colors.bg },
+-- 	},
+-- }
+gls.left[2] = {
 	FileIcon = {
 		provider = 'FileIcon',
 		condition = condition.buffer_not_empty,
@@ -60,7 +60,7 @@ gls.left[4] = {
 	},
 }
 
-gls.left[5] = {
+gls.left[3] = {
 	FileName = {
 		provider = 'FileName',
 		condition = condition.buffer_not_empty,
@@ -68,32 +68,35 @@ gls.left[5] = {
 	},
 }
 
-gls.left[6] = {
-	LineInfo = {
-		provider = 'LineColumn',
-		separator = ' ',
-		separator_highlight = { 'NONE', colors.bg },
-		highlight = { colors.fg, colors.bg },
+-- gls.left[7] = {
+-- 	GitIcon = {
+-- 		provider = function()
+-- 			return '  '
+-- 		end,
+-- 		condition = condition.check_git_workspace,
+-- 		separator = ' ',
+-- 		separator_highlight = { 'NONE', colors.bg },
+-- 		highlight = { colors.violet, colors.bg, 'bold' },
+-- 	},
+-- }
+
+gls.left[4] = {
+	GitBranch = {
+		provider = 'GitBranch',
+		condition = condition.check_git_workspace,
+		icon = '  ',
+		highlight = { colors.violet, colors.bg, 'bold' },
 	},
 }
 
-gls.left[7] = {
-	PerCent = {
-		provider = 'LinePercent',
-		separator = ' ',
-		separator_highlight = { 'NONE', colors.bg },
-		highlight = { colors.fg, colors.bg, 'bold' },
-	},
-}
-
-gls.left[8] = {
+gls.left[5] = {
 	DiagnosticError = {
 		provider = 'DiagnosticError',
 		icon = '  ',
 		highlight = { colors.red, colors.bg },
 	},
 }
-gls.left[9] = {
+gls.left[6] = {
 	DiagnosticWarn = {
 		provider = 'DiagnosticWarn',
 		icon = '  ',
@@ -101,7 +104,7 @@ gls.left[9] = {
 	},
 }
 
-gls.left[10] = {
+gls.left[7] = {
 	DiagnosticHint = {
 		provider = 'DiagnosticHint',
 		icon = '  ',
@@ -109,7 +112,7 @@ gls.left[10] = {
 	},
 }
 
-gls.left[11] = {
+gls.left[8] = {
 	DiagnosticInfo = {
 		provider = 'DiagnosticInfo',
 		icon = '  ',
@@ -117,20 +120,20 @@ gls.left[11] = {
 	},
 }
 
-gls.mid[1] = {
-	ShowLspClient = {
-		provider = 'GetLspClient',
-		condition = function()
-			local tbl = { ['dashboard'] = true, [''] = true }
-			if tbl[vim.bo.filetype] then
-				return false
-			end
-			return true
-		end,
-		icon = ' LSP:',
-		highlight = { colors.cyan, colors.bg, 'bold' },
-	},
-}
+-- gls.mid[1] = {
+-- 	ShowLspClient = {
+-- 		provider = 'GetLspClient',
+-- 		condition = function()
+-- 			local tbl = { ['dashboard'] = true, [''] = true }
+-- 			if tbl[vim.bo.filetype] then
+-- 				return false
+-- 			end
+-- 			return true
+-- 		end,
+-- 		icon = ' LSP:',
+-- 		highlight = { colors.cyan, colors.bg, 'bold' },
+-- 	},
+-- }
 
 gls.right[1] = {
 	FileEncode = {
@@ -153,56 +156,61 @@ gls.right[2] = {
 }
 
 gls.right[3] = {
-	GitIcon = {
-		provider = function()
-			return '  '
-		end,
-		condition = condition.check_git_workspace,
+	LineInfo = {
+		provider = 'LineColumn',
 		separator = ' ',
 		separator_highlight = { 'NONE', colors.bg },
-		highlight = { colors.violet, colors.bg, 'bold' },
+		highlight = { colors.fg, colors.bg },
 	},
 }
+-- gls.right[3] = {
+-- 	GitIcon = {
+-- 		provider = function()
+-- 			return '  '
+-- 		end,
+-- 		condition = condition.check_git_workspace,
+-- 		separator = ' ',
+-- 		separator_highlight = { 'NONE', colors.bg },
+-- 		highlight = { colors.violet, colors.bg, 'bold' },
+-- 	},
+-- }
 
-gls.right[4] = {
-	GitBranch = {
-		provider = 'GitBranch',
-		condition = condition.check_git_workspace,
-		highlight = { colors.violet, colors.bg, 'bold' },
-	},
-}
+-- gls.right[5] = {
+-- 	DiffAdd = {
+-- 		provider = 'DiffAdd',
+-- 		condition = condition.hide_in_width,
+-- 		icon = '   ',
+-- 		highlight = { colors.green, colors.bg },
+-- 	},
+-- }
+-- gls.right[6] = {
+-- 	DiffModified = {
+-- 		provider = 'DiffModified',
+-- 		condition = condition.hide_in_width,
+-- 		icon = ' 柳',
+-- 		highlight = { colors.orange, colors.bg },
+-- 	},
+-- }
+-- gls.right[7] = {
+-- 	DiffRemove = {
+-- 		provider = 'DiffRemove',
+-- 		condition = condition.hide_in_width,
+-- 		icon = '  ',
+-- 		highlight = { colors.red, colors.bg },
+-- 	},
+-- }
 
-gls.right[5] = {
-	DiffAdd = {
-		provider = 'DiffAdd',
-		condition = condition.hide_in_width,
-		icon = '   ',
-		highlight = { colors.green, colors.bg },
-	},
-}
-gls.right[6] = {
-	DiffModified = {
-		provider = 'DiffModified',
-		condition = condition.hide_in_width,
-		icon = ' 柳',
-		highlight = { colors.orange, colors.bg },
-	},
-}
-gls.right[7] = {
-	DiffRemove = {
-		provider = 'DiffRemove',
-		condition = condition.hide_in_width,
-		icon = '  ',
-		highlight = { colors.red, colors.bg },
-	},
-}
-
---[[gls.right[8] = {
-	RainbowBlue = {
-		provider = function()
-			return ' ▊'
+gls.right[8] = {
+	ShowLspClient = {
+		provider = 'GetLspClient',
+		condition = function()
+			local tbl = { ['dashboard'] = true, [''] = true }
+			if tbl[vim.bo.filetype] then
+				return false
+			end
+			return true
 		end,
-		highlight = { colors.blue, colors.bg },
+		highlight = { colors.cyan, colors.bg, 'bold' },
 	},
 }
 
