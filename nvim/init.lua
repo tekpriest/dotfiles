@@ -1,4 +1,4 @@
-require'_options'
-require'_autocmds'
-require'_keymaps'
-require'_plugins'
+require 'tp.core._options'
+require 'tp.core._keymaps'
+require 'tp.core._autocmds'
+require 'tp.plugins.lazy'
