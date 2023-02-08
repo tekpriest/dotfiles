@@ -27,4 +27,12 @@ return {
 
   -- makes some plugins dot-repeatable like leap
   { 'tpope/vim-repeat', event = 'VeryLazy' },
+  {
+    'kdheepak/lazygit.nvim',
+    cmd = 'LazyGit',
+    -- stylua: ignore
+    keys = {
+      { '<leader>gg', function() require('lazygit').lazygit() end, desc = 'Open Lazygit', },
+    },
+  },
 }
