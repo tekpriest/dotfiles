@@ -8,6 +8,7 @@ return {
       { 'folke/neodev.nvim', opts = { experimental = { pathStrict = true } } },
       'mason.nvim',
       'williamboman/mason-lspconfig.nvim',
+       'jose-elias-alvarez/typescript.nvim',
       {
         'hrsh7th/cmp-nvim-lsp',
         cond = function()
@@ -91,6 +92,9 @@ return {
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
+        tsserver =function (_, opts)
+          
+        end
         -- example to setup with typescript.nvim
         -- tsserver = function(_, opts)
         --   require("typescript").setup({ server = opts })

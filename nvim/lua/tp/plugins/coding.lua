@@ -37,6 +37,7 @@ return {
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
+      'onsails/lspkind-nvim',
     },
     opts = function()
       local cmp = require 'cmp'
@@ -86,13 +87,22 @@ return {
           { name = 'path' },
         },
         formatting = {
-          format = function(_, item)
-            local icons = require('tp.core').icons.kinds
-            if icons[item.kind] then
-              item.kind = icons[item.kind] .. item.kind
-            end
+          -- fields = { 'menu', 'abbr', 'kind' },
+          format = function(entry, item)
+            local kind = require 'lspkind'
+            local icons = require('tp.core').icons
+            item.menu = icons.menu[entry.source.name]
+            item.kind = kind.symbolic(item.kind, { mode = 'symbol' })
             return item
           end,
+
+          -- format = function(_, item)
+          --   local icons = require('tp.core').icons.kinds
+          --   if icons[item.kind] then
+          --     item.kind = icons[item.kind] .. item.kind
+          --   end
+          --   return item
+          -- end,
         },
         experimental = {
           ghost_text = {
