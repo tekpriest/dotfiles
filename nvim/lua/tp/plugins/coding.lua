@@ -85,6 +85,8 @@ return {
           { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'orgmode' },
+          { name = 'crates' },
         },
         formatting = {
           -- fields = { 'menu', 'abbr', 'kind' },

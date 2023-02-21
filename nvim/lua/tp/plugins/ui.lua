@@ -332,14 +332,21 @@ return {
 
           if #diagnostics() > 0 then
             table.insert(incl, diagnostics())
-            table.insert(incl, { '| ', guifg = 'grey' })
+            -- table.insert(incl, { '| ', guifg = 'grey' })
           end
-          for _, buffer_ in ipairs(buffer) do
-            table.insert(incl, buffer_)
-          end
+          -- for _, buffer_ in ipairs(buffer) do
+          --   table.insert(incl, buffer_)
+          -- end
           return incl
         end,
       }
     end,
   },
+  -- {
+  --   'folke/noice.nvim',
+  --   dependencies = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
+  --   opts = {
+  --     cmdline = { view = 'cmdline' },
+  --   },
+  -- },
 }

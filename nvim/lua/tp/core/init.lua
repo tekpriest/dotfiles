@@ -19,10 +19,10 @@ local defaults = {
       path = 'p',
     },
     diagnostics = {
-      Error = ' ',
-      Warn = ' ',
-      Hint = ' ',
-      Info = ' ',
+      Error = '',
+      Warn = '',
+      Info = '',
+      Hint = '',
     },
     git = {
       added = ' ',

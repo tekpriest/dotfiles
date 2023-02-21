@@ -29,8 +29,8 @@ return {
           headline_highlights = { 'Headline1', 'Headline2' },
         },
       }
-      -- vim.opt.conceallevel = 2
-      -- vim.opt.concealcursor = 'nc'
+      vim.opt.conceallevel = 2
+      vim.opt.concealcursor = 'nc'
     end,
   },
 }

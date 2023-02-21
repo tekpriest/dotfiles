@@ -20,7 +20,8 @@ opt.scrolloff = 4
 opt.sidescrolloff = 8
 opt.shiftround = true
 opt.shiftwidth = 2
-opt.shortmess:append { W = true, I = true, c = true, C = true }
+-- opt.shortmess = 'aWIscCF'
+opt.shortmess:append { W = true, I = true, c = true, C = true, F = true, s = true }
 opt.showmode = false
 opt.signcolumn = 'yes'
 opt.smartcase = true
@@ -83,6 +84,7 @@ opt.breakat = [[\ \ ;:,!?]]
 opt.textwidth = 80
 opt.showcmd = false
 opt.laststatus = 3
+opt.cmdheight = 0
 
 -- fix markdown indentation settings
 vim.g.markdown_recommended_style = 0

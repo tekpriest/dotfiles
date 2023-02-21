@@ -8,7 +8,7 @@ return {
       { 'folke/neodev.nvim', opts = { experimental = { pathStrict = true } } },
       'mason.nvim',
       'williamboman/mason-lspconfig.nvim',
-       'jose-elias-alvarez/typescript.nvim',
+      'jose-elias-alvarez/typescript.nvim',
       {
         'hrsh7th/cmp-nvim-lsp',
         cond = function()
@@ -20,9 +20,9 @@ return {
     opts = {
       -- options for vim.diagnostic.config()
       diagnostics = {
-        underline = true,
+        -- underline = true,
         update_in_insert = true,
-        virtual_text = { spacing = 4, prefix = '●' },
+        virtual_text = { spacing = 4, prefix = '■' },
         severity_sort = true,
         float = {
           focusable = false,
@@ -46,7 +46,7 @@ return {
       ---@type lspconfig.options
       servers = {
         jsonls = {},
-        sumneko_lua = {
+        lua_ls = {
           -- mason = false, -- set to false if you don't want this server to be installed with mason
           settings = {
             Lua = {
@@ -71,6 +71,7 @@ return {
           },
         },
         cssls = {},
+        graphql = {},
         prismals = {},
         dockerls = {},
         html = {},
@@ -87,14 +88,15 @@ return {
           end,
         },
         marksman = {},
+        lemminx = {},
       },
       -- you can do any additional lsp server setup here
       -- return true if you don't want this server to be setup with lspconfig
       ---@type table<string, fun(server:string, opts:_.lspconfig.options):boolean?>
       setup = {
-        tsserver =function (_, opts)
-          
-        end
+        -- tsserver =function (_, opts)
+        --
+        -- end
         -- example to setup with typescript.nvim
         -- tsserver = function(_, opts)
         --   require("typescript").setup({ server = opts })
@@ -105,7 +107,7 @@ return {
       },
     },
     ---@param opts PluginLspOpts
-    config = function(plugin, opts)
+    config = function(_, opts)
       -- setup autoformat
       require('tp.plugins.lsp.format').autoformat = opts.autoformat
       -- setup formatting and keymaps
@@ -173,6 +175,8 @@ return {
           nls.builtins.formatting.prettierd,
           nls.builtins.formatting.stylua,
           nls.builtins.diagnostics.flake8,
+          nls.builtins.formatting.rustfmt,
+          nls.builtins.formatting.dprint,
         },
       }
     end,
@@ -193,7 +197,7 @@ return {
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
-    config = function(plugin, opts)
+    config = function(_, opts)
       require('mason').setup(opts)
       local mr = require 'mason-registry'
       for _, tool in ipairs(opts.ensure_installed) do

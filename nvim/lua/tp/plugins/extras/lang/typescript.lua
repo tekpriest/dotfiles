@@ -23,8 +23,12 @@ return {
         tsserver = function(_, opts)
           require('tp.core._util').on_attach(function(client, buffer)
             if client.name == 'tsserver' then
-              -- stylua: ignore
-              vim.keymap.set( "n", "<leader>co", ":TypescriptOrganizeImports", { buffer = buffer, desc = "Organize Imports" })
+              vim.keymap.set(
+                'n',
+                '<leader>co',
+                ':TypescriptOrganizeImports<CR>',
+                { buffer = buffer, desc = 'Organize Imports' }
+              )
               vim.keymap.set(
                 'n',
                 '<leader>cR',
