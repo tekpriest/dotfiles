@@ -7,7 +7,7 @@ local ui = require 'custom.ui'
 M.ui = {
   hl_override = highlights.override,
   hl_add = highlights.add,
-  -- theme = 'aurora',
+  theme = 'kanagawa',
   transparency = true,
   statusline = ui.statusline,
 }

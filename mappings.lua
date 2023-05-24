@@ -10,6 +10,12 @@ M.general = {
     ['Q'] = { '<nop>' },
     ['<leader><Space>'] = { '<cmd>Telescope find_files<CR>', 'find files' },
     ['<C-k>'] = { '<C-w>k', 'go window up' },
+    ['<A-j>'] = { '<ESC><cmd>m .+1<CR>==' },
+    ['<A-k>'] = { '<ESC><cmd>m .-2<CR>==' },
+  },
+  v = {
+    ['<A-j>'] = { ":m '>+1<CR>==gv=gv" },
+    ['<A-k>'] = { ":m '<-2<CR>==gv=gv" },
   },
 }
 

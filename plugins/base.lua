@@ -118,7 +118,7 @@ return {
       require('telescope').load_extension 'projects'
     end,
   },
-  { 'wakatime/vim-wakatime', event = 'InsertEnter' },
+  { 'wakatime/vim-wakatime', event = 'BufRead' },
   {
     'kdheepak/lazygit.nvim',
     cmd = { 'LazyGit', 'LazyGitConfig' },
@@ -127,7 +127,7 @@ return {
       'nvim-lua/plenary.nvim',
     },
   },
-  { 'ellisonleao/glow.nvim', cmd = 'Glow',         ft = { 'markdown' } },
+  { 'ellisonleao/glow.nvim', cmd = 'Glow',     ft = { 'markdown' } },
   {
     'ray-x/navigator.lua',
     dependencies = {
@@ -146,24 +146,9 @@ return {
   },
   { 'ray-x/lsp_signature.nvim' },
   {
-    'ray-x/aurora',
-    lazy = false,
-    config = function()
-      vim.g.aurora_transparent = true
-      vim.g.aurora_bold = true
-      vim.g.aurora_italic = true
-      vim.cmd [[colorscheme aurora]]
-      vim.api.nvim_set_hl(0, 'Comment', { italic = true, fg = '#7F00AF' })
-      vim.api.nvim_set_hl(0, 'LspReferenceWrite', { bold = true })
-      vim.api.nvim_set_hl(0, 'LspReferenceRead', { bold = true })
-      vim.api.nvim_set_hl(0, 'LspReferenceText', { bold = true })
-      vim.api.nvim_set_hl(0, '@field', { italic = true })
-    end,
-  },
-  {
     'NvChad/nvim-colorizer.lua',
     opts = {
-      modw = 'virtualtext',
+      mode = 'virtualtext',
     },
     config = function(_, opts)
       require('colorizer').setup(opts)
@@ -198,5 +183,13 @@ return {
         },
       },
     },
+  },
+  { 'editorconfig/editorconfig-vim' },
+  { 'b0o/SchemaStore.nvim' },
+  {
+    'lewis6991/impatient.nvim',
+    config = function()
+      require('impatient').enable_profile()
+    end,
   },
 }
