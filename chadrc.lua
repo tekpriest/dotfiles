@@ -1,23 +1,15 @@
 ---@type ChadrcConfig
 local M = {}
+
+local highlights = require 'custom.highlights'
+local ui = require 'custom.ui'
+
 M.ui = {
-  hl_override = {
-    LspReferenceWrite = { bg = 'none', fg = 'none' },
-    LspReferenceRead = { bg = 'none', fg = 'none' },
-    LspReferenceText = { bg = 'none', fg = 'none' },
-  },
+  hl_override = highlights.override,
+  hl_add = highlights.add,
   -- theme = 'aurora',
   transparency = true,
-  statusline = {
-    theme = 'vscode_colored',
-    overriden_modules = function()
-      return {
-        mode = function()
-          return ''
-        end,
-      }
-    end,
-  },
+  statusline = ui.statusline,
 }
 
 M.mappings = require 'custom.mappings'
