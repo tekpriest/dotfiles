@@ -21,11 +21,10 @@ return {
         functionStyle = { italic = true },
         typeStyle = { italic = true },
         transparent = true, -- do not set background color
-        -- dimInactive = true,  -- dim inactive window `:h hl-NormalNC`
+        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         theme = 'dragon', -- Load "wave" theme when 'background' option is not set
       }
-
     end,
   },
 }

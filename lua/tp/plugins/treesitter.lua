@@ -17,7 +17,7 @@ return {
           'yaml',
           'gomod',
           'terraform',
-          'sql'
+          'sql',
         },
         sync_install = false,
         auto_install = true,
@@ -26,19 +26,19 @@ return {
           use_languagetree = true,
           additional_vim_regex_highlighting = true,
         },
-        -- playground = { enable = true, },
+        playground = { enable = true },
         indent = { enable = true },
         query_linter = { enable = true },
-        -- incremental_selection = {
-        --   enable = true,
-        --   keymaps = {
-        --     -- mappings for incremental selection (visual mappings)
-        --     init_selection = "<CR>",    -- maps in normal mode to init the node/scope selection
-        --     node_incremental = "<CR>",  -- increment to the upper named parent
-        --     scope_incremental = "<CR>", -- increment to the upper scope (as defined in locals.scm)
-        --     node_decremental = "<CR>"   -- decrement to the previous node
-        --   }
-        -- },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            -- mappings for incremental selection (visual mappings)
+            init_selection = '<CR>', -- maps in normal mode to init the node/scope selection
+            node_incremental = '<CR>', -- increment to the upper named parent
+            scope_incremental = '<CR>', -- increment to the upper scope (as defined in locals.scm)
+            node_decremental = '<CR>', -- decrement to the previous node
+          },
+        },
       }
     end,
   },

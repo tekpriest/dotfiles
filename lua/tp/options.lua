@@ -16,17 +16,16 @@ opt.hlsearch = false
 opt.incsearch = true
 opt.termguicolors = true
 opt.scrolloff = 8
--- opt.signcolumn = 'yes:1'
-opt.isfname:append '@-@'
+-- opt.signcolumn = 'yes'
+-- opt.isfname:append '@-@'
 opt.updatetime = 30
 opt.splitright = true
 opt.splitbelow = true
 opt.textwidth = 80
 opt.showcmd = false
-opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv 'SHELL', ':t')
-opt.titlestring = ' ❐ %t %r %m - '
-  .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
-opt.title = true
+-- opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv 'SHELL', ':t')
+-- opt.titlestring = ' ❐ %t %r %m - ' .. fn.fnamemodify(fn.getcwd(), ':t')
+-- opt.title = true
 opt.list = true
 opt.listchars = {
   eol = nil,
@@ -83,7 +82,6 @@ g.markdown_fenced_languages = {
   'bash=sh',
   'console=sh',
 }
-opt.grepprg = 'rg --hidden --vimgrep --smart-case --'
 opt.pumblend = 10
 opt.winblend = 10
 opt.cmdheight = 0
@@ -97,41 +95,16 @@ opt.smarttab = true
 opt.confirm = false
 opt.whichwrap:append 'h,l,<,>,[,]'
 opt.pumheight = 10
-opt.laststatus = 3
-opt.statuscolumn = '%s %l %C'
-opt.cursorlineopt = 'number'
--- g.code_action_menu_show_details = false
--- g.code_action_menu_show_diff = true
--- g.code_action_menu_show_action_kind = false
+opt.laststatus = 0
+vim.cmd [[set statusline=%{repeat('─',winwidth('.'))}]]
 
 g.mapleader = ' '
 opt.updatecount = 0
-
-opt.backupdir = {
-  '~/.vim-tmp',
-  '~/.tmp',
-  '~/tmp/',
-  '/var/tmp',
-  '/tmp/',
-}
-
-opt.directory = {
-  '~/.vim-tmp',
-  '~/.tmp',
-  '~/tmp/',
-  '/var/tmp',
-  '/tmp/',
-}
 opt.history = 1000
-
 -- show the results of substitutions incrementally but don't split
 opt.inccommand = 'nosplit'
 opt.backspace = { 'indent', 'eol', 'start' }
 opt.mouse = 'a'
-opt.magic = true
-opt.errorbells = false
-opt.visualbell = false
-opt.ttyfast = true
 table.insert(opt.diffopt, 'vertical')
 table.insert(opt.diffopt, 'iwhite')
 table.insert(opt.diffopt, 'internal')
@@ -139,7 +112,7 @@ table.insert(opt.diffopt, 'algorithm:patience')
 table.insert(opt.diffopt, 'hiddenoff')
 
 if fn.executable 'rg' then
-  opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+  opt.grepprg = 'rg --hidden --vimgrep --no-heading --smart-case --'
   opt.grepformat = '%f:%l:%c:%m'
 end
 
