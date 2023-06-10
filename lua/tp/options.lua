@@ -1,4 +1,4 @@
-local opt, g = vim.opt, vim.g
+local opt, g, fn = vim.opt, vim.g, vim.fn
 
 opt.nu = true
 opt.tabstop = 2
@@ -11,7 +11,7 @@ opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv 'HOME' .. '/.vim.undodir'
 opt.undofile = true
-opt.clipboard = 'unnamedplus'
+opt.clipboard = { 'unnamedplus', 'unnamed' }
 opt.hlsearch = false
 opt.incsearch = true
 opt.termguicolors = true
@@ -105,5 +105,42 @@ opt.cursorlineopt = 'number'
 -- g.code_action_menu_show_action_kind = false
 
 g.mapleader = ' '
+opt.updatecount = 0
+
+opt.backupdir = {
+  '~/.vim-tmp',
+  '~/.tmp',
+  '~/tmp/',
+  '/var/tmp',
+  '/tmp/',
+}
+
+opt.directory = {
+  '~/.vim-tmp',
+  '~/.tmp',
+  '~/tmp/',
+  '/var/tmp',
+  '/tmp/',
+}
+opt.history = 1000
+
+-- show the results of substitutions incrementally but don't split
+opt.inccommand = 'nosplit'
+opt.backspace = { 'indent', 'eol', 'start' }
+opt.mouse = 'a'
+opt.magic = true
+opt.errorbells = false
+opt.visualbell = false
+opt.ttyfast = true
+table.insert(opt.diffopt, 'vertical')
+table.insert(opt.diffopt, 'iwhite')
+table.insert(opt.diffopt, 'internal')
+table.insert(opt.diffopt, 'algorithm:patience')
+table.insert(opt.diffopt, 'hiddenoff')
+
+if fn.executable 'rg' then
+  opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+  opt.grepformat = '%f:%l:%c:%m'
+end
 
 vim.cmd [[colorscheme kanagawa]]

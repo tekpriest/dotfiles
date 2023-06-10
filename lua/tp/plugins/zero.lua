@@ -79,7 +79,7 @@ return {
         'yamlls',
       }
 
-      lsp.skip_server_setup { 'tsserver', 'gopls' }
+      lsp.skip_server_setup { 'tsserver' }
 
       lsp.setup()
 
@@ -134,26 +134,26 @@ return {
       }
     end,
   },
-  { 'wakatime/vim-wakatime', event = 'BufRead', event = 'VeryLazy' },
+  { 'wakatime/vim-wakatime', event = 'VeryLazy' },
   { 'ellisonleao/glow.nvim', cmd = 'Glow', ft = { 'markdown' } },
   { 'b0o/SchemaStore.nvim', ft = { 'json', 'yaml' } },
-  {
-    'zbirenbaum/copilot.lua',
-    cmd = 'Copilot',
-    event = 'InsertEnter',
-    config = function()
-      require('copilot').setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      }
-    end,
-  },
-  {
-    'zbirenbaum/copilot-cmp',
-    config = function()
-      require('copilot_cmp').setup()
-    end,
-  },
+  -- {
+  --   'zbirenbaum/copilot.lua',
+  --   cmd = 'Copilot',
+  --   event = 'InsertEnter',
+  --   config = function()
+  --     require('copilot').setup {
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false },
+  --     }
+  --   end,
+  -- },
+  -- {
+  --   'zbirenbaum/copilot-cmp',
+  --   config = function()
+  --     require('copilot_cmp').setup()
+  --   end,
+  -- },
   {
     'windwp/nvim-autopairs',
     opts = {

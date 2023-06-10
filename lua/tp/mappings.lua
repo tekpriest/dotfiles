@@ -11,9 +11,9 @@ map('i', 'jj', '<esc>', opts)
 map('n', 'q', '<nop>', opts)
 map('n', 'Q', 'q', opts)
 
-map('v', '<A-j>', '>+1<CR>gv=gv', opts)
 map('v', '<A-k>', '<-2<CR>gv=gv', opts)
-map('n', '<A-j>', '<ESC><cmd>m .+1<CR>==', opts)
+map('v', '<A-j>', '>+1<CR>gv=gv', opts)
+-- map('n', '<A-j>', '<ESC><cmd>m .+1<CR>==', opts)
 map('n', '<A-k>', '<ESC><cmd>m .+1<CR>==', opts)
 
 map('n', 'Y', 'yg$', opts)
