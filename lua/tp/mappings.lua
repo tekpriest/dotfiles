@@ -25,36 +25,39 @@ map('n', 'Y', 'yg$', opts)
 -- map('x', '<leader>p', '"_dP', opts)
 
 -- format
-map('n', '<leader>fm', [[<cCMD>lua vim.lsp.buf.format()<CR>]], opts)
+-- map('n', '<leader>fm', [[<CMD>lua vim.lsp.buf.format()<CR>]], opts)
 
 -- neotree
-map('n', '<leader>e', ':Neotree toggle<CR>', opts)
-map('n', '<leader>o', ':Neotree reveal<CR>', opts)
+-- map('n', '<leader>e', ':Neotree toggle<CR>', opts)
+-- map('n', '<leader>o', ':Neotree reveal<CR>', opts)
 
 -- lazygit
-map('n', '<leader>gg', '<cmd>LazyGit<CR>', opts)
+-- map('n', '<leader>gg', '<cmd>LazyGit<CR>', opts)
 
 -- terraform
-map('n', '<leader>ti', '<cmd>Terraform init<CR>', opts)
-map('n', '<leader>tp', '<cmd>Terraform plan<CR>', opts)
-map('n', '<leader>ta', '<cmd>Terraform apply<CR>', opts)
-map('n', '<leader>td', '<cmd>Terraform destroy<CR>', opts)
+-- map('n', '<leader>ti', '<cmd>Terraform init<CR>', opts)
+-- map('n', '<leader>tp', '<cmd>Terraform plan<CR>', opts)
+-- map('n', '<leader>ta', '<cmd>Terraform apply<CR>', opts)
+-- map('n', '<leader>td', '<cmd>Terraform destroy<CR>', opts)
 
 -- session
 -- restore the session for the current directory
-map('n', '<leader>qs', [[<CMD>lua require('persistence').load()<CR>]], opts)
+-- map('n', '<leader>qs', [[<CMD>lua require('persistence').load()<CR>]], opts)
 -- restore the last session
-map(
-  'n',
-  '<leader>ql',
-  [[ <CMD>lua require('persistence').load({last = true})<CR>]],
-  opts
-)
--- stop Persistence => session won't be saved on exit
-map('n', '<leader>qd', [[<CMD>lua require('persistence').stop()<CR>]], opts)
+-- map(
+--   'n',
+--   '<leader>ql',
+--   [[ <CMD>lua require('persistence').load({last = true})<CR>]],
+--   opts
+-- )
+-- -- stop Persistence => session won't be saved on exit
+-- map('n', '<leader>qd', [[<CMD>lua require('persistence').stop()<CR>]], opts)
 
 -- better window switching
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<C-h>', '<C-w>h', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-j>', '<C-w>j', opts)
+
+-- twilight
+map('n', '<leader>tt', '<cmd>Twilight<CR>', opts)

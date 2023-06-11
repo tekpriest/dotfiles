@@ -111,9 +111,9 @@ table.insert(opt.diffopt, 'internal')
 table.insert(opt.diffopt, 'algorithm:patience')
 table.insert(opt.diffopt, 'hiddenoff')
 
-if fn.executable 'rg' then
-  opt.grepprg = 'rg --hidden --vimgrep --no-heading --smart-case --'
-  opt.grepformat = '%f:%l:%c:%m'
-end
+-- if fn.executable 'rg' then
+--   opt.grepprg = 'rg --hidden --vimgrep --no-heading --smart-case --'
+--   opt.grepformat = '%f:%l:%c:%m'
+-- end
 
 vim.cmd [[colorscheme kanagawa]]

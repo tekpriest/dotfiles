@@ -16,7 +16,7 @@ vim.api.nvim_set_hl(
   { bg = 'none', fg = '#777777', italic = true }
 )
 vim.api.nvim_set_hl(0, 'Keyword', { italic = true })
-vim.api.nvim_set_hl(0, 'Identifier', { italic = true })
+vim.api.nvim_set_hl(0, 'Identifier', { italic = true, bold = true })
 vim.api.nvim_set_hl(0, 'StorageClass', { italic = true })
 vim.api.nvim_set_hl(0, 'jsLineComment', { italic = true })
 vim.api.nvim_set_hl(0, 'xmlAttrib', { italic = true })

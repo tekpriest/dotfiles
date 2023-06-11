@@ -1,7 +1,17 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    dependencies = { 'nvim-treesitter/playground' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter-refactor',
+      'HiPhish/nvim-ts-rainbow2',
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      {
+        'andymass/vim-matchup',
+        init = function()
+          vim.g.matchup_matchparen_offscreen = { method = 'popup' }
+        end,
+      },
+    },
     cmd = { 'TSInstall', 'TSBufEnable', 'TSBufDisable', 'TSModuleInfo' },
     build = ':TSUpdate',
     config = function()
@@ -24,11 +34,8 @@ return {
         highlight = {
           enable = true,
           use_languagetree = true,
-          additional_vim_regex_highlighting = true,
         },
-        playground = { enable = true },
         indent = { enable = true },
-        query_linter = { enable = true },
         incremental_selection = {
           enable = true,
           keymaps = {
@@ -39,7 +46,46 @@ return {
             node_decremental = '<CR>', -- decrement to the previous node
           },
         },
+        refactor = {
+          navigation = {
+            enable = true,
+            keymaps = {
+              goto_definition = '<leader>gd',
+              list_definitions = '<leader>gD',
+              list_definitions_toc = '<leader>gO',
+              goto_next_usage = '<a-*>',
+              goto_previous_usage = '<a-#>',
+            },
+          },
+          smart_rename = {
+            enable = true,
+            keymaps = {
+              smart_rename = 'gr',
+            },
+          },
+          highlight_definitions = {
+            enable = true,
+            clear_on_cursor_move = true,
+          },
+        },
+        rainbow = {
+          enable = true,
+        },
+        context_commentstring = {
+          enable = true,
+        },
+        matchup = {
+          enable = true,
+        },
       }
     end,
+  },
+  -- dimm code blocks
+  {
+    cmd = { 'Twilight', 'TwilightEnable', 'TwilightDisable' },
+    keys = {
+      ['<leader>tt'] = { '<cmd>Twilight<CR>', { desc = 'toggle twilight' } },
+    },
+    'folke/twilight.nvim',
   },
 }

@@ -14,6 +14,17 @@ return {
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
+    ft = {
+      'lua',
+      'go',
+      'typescript',
+      'javascript',
+      'yaml',
+      'json',
+      'toml',
+      'sh',
+      'terraform',
+    },
     dependencies = {
       { 'neovim/nvim-lspconfig' },
       {
@@ -32,9 +43,7 @@ return {
       { 'L3MON4D3/LuaSnip' },
     },
     config = function()
-      local lsp = require('lsp-zero').preset {
-        -- float_border = 'none',
-      }
+      local lsp = require('lsp-zero').preset {}
 
       lsp.on_attach(function(client, bufnr)
         local opts = { buffer = bufnr, remap = false }
@@ -50,24 +59,24 @@ return {
         vim.keymap.set('n', ']d', function()
           vim.diagnostic.goto_next()
         end, opts)
-        vim.keymap.set('n', 'gr', function()
-          vim.lsp.buf.references()
-        end, opts)
+        -- vim.keymap.set('n', 'gr', function()
+        --   vim.lsp.buf.references()
+        -- end, opts)
         vim.keymap.set('n', '<leader>rn', function()
           vim.lsp.buf.rename()
         end, opts)
         vim.keymap.set('n', '<leader>ca', function()
           vim.lsp.buf.code_action()
         end, opts)
-        vim.keymap.set('n', 'gs', function()
-          vim.lsp.buf.signature_help()
-        end, opts)
-        vim.keymap.set('n', 'gl', function()
-          vim.diagnostic.open_float()
-        end, opts)
-        vim.keymap.set('n', 'gi', function()
-          vim.lsp.buf.implementation()
-        end, opts)
+        -- vim.keymap.set('n', 'gs', function()
+        --   vim.lsp.buf.signature_help()
+        -- end, opts)
+        -- vim.keymap.set('n', 'gl', function()
+        --   vim.diagnostic.open_float()
+        -- end, opts)
+        -- vim.keymap.set('n', 'gi', function()
+        --   vim.lsp.buf.implementation()
+        -- end, opts)
       end)
 
       lsp.ensure_installed {
