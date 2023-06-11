@@ -52,3 +52,9 @@ map(
 )
 -- stop Persistence => session won't be saved on exit
 map('n', '<leader>qd', [[<CMD>lua require('persistence').stop()<CR>]], opts)
+
+-- better window switching
+map('n', '<C-l>', '<C-w>l', opts)
+map('n', '<C-h>', '<C-w>h', opts)
+map('n', '<C-k>', '<C-w>k', opts)
+map('n', '<C-j>', '<C-w>j', opts)
