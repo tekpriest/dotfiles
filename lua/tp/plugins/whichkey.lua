@@ -13,32 +13,23 @@ return {
     local wk = require 'which-key'
 
     wk.register({
+      ['<space>'] = { '<cmd>Telescope find_files<cr>', 'find files' },
       -- files
       f = {
         name = 'file',
         f = { '<cmd>Telescope find_files<cr>', 'find files' },
         b = { '<cmd>Telescope buffers<cr>', 'list buffers' },
         w = { '<cmd>Telescope live_grep<cr>', 'live text search' },
-        y = {
-          function()
-            require('telescope').extensions.neoclip.default()
-          end,
-          'fetch all pastes',
-        },
+        g = { '<cmd>Telescope live_grep<cr>', 'live text search' },
       },
-      -- lsp
-      l = {
-        name = 'lsp',
-        r = { '<cmd>Telescope lsp_references<cr>', 'find references' },
-        s = { '<cmd>Telescope lsp_workspace_symbols<cr>', 'find references' },
+      -- code
+      c = {
+        name = 'code',
+        a = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'code action' },
+        r = { '<cmd>lua vim.lsp.buf.rename()<cr>', 'rename' },
+        s = { '<cmd>Telescope lsp_workspace_symbols<cr>', 'workspace symbols' },
         f = { '<cmd>lua vim.lsp.buf.format()<cr>', 'format buffer' },
-        x = { '<cmd>Telescope diagnostics<cr>', 'current diagnostics' },
-        i = { '<cmd>Telescope lsp_implementation<cr>', 'go to implementation' },
-        d = { '<cmd>Telescope lsp_definitions<cr>', 'go to definition' },
-        D = {
-          '<cmd>Telescope lsp_type_definitions<cr>',
-          'go to type definition',
-        },
+        d = { '<cmd>Telescope diagnostics<cr>', 'current diagnostics' },
       },
       -- file manager
       e = { '<cmd>Neotree toggle<cr>', 'toggle neotree' },

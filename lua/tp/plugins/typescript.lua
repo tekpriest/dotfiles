@@ -1,3 +1,4 @@
+local Utils = require 'tp.utils'
 return {
   {
     'vuki656/package-info.nvim',
@@ -18,7 +19,9 @@ return {
       'javascriptreact',
     },
     config = function()
-      require('typescript').setup {}
+      require('typescript').setup {
+        on_attach = Utils.on_attach,
+      }
     end,
   },
 }

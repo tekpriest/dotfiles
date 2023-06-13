@@ -13,8 +13,8 @@ map('n', 'Q', 'q', opts)
 
 map('v', '<A-k>', '<-2<CR>gv=gv', opts)
 map('v', '<A-j>', '>+1<CR>gv=gv', opts)
--- map('n', '<A-j>', '<ESC><cmd>m .+1<CR>==', opts)
-map('n', '<A-k>', '<ESC><cmd>m .+1<CR>==', opts)
+map('n', '<A-j>', "<cmd>m '>+1<CR>==gv=gv", opts)
+map('n', '<A-k>', "<cmd>m '<-2<CR>==gv=gv", opts)
 
 map('n', 'Y', 'yg$', opts)
 -- map('n', 'J', 'mzJ`z',opts)
@@ -61,3 +61,8 @@ map('n', '<C-j>', '<C-w>j', opts)
 
 -- twilight
 map('n', '<leader>tt', '<cmd>Twilight<CR>', opts)
+map('n', ';', '<cmd>', opts)
+
+--Remap for dealing with word wrap
+map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })

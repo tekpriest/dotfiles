@@ -27,4 +27,18 @@ return {
       }
     end,
   },
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    event = 'VeryLazy',
+    opts = {
+      flavor = 'macchiato',
+      transparent_background = true,
+      integrations = {
+        gitsigns = true,
+        cmp = true,
+        telescope = true,
+      },
+    },
+  },
 }

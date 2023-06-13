@@ -31,10 +31,7 @@ return {
         },
         sync_install = false,
         auto_install = true,
-        highlight = {
-          enable = true,
-          use_languagetree = true,
-        },
+        highlight = { enable = true },
         indent = { enable = true },
         incremental_selection = {
           enable = true,
@@ -60,7 +57,7 @@ return {
           smart_rename = {
             enable = true,
             keymaps = {
-              smart_rename = 'gr',
+              smart_rename = '<leader>gr',
             },
           },
           highlight_definitions = {

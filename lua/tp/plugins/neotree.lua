@@ -29,8 +29,8 @@ return {
       },
     },
     event = 'VeryLazy',
-    cmd = { 'Neotree' },
-    config = function(_, opts)
+    cmd = { 'NeoTreeToggle', 'NeoTreeFocus' },
+    config = function()
       require('neo-tree').setup {
         filesystem = {
           hide_by_name = { 'node_modules', '.git', '.cache' },

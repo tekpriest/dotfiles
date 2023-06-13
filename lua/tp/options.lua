@@ -16,7 +16,7 @@ opt.hlsearch = false
 opt.incsearch = true
 opt.termguicolors = true
 opt.scrolloff = 8
--- opt.signcolumn = 'yes'
+opt.signcolumn = 'yes'
 -- opt.isfname:append '@-@'
 opt.updatetime = 30
 opt.splitright = true
@@ -116,4 +116,4 @@ table.insert(opt.diffopt, 'hiddenoff')
 --   opt.grepformat = '%f:%l:%c:%m'
 -- end
 
-vim.cmd [[colorscheme kanagawa]]
+vim.cmd [[colorscheme catppuccin]]

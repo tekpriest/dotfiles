@@ -1,5 +1,6 @@
 local api = vim.api
 local autocmd = api.nvim_create_autocmd
+local Utils = require 'tp.utils'
 
 -- auto resize when resizing nvim window
 autocmd('VimResized', {
@@ -51,3 +52,23 @@ autocmd({ 'BufRead' }, {
     vim.cmd [[set filetype=sh]]
   end,
 })
+
+-- If a file is too large, I don't want to add to it's cmp sources treesitter, see:
+-- https://github.com/hrsh7th/nvim-cmp/issues/1522
+autocmd('BufReadPre', {
+  callback = function(t)
+    local cmp = require 'cmp'
+    local sources = require('cmp').config.sources()
+    if not Utils.bufIsBig(t.buf) then
+      sources[#sources + 1] = { name = 'treesitter', group_index = 2 }
+    end
+    cmp.setup.buffer { soures = sources }
+  end,
+})
+
+-- autocmd('CursorHold', {
+--   pattern = { '*' },
+--   callback = function()
+--     Utils.print_diagnostics()
+--   end,
+-- })
