@@ -34,6 +34,21 @@ return {
       -- file manager
       e = { '<cmd>Neotree toggle<cr>', 'toggle neotree' },
       o = { '<cmd>Neotree reveal<cr>', 'show file in neotree' },
+      -- refactoring
+      r = {
+        r = {
+          "<cmd>lua require('telescope').extensions.refactoring.refactors()<cr>",
+          'refactor code',
+        },
+        v = {
+          "<cmd>lua require('refactoring').debug.print_var({ normal = true })<cr>",
+          'print variable',
+        },
+        c = {
+          "<cmd>lua require('refactoring').debug.cleanup({})<cr>",
+          'cleanup',
+        },
+      },
       -- terraform
       t = {
         name = 'terraform',

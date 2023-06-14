@@ -21,11 +21,11 @@ hl(0, 'xmlAttrib', { italic = true })
 hl(0, 'htmlArg', { italic = true })
 hl(0, 'pythonSelf', { italic = true })
 hl(0, 'CmpItemKindCopilot', { italic = true, fg = '#6CC644' })
-hl(0, 'DiagnosticLineNrError', { fg = '#FF0000', bold = true, bg = '#51202A' })
-hl(0, 'DiagnosticLineNrWarn', { fg = '#FFA500', bold = true, bg = '#51412A' })
-hl(0, 'DiagnosticLineNrInfo', { fg = '#00FFFF', bold = true, bg = '#1E535D' })
-hl(0, 'DiagnosticLineNrHint', { fg = '#0000FF', bold = true, bg = '#1E205D' })
-hl(0, 'CmpItemAbbrMatch', { fg = 'NONE', bg = '#000000' })
+hl(0, 'DiagnosticLineNrError', { fg = 'none', bg = '#51202A' })
+hl(0, 'DiagnosticLineNrWarn', { fg = 'none', bg = '#51412A' })
+hl(0, 'DiagnosticLineNrInfo', { fg = 'none', bg = '#1E535D' })
+hl(0, 'DiagnosticLineNrHint', { fg = 'none', bg = '#1E205D' })
+hl(0, 'CmpItemAbbrMatch', { fg = 'none', bg = '#000000' })
 
 vim.cmd [[
   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError

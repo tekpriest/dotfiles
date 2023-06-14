@@ -18,10 +18,15 @@ return {
       'javascript',
       'javascriptreact',
     },
-    config = function()
-      require('typescript').setup {
-        on_attach = Utils.on_attach,
-      }
-    end,
+    -- config = function()
+    --   local capabilities = require('cmp_nvim_lsp').default_capabilities()
+    --
+    --   require('typescript').setup {
+    --     server = {
+    --       on_attach = Utils.on_attach,
+    --       capabilities = capabilities,
+    --     },
+    --   }
+    -- end,
   },
 }

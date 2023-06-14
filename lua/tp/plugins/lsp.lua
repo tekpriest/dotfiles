@@ -1,15 +1,18 @@
 local Utils = require 'tp.utils'
-local Icons = require 'tp.icons'
 return {
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
       { 'williamboman/mason.nvim' },
-      { 'neovim/nvim-lspconfig' },
+      { 'neovim/nvim-lspconfig', dependencies = { 'folke/neodev.nvim' } },
     },
     config = function()
       local lspconfig = require 'lspconfig'
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      -- setting up neodev and neoconf first
+      require('neodev').setup()
+      require('neoconf').setup()
 
       vim.diagnostic.config {
         virtual_text = false,
@@ -46,12 +49,19 @@ return {
               capabilities = capabilities,
             }
           end,
+          ['tsserver'] = function()
+            lspconfig.tsserver.setup {
+              on_attach = Utils.on_attach,
+              capabilities = capabilities,
+            }
+          end,
           ['lua_ls'] = function()
             lspconfig.lua_ls.setup {
               on_attach = Utils.on_attach,
               capabilities = capabilities,
               settings = {
                 Lua = {
+                  completion = { callSnippet = 'Replace' },
                   diagnostics = {
                     globals = { 'vim' },
                   },
@@ -64,3 +74,5 @@ return {
     end,
   },
 }
+
+-- vim: ts=2 sts=2 sw=2 et

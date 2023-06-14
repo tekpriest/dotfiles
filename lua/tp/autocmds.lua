@@ -8,10 +8,14 @@ autocmd('VimResized', {
   command = 'tabdo wincmd =',
 })
 
+local highlight_group =
+  vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 autocmd('TextYankPost', {
   callback = function()
     vim.highlight.on_yank()
   end,
+  group = highlight_group,
+  pattern = '*',
 })
 
 -- set cursor to the last position when opening a buffer
@@ -65,10 +69,3 @@ autocmd('BufReadPre', {
     cmp.setup.buffer { soures = sources }
   end,
 })
-
--- autocmd('CursorHold', {
---   pattern = { '*' },
---   callback = function()
---     Utils.print_diagnostics()
---   end,
--- })
