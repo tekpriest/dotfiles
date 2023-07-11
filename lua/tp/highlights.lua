@@ -20,16 +20,16 @@ hl(0, 'jsLineComment', { italic = true })
 hl(0, 'xmlAttrib', { italic = true })
 hl(0, 'htmlArg', { italic = true })
 hl(0, 'pythonSelf', { italic = true })
-hl(0, 'CmpItemKindCopilot', { italic = true, fg = '#6CC644' })
 hl(0, 'DiagnosticLineNrError', { fg = 'none', bg = '#51202A' })
 hl(0, 'DiagnosticLineNrWarn', { fg = 'none', bg = '#51412A' })
 hl(0, 'DiagnosticLineNrInfo', { fg = 'none', bg = '#1E535D' })
 hl(0, 'DiagnosticLineNrHint', { fg = 'none', bg = '#1E205D' })
 hl(0, 'CmpItemAbbrMatch', { fg = 'none', bg = '#000000' })
+hl(0, 'NotifyBackground', { fg = 'none', bg = 'none' })
 
-vim.cmd [[
-  sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
-  sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
-  sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
-  sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
-]]
+-- vim.cmd [[
+--   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
+--   sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn
+--   sign define DiagnosticSignInfo text= texthl=DiagnosticSignInfo linehl= numhl=DiagnosticLineNrInfo
+--   sign define DiagnosticSignHint text= texthl=DiagnosticSignHint linehl= numhl=DiagnosticLineNrHint
+-- ]]

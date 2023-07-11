@@ -1,0 +1,73 @@
+local ok, lspconfig = pcall(require, 'lspconfig')
+if not ok then
+  return
+end
+
+local servers = {
+  'bashls',
+  'bufls',
+  'cmake',
+  'cssls',
+  'docker_compose_language_service',
+  'dockerls',
+  'dockerls',
+  'emmet_ls',
+  'gopls',
+  'html',
+  'jsonls',
+  'lua_ls',
+  'marksman',
+  'neocmake',
+  'prismals',
+  'pyright',
+  'ruff_lsp',
+  'sqlls',
+  'svelte',
+  'taplo',
+  'terraformls',
+  'tsserver',
+  'yamlls',
+  'zk',
+  'zls',
+  'kotlin_language_server',
+}
+
+-- local mason = require 'mason'
+local masonconf = require 'mason-lspconfig'
+local typescript = require 'typescript'
+
+-- setup mason
+local settings = {
+  ui = {
+    border = 'none',
+  },
+  log_level = vim.log.levels.INFO,
+  max_concurrent_installers = 4,
+}
+require('mason').setup(settings) -- load mason before everything
+
+masonconf.setup {
+  ensure_installed = servers,
+  automatic_installation = true,
+}
+
+for _, server in pairs(servers) do
+  opts = {
+    on_attach = require('tp.lsp.setup').on_attach,
+    capabilities = require('tp.lsp.setup').capabilities,
+  }
+
+  -- incase a language server has @ in its name or starts with @ ???
+  server = vim.split(server, '@')[1]
+
+  local conf_ok, conf_opts = pcall(require, 'tp.lsp.settings.' .. server)
+  if conf_ok then
+    opts = vim.tbl_deep_extend('force', conf_opts, opts)
+  end
+
+  if server == 'tsserver' then
+    require 'tp.lsp.tsserver'
+  else
+    lspconfig[server].setup(opts)
+  end
+end

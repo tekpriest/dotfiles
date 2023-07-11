@@ -22,13 +22,40 @@ M.bufIsBig = function(bufnr)
   end
 end
 
+-- TODO: possibly other implementation
+local setup_highlights = function(client, bufnr)
+  if client.supports_method 'textDocument/documentHighlight' then
+    vim.api.nvim_create_augroup('lsp_document_highlight', {
+      clear = false,
+    })
+    vim.api.nvim_clear_autocmds {
+      buffer = bufnr,
+      group = 'lsp_document_highlight',
+    }
+    vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
+      group = 'lsp_document_highlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.document_highlight,
+    })
+    vim.api.nvim_create_autocmd({ 'CursorMoved', 'CursorMovedI' }, {
+      group = 'lsp_document_highlight',
+      buffer = bufnr,
+      callback = vim.lsp.buf.clear_references,
+    })
+  end
+end
+
 M.on_attach = function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
   vim.keymap.set('n', 'gd', function()
     vim.lsp.buf.definition()
   end, opts)
   vim.keymap.set('n', 'K', function()
-    vim.lsp.buf.hover()
+    if vim.bo.filetype == 'help' then
+      vim.api.nvim_feedkeys('<c-]>', 'n', true)
+    else
+      vim.lsp.buf.hover()
+    end
   end, opts)
   vim.keymap.set('n', '[d', function()
     vim.diagnostic.goto_prev()
@@ -40,9 +67,6 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', '<leader>rn', function()
     vim.lsp.buf.rename()
   end, opts)
-  -- vim.keymap.set('n', '<leader>ca', function()
-  --   vim.lsp.buf.code_action()
-  -- end, opts)
   vim.keymap.set('n', 'gs', function()
     vim.lsp.buf.signature_help()
   end, opts)
@@ -52,6 +76,43 @@ M.on_attach = function(client, bufnr)
   vim.keymap.set('n', 'gi', function()
     vim.lsp.buf.implementation()
   end, opts)
+  vim.keymap.set('n', '<leader>ca', function()
+    vim.lsp.buf.code_action()
+  end, opts)
+  vim.keymap.set('n', '<leader>cf', function()
+    -- local ft = vim.bo[bufnr].filetype
+    -- local have_nls = package.loaded['null-ls']
+    --   and #require('null-ls.sources').get_available(ft, 'NULL_LS_FORMATTING')
+    --     > 0
+    vim.lsp.buf.format()
+
+    -- vim.lsp.buf.format {
+    --   filter = function()
+    --     if have_nls then
+    --       return client.name == 'null-ls'
+    --     end
+    --     return client.name ~= 'null-ls'
+    --   end,
+    -- }
+  end, opts)
+  vim.keymap.set('n', '<leader>cr', function()
+    vim.lsp.buf.rename()
+  end, opts)
+
+  setup_highlights(client, bufnr)
+
+  -- autoformat
+  -- local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+  -- if client.supports_method 'textDocument/formatting' then
+  --   vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+  --   vim.api.nvim_create_autocmd('BufWritePre', {
+  --     group = augroup,
+  --     buffer = bufnr,
+  --     callback = function()
+  --       vim.lsp.buf.format { bufnr = bufnr }
+  --     end,
+  --   })
+  -- end
 end
 
 M.print_diagnostics = function(opts, bufnr, line_nr, client_id)
@@ -74,6 +135,50 @@ M.print_diagnostics = function(opts, bufnr, line_nr, client_id)
     end
   end
   vim.api.nvim_echo({ { diagnostic_message, 'Normal' } }, false, {})
+end
+
+-- disagnostic signs
+M.setup_diag_signs = function()
+  local signs = {
+    { name = 'DiagnosticSignError', text = '✖' },
+    { name = 'DiagnosticSignWarn', text = '‼' },
+    { name = 'DiagnosticSignHint', text = 'ℹ' },
+    { name = 'DiagnosticSignInfo', text = '»' },
+  }
+
+  for _, sign in ipairs(signs) do
+    local hl = sign.name
+    local text = sign.text
+    vim.fn.sign_define(hl, { text = text, texthl = hl, numhl = 'none' })
+  end
+end
+
+M.border = {
+  { '🭽', 'FloatBorder' },
+  { '▔', 'FloatBorder' },
+  { '🭾', 'FloatBorder' },
+  { '▕', 'FloatBorder' },
+  { '🭿', 'FloatBorder' },
+  { '▁', 'FloatBorder' },
+  { '🭼', 'FloatBorder' },
+  { '▏', 'FloatBorder' },
+}
+
+M.capabilities = function()
+  local capabilities = require('cmp_nvim_lsp').default_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  )
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = true,
+    lineFoldingOnly = true,
+  }
+
+  return capabilities
+end
+
+M.check_backspace = function()
+  local col = vim.fn.col '.' - 1
+  return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
 end
 
 return M

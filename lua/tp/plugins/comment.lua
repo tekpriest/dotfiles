@@ -1,18 +1,22 @@
 return {
-  {
-    'numToStr/Comment.nvim',
-    lazy = false,
-    keys = { 'gcc', 'gbc' },
-    config = function()
-      require('Comment').setup()
-    end,
-  },
+  -- {
+  --   'numToStr/Comment.nvim',
+  --   lazy = false,
+  --   keys = { 'gcc', 'gbc' },
+  --   config = true,
+  -- },
   {
     'folke/todo-comments.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-    cmd = { 'TodoTrouble', 'TodoTelescope', 'TodoQuickFix', 'TodoLocList' },
-    config = function(_, opts)
-      require('todo-comments').setup(opts)
-    end,
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    event = 'BufReadPost',
+    cmd = 'TodoTelescope',
+    opts = {
+      signs = false,
+      gui_style = {
+        bg = 'ITALIC',
+      },
+    },
   },
 }

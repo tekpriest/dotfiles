@@ -1,6 +1,9 @@
 local opt, g, fn = vim.opt, vim.g, vim.fn
 
-opt.nu = true
+g.mapleader = ' '
+
+opt.number = true
+opt.relativenumber = true
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
@@ -16,16 +19,15 @@ opt.hlsearch = false
 opt.incsearch = true
 opt.termguicolors = true
 opt.scrolloff = 8
-opt.signcolumn = 'yes'
 -- opt.isfname:append '@-@'
-opt.updatetime = 30
+opt.updatetime = 65
 opt.splitright = true
 opt.splitbelow = true
 opt.textwidth = 80
 opt.showcmd = false
--- opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv 'SHELL', ':t')
--- opt.titlestring = ' ❐ %t %r %m - ' .. fn.fnamemodify(fn.getcwd(), ':t')
--- opt.title = true
+opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv 'SHELL', ':t')
+opt.titlestring = ' ❐ %t %r %m - ' .. fn.fnamemodify(fn.getcwd(), ':t')
+opt.title = true
 opt.list = true
 opt.listchars = {
   eol = nil,
@@ -42,16 +44,14 @@ opt.wildignore =
   '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
 opt.shortmess:append 'c'
 opt.shiftround = true
-opt.fillchars = {
-  vert = '▕', -- alternatives │
-  fold = ' ',
-  eob = ' ', -- suppress ~ at EndOfBuffer
-  diff = '░', -- alternatives = ⣿ ░ ─
-  msgsep = '‾',
-  foldopen = '▾',
-  foldsep = '│',
-  foldclose = '▸',
-}
+opt.joinspaces = false
+vim.opt.guicursor = [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]]
+opt.fillchars = [[vert:│,horiz:─,diff:░,eob: ]]
+--   diff = '░', -- alternatives = ⣿ ░ ─
+--   msgsep = '‾',
+--   foldopen = '▾',
+--   foldsep = '│',
+--   foldclose = '▸',
 opt.formatoptions = {
   ['1'] = true,
   ['2'] = true, -- Use indent from 2nd line of a paragraph
@@ -67,7 +67,7 @@ opt.formatoptions = {
   l = true,
   v = true,
 }
--- opt.sessionoptions = 'globals,buffers,curdir,help,winpos,folds,cursor,slash,unix'
+opt.sessionoptions = 'globals,buffers,curdir,winpos,folds,tabpages,winsize'
 g.markdown_fenced_languages = {
   'js=javascript',
   'ts=typescript',
@@ -95,25 +95,64 @@ opt.smarttab = true
 opt.confirm = false
 opt.whichwrap:append 'h,l,<,>,[,]'
 opt.pumheight = 10
-opt.laststatus = 0
-vim.cmd [[set statusline=%{repeat('─',winwidth('.'))}]]
-
-g.mapleader = ' '
+opt.laststatus = 2
+opt.showmode = false
+opt.shada = [['20,<50,s10,h,/100]]
 opt.updatecount = 0
 opt.history = 1000
 -- show the results of substitutions incrementally but don't split
 opt.inccommand = 'nosplit'
 opt.backspace = { 'indent', 'eol', 'start' }
-opt.mouse = 'a'
+opt.mouse = 'nivh'
+opt.concealcursor = 'nc'
+opt.previewheight = 5
+opt.synmaxcol = 500
+opt.display = 'msgsep'
+opt.modeline = false
+opt.signcolumn = 'yes:1'
+opt.timeoutlen = 400
+opt.switchbuf = 'useopen,uselast'
+opt.confirm = false
+opt.ruler = false
+opt.lazyredraw = false
+-- opt.virtualedit = 'all'
+opt.cindent = true
+
 table.insert(opt.diffopt, 'vertical')
 table.insert(opt.diffopt, 'iwhite')
 table.insert(opt.diffopt, 'internal')
 table.insert(opt.diffopt, 'algorithm:patience')
 table.insert(opt.diffopt, 'hiddenoff')
 
--- if fn.executable 'rg' then
---   opt.grepprg = 'rg --hidden --vimgrep --no-heading --smart-case --'
---   opt.grepformat = '%f:%l:%c:%m'
--- end
+if fn.executable 'rg' then
+  opt.grepprg = 'rg --hidden --vimgrep --no-heading --smart-case --'
+  opt.grepformat = '%f:%l:%c:%m'
+end
 
-vim.cmd [[colorscheme catppuccin]]
+vim.cmd [[colorscheme rose-pine]]
+
+-- Skip some remote provider loading
+g.loaded_python3_provider = 0
+g.loaded_node_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_ruby_provider = 0
+g.loaded = 1
+
+-- Disable some built-in plugins we don't want
+local disabled_built_ins = {
+  'loaded',
+  'loaded_gzip',
+  'loaded_man',
+  'loaded_matchit',
+  'loaded_matchparen',
+  'loaded_shada_plugin',
+  'loaded_tarPlugin',
+  'loaded_tar',
+  'loaded_zipPlugin',
+  'loaded_zip',
+  'loaded_netrwPlugin',
+}
+
+for i = 1, 10 do
+  g[disabled_built_ins[i]] = 1
+end

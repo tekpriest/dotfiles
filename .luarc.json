@@ -53,5 +53,6 @@
         "/Users/tp/.local/share/nvim/lazy/neoconf.nvim/types",
         "/Users/tp/.local/share/nvim/lazy/neoconf.nvim/types/lua",
         "${3rd}/luv/library"
-    ]
+    ],
+    "workspace.checkThirdParty": false
 }

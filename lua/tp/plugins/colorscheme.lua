@@ -1,17 +1,25 @@
 return {
-  -- {
-  --   'rose-pine/neovim',
-  --   name = 'rose-pine',
-  --   enable = false,
-  --   config = function()
-  --     require('rose-pine').setup {
-  --       variant = 'moon',
-  --     }
-  --
-  --     vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-  --     vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
-  --   end,
-  -- },
+  {
+    'rose-pine/neovim',
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup {
+        variant = 'moon',
+        disable_background = true,
+        disable_float_background = true,
+        highlight_groups = {
+          StatusLine = { fg = 'love', bg = 'love', blend = 10 },
+          StatusLineNC = { fg = 'subtle', bg = 'surface' },
+          TelescopeBorder = { fg = 'highlight_high', bg = 'none' },
+          TelescopeNormal = { bg = 'none' },
+          TelescopePromptNormal = { bg = 'base' },
+          TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
+          TelescopeSelection = { fg = 'text', bg = 'base' },
+          TelescopeSelectionCaret = { fg = 'rose', bg = 'rose' },
+        },
+      }
+    end,
+  },
   {
     'rebelot/kanagawa.nvim',
     name = 'kanagawa',
@@ -39,6 +47,17 @@ return {
         cmp = true,
         telescope = true,
       },
+    },
+  },
+  {
+    'folke/tokyonight.nvim',
+    name = 'tokyonight',
+    opts = {
+      style = 'night',
+      styles = {
+        keywords = { italic = false },
+      },
+      sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
     },
   },
 }
