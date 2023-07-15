@@ -20,13 +20,24 @@ return {
   },
 
   -- dashboard
+  -- {
+  --   'echasnovski/mini.starter',
+  --   version = '*',
+  --   opts = {
+  --     header = 'Tech Priest',
+  --     footer = 'Slime San',
+  --     silent = true,
+  --   },
+  -- },
+
+  -- indentscope
   {
-    'echasnovski/mini.starter',
+    'echasnovski/mini.indentscope',
     version = '*',
     opts = {
-      header = 'Tech Priest',
-      footer = 'Slime San',
-      silent = true,
+      draw = {
+        -- animation = require('mini.indentscope').gen_animation_none(),
+      },
     },
   },
 }

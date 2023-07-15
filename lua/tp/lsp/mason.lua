@@ -7,6 +7,7 @@ local servers = {
   'bashls',
   'bufls',
   'cmake',
+  'clangd',
   'cssls',
   'docker_compose_language_service',
   'dockerls',

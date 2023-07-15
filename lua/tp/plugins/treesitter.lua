@@ -47,7 +47,7 @@ return {
         disable = function(lang, bufnr)
           return vim.bo.filetype == 'help'
         end,
-        additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = true,
       },
       indent = { enable = false },
       incremental_selection = {

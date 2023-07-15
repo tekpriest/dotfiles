@@ -1,10 +1,11 @@
 return {
   'jay-babu/mason-null-ls.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  event = 'VeryLazy',
+  -- event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'williamboman/mason.nvim',
     'jose-elias-alvarez/null-ls.nvim',
-    'neovim/nvim-lspconfig',
+    -- 'neovim/nvim-lspconfig',
   },
   init = function()
     vim.api.nvim_create_autocmd('LspAttach', {
@@ -22,7 +23,6 @@ return {
     require('mason').setup()
     require('mason-null-ls').setup {
       ensure_installed = {
-        'black',
         'buf',
         'clang-format',
         'gofumpt',
@@ -51,7 +51,7 @@ return {
         require 'typescript.extensions.null-ls.code-actions',
       },
       on_attach = function(client, bufnr)
-        require('tp.lsp.setup').on_attach(client,bufnr)
+        require('tp.lsp.setup').on_attach(client, bufnr)
         if client.supports_method 'textDocument/formatting' then
           vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
           vim.api.nvim_create_autocmd('BufWritePre', {

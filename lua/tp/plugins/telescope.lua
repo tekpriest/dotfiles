@@ -108,6 +108,10 @@ return {
       },
     }
   end,
+  cmd = 'Telescope',
+  keys = {
+    { '<leader><space>', '<cmd>Telesope find_files<cr>', desc = 'Telescope' },
+  },
   config = function(_, opts)
     require('telescope').setup(opts)
     require('telescope').load_extension 'fzf'

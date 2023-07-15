@@ -117,6 +117,7 @@ opt.ruler = false
 opt.lazyredraw = false
 -- opt.virtualedit = 'all'
 opt.cindent = true
+opt.shortmess = 'filnxtToOFWIcC'
 
 table.insert(opt.diffopt, 'vertical')
 table.insert(opt.diffopt, 'iwhite')
@@ -129,7 +130,8 @@ if fn.executable 'rg' then
   opt.grepformat = '%f:%l:%c:%m'
 end
 
-vim.cmd [[colorscheme rose-pine]]
+-- vim.cmd [[colorscheme rose-pine]]
+vim.cmd [[colorscheme tokyonight]]
 
 -- Skip some remote provider loading
 g.loaded_python3_provider = 0
@@ -146,8 +148,8 @@ local disabled_built_ins = {
   'loaded_matchit',
   'loaded_matchparen',
   'loaded_shada_plugin',
-  'loaded_tarPlugin',
   'loaded_tar',
+  'loaded_tarPlugin',
   'loaded_zipPlugin',
   'loaded_zip',
   'loaded_netrwPlugin',

@@ -13,4 +13,4 @@ dev.setup {}
 
 require 'tp.lsp.mason'
 require('tp.lsp.setup').setup()
-require 'tp.lsp.null-ls'
+-- require 'tp.lsp.null-ls'

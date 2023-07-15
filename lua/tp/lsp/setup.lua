@@ -133,6 +133,9 @@ M.on_attach = function(client, bufnr)
   if client.name == 'lua_ls' then
     client.server_capabilities.documentFormattingProvider = false
   end
+  if client.name == 'clangd' then
+    client.server_capabilities.signatureHelpProvider = false
+  end
   keymaps(bufnr)
   setup_highlights(client, bufnr)
 end

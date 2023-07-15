@@ -39,8 +39,7 @@ return {
       },
 
       completion = {
-        completeopt = 'menu,menuone,noinsert,preview,noselect',
-        keyword_length = 2,
+        completeopt = 'menu,menuone,noinsert',
       },
 
       matching = {
@@ -72,7 +71,7 @@ return {
         end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            snip.select_prev_item { behavior = replace }
+            snip.select_prev_item()
           elseif snip.jumpable(-1) then
             snip.jump(-1)
           else
@@ -108,12 +107,12 @@ return {
       experimental = { ghost_text = false, native_menu = false },
       confirm_opts = { behavior = cmp.ConfirmBehavior.Replace },
     }
-    cmp.setup.cmdline('/', {
-      completion = { autocomplete = false },
-      sources = { { name = 'buffer' } },
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources { { name = 'buffer' } },
     })
     cmp.setup.cmdline(':', {
-      completion = { autocomplete = false },
+      mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources {
         {
           name = 'path',

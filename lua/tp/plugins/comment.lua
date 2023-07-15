@@ -1,10 +1,10 @@
 return {
-  -- {
-  --   'numToStr/Comment.nvim',
-  --   lazy = false,
-  --   keys = { 'gcc', 'gbc' },
-  --   config = true,
-  -- },
+  {
+    'numToStr/Comment.nvim',
+    lazy = false,
+    keys = { 'gcc', 'gbc' },
+    config = true,
+  },
   {
     'folke/todo-comments.nvim',
     dependencies = {

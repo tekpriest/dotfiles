@@ -1,6 +1,7 @@
 return {
   'Civitasv/cmake-tools.nvim',
   dependencies = { 'nvim-lua/plenary.nvim' },
+  ft = { 'c', 'cpp', 'hpp' },
   cmd = 'CMake',
   config = function()
     require('cmake-tools').setup {

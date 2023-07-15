@@ -22,17 +22,18 @@ require('mason-null-ls').setup {
     'stylua',
     'tfsec',
     'ktlint',
+    'codelldb',
   },
   automatic_installation = true,
   automatic_setup = true,
-  handlers = {
-    stylua = function()
-      null_ls.register(null_ls.builtins.formatting.stylua)
-    end,
-    prettierd = function()
-      null_ls.register(null_ls.builtins.formatting.prettierd)
-    end,
-  },
+  -- handlers = {
+  --   stylua = function()
+  --     null_ls.register(null_ls.builtins.formatting.stylua)
+  --   end,
+  --   prettierd = function()
+  --     null_ls.register(null_ls.builtins.formatting.prettierd)
+  --   end,
+  -- },
 }
 null_ls.setup {
   debounce = 150,
@@ -41,16 +42,16 @@ null_ls.setup {
     require 'typescript.extensions.null-ls.code-actions',
   },
   -- on_attach = require('tp.lsp.setup').on_attach,
-  on_attach = function(client, bufnr)
-    if client.supports_method 'textDocument/formatting' then
-      vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
-      vim.api.nvim_create_autocmd('BufWritePre', {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
-        end,
-      })
-    end
-  end,
+  -- on_attach = function(client, bufnr)
+  --   if client.supports_method 'textDocument/formatting' then
+  --     vim.api.nvim_clear_autocmds { group = augroup, buffer = bufnr }
+  --     vim.api.nvim_create_autocmd('BufWritePre', {
+  --       group = augroup,
+  --       buffer = bufnr,
+  --       callback = function()
+  --         vim.lsp.buf.format { bufnr = bufnr }
+  --       end,
+  --     })
+  --   end
+  -- end,
 }
