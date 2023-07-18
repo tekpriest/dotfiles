@@ -1,7 +1,7 @@
 return {
   {
     'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
@@ -34,16 +34,18 @@ return {
       vim.g.neo_tree_remove_legacy_commands = true
     end,
     opts = {
-      sources = {
-        'filesystem',
-        'git_status',
-      },
+      -- sources = {
+      --   'filesystem',
+      --   'git_status',
+      -- },
       auto_clean_after_session_restore = true,
       filesystem = {
         hide_dotfiles = false,
         hide_gitignored = false,
         hide_by_name = { 'node_modules', '.git', '.cache' },
-        follow_current_file = true,
+        follow_current_file = {
+          enable = true,
+        },
         hijack_netrw_behavior = 'open_current',
       },
       window = {
@@ -83,13 +85,13 @@ return {
         },
       },
       -- Add this section only if you've configured source selector.
-      source_selector = {
-        winbar = true,
-        sources = {
-          { source = 'filesystem', display_name = '  ' },
-          { source = 'git_status', display_name = '  ' },
-        },
-      },
+      -- source_selector = {
+      --   winbar = true,
+      --   sources = {
+      --     { source = 'filesystem', display_name = '  ' },
+      --     { source = 'git_status', display_name = '  ' },
+      --   },
+      -- },
     },
     config = function(_, opts)
       require('neo-tree').setup(opts)

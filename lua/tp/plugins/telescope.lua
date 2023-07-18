@@ -110,30 +110,23 @@ return {
   end,
   cmd = 'Telescope',
   keys = {
-    { '<leader><space>', '<cmd>Telesope find_files<cr>', desc = 'Telescope' },
+    { '<leader><space>', '<cmd>Telescope find_files<cr>', desc = 'find files' },
+    {
+      '<leader>fe',
+      '<cmd>Telescope file_browser<cr>',
+      desc = 'find all files',
+    },
+    {
+      '<leader>fw',
+      '<cmd>Telescope live_grep<cr>',
+      desc = 'live text search',
+    },
+    { '<leader>fb', '<cmd>Telescope buffers<cr>', 'list buffers' },
+    { '<leader>ft', '<cmd>:TodoTelescope<cr>', 'todos' },
   },
-  config = function(_, opts)
-    require('telescope').setup(opts)
+  init = function()
     require('telescope').load_extension 'fzf'
     require('telescope').load_extension 'refactoring'
     require('telescope').load_extension 'file_browser'
-
-    -- keymaps
-    local wk = require 'which-key'
-    wk.register({
-      ['<space>'] = { '<cmd>Telescope find_files<cr>', 'find files' },
-      -- files
-      f = {
-        name = 'file',
-        f = { '<cmd>Telescope find_files<cr>', 'find files' },
-        b = { '<cmd>Telescope buffers<cr>', 'list buffers' },
-        w = { '<cmd>Telescope live_grep<cr>', 'live text search' },
-        g = { '<cmd>Telescope live_grep<cr>', 'live text search' },
-        t = { '<cmd>:TodoTelescope<cr>', 'todos' },
-      },
-    }, {
-      prefix = '<leader>',
-    })
   end,
-  -- keys = { },
 }

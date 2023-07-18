@@ -12,7 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('tp.plugins', {
-  defaults = { lazy = true, version = '*' },
   install = { colorschemem = { 'tokyonight' } },
   change_detection = {
     notify = false,

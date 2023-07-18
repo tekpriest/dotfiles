@@ -16,6 +16,7 @@ return {
           TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
           TelescopeSelection = { fg = 'text', bg = 'base' },
           TelescopeSelectionCaret = { fg = 'rose', bg = 'rose' },
+          Comment = { italic = true },
         },
       }
     end,
@@ -29,7 +30,7 @@ return {
         functionStyle = { italic = true },
         typeStyle = { italic = true },
         transparent = true, -- do not set background color
-        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
+        dimInactive = true, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
         theme = 'dragon', -- Load "wave" theme when 'background' option is not set
       }
@@ -40,7 +41,7 @@ return {
     name = 'catppuccin',
     event = 'VeryLazy',
     opts = {
-      flavor = 'macchiato',
+      flavor = 'macho',
       transparent_background = true,
       integrations = {
         gitsigns = true,
@@ -55,7 +56,8 @@ return {
     opts = {
       style = 'night',
       styles = {
-        keywords = { italic = false },
+        keywords = { italic = true },
+        Comment = { italic = true },
       },
       sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
     },

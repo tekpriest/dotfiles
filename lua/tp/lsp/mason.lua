@@ -20,22 +20,19 @@ local servers = {
   'marksman',
   'neocmake',
   'prismals',
-  'pyright',
-  'ruff_lsp',
   'sqlls',
   'svelte',
   'taplo',
   'terraformls',
   'tsserver',
   'yamlls',
-  'zk',
   'zls',
-  'kotlin_language_server',
+  'svelte',
+  'tailwindcss',
 }
 
 -- local mason = require 'mason'
 local masonconf = require 'mason-lspconfig'
-local typescript = require 'typescript'
 
 -- setup mason
 local settings = {
@@ -53,7 +50,7 @@ masonconf.setup {
 }
 
 for _, server in pairs(servers) do
-  opts = {
+  local opts = {
     on_attach = require('tp.lsp.setup').on_attach,
     capabilities = require('tp.lsp.setup').capabilities,
   }
@@ -68,6 +65,8 @@ for _, server in pairs(servers) do
 
   if server == 'tsserver' then
     require 'tp.lsp.tsserver'
+  elseif server == 'clangd' then
+    require 'tp.lsp.clangd'
   else
     lspconfig[server].setup(opts)
   end

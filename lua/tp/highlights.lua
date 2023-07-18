@@ -1,6 +1,6 @@
 local hl = vim.api.nvim_set_hl
 
-hl(0, 'Normal', { bg = 'none' })
+-- hl(0, 'Normal', { bg = 'none' })
 hl(0, 'StatusLine', { bg = 'none' })
 hl(0, 'StatusLineNC', { bg = 'none' })
 hl(0, 'NormalNC', { bg = 'none', fg = 'none' })

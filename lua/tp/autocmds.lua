@@ -104,17 +104,6 @@ vim.defer_fn(function()
     end,
   })
 
-  -- statusline
-  -- autocmd('User', {
-  --   pattern = '*',
-  --   once = true,
-  --   callback = function()
-  --     vim.o.laststatus = 3
-  --     statusline = require 'tp.statusline'
-  --     vim.o.statusline = '%!v:lua.statusline.status()'
-  --   end,
-  -- })
-
   -- diff orig
   vim.api.nvim_create_user_command('DiffOrig', function()
     -- get start buffer

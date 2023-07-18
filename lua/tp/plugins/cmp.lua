@@ -39,7 +39,8 @@ return {
       },
 
       completion = {
-        completeopt = 'menu,menuone,noinsert',
+        completeopt = 'menu,menuone,noinsert,preview,noselect',
+        keyword_length = 2,
       },
 
       matching = {
@@ -71,7 +72,7 @@ return {
         end, { 'i', 's' }),
         ['<S-Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            snip.select_prev_item()
+            cmp.select_prev_item()
           elseif snip.jumpable(-1) then
             snip.jump(-1)
           else
@@ -100,27 +101,27 @@ return {
         { name = 'path' },
         { name = 'nvim_lsp' },
         { name = 'nvim_lua' },
-        { name = 'buffer', keyword_length = 3 },
+        { name = 'buffer', keyword_length = 2 },
         { name = 'luasnip' },
       },
 
-      experimental = { ghost_text = false, native_menu = false },
+      experimental = { ghost_text = false },
       confirm_opts = { behavior = cmp.ConfirmBehavior.Replace },
     }
     cmp.setup.cmdline({ '/', '?' }, {
       mapping = cmp.mapping.preset.cmdline(),
       sources = cmp.config.sources { { name = 'buffer' } },
     })
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources {
-        {
-          name = 'path',
-        },
-        {
-          name = 'cmdline',
-        },
-      },
-    })
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources {
+    --     {
+    --       name = 'path',
+    --     },
+    --     {
+    --       name = 'cmdline',
+    --     },
+    --   },
+    -- })
   end,
 }

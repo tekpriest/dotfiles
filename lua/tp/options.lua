@@ -40,8 +40,32 @@ opt.wildoptions = 'pum'
 opt.wildmenu = true
 opt.wildmode = 'longest:full,full'
 opt.wildignorecase = true
-opt.wildignore =
-  '.git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**'
+opt.wildignore = {
+  '.git',
+  '.hg',
+  '.svn',
+  '*.pyc',
+  '*.o',
+  '*.out',
+  '*.jpg',
+  '*.jpeg',
+  '*.png',
+  '*.gif',
+  '*.zip',
+  '**/tmp/**',
+  '**/.DS_Store',
+  '**/.hg',
+  '**/.idea',
+  '**/.next',
+  '**/.svn',
+  '**/CVS',
+  '**/node_modules/*/**',
+  '**/bower_modules/**',
+  'package-lock.json',
+  'vendor',
+  'yarn.lock',
+  'zig-cache',
+}
 opt.shortmess:append 'c'
 opt.shiftround = true
 opt.joinspaces = false
@@ -95,7 +119,7 @@ opt.smarttab = true
 opt.confirm = false
 opt.whichwrap:append 'h,l,<,>,[,]'
 opt.pumheight = 10
-opt.laststatus = 2
+opt.laststatus = 3
 opt.showmode = false
 opt.shada = [['20,<50,s10,h,/100]]
 opt.updatecount = 0
@@ -131,7 +155,7 @@ if fn.executable 'rg' then
 end
 
 -- vim.cmd [[colorscheme rose-pine]]
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme catppuccin]]
 
 -- Skip some remote provider loading
 g.loaded_python3_provider = 0
