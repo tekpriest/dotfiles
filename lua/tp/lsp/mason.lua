@@ -6,8 +6,8 @@ end
 local servers = {
   'bashls',
   'bufls',
-  'cmake',
   'clangd',
+  'cmake',
   'cssls',
   'docker_compose_language_service',
   'dockerls',
@@ -18,17 +18,16 @@ local servers = {
   'jsonls',
   'lua_ls',
   'marksman',
-  'neocmake',
   'prismals',
   'sqlls',
   'svelte',
+  'svelte',
+  'tailwindcss',
   'taplo',
   'terraformls',
   'tsserver',
   'yamlls',
   'zls',
-  'svelte',
-  'tailwindcss',
 }
 
 -- local mason = require 'mason'
@@ -65,8 +64,6 @@ for _, server in pairs(servers) do
 
   if server == 'tsserver' then
     require 'tp.lsp.tsserver'
-  elseif server == 'clangd' then
-    require 'tp.lsp.clangd'
   else
     lspconfig[server].setup(opts)
   end

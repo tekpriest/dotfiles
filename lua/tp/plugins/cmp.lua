@@ -4,18 +4,17 @@ return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   dependencies = {
-    { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-path' },
     { 'hrsh7th/cmp-nvim-lsp' },
     { 'hrsh7th/cmp-buffer' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'rafamadriz/friendly-snippets' },
     { 'L3MON4D3/LuaSnip' },
+    { 'roobert/tailwindcss-colorizer-cmp.nvim', config = true },
   },
   config = function()
     local cmp = require 'cmp'
     local snip = require 'luasnip'
-    local replace = cmp.SelectBehavior.Replace
 
     cmp.setup {
       enabled = function()
@@ -29,6 +28,10 @@ return {
         debounce = 80,
         throttle = 80,
       },
+      -- sorting_comparators = vim.list_extend(
+      --   cmp.sorting_comparators,
+      --   require 'clangd_extensions.cmp_scores'
+      -- ),
 
       preselect = cmp.PreselectMode.Item,
 
@@ -91,9 +94,9 @@ return {
 
       formatting = {
         fields = { 'kind', 'abbr' },
-        format = function(_, vim_item)
+        format = function(entry, vim_item)
           vim_item.kind = Icons.cmp_kinds[vim_item.kind] or ''
-          return vim_item
+          return require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
         end,
       },
 

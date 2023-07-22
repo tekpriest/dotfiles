@@ -13,33 +13,50 @@ require('mason-null-ls').setup {
     'black',
     'buf',
     'clang-format',
+    'codelldb',
     'gofumpt',
     'goimports-reviser',
     'golines',
+    'gomodifytags',
+    'hadolint',
+    'impl',
+    'ktlint',
     'prettierd',
     'shellcheck',
     'shfmt',
+    'sonarlint-language-server',
     'stylua',
+    'tflint',
     'tfsec',
-    'ktlint',
-    'codelldb',
+    'rustywind',
   },
   automatic_installation = true,
   automatic_setup = true,
-  -- handlers = {
-  --   stylua = function()
-  --     null_ls.register(null_ls.builtins.formatting.stylua)
-  --   end,
-  --   prettierd = function()
-  --     null_ls.register(null_ls.builtins.formatting.prettierd)
-  --   end,
-  -- },
+  handlers = {
+    -- stylua = function()
+    --   null_ls.register(null_ls.builtins.formatting.stylua)
+    -- end,
+    -- prettier = function()
+    --   null_ls.register(null_ls.builtins.formatting.prettierd.with {
+    --     extra_filetypes = { 'svelte' },
+    --   })
+    -- end,
+    -- prettierd = function()
+    --   null_ls.register(null_ls.builtins.formatting.prettierd.with {
+    --     extra_filetypes = { 'svelte' },
+    --   })
+    -- end,
+    -- prettier = function()
+    --   null_ls.register(null_ls.builtins.formatting.prettier)
+    -- end,
+  },
 }
 null_ls.setup {
   debounce = 150,
   debug = true,
   sources = {
     require 'typescript.extensions.null-ls.code-actions',
+    fmt.prettierd.with { extra_filetypes = { 'svelte' } },
   },
   -- on_attach = require('tp.lsp.setup').on_attach,
   -- on_attach = function(client, bufnr)

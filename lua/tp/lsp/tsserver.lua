@@ -11,5 +11,10 @@ ts.setup {
   server = {
     on_attach = require('tp.lsp.setup').on_attach,
     capabilities = require('tp.lsp.setup').capabilities,
+    settings = {
+      completions = {
+        completeFunctionCalls = true,
+      },
+    },
   },
 }

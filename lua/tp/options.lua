@@ -108,7 +108,7 @@ g.markdown_fenced_languages = {
 }
 opt.pumblend = 10
 opt.winblend = 10
-opt.cmdheight = 0
+-- opt.cmdheight = 0
 opt.smartcase = true
 opt.ignorecase = true
 opt.autoindent = true
@@ -116,7 +116,6 @@ opt.linebreak = true
 opt.hidden = true
 opt.showmatch = true
 opt.smarttab = true
-opt.confirm = false
 opt.whichwrap:append 'h,l,<,>,[,]'
 opt.pumheight = 10
 opt.laststatus = 3
@@ -136,7 +135,6 @@ opt.modeline = false
 opt.signcolumn = 'yes:1'
 opt.timeoutlen = 400
 opt.switchbuf = 'useopen,uselast'
-opt.confirm = false
 opt.ruler = false
 opt.lazyredraw = false
 -- opt.virtualedit = 'all'

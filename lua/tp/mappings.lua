@@ -35,6 +35,7 @@ vim.defer_fn(function()
       ['<C-u>'] = '<C-u>zz',
       ['<A-j>'] = ':m .+1<cr>==',
       ['<A-k>'] = ':m .-2<cr>==',
+      ['<leader>pp'] = ':!t<cr>',
       -- ['p'] = '"_dP',
     },
     i = {

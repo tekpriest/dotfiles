@@ -113,6 +113,19 @@ M.on_attach = function(client, bufnr)
   --     end,
   --   })
   -- end
+  if client.name == 'gopls' then
+    if not client.server_capabilities.semanticTokensProvider then
+      local semantic = client.config.capabilities.textDocument.semanticTokens
+      client.server_capabilities.semanticTokensProvider = {
+        full = true,
+        legend = {
+          tokenTypes = semantic.tokenTypes,
+          tokenModifiers = semantic.tokenModifiers,
+        },
+        range = true,
+      }
+    end
+  end
 end
 
 M.print_diagnostics = function(opts, bufnr, line_nr, client_id)
@@ -179,6 +192,17 @@ end
 M.check_backspace = function()
   local col = vim.fn.col '.' - 1
   return col == 0 or vim.fn.getline('.'):sub(col, col):match '%s'
+end
+
+M.augroup = function(name)
+  return vim.api.nvim_create_augroup('tp_' .. name, { clear = true })
+end
+
+M.extend = function(tab1, tab2)
+  for _, value in ipairs(tab2 or {}) do
+    table.insert(tab1, value)
+  end
+  return tab1
 end
 
 return M

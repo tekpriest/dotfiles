@@ -18,6 +18,14 @@ return {
       'javascript',
       'javascriptreact',
     },
+    keys = {
+      {
+        '<leader>co',
+        '<cmd>TypescriptOrganizeImports<CR>',
+        desc = 'Organize Imports',
+      },
+      { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
+    },
     -- config = function()
     --   local capabilities = require('cmp_nvim_lsp').default_capabilities()
     --

@@ -11,22 +11,4 @@ return {
       desc = 'load sessions',
     },
   },
-  config = function(_, opts)
-    require('persistence').setup(opts)
-    local wk = require 'which-key'
-
-    wk.register({
-      -- session management
-      q = {
-        s = {
-          function()
-            require('persistence').load()
-          end,
-          'load directory session',
-        },
-      },
-    }, {
-      prefix = '<leader>',
-    })
-  end,
 }

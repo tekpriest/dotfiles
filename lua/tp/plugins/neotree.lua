@@ -34,10 +34,6 @@ return {
       vim.g.neo_tree_remove_legacy_commands = true
     end,
     opts = {
-      -- sources = {
-      --   'filesystem',
-      --   'git_status',
-      -- },
       auto_clean_after_session_restore = true,
       filesystem = {
         hide_dotfiles = false,
@@ -84,24 +80,10 @@ return {
           StaticMethod = { icon = '󰠄 ', hl = 'Function' },
         },
       },
-      -- Add this section only if you've configured source selector.
-      -- source_selector = {
-      --   winbar = true,
-      --   sources = {
-      --     { source = 'filesystem', display_name = '  ' },
-      --     { source = 'git_status', display_name = '  ' },
-      --   },
-      -- },
     },
-    config = function(_, opts)
-      require('neo-tree').setup(opts)
-
-      local wk = require 'which-key'
-      wk.register({
-        -- file manager
-        e = { '<cmd>Neotree toggle<cr>', 'toggle neotree' },
-        o = { '<cmd>Neotree reveal<cr>', 'show file in neotree' },
-      }, { prefix = '<leader>' })
-    end,
+    keys = {
+      { '<leader>e', '<cmd>Neotree toggle<cr>', 'toggle explorer' },
+      { '<leader>o', '<cmd>Neotree reveal<cr>', 'focus file' },
+    },
   },
 }

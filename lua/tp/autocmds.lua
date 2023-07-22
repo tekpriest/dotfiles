@@ -2,30 +2,36 @@ vim.defer_fn(function()
   local api = vim.api
   local autocmd = api.nvim_create_autocmd
   local Utils = require 'tp.utils'
-  local misc_aucmd =
-    vim.api.nvim_create_augroup('misc_aucmds', { clear = true })
+  -- local misc_aucmd =
+  --   vim.api.nvim_create_augroup('misc_aucmds', { clear = true })
 
-  -- auto resize when resizing nvim window
-  autocmd('VimResized', {
-    pattern = '*',
-    command = 'tabdo wincmd =',
+  -- resize splits if window got resized
+  vim.api.nvim_create_autocmd({ 'VimResized' }, {
+    group = Utils.augroup 'resize_splits',
+    callback = function()
+      vim.cmd 'tabdo wincmd ='
+    end,
   })
 
-  local highlight_group =
-    vim.api.nvim_create_augroup('YankHighlight', { clear = true })
   autocmd('TextYankPost', {
     callback = function()
       vim.highlight.on_yank { higroup = 'Visual', timeout = 100 }
     end,
-    group = highlight_group,
-    pattern = '*',
+    group = Utils.augroup 'highlight_yank',
   })
 
   -- set cursor to the last position when opening a buffer
+  -- go to last loc when opening a buffer
   autocmd('BufReadPost', {
+    group = Utils.augroup 'last_loc',
     callback = function()
-      local mark = vim.api.nvim_buf_get_mark(0, '"')
-      local lcount = vim.api.nvim_buf_line_count(0)
+      local exclude = { 'gitcommit' }
+      local buf = vim.api.nvim_get_current_buf()
+      if vim.tbl_contains(exclude, vim.bo[buf].filetype) then
+        return
+      end
+      local mark = vim.api.nvim_buf_get_mark(buf, '"')
+      local lcount = vim.api.nvim_buf_line_count(buf)
       if mark[1] > 0 and mark[1] <= lcount then
         pcall(vim.api.nvim_win_set_cursor, 0, mark)
       end
@@ -45,10 +51,11 @@ vim.defer_fn(function()
   })
 
   -- set .mdx and .md files to markdown
-  autocmd({ 'BufNewFile', 'BufFilePre', 'BufRead' }, {
-    pattern = { '*.mdx', '*.md' },
+  autocmd('FileType', {
+    pattern = { 'gitcommit', 'markdown' },
     callback = function()
-      vim.cmd [[set filetype=markdown wrap linebreak nolist nospell]]
+      vim.opt_local.wrap = true
+      vim.opt_local.spell = true
     end,
   })
 
@@ -73,19 +80,15 @@ vim.defer_fn(function()
     end,
   })
 
-  -- autoreload file on focus
-  autocmd('BufWinEnter', { group = misc_aucmd, command = 'checktime' })
-
-  -- set no buf listed
-  autocmd('FileType', {
-    group = misc_aucmd,
-    pattern = { 'qf' },
-    command = 'set nobuflisted',
+  -- Check if we need to reload the file when it changed
+  vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+    group = Utils.augroup 'checktime',
+    command = 'checktime',
   })
 
   -- load barbecue
   autocmd('BufReadPost', {
-    group = misc_aucmd,
+    group = Utils.augroup 'barbecue',
     once = true,
     callback = function()
       autocmd({
@@ -132,11 +135,33 @@ vim.defer_fn(function()
   end, {})
 
   -- use q to close RO buffers
-  vim.cmd [[
-  augroup _general_settings
-    autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-  augroup end]]
+  vim.api.nvim_create_autocmd('FileType', {
+    group = Utils.augroup 'close_with_q',
+    pattern = {
+      'PlenaryTestPopup',
+      'help',
+      'lspinfo',
+      'man',
+      'notify',
+      'qf',
+      'spectre_panel',
+      'startuptime',
+      'tsplayground',
+      'neotest-output',
+      'checkhealth',
+      'neotest-summary',
+      'neotest-output-panel',
+    },
+    callback = function(event)
+      vim.bo[event.buf].buflisted = false
+      vim.keymap.set(
+        'n',
+        'q',
+        '<cmd>close<cr>',
+        { buffer = event.buf, silent = true }
+      )
+    end,
+  })
 
   autocmd('BufWinEnter', {
     pattern = { '*' },
@@ -149,4 +174,15 @@ vim.defer_fn(function()
   --   pattern = { '*.ts', '*js', '*.tsx', '*jsx' },
   --   command = '<cmd>TypescriptOrganizeImports<cr>',
   -- })
+  -- Auto create dir when saving a file, in case some intermediate directory does not exist
+  vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+    group = Utils.augroup 'auto_create_dir',
+    callback = function(event)
+      if event.match:match '^%w%w+://' then
+        return
+      end
+      local file = vim.loop.fs_realpath(event.match) or event.match
+      vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
+    end,
+  })
 end, 10)
