@@ -11,11 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup({
-  spec = {
-    { import = 'tp.plugins' },
-  },
-}, {
+require('lazy').setup('tp.plugins', {
   install = { colorschemem = { 'tokyonight' } },
   change_detection = {
     notify = false,

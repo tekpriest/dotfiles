@@ -29,6 +29,7 @@ require('mason-null-ls').setup {
     'tflint',
     'tfsec',
     'rustywind',
+    'black',
   },
   automatic_installation = true,
   automatic_setup = true,

@@ -28,6 +28,7 @@ local servers = {
   'tsserver',
   'yamlls',
   'zls',
+  'pyright',
 }
 
 -- local mason = require 'mason'
