@@ -28,6 +28,7 @@ local servers = {
   'tsserver',
   'yamlls',
   'zls',
+  'rust_analyzer',
   'pyright',
 }
 

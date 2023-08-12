@@ -13,6 +13,7 @@ return {
           vim.api.nvim_del_augroup_by_name 'GitSignsLazyLoad'
           vim.schedule(function()
             require('lazy').load { plugins = { 'gitsigns.nvim' } }
+            vim.cmd [[Gitsigns toggle_current_line_blame]]
           end)
         end
       end,
