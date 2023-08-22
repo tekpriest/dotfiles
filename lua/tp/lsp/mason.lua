@@ -5,12 +5,8 @@ end
 
 local servers = {
   'bashls',
-  'bufls',
-  'clangd',
-  'cmake',
   'cssls',
   'docker_compose_language_service',
-  'dockerls',
   'dockerls',
   'emmet_ls',
   'gopls',
@@ -20,7 +16,6 @@ local servers = {
   'marksman',
   'prismals',
   'sqlls',
-  'svelte',
   'svelte',
   'tailwindcss',
   'taplo',

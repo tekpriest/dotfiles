@@ -19,6 +19,7 @@ return {
           Comment = { italic = true },
         },
       }
+      vim.cmd [[colorscheme rose-pine]]
     end,
   },
   {
@@ -61,5 +62,41 @@ return {
       },
       sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
     },
+  },
+  {
+    'sam4llis/nvim-tundra',
+    name = 'tundra',
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-tundra').setup {
+        transparent_background = true,
+        dim_inactive_windows = {
+          enabled = true,
+        },
+        syntax = {
+          comments = { bold = true, italic = true },
+          constants = { bold = true },
+          fields = { bold = true },
+          functions = { bold = true },
+          keywords = { bold = true, italic = true },
+          numbers = { bold = true },
+          operators = { bold = true },
+          types = { italic = true },
+        },
+        plugins = {
+          lsp = true,
+          semantic_tokens = true,
+          treesitter = true,
+          -- telescope = true,
+          nvimtree = true,
+          cmp = true,
+          context = true,
+          dbui = true,
+          gitsigns = true,
+          neogit = true,
+          textfsm = true,
+        },
+      }
+    end,
   },
 }

@@ -10,20 +10,17 @@ return {
     { 'saadparwaiz1/cmp_luasnip' },
     { 'rafamadriz/friendly-snippets' },
     { 'L3MON4D3/LuaSnip' },
-    { 'roobert/tailwindcss-colorizer-cmp.nvim', config = true },
+    {
+      'roobert/tailwindcss-colorizer-cmp.nvim',
+      config = true,
+      ft = { 'html', 'javascriptreact', 'typescriptreact', 'css' },
+    },
   },
   config = function()
     local cmp = require 'cmp'
     local snip = require 'luasnip'
 
     cmp.setup {
-      enabled = function()
-        if vim.api.nvim_buf_get_option(0, 'buftype') == 'prompt' then
-          return false
-        end
-        return true
-      end,
-
       performance = {
         debounce = 80,
         throttle = 80,
@@ -47,15 +44,17 @@ return {
       },
 
       matching = {
-        dissallow_fuzzy_matching = false,
-        dissallow_partial_matching = false,
-        dissallow_prefix_unmatching = false,
+        disallow_fullfuzzy_matching = false,
+        disallow_partial_fuzzy_matching = false,
+        disallow_fuzzy_matching = false,
+        disallow_partial_matching = false,
+        disallow_prefix_unmatching = false,
       },
 
-      -- window = {
-      --   completion = cmp.config.window.bordered(),
-      --   documentation = cmp.config.window.bordered(),
-      -- },
+      window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+      },
 
       mapping = {
         ['<CR>'] = cmp.mapping.confirm { select = true },
@@ -93,6 +92,7 @@ return {
       },
 
       formatting = {
+        expandable_indicator = true,
         fields = { 'kind', 'abbr' },
         format = function(entry, vim_item)
           vim_item.kind = Icons.cmp_kinds[vim_item.kind] or ''
@@ -111,10 +111,10 @@ return {
       experimental = { ghost_text = false },
       confirm_opts = { behavior = cmp.ConfirmBehavior.Replace },
     }
-    cmp.setup.cmdline({ '/', '?' }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources { { name = 'buffer' } },
-    })
+    -- cmp.setup.cmdline({ '/', '?' }, {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources { { name = 'buffer' } },
+    -- })
     -- cmp.setup.cmdline(':', {
     --   mapping = cmp.mapping.preset.cmdline(),
     --   sources = cmp.config.sources {

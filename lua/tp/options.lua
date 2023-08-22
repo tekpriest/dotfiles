@@ -108,13 +108,13 @@ g.markdown_fenced_languages = {
 }
 opt.pumblend = 10
 opt.winblend = 10
--- opt.cmdheight = 0
+opt.cmdheight = 0
 opt.smartcase = true
 opt.ignorecase = true
 opt.autoindent = true
 opt.linebreak = true
 opt.hidden = true
-opt.showmatch = true
+opt.showmatch = false
 opt.smarttab = true
 opt.whichwrap:append 'h,l,<,>,[,]'
 opt.pumheight = 10
@@ -137,9 +137,12 @@ opt.timeoutlen = 400
 opt.switchbuf = 'useopen,uselast'
 opt.ruler = false
 opt.lazyredraw = false
--- opt.virtualedit = 'all'
+opt.virtualedit = 'block'
 opt.cindent = true
-opt.shortmess = 'filnxtToOFWIcC'
+-- opt.shortmess = 'filnxtToOFWIcC'
+opt.shortmess = 'aoOTIcF'
+opt.completeopt = 'menu,menuone,noselect'
+opt.winwidth = 30
 
 table.insert(opt.diffopt, 'vertical')
 table.insert(opt.diffopt, 'iwhite')
@@ -148,12 +151,12 @@ table.insert(opt.diffopt, 'algorithm:patience')
 table.insert(opt.diffopt, 'hiddenoff')
 
 if fn.executable 'rg' then
-  opt.grepprg = 'rg --hidden --vimgrep --no-heading --smart-case --'
-  opt.grepformat = '%f:%l:%c:%m'
+  opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
+  opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 end
 
 -- vim.cmd [[colorscheme rose-pine]]
-vim.cmd [[colorscheme catppuccin]]
+-- vim.cmd [[colorscheme catppuccin]]
 
 -- Skip some remote provider loading
 g.loaded_python3_provider = 0
