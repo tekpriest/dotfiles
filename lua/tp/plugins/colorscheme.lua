@@ -2,6 +2,7 @@ return {
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    event = 'VeryLazy',
     config = function()
       require('rose-pine').setup {
         variant = 'moon',
@@ -19,12 +20,12 @@ return {
           Comment = { italic = true },
         },
       }
-      vim.cmd [[colorscheme rose-pine]]
     end,
   },
   {
     'rebelot/kanagawa.nvim',
     name = 'kanagawa',
+    event = 'VeryLazy',
     config = function()
       require('kanagawa').setup {
         compile = true, -- enable compiling the colorscheme
@@ -50,10 +51,14 @@ return {
         telescope = true,
       },
     },
+    init = function()
+      -- vim.cmd [[colorscheme catppuccin]]
+    end,
   },
   {
     'folke/tokyonight.nvim',
     name = 'tokyonight',
+    event = 'VeryLazy',
     opts = {
       style = 'night',
       styles = {
@@ -62,6 +67,9 @@ return {
       },
       sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
     },
+    init = function()
+      vim.cmd [[colorscheme tokyonight]]
+    end,
   },
   {
     'sam4llis/nvim-tundra',
@@ -97,6 +105,20 @@ return {
           textfsm = true,
         },
       }
+    end,
+  },
+  {
+    'ray-x/aurora',
+    event = 'VeryLazy',
+    init = function()
+      local g = vim.g
+      vim.cmd [[set termguicolors]]
+      g.aurora_italic = 1
+      g.aurora_transparent = 1
+      g.aurora_bold = 1
+      g.aurora_darker = 1
+
+      -- vim.cmd [[colorscheme aurora]]
     end,
   },
 }

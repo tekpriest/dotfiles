@@ -139,8 +139,7 @@ opt.ruler = false
 opt.lazyredraw = false
 opt.virtualedit = 'block'
 opt.cindent = true
--- opt.shortmess = 'filnxtToOFWIcC'
-opt.shortmess = 'aoOTIcF'
+opt.shortmess = 'filnxtToOFWIcC'
 opt.completeopt = 'menu,menuone,noselect'
 opt.winwidth = 30
 
@@ -154,9 +153,6 @@ if fn.executable 'rg' then
   opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
   opt.grepformat = '%f:%l:%c:%m,%f:%l:%m'
 end
-
--- vim.cmd [[colorscheme rose-pine]]
--- vim.cmd [[colorscheme catppuccin]]
 
 -- Skip some remote provider loading
 g.loaded_python3_provider = 0

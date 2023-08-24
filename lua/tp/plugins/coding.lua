@@ -30,4 +30,13 @@ return {
     'wakatime/vim-wakatime',
     event = 'VeryLazy',
   },
+  {
+    'NvChad/nvim-colorizer.lua',
+    event = 'VeryLazy',
+    opts = {
+      user_default_options = {
+        mode = 'virtualtext',
+      },
+    },
+  },
 }
