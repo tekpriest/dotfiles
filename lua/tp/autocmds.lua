@@ -60,10 +60,18 @@ vim.defer_fn(function()
   })
 
   -- set .conf files to sh
+  -- autocmd({ 'BufRead' }, {
+  --   pattern = { '*.conf' },
+  --   callback = function()
+  --     vim.cmd [[set filetype=sh]]
+  --   end,
+  -- })
+  --
+  --  set env files to conf
   autocmd({ 'BufRead' }, {
-    pattern = { '*.conf' },
+    pattern = { '*.env*' },
     callback = function()
-      vim.cmd [[set filetype=sh]]
+      vim.cmd [[set filetype=conf]]
     end,
   })
 
@@ -136,12 +144,12 @@ vim.defer_fn(function()
     end,
   })
 
-  autocmd('BufWinEnter', {
-    pattern = { '*' },
-    callback = function()
-      vim.opt.formatoptions:append { c = false, r = false, o = false }
-    end,
-  })
+  -- autocmd('BufWinEnter', {
+  --   pattern = { '*' },
+  --   callback = function()
+  --     vim.opt.formatoptions:append { c = false, r = false, o = false }
+  --   end,
+  -- })
 
   -- autocmd('BufWritePre', {
   --   pattern = { '*.ts', '*js', '*.tsx', '*jsx' },

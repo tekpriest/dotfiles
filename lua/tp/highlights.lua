@@ -1,10 +1,10 @@
 local hl = vim.api.nvim_set_hl
 
--- hl(0, 'Normal', { bg = 'none' })
+hl(0, 'Normal', { bg = 'none' })
 -- hl(0, 'StatusLine', { bg = 'none' })
 -- hl(0, 'StatusLineNC', { bg = 'none' })
 -- hl(0, 'NormalNC', { bg = 'none', fg = 'none' })
--- hl(0, 'NonText', { bg = 'none' })
+hl(0, 'NonText', { bg = 'none' })
 -- hl(0, 'SignColumn', { bg = 'none' })
 -- hl(0, 'Structure', { bg = 'none' })
 -- hl(0, 'LineNr', { bg = 'none', italic = true, fg = '#777777' })

@@ -1,4 +1,4 @@
-local Utils = require 'tp.utils'
+local Utils = require 'tp.lsp.setup'
 return {
   'akinsho/flutter-tools.nvim',
   lazy = false,

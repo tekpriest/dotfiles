@@ -17,7 +17,6 @@ opt.undofile = true
 opt.clipboard = { 'unnamedplus', 'unnamed' }
 opt.hlsearch = false
 opt.incsearch = true
-opt.termguicolors = true
 opt.scrolloff = 8
 -- opt.isfname:append '@-@'
 opt.updatetime = 65
@@ -179,3 +178,11 @@ local disabled_built_ins = {
 for i = 1, 10 do
   g[disabled_built_ins[i]] = 1
 end
+
+opt.termguicolors = true
+
+vim.cmd [[
+if exists('+termguicolors')
+  set termguicolors
+endif
+]]

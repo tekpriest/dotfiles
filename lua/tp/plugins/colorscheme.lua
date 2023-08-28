@@ -15,11 +15,22 @@ return {
           TelescopeNormal = { bg = 'none' },
           TelescopePromptNormal = { bg = 'base' },
           TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
-          TelescopeSelection = { fg = 'text', bg = 'base' },
-          TelescopeSelectionCaret = { fg = 'rose', bg = 'rose' },
-          Comment = { italic = true },
+          TelescopeSelection = { fg = 'text', bg = 'rose', bold = true },
+          TelescopeSelectionCaret = { fg = 'rose', bg = 'rose', bold = true },
+          Comment = { italic = true, fg = '#177c00', bg = 'none' },
+          LspReferenceRead = { bg = 'none', bold = true, underline = false },
+          LspReferenceWrite = { bg = 'none', bold = true, underline = false },
+          LspReferenceText = { bg = 'none', bold = true, underline = false },
+          Keyword = { italic = true },
+          Identifier = { italic = true },
+          StorageClass = { italic = true },
+          jsLineComment = { italic = true },
+          NotifyBackground = { fg = 'none', bg = 'none' },
+          FidgetTask = { bg = 'none', fg = 'grey' },
+          GitSignsCurrentLineBlame = { italic = true, fg = 'grey' },
         },
       }
+      vim.cmd [[colorscheme rose-pine]]
     end,
   },
   {
@@ -68,7 +79,7 @@ return {
       sidebars = { 'qf', 'vista_kind', 'terminal', 'packer' },
     },
     init = function()
-      vim.cmd [[colorscheme tokyonight]]
+      -- vim.cmd [[colorscheme tokyonight]]
     end,
   },
   {
@@ -119,6 +130,17 @@ return {
       g.aurora_darker = 1
 
       -- vim.cmd [[colorscheme aurora]]
+    end,
+  },
+  {
+    'sainnhe/everforest',
+    init = function()
+      vim.cmd [[set termguicolors]]
+      vim.g.everforest_background = 'hard'
+      vim.g.everforest_better_performance = 1
+      vim.g.everforest_transparent_background = 1
+      vim.g.everforest_enable_italic = 1
+      -- vim.cmd [[colorscheme everforest]]
     end,
   },
 }
