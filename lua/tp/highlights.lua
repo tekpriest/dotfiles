@@ -1,9 +1,9 @@
 local hl = vim.api.nvim_set_hl
 
 hl(0, 'Normal', { bg = 'none' })
--- hl(0, 'StatusLine', { bg = 'none' })
+-- hl(0, 'StatusLine', { bg = 'none', fg = 'none', blend = 10 })
 -- hl(0, 'StatusLineNC', { bg = 'none' })
--- hl(0, 'NormalNC', { bg = 'none', fg = 'none' })
+hl(0, 'NormalNC', { bg = 'none', fg = 'none' })
 hl(0, 'NonText', { bg = 'none' })
 -- hl(0, 'SignColumn', { bg = 'none' })
 -- hl(0, 'Structure', { bg = 'none' })
@@ -14,7 +14,7 @@ hl(0, 'LspReferenceWrite', { bg = 'none', bold = true, underline = false })
 hl(0, 'LspReferenceText', { bg = 'none', bold = true, underline = false })
 hl(0, 'Comment', { italic = true, fg = '#177c00', bg = 'none' })
 hl(0, 'Keyword', { italic = true })
-hl(0, 'Function', { italic = true })
+-- hl(0, 'Function', { italic = true })
 hl(0, 'Identifier', { italic = true, bold = true })
 hl(0, 'StorageClass', { italic = true })
 hl(0, 'jsLineComment', { italic = true })
@@ -27,7 +27,11 @@ hl(0, 'pythonSelf', { italic = true })
 -- hl(0, 'DiagnosticLineNrHint', { fg = 'none', bg = '#1E205D' })
 -- hl(0, 'CmpItemAbbrMatch', { fg = 'none', bg = '#000000' })
 hl(0, 'NotifyBackground', { fg = 'none', bg = 'none' })
-
+hl(0, 'FidgetTask', { bg = 'none', fg = 'grey' })
+hl(0, 'TelescopeNormal', { bg = 'none' })
+hl(0, 'TelescopeResultsNormal', { fg = 'none', bg = 'none' })
+hl(0, 'TelescopePromptNormal', { fg = 'none', bg = 'none' })
+hl(0, 'GitSignsCurrentLineBlame', { fg = 'grey', bg = 'none', italic = true })
 -- vim.cmd [[
 --   sign define DiagnosticSignError text= texthl=DiagnosticSignError linehl= numhl=DiagnosticLineNrError
 --   sign define DiagnosticSignWarn text= texthl=DiagnosticSignWarn linehl= numhl=DiagnosticLineNrWarn

@@ -8,29 +8,8 @@ return {
         variant = 'moon',
         disable_background = true,
         disable_float_background = true,
-        highlight_groups = {
-          StatusLine = { fg = 'love', bg = 'love', blend = 10 },
-          StatusLineNC = { fg = 'subtle', bg = 'surface' },
-          TelescopeBorder = { fg = 'highlight_high', bg = 'none' },
-          TelescopeNormal = { bg = 'none' },
-          TelescopePromptNormal = { bg = 'base' },
-          TelescopeResultsNormal = { fg = 'subtle', bg = 'none' },
-          TelescopeSelection = { fg = 'text', bg = 'rose', bold = true },
-          TelescopeSelectionCaret = { fg = 'rose', bg = 'rose', bold = true },
-          Comment = { italic = true, fg = '#177c00', bg = 'none' },
-          LspReferenceRead = { bg = 'none', bold = true, underline = false },
-          LspReferenceWrite = { bg = 'none', bold = true, underline = false },
-          LspReferenceText = { bg = 'none', bold = true, underline = false },
-          Keyword = { italic = true },
-          Identifier = { italic = true },
-          StorageClass = { italic = true },
-          jsLineComment = { italic = true },
-          NotifyBackground = { fg = 'none', bg = 'none' },
-          FidgetTask = { bg = 'none', fg = 'grey' },
-          GitSignsCurrentLineBlame = { italic = true, fg = 'grey' },
-        },
       }
-      vim.cmd [[colorscheme rose-pine]]
+      -- vim.cmd [[colorscheme rose-pine]]
     end,
   },
   {
@@ -63,7 +42,7 @@ return {
       },
     },
     init = function()
-      -- vim.cmd [[colorscheme catppuccin]]
+      vim.cmd [[colorscheme catppuccin]]
     end,
   },
   {

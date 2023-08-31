@@ -1,4 +1,3 @@
-local Utils = require 'tp.lsp.setup'
 return {
   'akinsho/flutter-tools.nvim',
   lazy = false,
@@ -7,6 +6,7 @@ return {
     'stevearc/dressing.nvim', -- optional for vim.ui.select
   },
   config = function()
+    local Utils = require 'tp.lsp.setup'
     require('flutter-tools').setup {
       widget_guides = {
         enabled = true,

@@ -64,8 +64,7 @@ return {
             cmp.select_next_item { behavior = cmp.SelectBehavior.Replace }
           elseif snip.expand_or_jumpable() then
             snip.expand_or_jump()
-          elseif Utils.has_words_before() then
-            cmp.complete()
+          -- elseif Utils.has_words_before() then cmp.complete()
           elseif Utils.check_backspace() then
             fallback()
           else
@@ -111,20 +110,5 @@ return {
       experimental = { ghost_text = false },
       confirm_opts = { behavior = cmp.ConfirmBehavior.Replace },
     }
-    -- cmp.setup.cmdline({ '/', '?' }, {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   sources = cmp.config.sources { { name = 'buffer' } },
-    -- })
-    -- cmp.setup.cmdline(':', {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   sources = cmp.config.sources {
-    --     {
-    --       name = 'path',
-    --     },
-    --     {
-    --       name = 'cmdline',
-    --     },
-    --   },
-    -- })
   end,
 }

@@ -15,15 +15,12 @@ local servers = {
   'lua_ls',
   'marksman',
   'prismals',
-  'sqlls',
   'svelte',
   'tailwindcss',
   'taplo',
   'terraformls',
   'tsserver',
   'yamlls',
-  'zls',
-  'rust_analyzer',
   'pyright',
 }
 
@@ -31,14 +28,11 @@ local servers = {
 local masonconf = require 'mason-lspconfig'
 
 -- setup mason
-local settings = {
+require('mason').setup {
   ui = {
-    border = 'none',
+    border = 'rounded',
   },
-  log_level = vim.log.levels.INFO,
-  max_concurrent_installers = 4,
-}
-require('mason').setup(settings) -- load mason before everything
+} -- load mason before everything
 
 masonconf.setup {
   ensure_installed = servers,

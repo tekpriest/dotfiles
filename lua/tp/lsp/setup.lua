@@ -23,6 +23,7 @@ M.capabilities.textDocument.completion.completionItem = {
     },
   },
 }
+M.capabilities.workspace.configuration = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 M.capabilities.textDocument.foldingRange = {
   dynamicRegistration = true,
@@ -73,7 +74,7 @@ local function keymaps(bufnr)
   vim.keymap.set('n', ']d', function()
     vim.diagnostic.goto_next()
   end, opts)
-  vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
+  -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
   vim.keymap.set('n', '<leader>rn', function()
     vim.lsp.buf.rename()
   end, opts)

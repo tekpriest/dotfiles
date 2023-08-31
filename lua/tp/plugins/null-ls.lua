@@ -23,8 +23,6 @@ return {
     require('mason').setup()
     require('mason-null-ls').setup {
       ensure_installed = {
-        'buf',
-        'clang-format',
         'gofumpt',
         'goimports-reviser',
         'golines',
