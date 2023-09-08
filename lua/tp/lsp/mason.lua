@@ -25,7 +25,7 @@ local servers = {
 }
 
 -- local mason = require 'mason'
-local masonconf = require 'mason-lspconfig'
+-- local masonconf = require 'mason-lspconfig'
 
 -- setup mason
 require('mason').setup {
@@ -34,10 +34,10 @@ require('mason').setup {
   },
 } -- load mason before everything
 
-masonconf.setup {
-  ensure_installed = servers,
-  automatic_installation = true,
-}
+-- masonconf.setup {
+--   ensure_installed = servers,
+--   automatic_installation = true,
+-- }
 
 for _, server in pairs(servers) do
   local opts = {

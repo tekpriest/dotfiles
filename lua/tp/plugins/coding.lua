@@ -35,7 +35,6 @@ return {
     event = 'InsertEnter',
     dependencies = {
       'hrsh7th/nvim-cmp',
-      'nvim-treesitter/nvim-treesitter',
     },
     opts = {
       check_ts = true,
@@ -65,10 +64,14 @@ return {
       exclude_filetypes = { 'netrw', 'toggleterm', 'NeogitCommitMessage' },
       custom_section = function()
         -- Copied from @akinsho's config
-        local error_icon = '✗' -- '✗'
-        local warning_icon = ''
-        local info_icon = '' --  
-        local hint_icon = '' --  ⚑
+        -- local error_icon = '✗' -- '✗'
+        -- local warning_icon = ''
+        -- local info_icon = '' --  
+        -- local hint_icon = '' --  ⚑
+        local error_icon = 'E'
+        local warning_icon = 'W'
+        local info_icon = 'I'
+        local hint_icon = 'H'
         local errors =
           #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
         local warnings =

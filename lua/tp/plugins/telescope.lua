@@ -7,10 +7,6 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
-    {
-      'ThePrimeagen/refactoring.nvim',
-    },
-    { 'nvim-telescope/telescope-file-browser.nvim' },
   },
   opts = function()
     local actions = require 'telescope.actions'
@@ -90,7 +86,6 @@ return {
         buffers = dropdown,
         find_files = dropdown,
         lsp_references = ivy,
-        file_browser = ivy,
       },
       extensions = {
         fzf = {
@@ -112,21 +107,13 @@ return {
   keys = {
     { '<leader><space>', '<cmd>Telescope find_files<cr>', desc = 'find files' },
     {
-      '<leader>fe',
-      '<cmd>Telescope file_browser<cr>',
-      desc = 'find all files',
-    },
-    {
       '<leader>fw',
       '<cmd>Telescope live_grep<cr>',
       desc = 'live text search',
     },
     { '<leader>fb', '<cmd>Telescope buffers<cr>', 'list buffers' },
-    { '<leader>ft', '<cmd>:TodoTelescope<cr>', 'todos' },
   },
   init = function()
     require('telescope').load_extension 'fzf'
-    require('telescope').load_extension 'refactoring'
-    require('telescope').load_extension 'file_browser'
   end,
 }

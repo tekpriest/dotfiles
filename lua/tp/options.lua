@@ -65,16 +65,20 @@ opt.wildignore = {
   'yarn.lock',
   'zig-cache',
 }
-opt.shortmess:append 'c'
+opt.shortmess = 'aoOtIF'
 opt.shiftround = true
 opt.joinspaces = false
 vim.opt.guicursor = [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]]
-opt.fillchars = [[vert:│,horiz:─,diff:░,eob: ]]
---   diff = '░', -- alternatives = ⣿ ░ ─
---   msgsep = '‾',
---   foldopen = '▾',
---   foldsep = '│',
---   foldclose = '▸',
+opt.fillchars = {
+  diff = '░', -- alternatives = ⣿ ░ ─
+  msgsep = '‾',
+  foldopen = '▾',
+  foldsep = '│',
+  foldclose = '▸',
+  vert = '│',
+  horiz = '─',
+  eob = ' ',
+}
 opt.formatoptions = {
   ['1'] = true,
   ['2'] = true, -- Use indent from 2nd line of a paragraph
@@ -107,7 +111,7 @@ g.markdown_fenced_languages = {
 }
 opt.pumblend = 10
 opt.winblend = 10
-opt.cmdheight = 0
+opt.cmdheight = 1
 opt.smartcase = true
 opt.ignorecase = true
 opt.autoindent = true
@@ -138,9 +142,10 @@ opt.ruler = false
 opt.lazyredraw = false
 opt.virtualedit = 'block'
 opt.cindent = true
-opt.shortmess = 'filnxtToOFWIcC'
 opt.completeopt = 'menu,menuone,noselect'
 opt.winwidth = 30
+vim.o.breakindent = true
+vim.o.termguicolors = true
 
 table.insert(opt.diffopt, 'vertical')
 table.insert(opt.diffopt, 'iwhite')

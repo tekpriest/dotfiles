@@ -11,7 +11,28 @@ return {
       'nvim-lua/plenary.nvim',
     },
     event = 'BufReadPost',
-    cmd = 'TodoTelescope',
+    cmd = { 'TodoTelescope', 'TodoTrouble' },
+    keys = {
+      {
+        '<leader>ft',
+        '<cmd>TodoTrouble<cr>',
+        desc = 'toggle todos',
+      },
+      {
+        ']t',
+        function()
+          require('todo-comments').jump_next()
+        end,
+        desc = 'next todo comment',
+      },
+      {
+        '[t]',
+        function()
+          require('todo-comments').jump_prev()
+        end,
+        desc = 'previous todo comment',
+      },
+    },
     opts = {
       signs = false,
       gui_style = {

@@ -13,6 +13,11 @@ ts.setup {
     on_attach = require('tp.lsp.setup').on_attach,
     capabilities = require('tp.lsp.setup').capabilities,
     root_dir = lspconfig.util.root_pattern 'package.json',
+    init_options = {
+      preferences = {
+        disableSuggestions = true,
+      },
+    },
     settings = {
       completions = {
         completeFunctionCalls = true,

@@ -11,6 +11,7 @@ return {
       },
       runtime = {
         version = 'LuaJIT',
+        path = vim.split(package.path, ';'),
       },
     },
     diagnostics = {

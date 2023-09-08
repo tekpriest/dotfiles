@@ -19,7 +19,6 @@ return {
     },
     use_diagnostic_signs = false,
     auto_close = true,
-    auto_open = true,
   },
   keys = {
     {

@@ -19,7 +19,40 @@ return {
       end,
     })
   end,
-  config = function()
-    require('gitsigns').setup()
-  end,
+  keys = {
+    {
+      ']g',
+      '<cmd>Gitsigns next_hunk<cr>',
+      desc = 'next hunk',
+    },
+    {
+      '[g',
+      '<cmd>Gitsigns prev_hunk<cr>',
+      desc = 'previous hunk',
+    },
+    {
+      '<leader>ga',
+      '<cmd>GitSigns stage_hunk<cr>',
+      desc = 'stage hunk',
+    },
+    {
+      '<leader>gr',
+      '<cmd>GitSigns reset_hunk<cr>',
+      desc = 'reset hunk',
+    },
+    {
+      '<leader>gu',
+      '<cmd>GitSigns undo_stage_hunk<cr>',
+      desc = 'undo stage hunk',
+    },
+    {
+      '<leader>gp',
+      '<cmd>Gitsigns preview_hunk<cr>',
+      desc = 'preview hunk changes',
+    },
+  },
+  config = true,
+  -- config = function()
+  --   require('gitsigns').setup()
+  -- end,
 }

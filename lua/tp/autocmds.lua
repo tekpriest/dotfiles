@@ -6,7 +6,7 @@ vim.defer_fn(function()
   --   vim.api.nvim_create_augroup('misc_aucmds', { clear = true })
 
   -- resize splits if window got resized
-  vim.api.nvim_create_autocmd({ 'VimResized' }, {
+  autocmd({ 'VimResized' }, {
     group = Utils.augroup 'resize_splits',
     callback = function()
       vim.cmd 'tabdo wincmd ='
@@ -77,19 +77,28 @@ vim.defer_fn(function()
 
   -- If a file is too large, I don't want to add to it's cmp sources treesitter, see:
   -- https://github.com/hrsh7th/nvim-cmp/issues/1522
-  autocmd('BufReadPre', {
-    callback = function(t)
+  -- autocmd('BufReadPre', {
+  --   callback = function(t)
+  --     local cmp = require 'cmp'
+  --     local sources = require('cmp').config.sources()
+  --     if not Utils.bufIsBig(t.buf) then
+  --       sources[#sources + 1] = { name = 'treesitter', group_index = 2 }
+  --     end
+  --     cmp.setup.buffer { soures = sources }
+  --   end,
+  -- })
+  autocmd('FileType', {
+    pattern = { 'sql', 'mysql', 'plsql' },
+    callback = function()
       local cmp = require 'cmp'
-      local sources = require('cmp').config.sources()
-      if not Utils.bufIsBig(t.buf) then
-        sources[#sources + 1] = { name = 'treesitter', group_index = 2 }
-      end
-      cmp.setup.buffer { soures = sources }
+      local sources = require('cmp').config.sources
+
+      cmp.setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
     end,
   })
 
   -- Check if we need to reload the file when it changed
-  vim.api.nvim_create_autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
+  autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
     group = Utils.augroup 'checktime',
     command = 'checktime',
   })
@@ -116,7 +125,7 @@ vim.defer_fn(function()
   })
 
   -- use q to close RO buffers
-  vim.api.nvim_create_autocmd('FileType', {
+  autocmd('FileType', {
     group = Utils.augroup 'close_with_q',
     pattern = {
       'PlenaryTestPopup',
@@ -132,6 +141,7 @@ vim.defer_fn(function()
       'checkhealth',
       'neotest-summary',
       'neotest-output-panel',
+      'dbout',
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
@@ -144,19 +154,19 @@ vim.defer_fn(function()
     end,
   })
 
-  -- autocmd('BufWinEnter', {
-  --   pattern = { '*' },
-  --   callback = function()
-  --     vim.opt.formatoptions:append { c = false, r = false, o = false }
-  --   end,
-  -- })
+  autocmd('BufWinEnter', {
+    pattern = { '*' },
+    callback = function()
+      vim.opt.formatoptions:append { c = false, r = false, o = false }
+    end,
+  })
 
   -- autocmd('BufWritePre', {
   --   pattern = { '*.ts', '*js', '*.tsx', '*jsx' },
   --   command = '<cmd>TypescriptOrganizeImports<cr>',
   -- })
   -- Auto create dir when saving a file, in case some intermediate directory does not exist
-  vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+  autocmd({ 'BufWritePre' }, {
     group = Utils.augroup 'auto_create_dir',
     callback = function(event)
       if event.match:match '^%w%w+://' then
