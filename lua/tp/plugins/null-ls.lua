@@ -31,6 +31,7 @@ return {
         'shfmt',
         'stylua',
         'tfsec',
+        'buf',
       },
       automatic_installation = true,
       automatic_setup = true,

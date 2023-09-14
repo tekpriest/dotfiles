@@ -11,7 +11,7 @@ return {
       },
     },
     ensure_installed = {
-      'bashlsl',
+      'bashls',
       'cssls',
       'docker_compose_language_service',
       'dockerls',
@@ -30,6 +30,7 @@ return {
       'yamlls',
       'pyright',
       'eslint-lsp',
+      'bufls',
     },
   },
 }
