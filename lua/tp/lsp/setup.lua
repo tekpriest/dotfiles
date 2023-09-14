@@ -144,6 +144,9 @@ M.on_attach = function(client, bufnr)
   if client.name == 'clangd' then
     client.server_capabilities.signatureHelpProvider = false
   end
+  if client.name == 'ruff_lsp' then
+    client.server_capabilities.hoverProvider = false
+  end
   keymaps(bufnr)
   setup_highlights(client, bufnr)
 end

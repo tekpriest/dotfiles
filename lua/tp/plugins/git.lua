@@ -32,17 +32,17 @@ return {
     },
     {
       '<leader>ga',
-      '<cmd>GitSigns stage_hunk<cr>',
+      '<cmd>Gitsigns stage_hunk<cr>',
       desc = 'stage hunk',
     },
     {
       '<leader>gr',
-      '<cmd>GitSigns reset_hunk<cr>',
+      '<cmd>Gitsigns reset_hunk<cr>',
       desc = 'reset hunk',
     },
     {
       '<leader>gu',
-      '<cmd>GitSigns undo_stage_hunk<cr>',
+      '<cmd>Gitsigns undo_stage_hunk<cr>',
       desc = 'undo stage hunk',
     },
     {
