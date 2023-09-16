@@ -24,6 +24,7 @@ local servers = {
   'pyright',
   'ruff_lsp',
   'bufls',
+  'hls',
 }
 
 -- local mason = require 'mason'

@@ -22,6 +22,7 @@ return {
         'go',
         'gomod',
         'gosum',
+        'haskell',
         'hcl',
         'html',
         'javascript',
