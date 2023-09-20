@@ -25,6 +25,7 @@ local servers = {
   'ruff_lsp',
   'bufls',
   'hls',
+  'sqlls',
 }
 
 -- local mason = require 'mason'

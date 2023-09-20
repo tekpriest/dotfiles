@@ -97,6 +97,13 @@ vim.defer_fn(function()
     end,
   })
 
+  autocmd({ 'BufRead', 'BufNewFile' }, {
+    pattern = { '*.frag', '*.vert', '*.geom', '*.tese', '*.tesc', '*.comp' },
+    callback = function()
+      vim.cmd [[set filetype=glsl]]
+    end,
+  })
+
   -- Check if we need to reload the file when it changed
   autocmd({ 'FocusGained', 'TermClose', 'TermLeave' }, {
     group = Utils.augroup 'checktime',
