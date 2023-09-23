@@ -1,13 +1,22 @@
 return {
   {
-    'williamboman/mason-lspconfig.nvim',
-    dependencies = {
-      { 'williamboman/mason.nvim' },
-      { 'neovim/nvim-lspconfig' },
-    },
-  },
-  {
     'jose-elias-alvarez/null-ls.nvim',
   },
-  { 'folke/neodev.nvim' },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'williamboman/mason-lspconfig.nvim', config = true },
+      'williamboman/mason.nvim',
+      {
+        'j-hui/fidget.nvim',
+        tag = 'legacy',
+        opts = {
+          text = {
+            spinner = 'dots_footsteps',
+          },
+        },
+      },
+      'folke/neodev.nvim',
+    },
+  },
 }

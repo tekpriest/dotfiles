@@ -1,7 +1,9 @@
 local opt, g, fn = vim.opt, vim.g, vim.fn
 
 g.mapleader = ' '
+g.maplocalleader = ' '
 
+opt.termguicolors = true
 opt.number = true
 opt.relativenumber = true
 opt.tabstop = 2
@@ -130,7 +132,7 @@ opt.history = 1000
 opt.inccommand = 'nosplit'
 opt.backspace = { 'indent', 'eol', 'start' }
 opt.mouse = 'nivh'
-opt.concealcursor = 'nc'
+-- opt.concealcursor = 'nc'
 opt.previewheight = 5
 opt.synmaxcol = 500
 opt.display = 'msgsep'
@@ -140,18 +142,18 @@ opt.timeoutlen = 400
 opt.switchbuf = 'useopen,uselast'
 opt.ruler = false
 opt.lazyredraw = false
-opt.virtualedit = 'block'
+-- opt.virtualedit = 'block'
 opt.cindent = true
 opt.completeopt = 'menu,menuone,noselect'
 opt.winwidth = 30
 vim.o.breakindent = true
 vim.o.termguicolors = true
 
-table.insert(opt.diffopt, 'vertical')
-table.insert(opt.diffopt, 'iwhite')
-table.insert(opt.diffopt, 'internal')
-table.insert(opt.diffopt, 'algorithm:patience')
-table.insert(opt.diffopt, 'hiddenoff')
+-- table.insert(opt.diffopt, 'vertical')
+-- table.insert(opt.diffopt, 'iwhite')
+-- table.insert(opt.diffopt, 'internal')
+-- table.insert(opt.diffopt, 'algorithm:patience')
+-- table.insert(opt.diffopt, 'hiddenoff')
 
 if fn.executable 'rg' then
   opt.grepprg = 'rg --vimgrep --no-heading --smart-case'
@@ -163,7 +165,7 @@ g.loaded_python3_provider = 0
 g.loaded_node_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
-g.loaded = 1
+-- g.loaded = 1
 
 -- Disable some built-in plugins we don't want
 local disabled_built_ins = {
@@ -183,11 +185,3 @@ local disabled_built_ins = {
 for i = 1, 10 do
   g[disabled_built_ins[i]] = 1
 end
-
-opt.termguicolors = true
-
-vim.cmd [[
-if exists('+termguicolors')
-  set termguicolors
-endif
-]]

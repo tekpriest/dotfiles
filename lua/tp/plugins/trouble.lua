@@ -35,12 +35,12 @@ return {
       end,
       desc = 'workspace diagnostics',
     },
-    {
-      'gr',
-      function()
-        require('trouble').open 'lsp_references'
-      end,
-      desc = 'lsp references',
-    },
+    -- {
+    --   'gr',
+    --   function()
+    --     require('trouble').open 'lsp_references'
+    --   end,
+    --   desc = 'lsp references',
+    -- },
   },
 }

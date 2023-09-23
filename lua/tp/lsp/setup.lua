@@ -7,7 +7,7 @@ end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem = {
-  documentationFormat = { 'markdown', 'plaintext' },
+  -- documentationFormat = { 'markdown', 'plaintext' },
   snippetSupport = true,
   preselectSupport = true,
   insertReplaceSupport = true,
@@ -23,93 +23,55 @@ M.capabilities.textDocument.completion.completionItem = {
     },
   },
 }
-M.capabilities.workspace.configuration = true
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 M.capabilities.textDocument.foldingRange = {
   dynamicRegistration = true,
   lineFoldingOnly = true,
 }
-
 M.setup = function()
   local config = {
     virtual_text = false,
     update_in_insert = true,
     underline = false,
     severity_sort = true,
-    float = {
-      focusable = true,
-      style = 'minimal',
-      border = 'rounded',
-      source = 'always',
-      header = '',
-      prefix = '',
-    },
+    signs = true,
   }
   vim.diagnostic.config(config)
-  vim.lsp.handlers['textDocument/hover'] =
-    vim.lsp.with(vim.lsp.handlers.hover, {
-      border = 'rounded',
-    })
-  vim.lsp.handlers['textDocument/signatureHelp'] =
-    vim.lsp.with(vim.lsp.handlers.signature_help, {
-      border = 'none',
-    })
-  vim.lsp.handlers['textDocument/publishDiagnostics'] =
-    vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-      underline = false,
-      virtual_text = false,
-      signs = false,
-      update_in_insert = true,
-    })
 end
 
 local function keymaps(bufnr)
   local opts = { buffer = bufnr, remap = false }
-  vim.keymap.set('n', 'gd', function()
-    vim.lsp.buf.definition()
-  end, opts)
-  vim.keymap.set('n', 'K', function()
-    if vim.bo.filetype == 'help' then
-      vim.api.nvim_feedkeys('<c-]>', 'n', true)
-    else
-      vim.lsp.buf.hover()
+  local map = function(keys, func, desc)
+    if desc then
+      desc = 'LSP: ' .. desc
     end
-  end, opts)
+    vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+  end
+  local telescope_builtin = require 'telescope.builtin'
+
   vim.keymap.set('n', '[d', function()
     vim.diagnostic.goto_prev()
   end, opts)
   vim.keymap.set('n', ']d', function()
     vim.diagnostic.goto_next()
   end, opts)
-  -- vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', opts)
-  vim.keymap.set('n', '<leader>rn', function()
-    vim.lsp.buf.rename()
-  end, opts)
-  vim.keymap.set('n', 'gs', function()
-    vim.lsp.buf.signature_help()
-  end, opts)
-  vim.keymap.set('n', 'gl', function()
-    vim.diagnostic.open_float()
-  end, opts)
-  vim.keymap.set('n', 'gi', function()
-    vim.lsp.buf.implementation()
-  end, opts)
-  vim.keymap.set('n', '<leader>ca', function()
-    vim.lsp.buf.code_action()
-  end, opts)
-  vim.keymap.set('n', '<leader>cf', function()
-    vim.lsp.buf.format()
-  end, opts)
-  vim.keymap.set('n', '<leader>cr', function()
-    vim.lsp.buf.rename()
-  end, opts)
-  vim.keymap.set(
-    'n',
-    '<leader>cs',
-    '<cmd>Telescope lsp_document_symbols<cr>',
-    opts
-  )
-  vim.keymap.set('n', '<leader>cd', '<cmd>Telescope diagnostics<cr>', opts)
+
+  map('gd', vim.lsp.buf.definition, '[g]oto [d]efinition')
+  map('gD', vim.lsp.buf.declaration, '[g]oto [d]eclaration')
+  map('K', vim.lsp.buf.hover, 'hover')
+  map('gs', vim.lsp.buf.signature_help, 'show signature')
+  map('gr', function()
+    require('trouble').open 'lsp_references'
+  end, '[g]oto [r]eferences')
+  map('gl', vim.diagnostic.open_float, 'show [l]ine [d]iagnostics')
+  map('gi', vim.lsp.buf.implementation, '[g]oto [i]mplementation')
+  map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
+  map('<leader>cf', vim.lsp.buf.format, '[c]ode [f]ormat')
+  map('<leader>cr', vim.lsp.buf.rename, '[c]ode [r]ename')
+  map('<leader>cs', telescope_builtin.lsp_document_symbols, '[c]ode [s]ymbols')
+  map('<leader>cd', telescope_builtin.diagnostics, '[c]ode [d]ocument symbols')
+  map('<leader>cw', telescope_builtin.lsp_dynamic_workspace_symbols, '[c]ode [w]orkspace symbols')
+  map('<leader>cq', vim.diagnostic.setloclist, '[q]uickfix')
 end
 
 local setup_highlights = function(client, bufnr)
@@ -149,6 +111,12 @@ M.on_attach = function(client, bufnr)
   end
   keymaps(bufnr)
   setup_highlights(client, bufnr)
+
+  if client.server_capabilities.documentHighlightProvider then
+    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+      vim.lsp.buf.format()
+    end, { descc = 'Format current buffer' })
+  end
 end
 
 return M

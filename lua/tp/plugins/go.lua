@@ -37,8 +37,12 @@ return {
         max_line_len = 100,
         icons = false,
         lsp_gofumpt = true,
-        lsp_diag_virtual_text = false,
-        lsp_diag_signs = false,
+        diagnostic = {
+          virtual_text = true,
+          signs = false,
+        },
+        -- lsp_diag_virtual_text = false,
+        -- lsp_diag_signs = false,
         lsp_diag_update_in_insert = true,
         lsp_cfg = {
           capabilities = Utils.capabilities,
@@ -47,7 +51,7 @@ return {
             gopls = {
               gofumpt = true,
               codelenses = {
-                gc_details = false,
+                gc_details = true,
                 generate = true,
                 regenerate_cgo = true,
                 run_govulncheck = true,

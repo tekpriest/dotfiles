@@ -1,5 +1,3 @@
-local Utils = require 'tp.utils'
-local Icons = require 'tp.icons'
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -9,7 +7,33 @@ return {
     { 'hrsh7th/cmp-buffer' },
     { 'saadparwaiz1/cmp_luasnip' },
     { 'rafamadriz/friendly-snippets' },
-    { 'L3MON4D3/LuaSnip' },
+    {
+      'L3MON4D3/LuaSnip',
+      config = function()
+        local snip = require 'luasnip'
+        local types = require 'luasnip.util.types'
+
+        require('luasnip/loaders/from_vscode').lazy_load()
+
+        snip.config.set_config {
+          history = true,
+          updateevents = 'TextChanged,TextChangedI',
+          anable_autosnippets = true,
+          ext_opts = {
+            [types.choiceNode] = {
+              active = {
+                virt_text = { { '●', 'DiagnosticHint' } },
+              },
+            },
+            [types.insertNode] = {
+              active = {
+                virt_text = { { '●', 'DiagnosticInfo' } },
+              },
+            },
+          },
+        }
+      end,
+    },
     {
       'roobert/tailwindcss-colorizer-cmp.nvim',
       config = true,
@@ -21,52 +45,19 @@ return {
     local snip = require 'luasnip'
 
     cmp.setup {
-      performance = {
-        debounce = 80,
-        throttle = 80,
-      },
-      -- sorting_comparators = vim.list_extend(
-      --   cmp.sorting_comparators,
-      --   require 'clangd_extensions.cmp_scores'
-      -- ),
-
-      preselect = cmp.PreselectMode.Item,
-
       snippet = {
         expand = function(args)
           snip.lsp_expand(args.body)
         end,
       },
-
-      completion = {
-        completeopt = 'menu,menuone,noinsert,preview,noselect',
-        keyword_length = 2,
-      },
-
-      matching = {
-        disallow_fullfuzzy_matching = false,
-        disallow_partial_fuzzy_matching = false,
-        disallow_fuzzy_matching = false,
-        disallow_partial_matching = false,
-        disallow_prefix_unmatching = false,
-      },
-
-      window = {
-        completion = cmp.config.window.bordered(),
-        documentation = cmp.config.window.bordered(),
-      },
-
       mapping = {
-        ['<CR>'] = cmp.mapping.confirm { select = true },
+        ['<CR>'] = cmp.mapping.confirm { select = true, beahvior = cmp.ConfirmBehavior.Replace },
         ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
-            cmp.select_next_item { behavior = cmp.SelectBehavior.Replace }
+            cmp.select_next_item()
           elseif snip.expand_or_jumpable() then
             snip.expand_or_jump()
-          -- elseif Utils.has_words_before() then cmp.complete()
-          elseif Utils.check_backspace() then
-            fallback()
           else
             fallback()
           end
@@ -90,14 +81,14 @@ return {
         },
       },
 
-      formatting = {
-        expandable_indicator = true,
-        fields = { 'kind', 'abbr' },
-        format = function(entry, vim_item)
-          vim_item.kind = Icons.cmp_kinds[vim_item.kind] or ''
-          return require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
-        end,
-      },
+      -- formatting = {
+      --   expandable_indicator = true,
+      --   fields = { 'kind', 'abbr' },
+      --   format = function(entry, vim_item)
+      --     vim_item.kind = Icons.cmp_kinds[vim_item.kind] or ''
+      --     return require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
+      --   end,
+      -- },
 
       sources = {
         { name = 'path' },
@@ -107,8 +98,8 @@ return {
         { name = 'luasnip' },
       },
 
-      experimental = { ghost_text = false },
-      confirm_opts = { behavior = cmp.ConfirmBehavior.Replace },
+      -- experimental = { ghost_text = false },
+      -- confirm_opts = { behavior = cmp.ConfirmBehavior.Replace },
     }
   end,
 }

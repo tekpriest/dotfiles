@@ -1,4 +1,3 @@
-local Utils = require 'tp.utils'
 return {
   {
     'prisma/vim-prisma',
@@ -20,5 +19,6 @@ return {
       },
       { '<leader>cR', '<cmd>TypescriptRenameFile<CR>', desc = 'Rename File' },
     },
+    config = true,
   },
 }

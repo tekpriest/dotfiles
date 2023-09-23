@@ -42,7 +42,7 @@ return {
       },
     },
     init = function()
-      vim.cmd [[colorscheme catppuccin]]
+      -- vim.cmd [[colorscheme catppuccin]]
     end,
   },
   {
@@ -121,5 +121,16 @@ return {
       vim.g.everforest_enable_italic = 1
       -- vim.cmd [[colorscheme everforest]]
     end,
+  },
+  {
+    'navarasu/onedark.nvim',
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme 'onedark'
+    end,
+    opts = {
+      transparent = true,
+      style = 'deep',
+    },
   },
 }
