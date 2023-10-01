@@ -7,7 +7,8 @@ local dev_ok, dev = pcall(require, 'neodev')
 if not dev_ok then
   return
 end
-local lspconfig = require 'lspconfig'
+
+local lspconfig_util = require 'lspconfig.util'
 
 -- load neodev
 dev.setup {}
@@ -20,7 +21,9 @@ local servers = {
   docker_compose_language_service = {},
   dockerls = {},
   emmet_ls = {},
-  html = {},
+  html = {
+    filetypes = { 'html', 'heex' },
+  },
   jsonls = {
     on_new_config = function(new_config)
       new_config.settings.json.schemas = new_config.settings.json.schemas or {}
@@ -47,9 +50,12 @@ local servers = {
   lua_ls = {
     settings = {
       Lua = {
-        completion = {
-          callSnippet = 'Both',
-          workspaceWord = true,
+        workspace = {
+          checkThirdParty = false,
+          library = {
+            vim.fn.expand '$VIMRUNTIME',
+            require('neodev.config').types(),
+          },
         },
         diagnostics = {
           enable = true,
@@ -57,7 +63,6 @@ local servers = {
         },
         runtime = {
           version = 'LuaJIT',
-          path = vim.split(package.path, ';'),
         },
       },
     },
@@ -75,9 +80,9 @@ local servers = {
     },
   },
   ruff_lsp = {},
-  bufls = {},
   sqlls = {},
-  clangd = {},
+  bufls = {},
+  elixirls = {},
 }
 
 local mason_lspconfig = require 'mason-lspconfig'
@@ -91,7 +96,7 @@ mason_lspconfig.setup_handlers {
     require('lspconfig')[server_name].setup {
       on_attach = require('tp.lsp.setup').on_attach,
       capabilities = require('tp.lsp.setup').capabilities,
-      settings = servers[server_name],
+      settings = servers[server_name]['settings'],
     }
   end,
 }

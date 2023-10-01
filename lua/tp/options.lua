@@ -14,7 +14,7 @@ opt.smartindent = true
 opt.wrap = false
 opt.swapfile = false
 opt.backup = false
-opt.undodir = os.getenv 'HOME' .. '/.vim.undodir'
+opt.undodir = fn.stdpath 'config' .. '/extras/undodir'
 opt.undofile = true
 opt.clipboard = { 'unnamedplus', 'unnamed' }
 opt.hlsearch = false
@@ -30,13 +30,13 @@ opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv 'SHELL', ':t')
 opt.titlestring = ' ❐ %t %r %m - ' .. fn.fnamemodify(fn.getcwd(), ':t')
 opt.title = true
 opt.list = true
-opt.listchars = {
-  eol = nil,
-  tab = '│ ',
-  extends = '›', -- Alternatives: … »
-  precedes = '‹', -- Alternatives: … «
-  trail = '•', -- BULLET (U+2022, UTF-8: E2 80 A2)
-}
+-- opt.listchars = {
+--   eol = nil,
+--   tab = '│ ',
+--   extends = '›', -- Alternatives: … »
+--   precedes = '‹', -- Alternatives: … «
+--   trail = '•', -- BULLET (U+2022, UTF-8: E2 80 A2)
+-- }
 opt.wildoptions = 'pum'
 opt.wildmenu = true
 opt.wildmode = 'longest:full,full'
@@ -67,35 +67,48 @@ opt.wildignore = {
   'yarn.lock',
   'zig-cache',
 }
-opt.shortmess = 'aoOtIF'
+opt.shortmess = 'aoOWtIF'
 opt.shiftround = true
 opt.joinspaces = false
 vim.opt.guicursor = [[n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50]]
-opt.fillchars = {
-  diff = '░', -- alternatives = ⣿ ░ ─
-  msgsep = '‾',
-  foldopen = '▾',
-  foldsep = '│',
-  foldclose = '▸',
-  vert = '│',
-  horiz = '─',
-  eob = ' ',
-}
-opt.formatoptions = {
-  ['1'] = true,
-  ['2'] = true, -- Use indent from 2nd line of a paragraph
-  q = true, -- continue comments with gq"
-  c = true, -- Auto-wrap comments using textwidth
-  r = true, -- Continue comments when pressing Enter
-  n = true, -- Recognize numbered lists
-  t = false, -- autowrap lines using text width value
-  j = true, -- remove a comment leader when joining lines.
-  -- Only break if the line was not longer than 'textwidth' when the insert
-  -- started and only at a white character that has been entered during the
-  -- current insert command.
-  l = true,
-  v = true,
-}
+vim.o.fillchars = table.concat({
+  'eob: ',
+  'fold:╌',
+  'horiz:═',
+  'horizdown:╦',
+  'horizup:╩',
+  'vert:║',
+  'verthoriz:╬',
+  'vertleft:╣',
+  'vertright:╠',
+}, ',')
+vim.o.listchars = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
+-- opt.fillchars = {
+--   diff = '░', -- alternatives = ⣿ ░ ─
+--   msgsep = '‾',
+--   foldopen = '▾',
+--   foldsep = '│',
+--   foldclose = '▸',
+--   vert = '│',
+--   horiz = '─',
+--   eob = ' ',
+-- }
+opt.formatoptions = 'rqnl1j'
+-- {
+--   ['1'] = true,
+--   ['2'] = true, -- Use indent from 2nd line of a paragraph
+--   q = true, -- continue comments with gq"
+--   c = true, -- Auto-wrap comments using textwidth
+--   r = true, -- Continue comments when pressing Enter
+--   n = true, -- Recognize numbered lists
+--   t = false, -- autowrap lines using text width value
+--   j = true, -- remove a comment leader when joining lines.
+--   -- Only break if the line was not longer than 'textwidth' when the insert
+--   -- started and only at a white character that has been entered during the
+--   -- current insert command.
+--   l = true,
+--   v = true,
+-- }
 opt.sessionoptions = 'globals,buffers,curdir,winpos,folds,tabpages,winsize'
 g.markdown_fenced_languages = {
   'js=javascript',
@@ -132,14 +145,14 @@ opt.history = 1000
 opt.inccommand = 'nosplit'
 opt.backspace = { 'indent', 'eol', 'start' }
 opt.mouse = 'nivh'
--- opt.concealcursor = 'nc'
+opt.mousemodel = 'extend'
 opt.previewheight = 5
 opt.synmaxcol = 500
 opt.display = 'msgsep'
 opt.modeline = false
 opt.signcolumn = 'yes:1'
 opt.timeoutlen = 400
-opt.switchbuf = 'useopen,uselast'
+opt.switchbuf = 'usetab'
 opt.ruler = false
 opt.lazyredraw = false
 -- opt.virtualedit = 'block'
@@ -148,6 +161,10 @@ opt.completeopt = 'menu,menuone,noselect'
 opt.winwidth = 30
 vim.o.breakindent = true
 vim.o.termguicolors = true
+opt.autowrite = true
+opt.mousescroll = 'ver:25,hor:6'
+opt.writebackup = false
+vim.cmd [[filetype plugin indent on]]
 
 -- table.insert(opt.diffopt, 'vertical')
 -- table.insert(opt.diffopt, 'iwhite')
@@ -163,8 +180,8 @@ end
 -- Skip some remote provider loading
 g.loaded_python3_provider = 0
 g.loaded_node_provider = 0
-g.loaded_perl_provider = 0
 g.loaded_ruby_provider = 0
+g.loaded_perl_provider = 0
 -- g.loaded = 1
 
 -- Disable some built-in plugins we don't want
@@ -184,4 +201,16 @@ local disabled_built_ins = {
 
 for i = 1, 10 do
   g[disabled_built_ins[i]] = 1
+end
+
+if vim.fn.has 'nvim-0.9' == 1 then
+  vim.opt.shortmess:append 'C' -- Don't show "Scanning..." messages
+  vim.o.splitkeep = 'screen' -- Reduce scroll during window split
+end
+
+-- Colors =====================================================================
+-- Enable syntax highlighing if it wasn't already (as it is time consuming)
+-- Don't use defer it because it affects start screen appearance
+if vim.fn.exists 'syntax_on' ~= 1 then
+  vim.cmd [[syntax enable]]
 end

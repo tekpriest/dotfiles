@@ -47,15 +47,16 @@ return {
         'vim',
         'vimdoc',
         'yaml',
+        'org',
+        'elixir',
+        'heex',
+        'eex',
       },
       auto_install = true,
       autopairs = { enabled = true },
       highlight = {
         enable = true,
-        disable = function(lang, bufnr)
-          return vim.bo.filetype == 'help'
-        end,
-        additional_vim_regex_highlighting = true,
+        additional_vim_regex_highlighting = { 'org' },
       },
       indent = { enable = false },
       incremental_selection = {

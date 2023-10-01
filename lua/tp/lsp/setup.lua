@@ -4,6 +4,9 @@ local ok_cmp_nvim_lsp, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
 if not ok_cmp_nvim_lsp then
   return
 end
+local disable_format = function(client)
+  client.server_capabilities.documentFormattingProvider = false
+end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem = {
@@ -30,11 +33,11 @@ M.capabilities.textDocument.foldingRange = {
 }
 M.setup = function()
   local config = {
-    virtual_text = false,
+    virtual_text = true,
     update_in_insert = true,
     underline = false,
     severity_sort = true,
-    signs = true,
+    signs = false,
   }
   vim.diagnostic.config(config)
 end
@@ -98,16 +101,32 @@ end
 
 M.on_attach = function(client, bufnr)
   if client.name == 'tsserver' then
-    client.server_capabilities.documentFormattingProvider = false
+    disable_format(client)
   end
   if client.name == 'lua_ls' then
-    client.server_capabilities.documentFormattingProvider = false
+    disable_format(client)
+  end
+  if client.name == 'bufls' then
+    disable_format(client)
   end
   if client.name == 'clangd' then
     client.server_capabilities.signatureHelpProvider = false
   end
   if client.name == 'ruff_lsp' then
     client.server_capabilities.hoverProvider = false
+  end
+  if client.name == 'gopls' then
+    if not client.server_capabilities.semanticTokensProvider then
+      local semantic = client.config.capabilities.textDocument.semanticTokens
+      client.server_capabilities.semanticTokensProvider = {
+        full = true,
+        legend = {
+          tokenTypes = semantic.tokenTypes,
+          tokenModifiers = semantic.tokenModifiers,
+        },
+        range = true,
+      }
+    end
   end
   keymaps(bufnr)
   setup_highlights(client, bufnr)

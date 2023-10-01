@@ -6,9 +6,7 @@ M.has_words_before = function()
   end
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0
-    and vim.api
-        .nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]
-        :match '^%s*$'
+    and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match '^%s*$'
       == nil
 end
 
@@ -140,8 +138,7 @@ M.print_diagnostics = function(opts, bufnr, line_nr, client_id)
 
   local diagnostic_message = ''
   for i, diagnostic in ipairs(line_diagnostics) do
-    diagnostic_message = diagnostic_message
-      .. string.format('%d: %s', i, diagnostic.message or '')
+    diagnostic_message = diagnostic_message .. string.format('%d: %s', i, diagnostic.message or '')
     if i ~= #line_diagnostics then
       diagnostic_message = diagnostic_message .. '\n'
     end
@@ -177,9 +174,8 @@ M.border = {
 }
 
 M.capabilities = function()
-  local capabilities = require('cmp_nvim_lsp').default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
+  local capabilities =
+    require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
   capabilities.textDocument.foldingRange = {
     dynamicRegistration = true,
     lineFoldingOnly = true,

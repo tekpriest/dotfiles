@@ -17,7 +17,8 @@
   },
   "lspconfig": {
     "lua_ls": {
-      "Lua.hint.enable": true
+      "Lua.hint.enable": true,
+      "Lua.workspace.checkThirdParty": false
     },
     "tsserver": {
       "typescript.tsserver.watchOptions": {

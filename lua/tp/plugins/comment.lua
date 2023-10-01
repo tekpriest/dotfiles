@@ -1,7 +1,7 @@
 return {
   {
     'numToStr/Comment.nvim',
-    lazy = false,
+    event = 'BufRead',
     keys = { 'gcc', 'gbc' },
     config = true,
   },

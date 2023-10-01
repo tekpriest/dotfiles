@@ -13,10 +13,10 @@ return {
       },
     },
   },
-  {
-    'm-demare/hlargs.nvim',
-    opts = {},
-  },
+  -- {
+  --   'm-demare/hlargs.nvim',
+  --   opts = {},
+  -- },
   {
     'nvim-tree/nvim-web-devicons',
   },
@@ -68,22 +68,17 @@ return {
         -- local warning_icon = ''
         -- local info_icon = '' --  
         -- local hint_icon = '' --  ⚑
-        local error_icon = 'E'
-        local warning_icon = 'W'
-        local info_icon = 'I'
-        local hint_icon = 'H'
-        local errors =
-          #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
-        local warnings =
-          #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
-        local hints =
-          #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
-        local info =
-          #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
+        local error_icon = ' '
+        local warning_icon = ' '
+        local info_icon = ' '
+        local hint_icon = ' '
+        local errors = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.ERROR })
+        local warnings = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.WARN })
+        local hints = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.HINT })
+        local info = #vim.diagnostic.get(0, { severity = vim.diagnostic.severity.INFO })
         local components = {}
         if errors > 0 then
-          components[#components + 1] =
-            { error_icon .. ' ' .. errors, 'DiagnosticError' }
+          components[#components + 1] = { error_icon .. ' ' .. errors, 'DiagnosticError' }
         end
 
         if warnings > 0 then

@@ -75,6 +75,14 @@ vim.defer_fn(function()
     end,
   })
 
+  -- set leex file ot heex
+  autocmd({ 'BufRead' }, {
+    pattern = { '*.leex' },
+    callback = function()
+      vim.cmd [[set filetype=heex]]
+    end,
+  })
+
   -- If a file is too large, I don't want to add to it's cmp sources treesitter, see:
   -- https://github.com/hrsh7th/nvim-cmp/issues/1522
   -- autocmd('BufReadPre', {
@@ -152,12 +160,7 @@ vim.defer_fn(function()
     },
     callback = function(event)
       vim.bo[event.buf].buflisted = false
-      vim.keymap.set(
-        'n',
-        'q',
-        '<cmd>close<cr>',
-        { buffer = event.buf, silent = true }
-      )
+      vim.keymap.set('n', 'q', '<cmd>close<cr>', { buffer = event.buf, silent = true })
     end,
   })
 
@@ -182,5 +185,29 @@ vim.defer_fn(function()
       local file = vim.loop.fs_realpath(event.match) or event.match
       vim.fn.mkdir(vim.fn.fnamemodify(file, ':p:h'), 'p')
     end,
+  })
+
+  -- open help window in a vertical split to the right
+  autocmd('BufWinEnter', {
+    group = Utils.augroup 'help_window_right',
+    pattern = { '#.txt' },
+    callback = function()
+      if vim.o.filetype == 'help' then
+        vim.cmd.wincmd 'L'
+      end
+    end,
+  })
+
+  local exitgroup = Utils.augroup 'set_dir'
+
+  autocmd('DirChanged', {
+    group = exitgroup,
+    pattern = { '#' },
+    command = [[call chansend(v:stderr, printf("/033]7;file:\\%s/033//", v:event.cwd))]],
+  })
+  vim.api.nvim_create_autocmd('VimLeave', {
+    group = exitgroup,
+    pattern = { '*' },
+    command = [[call chansend(v:stderr, "\033]7;\033\\")]],
   })
 end, 10)

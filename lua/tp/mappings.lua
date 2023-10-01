@@ -5,6 +5,10 @@ vim.g.mapleader = ' '
 --Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+-- If I visually select words and paste from clipboard, don't replace my
+-- clipboard with the selected word, instead keep my old word in the
+-- clipboard
+vim.keymap.set('x', 'p', '"_dP')
 
 -- clear hlsearch with escape
 -- map('n', '<esc>', '<cmd>:nohl<cr>', opts)

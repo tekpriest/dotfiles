@@ -1,3 +1,4 @@
+local Icons = require 'tp.icons'
 return {
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
@@ -56,6 +57,8 @@ return {
         ['<Tab>'] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_next_item()
+          -- elseif require('tp.utils').has_words_before() then
+          --   cmp.complete()
           elseif snip.expand_or_jumpable() then
             snip.expand_or_jump()
           else
@@ -81,14 +84,14 @@ return {
         },
       },
 
-      -- formatting = {
-      --   expandable_indicator = true,
-      --   fields = { 'kind', 'abbr' },
-      --   format = function(entry, vim_item)
-      --     vim_item.kind = Icons.cmp_kinds[vim_item.kind] or ''
-      --     return require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
-      --   end,
-      -- },
+      formatting = {
+        expandable_indicator = true,
+        fields = { 'kind', 'abbr' },
+        format = function(entry, vim_item)
+          vim_item.kind = Icons.cmp_kinds[vim_item.kind] or ''
+          return require('tailwindcss-colorizer-cmp').formatter(entry, vim_item)
+        end,
+      },
 
       sources = {
         { name = 'path' },
@@ -96,6 +99,7 @@ return {
         { name = 'nvim_lua' },
         { name = 'buffer', keyword_length = 2 },
         { name = 'luasnip' },
+        { name = 'orgmode' },
       },
 
       -- experimental = { ghost_text = false },

@@ -1,7 +1,6 @@
 return {
   'jay-babu/mason-null-ls.nvim',
-  event = 'VeryLazy',
-  -- event = { 'BufReadPre', 'BufNewFile' },
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
     'williamboman/mason.nvim',
     'jose-elias-alvarez/null-ls.nvim',
@@ -19,6 +18,7 @@ return {
   config = function()
     local null_ls = require 'null-ls'
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
+    -- local fmt = null_ls.builtins.formatting
 
     require('mason').setup()
     require('mason-null-ls').setup {
@@ -31,7 +31,6 @@ return {
         'shfmt',
         'stylua',
         'tfsec',
-        'buf',
       },
       automatic_installation = true,
       automatic_setup = true,
@@ -40,7 +39,9 @@ return {
           null_ls.register(null_ls.builtins.formatting.stylua)
         end,
         prettierd = function()
-          null_ls.register(null_ls.builtins.formatting.prettierd)
+          null_ls.register(
+            null_ls.builtins.formatting.prettierd.with { extra_filetypes = { 'svelte' } }
+          )
         end,
       },
     }
@@ -48,6 +49,7 @@ return {
       debounce = 150,
       sources = {
         require 'typescript.extensions.null-ls.code-actions',
+        -- fmt.prettierd.with { extra_filetypes = { 'svelte' } },
       },
       on_attach = function(client, bufnr)
         require('tp.lsp.setup').on_attach(client, bufnr)
