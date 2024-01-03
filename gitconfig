@@ -1,0 +1,60 @@
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+[user]
+	useConfigOnly = true
+	name = Asaju Enitan Michael
+	email = asajuenitan@gmail.com
+	signingkey = 2BA9C4054584E718
+[core]
+	excludesfile = $HOME/.gitignore
+	editor = nvim
+  pager = delta
+	autocrlf = input
+	eol = lf
+[init]
+	defaultBranch = main
+[color]
+	ui = true
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+[delta]
+  features=decorations
+ 
+[delta "interactive"]
+  ; side-by-side = true
+  keep-plus-minus-markers = true
+ 
+[delta "decorations"]
+	features = diff-so-fancy line-numbers
+	file-modified-label = modified:
+	hunk-header-decoration-style = blue box
+	line-numbers-minus-style = red
+	line-numbers-plus-style = green
+	line-numbers-zero-style = 244
+[tag]
+	gpgSign = true
+  line-numbers-left-format = ""
+  line-numbers-right-format = "| "
+[fetch]
+	prune = true
+[pull]
+	rebase = true
+	verbose = true
+[push]
+	default = upstream
+[commit]
+	gpgsign = true
+	verbos = true
+[gpg]
+	program = gpg
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[merge]
+	tool = nvim
+[mergetool "nvim"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+[diff]
+	submodule = log

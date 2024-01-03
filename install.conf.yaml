@@ -1,0 +1,23 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.config/kitty: kitty
+    ~/.config/alacritty: alacritty
+    ~/.config/tpde: tpde
+    ~/.tmux.conf: tmux.conf
+    ~/.zshrc: zshrc
+    ~/.config/hypr: hypr
+
+- create:
+  - ~/Code
+
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
