@@ -3,7 +3,7 @@ return {
   version = '*',
   event = 'VeryLazy',
   -- ft = 'markdown',
-  depends = { 'plenary.nvim' },
+  dependencies = { 'plenary.nvim' },
   opts = {
     workspaces = {
       {

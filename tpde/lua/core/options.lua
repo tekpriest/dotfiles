@@ -72,14 +72,22 @@ opt.shortmess:append { W = true, I = true, c = true, C = true, s = true, F = tru
 opt.shiftround = true
 vim.o.fillchars = table.concat({
   'eob: ',
-  'fold:╌',
-  'horiz:═',
-  'horizdown:╦',
-  'horizup:╩',
-  'vert:║',
-  'verthoriz:╬',
-  'vertleft:╣',
-  'vertright:╠',
+  'horiz:─',
+  -- 'fold:╌',
+  -- 'horiz:═',
+  -- 'horizdown:╦',
+  -- 'horizup:╩',
+  -- 'vert:║',
+  -- 'verthoriz:╬',
+  -- 'vertleft:╣',
+  -- 'vertright:╠',
+  'vert:▕', -- alternatives │
+  'fold: ',
+  'diff:░', -- alternatives = ⣿ ░ ─
+  'msgsep:‾',
+  'foldopen:▾',
+  'foldsep:│',
+  'foldclose:▸',
 }, ',')
 vim.o.listchars = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab:> ' }, ',')
 -- opt.fillchars = {
@@ -88,8 +96,6 @@ vim.o.listchars = table.concat({ 'extends:…', 'nbsp:␣', 'precedes:…', 'tab
 --   foldopen = '▾',
 --   foldsep = '│',
 --   foldclose = '▸',
---   vert = '│',
---   horiz = '─',
 --   eob = ' ',
 -- }
 opt.formatoptions = 'rqnl1j'

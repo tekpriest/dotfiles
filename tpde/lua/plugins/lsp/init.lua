@@ -42,7 +42,7 @@ return {
         javascriptreact = { 'prettierd' },
         html = { 'prettierd' },
         elixir = { 'mix' },
-        dart = { 'dart_format' },
+        -- dart = { 'dart_format' },
         yaml = { 'prettierd' },
         json = { 'prettierd' },
         lua = { 'stylua' },
