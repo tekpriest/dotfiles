@@ -48,17 +48,6 @@ return {
     window = {
       position = 'right',
       width = 30,
-      mappings = {
-        ['e'] = function()
-          vim.api.nvim_exec('Neotree focus filesystem right', true)
-        end,
-        ['b'] = function()
-          vim.api.nvim_exec('Neotree focus buffers right', true)
-        end,
-        ['g'] = function()
-          vim.api.nvim_exec('Neotree focus git_status right', true)
-        end,
-      },
     },
     default_component_configs = {
       icon = {
@@ -71,9 +60,6 @@ return {
           unstaged = '󰄱',
         },
       },
-    },
-    source_selector = {
-      statusline = true,
     },
   },
   keys = {
