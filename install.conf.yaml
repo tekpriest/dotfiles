@@ -17,6 +17,7 @@
     ~/.config/wezterm: wezterm
     ~/.config/fish: fish
     ~/.config/foot: foot
+    ~/.local/bin: bin
 
 - create:
   - ~/Code
