@@ -15,6 +15,8 @@
     ~/.zshrc: zshrc
     ~/.config/hypr: hypr
     ~/.config/wezterm: wezterm
+    ~/.config/fish: fish
+    ~/.config/foot: foot
 
 - create:
   - ~/Code
