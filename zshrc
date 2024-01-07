@@ -22,7 +22,10 @@ unsetopt beep
 source $ZSH/oh-my-zsh.sh
 
 # asdf
-. /opt/asdf-vm/asdf.sh
+. "$HOME/.asdf/asdf.sh"
+
+# z
+. "/opt/homebrew/etc/profile.d/z.sh"
 
 # aliases
 alias e="NVIM_APPNAME=tpde nvim"
@@ -39,13 +42,15 @@ export VISUAL=e
 export BAT_THEME=Catppuccin-mocha
 export FZF_DEFAULT_COMMAND="fd -H -E '.git'"
 export FZF_CTRL_T_COMMAND=e
-export T_SESSION_NAME_INCLUDE_PARENT=true
+# export T_SESSION_NAME_INCLUDE_PARENT=true
+export PATH=$PATH:$HOME/.config/emacs/bin
+export PATH=$PATH:$HOME/go/bin
 
 # sources
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #plugins
-plugins=(git)
+plugins=( git )
 
 # misc
 if [ "$(command -v bat)" ]; then

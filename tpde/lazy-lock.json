@@ -2,7 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "0236521ea582747b58869cb72f70ccfa967d2e89" },
   "LuaSnip": { "branch": "master", "commit": "4b451141a4239c24cf91048bdb10dfcb4c27608a" },
   "SchemaStore.nvim": { "branch": "main", "commit": "02cbeccdcaa8bc11e849b61a08a11b9b8a5dde7d" },
-  "cmake-tools.nvim": { "branch": "master", "commit": "5d8d0f7f7be881ca879cf33c160621687fee98b9" },
+  "cmake-tools.nvim": { "branch": "master", "commit": "5c39242383f5db39b04248bb5c65e0b72f984b22" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },
   "cmp-nvim-lsp-signature-help": { "branch": "main", "commit": "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1" },

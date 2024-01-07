@@ -9,11 +9,11 @@ end
 
 config.color_scheme = "Tokyo Night"
 config.font = wezterm.font_with_fallback({
-	{ family = "SpaceMono Nerd Font" },
+	{ family = "Dank Mono" },
 	{ family = "CaskaydiaCove Nerd Font" },
 })
-config.font_size = 6
-config.window_background_opacity = 0
+config.font_size = 11
+config.window_background_opacity = 0.95
 config.window_decorations = "RESIZE"
 -- config.window_close_confirmation = 'AlwaysPrompt'
 config.scrollback_lines = 3000
@@ -25,8 +25,6 @@ config.inactive_pane_hsb = {
 	saturation = 0.24,
 	brightness = 0.5,
 }
-
-config.default_prog = { "fish" }
 
 -- remove fancy tab bar
 config.use_fancy_tab_bar = false
