@@ -17,8 +17,8 @@
     ~/.config/fish: fish
     ~/.config/foot: foot
     ~/.local/bin: bin
-    ~/.my.cnf: my.cnf
-    ~/.config/doom: doom
+    ~/.config/contour: contour
+    ~/.config/nvim: nvim
 
 - create:
   - ~/Code

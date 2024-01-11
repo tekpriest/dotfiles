@@ -117,10 +117,10 @@ M.setup = function(_, opts)
   end)
 
   local servers = opts.servers
-  local capabilities = capabilities()
+  local caps = utils.capabilities()
 
   if client.name ~= 'yamlls' then
-    capabilities.textDocument.foldingRange = {
+    caps.textDocument.foldingRange = {
       dynamicRegistration = false,
       lineFoldingOnly = true,
     }
@@ -128,7 +128,7 @@ M.setup = function(_, opts)
 
   local function setup(server)
     local server_opts =
-      vim.tbl_deep_extend('force', { capabilities = capabilities }, servers[server] or {})
+      vim.tbl_deep_extend('force', { capabilities = caps }, servers[server] or {})
 
     if opts.setup[server] then
       if opts.setup[server](server, server_opts) then

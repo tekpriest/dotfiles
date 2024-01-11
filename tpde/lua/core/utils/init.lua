@@ -97,4 +97,10 @@ M.del_buffer_autocmd = function(augroup, bufnr)
   end
 end
 
+M.capabilities = function()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  return require('cmp_nvim_lsp').default_capabilities(capabilities)
+end
+
 return M

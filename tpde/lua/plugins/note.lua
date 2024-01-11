@@ -4,6 +4,9 @@ return {
   event = 'VeryLazy',
   -- ft = 'markdown',
   dependencies = { 'plenary.nvim' },
+  init = function()
+    vim.opt.conceallevel = 2
+  end,
   opts = {
     workspaces = {
       {

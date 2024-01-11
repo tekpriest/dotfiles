@@ -60,10 +60,10 @@ return {
         },
         formatting = {
           fields = { 'kind', 'abbr' },
-          format = function(_, item)
-            item.kind = Utils.cmp_kinds[item.kind] or ''
-            return item
-          end,
+        --   format = function(_, item)
+        --     item.kind = Utils.cmp_kinds[item.kind] or ''
+        --     return item
+        --   end,
         },
         experimental = {
           hl_group = 'LspCodeLens',
