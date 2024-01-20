@@ -22,19 +22,6 @@ return {
     'wakatime/vim-wakatime',
     event = 'VeryLazy',
   },
-  {
-    'Shatur/neovim-session-manager',
-    dependencies = {
-      { 'nvim-lua/plenary.nvim' },
-    },
-    keys = {
-      {
-        '<leader>ql',
-        '<cmd>SessionManager load_current_dir_session<cr>',
-        desc = 'retore last session',
-      },
-    },
-  },
   -- {
   --   '0oAstro/silicon.lua',
   --   opts = {
@@ -72,19 +59,6 @@ return {
   --     disable_lsp_decorations = true,
   --   },
   -- },
-  -- {
-  --   'Shatur/neovim-session-manager',
-  --   dependencies = {
-  --     { 'nvim-lua/plenary.nvim' },
-  --   },
-  --   keys = {
-  --     {
-  --       '<leader>ql',
-  --       '<cmd>SessionManager load_current_dir_session<cr>',
-  --       desc = 'retore last session',
-  --     },
-  --   },
-  -- },
   {
     'nvim-tree/nvim-web-devicons',
     event = 'VeryLazy',
@@ -100,15 +74,15 @@ return {
     event = 'VeryLazy',
     opts = {},
   },
-  -- {
-  --   'rcarriga/nvim-notify',
-  --   opts = {
-  --     background_colour = '#000000',
-  --   },
-  --   init = function()
-  --     vim.notify = require 'notify'
-  --   end,
-  -- },
+  {
+    'rcarriga/nvim-notify',
+    opts = {
+      background_colour = '#000000',
+    },
+    init = function()
+      vim.notify = require 'notify'
+    end,
+  },
   {
     'ThePrimeagen/harpoon',
     dependencies = {
@@ -204,22 +178,6 @@ return {
         desc = 'Extract Block To File',
       },
     },
-  },
-  {
-    'norcalli/nvim-colorizer.lua',
-    -- event = 'VeryLazy',
-    ft = { 'css', 'html', 'scss', 'typescriptreact', 'javascriptreact' },
-    config = function()
-      require('colorizer').setup({ 'css', 'scss', 'html', 'javascriptreact', 'typescriptreact' }, {
-        RGB = true, -- #RGB hex codes
-        RRGGBB = true, -- #RRGGBB hex codes
-        RRGGBBAA = true, -- #RRGGBBAA hex codes
-        rgb_fn = true, -- CSS rgb() and rgba() functions
-        hsl_fn = false, -- CSS hsl() and hsla() functions
-        css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-        css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
-      })
-    end,
   },
   { 'ellisonleao/glow.nvim', cmd = 'Glow', ft = { 'markdown' } },
   {

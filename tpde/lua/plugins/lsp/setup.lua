@@ -51,7 +51,8 @@ local keymaps = function(client, buffer)
     map('n', 'gd', vim.lsp.buf.definition, { desc = '[g]oto [d]efinition', buffer = buffer })
   end
   -- stylua: ignore
-  map('n', 'gr', function() require('trouble').open 'lsp_references' end, { desc = '[g]oto [r]eferences',buffer = buffer })
+  map('n', 'gr', function() require('trouble').open 'lsp_references' end,
+    { desc = '[g]oto [r]eferences', buffer = buffer })
   if client.supports_method 'textDocument/hover' then
     map('n', 'K', vim.lsp.buf.hover, { desc = 'hover' })
   end
@@ -68,10 +69,9 @@ local keymaps = function(client, buffer)
   if client.supports_method 'textDocument/codeAction' then
     map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[c]ode [a]ction' })
   end
-  map('n', '<leader>cs', telescope_builtin.lsp_document_symbols, { desc = '[c]ode [s]ymbols' })
-  map('n', '<leader>cd', telescope_builtin.diagnostics, { desc = '[c]ode [d]ocument symbols' })
   -- stylua: ignore
-  map('n', '<leader>cw', telescope_builtin.lsp_dynamic_workspace_symbols, {desc='[c]ode [w]orkspace symbols',  buffer = buffer})
+  map('n', '<leader>cw', telescope_builtin.lsp_dynamic_workspace_symbols,
+    { desc = '[c]ode [w]orkspace symbols', buffer = buffer })
   if client.supports_method 'textDocument/rename' then
     map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[c]ode [r]ename', buffer = buffer })
   end
@@ -127,8 +127,7 @@ M.setup = function(_, opts)
   end
 
   local function setup(server)
-    local server_opts =
-      vim.tbl_deep_extend('force', { capabilities = caps }, servers[server] or {})
+    local server_opts = vim.tbl_deep_extend('force', { capabilities = caps }, servers[server] or {})
 
     if opts.setup[server] then
       if opts.setup[server](server, server_opts) then

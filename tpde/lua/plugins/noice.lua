@@ -1,5 +1,5 @@
 if true then
- return {} 
+  return {}
 end
 -- return {
 --   'folke/noice.nvim',

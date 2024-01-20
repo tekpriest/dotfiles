@@ -140,6 +140,11 @@ vim.defer_fn(function()
     command = [[set filetype=html]],
   })
 
+  autocmd('ColorScheme', {
+    pattern = { '*' },
+    command = [[highlight CursorLineNr cterm=bold term=bold gui=bold]],
+  })
+
   -- autocmd('BufReadPost', {
   --   group = Utils.augroup 'set_maximize_buffer_keys',
   --   pattern = '*',

@@ -3,13 +3,14 @@ size = 10
 
 [font.bold_italic]
 family = 'OperatorMono Nerd Font'
+style = 'Medium Italic'
 
 [font.italic]
 family = 'OperatorMono Nerd Font'
 
 [font.normal]
-family = 'CamingoCode Nerd Font'
-# style = 'Extra Light'
+family = 'OperatorMono Nerd Font'
+style = 'Extra Light'
 
 [font.bold]
 family = 'OperatorMono Nerd Font'

@@ -31,7 +31,7 @@ return {
           require('conform').format { async = true, lsp_fallback = true }
         end,
         mode = { 'n' },
-        desc = 'Format buffer',
+        desc = 'Format buffer with conform',
       },
     },
     opts = {
@@ -42,7 +42,7 @@ return {
         javascriptreact = { 'prettierd' },
         html = { 'prettierd' },
         elixir = { 'mix' },
-        -- dart = { 'dart_format' },
+        dart = { 'dart_format' },
         yaml = { 'prettierd' },
         json = { 'prettierd' },
         lua = { 'stylua' },
@@ -181,7 +181,7 @@ return {
         proto = { 'buf_lint' },
         env = { 'dotenv_linter' },
         go = { 'golangcilint' },
-        docker = {'hadolint'}
+        docker = { 'hadolint' },
       },
     },
     config = function(_, opts)

@@ -26,7 +26,7 @@ return {
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
-      'hrsh7th/cmp-nvim-lsp-signature-help',
+      -- 'hrsh7th/cmp-nvim-lsp-signature-help',
       'hrsh7th/cmp-nvim-lua',
     },
     init = function()
@@ -52,7 +52,7 @@ return {
       local Utils = require 'core.utils'
 
       return {
-        completion = { completeopt = 'menu,menuone,noinsert,preview' },
+        -- completion = { completeopt = 'menu,menuone,noinsert,preview' },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -60,10 +60,10 @@ return {
         },
         formatting = {
           fields = { 'kind', 'abbr' },
-        --   format = function(_, item)
-        --     item.kind = Utils.cmp_kinds[item.kind] or ''
-        --     return item
-        --   end,
+          --   format = function(_, item)
+          --     item.kind = Utils.cmp_kinds[item.kind] or ''
+          --     return item
+          --   end,
         },
         experimental = {
           hl_group = 'LspCodeLens',
@@ -100,7 +100,7 @@ return {
         sources = {
           { name = 'luasnip' },
           { name = 'path' },
-          { name = 'nvim_lsp_signature_help' },
+          -- { name = 'nvim_lsp_signature_help' },
           { name = 'buffer' },
           { name = 'nvim_lua' },
           { name = 'nvim_lsp' },

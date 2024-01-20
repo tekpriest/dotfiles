@@ -18,7 +18,7 @@ require('lazy').setup {
     { import = 'plugins.langs' },
   },
   {
-    defaults = { lazy = true, version = nil },
+    defaults = { lazy = true, version = false },
     change_detection = { notify = false, enabled = true },
     install = { missing = true, colorscheme = { 'tokyonight', 'catppuccin' } },
     checker = { enabled = true, notify = false }, -- automatically check for plugin updates
@@ -27,9 +27,9 @@ require('lazy').setup {
         -- disable some rtp plugins
         disabled_plugins = {
           'gzip',
-          'matchit',
-          'matchparen',
-          'netrwPlugin',
+          -- 'matchit',
+          -- 'matchparen',
+          -- 'netrwPlugin',
           'tarPlugin',
           'tohtml',
           'tutor',
