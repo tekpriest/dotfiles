@@ -44,6 +44,9 @@ return {
           end,
         },
       },
+      filesystem = {
+        follow_current_file = { enable = false },
+      },
       default_component_configs = {
         icon = {
           folder_empty = '󰜌',
@@ -58,7 +61,7 @@ return {
       },
     },
     keys = {
-      { '<leader>o', '<leader>fE', desc = 'focus file', remap = true },
+      { '<leader>o', '<cmd>Neotree reveal<cr>', desc = 'focus file', remap = true },
     },
   },
   {

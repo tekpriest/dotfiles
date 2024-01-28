@@ -168,28 +168,28 @@ return {
       end
     end,
   },
-  {
-    'mfussenegger/nvim-lint',
-    event = 'LspAttach',
-    opts = {
-      linters_by_ft = {
-        elixir = { 'credo' },
-        javascript = { 'eslint_d' },
-        typescript = { 'eslint_d' },
-        yaml = { 'yamllint' },
-        zsh = { 'zsh' },
-        proto = { 'buf_lint' },
-        env = { 'dotenv_linter' },
-        go = { 'golangcilint' },
-        docker = { 'hadolint' },
-      },
-    },
-    config = function(_, opts)
-      vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
-        callback = function()
-          require('lint').try_lint()
-        end,
-      })
-    end,
-  },
+  -- {
+  --   'mfussenegger/nvim-lint',
+  --   event = 'LspAttach',
+  --   opts = {
+  --     linters_by_ft = {
+  --       elixir = { 'credo' },
+  --       javascript = { 'eslint_d' },
+  --       typescript = { 'eslint_d' },
+  --       yaml = { 'yamllint' },
+  --       zsh = { 'zsh' },
+  --       proto = { 'buf_lint' },
+  --       env = { 'dotenv_linter' },
+  --       go = { 'golangcilint' },
+  --       docker = { 'hadolint' },
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     vim.api.nvim_create_autocmd({ 'BufWritePost' }, {
+  --       callback = function()
+  --         require('lint').try_lint()
+  --       end,
+  --     })
+  --   end,
+  -- },
 }

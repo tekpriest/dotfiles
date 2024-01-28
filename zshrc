@@ -14,6 +14,7 @@ COMPLETION_WAITING_DOTS='true'
 HIST_STAMPS='yyyy-mm-dd'
 DISABLE_MAGIC_FUNCTIONS=true
 COMPLETION_WAITING_DOTS="true"
+ZSH_TMUX_AUTOSTART=true
 
 setopt EXTENDED_HISTORY
 setopt autocd extendedglob
@@ -48,7 +49,7 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 #plugins
-plugins=( git )
+plugins=(git tmux)
 
 # misc
 if [ "$(command -v bat)" ]; then

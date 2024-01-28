@@ -1,30 +1,31 @@
 [font]
-size = 10
+size = 9
 
 [font.bold_italic]
-family = 'OperatorMono Nerd Font'
-style = 'Medium Italic'
+family = 'MonoLisa NF'
 
 [font.italic]
-family = 'OperatorMono Nerd Font'
+family = 'MonoLisa NF'
 
 [font.normal]
-family = 'OperatorMono Nerd Font'
-style = 'Extra Light'
+family = 'MonoLisa NF'
 
 [font.bold]
-family = 'OperatorMono Nerd Font'
+family = 'MonoLisa NF'
 
 [window]
 decorations = "buttonless"
-opacity = 0.95
+opacity = 0.93
 option_as_alt = 'Both'
 
 [window.padding]
 y = 5
 x = 6
 
-# Catppuccin Mocka
+[shell]
+program = "/bin/zsh"
+args = ["-l", "-c", "tmux attach || tmux"]
+
 [colors.primary]
 background = '#1E1E2E' # base
 foreground = '#CDD6F4' # text
@@ -70,14 +71,14 @@ background = '#F5E0DC' # rosewater
 
 # Normal colors
 [colors.normal]
-black = '#45475A' # surface1
-red = '#F38BA8' # red
-green = '#A6E3A1' # green
-yellow = '#F9E2AF' # yellow
-blue = '#89B4FA' # blue
-magenta = '#F5C2E7' # pink
-cyan = '#94E2D5' # teal
-white = '#BAC2DE' # subtext1
+black   = '#1E2320'
+red     = '#D78787'
+green   = '#60B48A'
+yellow  = '#DFAF8F'
+blue    = '#506070'
+magenta = '#DC8CC3'
+cyan    = '#8CD0D3'
+white   = '#DCDCCC'
 
 # Bright colors
 [colors.bright]
@@ -89,15 +90,3 @@ blue = '#89B4FA' # blue
 magenta = '#F5C2E7' # pink
 cyan = '#94E2D5' # teal
 white = '#A6ADC8' # subtext0
-
-# Dim colors
-[colors.dim]
-black = '#45475A' # surface1
-red = '#F38BA8' # red
-green = '#A6E3A1' # green
-yellow = '#F9E2AF' # yellow
-blue = '#89B4FA' # blue
-magenta = '#F5C2E7' # pink
-cyan = '#94E2D5' # teal
-white = '#BAC2DE' # subtext1
-

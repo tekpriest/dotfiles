@@ -17,7 +17,9 @@ return {
       -- make sure mason installs the server
       servers = {
         -- html
-        html = {},
+        html = {
+          filetypes = { 'html', 'templ' },
+        },
         -- Emmet
         emmet_ls = {
           init_options = {

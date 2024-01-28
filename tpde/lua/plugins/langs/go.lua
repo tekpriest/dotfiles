@@ -30,6 +30,7 @@ return {
         'gomodifytags',
         'iferr',
         'gotestsum',
+        'templ',
       })
     end,
   },
@@ -64,6 +65,7 @@ return {
           },
           init_options = { usePlaceholders = true },
         },
+        templ = {},
         -- golangci_lint_ls = {},
       },
       setup = {

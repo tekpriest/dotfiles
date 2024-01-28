@@ -5,6 +5,8 @@ return {
       servers = {
         tailwindcss = {
           filetypes_exclude = { 'markdown', 'elixir', 'typescript', 'javascript' },
+          filetypes = { 'templ', 'astro', 'react' },
+          init_options = { userLanguages = { templ = 'html' } },
         },
       },
       setup = {
