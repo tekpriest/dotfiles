@@ -1,22 +1,64 @@
 return {
+  { 'nvim-lua/plenary.nvim' },
   {
-    'LazyVim/LazyVim',
+    'windwp/nvim-autopairs',
+    event = { 'InsertEnter' },
     opts = {
-      colorscheme = 'kanagawa',
+      check_ts = true,
+      ts_config = {
+        lua = { 'string' },
+        javascript = { 'template_string' },
+      },
+      disable_filetype = { 'TelescopePrompt', 'vim' },
+      map_cr = false,
     },
+    config = function(_, opts)
+      require('nvim-autopairs').setup(opts)
+      -- setup cmp for autopairs
+      -- local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      -- require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    end,
+  },
+  {
+    'wakatime/vim-wakatime',
+    event = 'VeryLazy',
+  },
+  {
+    'nvim-tree/nvim-web-devicons',
+    event = 'VeryLazy',
+    dependencies = { 'DaikyXendo/nvim-material-icon' },
+    config = function()
+      require('nvim-web-devicons').setup {
+        override = require('nvim-material-icon').get_icons(),
+      }
+    end,
+  },
+  {
+    'stevearc/dressing.nvim',
+    event = 'VeryLazy',
+    opts = {},
+  },
+  {
+    'rcarriga/nvim-notify',
+    opts = {
+      background_colour = '#000000',
+    },
+    init = function()
+      vim.notify = require 'notify'
+    end,
   },
   {
     'ThePrimeagen/harpoon',
     dependencies = {
       { 'nvim-lua/plenary.nvim' },
     },
-    init = function()
-      vim.cmd 'highlight! HarpoonInactive guibg=NONE guifg=#63698c'
-      vim.cmd 'highlight! HarpoonActive guibg=NONE guifg=white'
-      vim.cmd 'highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7'
-      vim.cmd 'highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7'
-      vim.cmd 'highlight! TabLineFill guibg=NONE guifg=white'
-    end,
+    -- init = function()
+    --   vim.cmd 'highlight! HarpoonInactive guibg=NONE guifg=#63698c'
+    --   vim.cmd 'highlight! HarpoonActive guibg=NONE guifg=white'
+    --   vim.cmd 'highlight! HarpoonNumberActive guibg=NONE guifg=#7aa2f7'
+    --   vim.cmd 'highlight! HarpoonNumberInactive guibg=NONE guifg=#7aa2f7'
+    --   vim.cmd 'highlight! TabLineFill guibg=NONE guifg=white'
+    -- end,
     keys = {
       {
         '<leader>ja',
@@ -36,14 +78,70 @@ return {
     },
   },
   {
-    'stevearc/conform.nvim',
-    opts = {
-      formatters_by_ft = {},
+    'ThePrimeagen/refactoring.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-treesitter/nvim-treesitter',
     },
-  },
-  {
-    'wakatime/vim-wakatime',
-    event = 'VeryLazy',
+    config = function()
+      require('refactoring').setup()
+    end,
+    cmd = { 'Refactor' },
+    keys = {
+      {
+        '<leader>rx',
+        function()
+          require('refactoring').refactor 'Extract Function'
+        end,
+        desc = 'Extract Function',
+        mode = { 'x' },
+      },
+      {
+        '<leader>rf',
+        function()
+          require('refactoring').refactor 'Extract Function To File'
+        end,
+        desc = 'Extract Function To File',
+        mode = { 'x' },
+      },
+      {
+        '<leader>rv',
+        function()
+          require('refactoring').refactor 'Extract Variable'
+        end,
+        desc = 'Extract Variable',
+        mode = { 'x' },
+      },
+      {
+        '<leader>rI',
+        function()
+          require('refactoring').refactor 'Inline Function'
+        end,
+        desc = 'Inline Function',
+      },
+      {
+        '<leader>ri',
+        function()
+          require('refactoring').refactor 'Inline Variable'
+        end,
+        desc = 'Inline Variable',
+        mode = { 'n', 'x' },
+      },
+      {
+        '<leader>rb',
+        function()
+          require('refactoring').refactor 'Extract Block'
+        end,
+        desc = 'Extract Block',
+      },
+      {
+        '<leader>rbf',
+        function()
+          require('refactoring').refactor 'Extract Block To File'
+        end,
+        desc = 'Extract Block To File',
+      },
+    },
   },
   { 'ellisonleao/glow.nvim', cmd = 'Glow', ft = { 'markdown' } },
   {
@@ -59,56 +157,6 @@ return {
     event = { 'BufReadPost' },
     config = function()
       vim.g.matchup_matchparen_offscreen = { method = 'popup' }
-    end,
-  },
-  {
-    'kevinhwang91/nvim-ufo',
-    dependencies = { 'kevinhwang91/promise-async' },
-    event = 'LspAttach',
-    init = function()
-      vim.o.foldcolumn = '0' -- '0' is not bad
-      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-      vim.o.foldlevelstart = 99
-      vim.o.foldenable = true
-    end,
-    config = function()
-      require('ufo').setup {
-        fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
-          local newVirtText = {}
-          local suffix = ('  %d '):format(endLnum - lnum)
-          local sufWidth = vim.fn.strdisplaywidth(suffix)
-          local targetWidth = width - sufWidth
-          local curWidth = 0
-          for _, chunk in ipairs(virtText) do
-            local chunkText = chunk[1]
-            local chunkWidth = vim.fn.strdisplaywidth(chunkText)
-            if targetWidth > curWidth + chunkWidth then
-              table.insert(newVirtText, chunk)
-            else
-              chunkText = truncate(chunkText, targetWidth - curWidth)
-              local hlGroup = chunk[2]
-              table.insert(newVirtText, { chunkText, hlGroup })
-              chunkWidth = vim.fn.strdisplaywidth(chunkText)
-              -- str width returned from truncate() may less than 2nd argument, need padding
-              if curWidth + chunkWidth < targetWidth then
-                suffix = suffix .. (' '):rep(targetWidth - curWidth - chunkWidth)
-              end
-              break
-            end
-            curWidth = curWidth + chunkWidth
-          end
-          table.insert(newVirtText, { suffix, 'MoreMsg' })
-          return newVirtText
-        end,
-        close_fole_kinds = { 'imports', 'comment' },
-        preview = {
-          win_config = {
-            border = { '', '─', '', '', '', '─', '', '' },
-            winhighlight = 'Normal:Folded',
-            winblend = 0,
-          },
-        },
-      }
     end,
   },
 }

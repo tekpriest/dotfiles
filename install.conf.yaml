@@ -19,6 +19,7 @@
     ~/.local/bin: bin
     ~/.config/contour: contour
     ~/.config/nvim: nvim
+    ~/.config/neovide: neovide
     # ~/.config/rebelot: rebelot/.config/nvim
 
 - create:

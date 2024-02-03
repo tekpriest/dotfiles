@@ -44,6 +44,7 @@ export PATH=$PATH:$HOME/.config/emacs/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin/flutter/bin
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH=$PATH:$HOME/Library/Python/3.9/bin
 
 # sources
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -82,3 +83,4 @@ alias i='iex'
 alias sqlite='sqlite3'
 alias dud='du -d 1 -h'
 alias ff='find . -type f -name'
+alias nv='nvim'

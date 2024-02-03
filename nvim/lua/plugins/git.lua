@@ -1,6 +1,17 @@
 return {
   {
+    'tpope/vim-fugitive',
+    cmd = { 'Git', 'GBrowse', 'Gdiffsplit', 'Gvdiffsplit' },
+    dependencies = { 'tpope/vim-rhubarb' },
+    -- stylua: ignore
+    keys = {
+      { '<leader>gs', '<cmd>Git<cr>', desc = 'Git Status', },
+      { '<leader>gd', '<cmd>Git diff<cr>', desc = 'Git diff', },
+    },
+  },
+  {
     'lewis6991/gitsigns.nvim',
+    ft = { 'gitcommit', 'diff' },
     init = function()
       -- load gitsigns only when a git file is opened
       vim.api.nvim_create_autocmd({ 'BufRead' }, {
@@ -54,6 +65,7 @@ return {
         desc = 'blame line',
       },
     },
+    config = true,
   },
   {
     'ruifm/gitlinker.nvim',

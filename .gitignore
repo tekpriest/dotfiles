@@ -1,2 +1,3 @@
 tpde/extras/undodir
 bin/docker-compose
+nvim/extras/undodir

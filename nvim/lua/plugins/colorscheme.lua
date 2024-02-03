@@ -1,9 +1,9 @@
 return {
   {
     'rebelot/kanagawa.nvim',
+    event = 'User ColorSchemeLoad',
     init = function()
-      vim.cmd 'highlight TelescopBorder guibg=none'
-      vim.cmd 'highlight TelescopTitle guibg=none'
+      vim.cmd.colorscheme 'kanagawa'
     end,
     config = function()
       require('kanagawa').setup {
@@ -35,14 +35,13 @@ return {
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
             MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
-            TelescopeTitle = { fg = theme.ui.special, bold = true, bg = 'none' },
+            TelescopeTitle = { fg = theme.ui.special, bold = true },
             TelescopePromptNormal = { bg = theme.ui.bg_p1 },
             TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
             TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
             TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             TelescopePreviewNormal = { bg = theme.ui.bg_dim },
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-            TelescopBorder = { bg = 'none' },
             Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 }, -- add `blend = vim.o.pumblend` to enable transparency
             PmenuSel = { fg = 'NONE', bg = theme.ui.bg_p2 },
             PmenuSbar = { bg = theme.ui.bg_m1 },
@@ -52,26 +51,5 @@ return {
       }
     end,
   },
-  {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    opts = {
-      transparent_background = true,
-      styles = {
-        functions = { 'italic' },
-        types = { 'italic' },
-      },
-      integrations = {
-        aerial = true,
-        harpoon = true,
-        fidget = true,
-        gitsigns = true,
-        leap = true,
-        neotree = true,
-        navic = { enabled = true },
-        notify = true,
-        which_key = true,
-      },
-    },
-  },
 }
+
