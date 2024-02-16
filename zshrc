@@ -32,7 +32,7 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:$HOME/.local/bin
 export PATH=$PATH:$HOME/.tmux/plugins/t-smart-tmux-session-manager/bin
 export tpde=$HOME/.config/tpde
-export EDITOR=e
+export EDITOR=nvim
 export GOPATH=$(go env GOPATH)
 export GOBIN=$GOPATH/bin
 export VISUAL=e
@@ -84,3 +84,14 @@ alias sqlite='sqlite3'
 alias dud='du -d 1 -h'
 alias ff='find . -type f -name'
 alias nv='nvim'
+alias fman='compgen -c | fzf | xargs man'
+alias kpods="kubectl get -A --no-headers | fzf | awk '{print $2, $1}' | xargs -n 2 sh -c 'kubectl describe pod $0 -n $1'"
+alias big_files='du -ah . | sort -hr | head -n 10'
+alias delete_node_modules="find . -name 'node_modules' -type d |\
+  xargs du -sh |\
+  sort -hr |\
+  fzf -m --header 'Select which ones to delete' --preview 'cat $(dirname {})/package.json'|\
+  awk '{print $2}' |\
+  xargs -r rm -rf \;"
+alias elixir_deps_get="find . -mindepth 1 -maxdepth 1 -type d -exec sh -c '(cd {} && mix deps.get)' \;"
+alias elixir_deps_update="find . -mindepth 1 -maxdepth 1 -type d -exec sh -c '(cd {} && mix deps.update --all)' \;"
