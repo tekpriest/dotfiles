@@ -19,7 +19,39 @@ return {
     opts = {
       -- make sure mason installs the server
       servers = {
-        tsserver = {},
+        tsserver = {
+          settings = {
+            complete_function_calls = true,
+            tsserver_format_options = { convertTabToSpaces = false },
+            typescript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+              },
+            },
+            -- enable checking javascript without a `jsconfig.json`
+            -- DOCS https://www.typescriptlang.org/tsconfig
+            implicitProjectConfiguration = { checkJs = true, target = 'ES2022' },
+          },
+        },
         -- -- ESLint
         -- eslint = {
         --   settings = {
@@ -52,8 +84,6 @@ return {
     'ray-x/lsp_signature.nvim',
     event = 'BufRead',
     ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'go' },
-    config = function()
-      require('lsp_signature').on_attach()
-    end,
+    config = function() require('lsp_signature').on_attach() end,
   },
 }

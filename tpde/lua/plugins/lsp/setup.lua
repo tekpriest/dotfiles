@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local utils = require 'core.utils'
+local utils = require('core.utils')
 local M = {}
 
 local config = {
@@ -21,9 +21,7 @@ local config = {
 local diagnostic_goto = function(next, severity)
   local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
   severity = severity and vim.diagnostic.severity[severity] or nil
-  return function()
-    go { severity = severity }
-  end
+  return function() go { severity = severity } end
 end
 
 --- Helper function to check if any active LSP clients given a filter provide a specific capability
@@ -37,23 +35,21 @@ end
 ---@return boolean # Whether or not any of the clients provide the capability
 M.has_capability = function(capability, filter)
   for _, client in ipairs(vim.lsp.get_active_clients(filter)) do
-    if client.supports_method(capability) then
-      return true
-    end
+    if client.supports_method(capability) then return true end
   end
   return false
 end
 
 local keymaps = function(client, buffer)
-  local telescope_builtin = require 'telescope.builtin'
+  local telescope_builtin = require('telescope.builtin')
 
-  if client.supports_method 'textDocument/definition' then
+  if client.supports_method('textDocument/definition') then
     map('n', 'gd', vim.lsp.buf.definition, { desc = '[g]oto [d]efinition', buffer = buffer })
   end
   -- stylua: ignore
   map('n', 'gr', function() require('trouble').open 'lsp_references' end,
     { desc = '[g]oto [r]eferences', buffer = buffer })
-  if client.supports_method 'textDocument/hover' then
+  if client.supports_method('textDocument/hover') then
     map('n', 'K', vim.lsp.buf.hover, { desc = 'hover' })
   end
   map('n', 'gi', vim.lsp.buf.implementation, { desc = '[g]oto [i]mplementation', buffer = buffer })
@@ -66,17 +62,25 @@ local keymaps = function(client, buffer)
   map('n', '[e', diagnostic_goto(false, 'ERROR'), { desc = 'Prev Error' })
   map('n', ']w', diagnostic_goto(true, 'WARNING'), { desc = 'Next Warning' })
   map('n', '[w', diagnostic_goto(false, 'WARNING'), { desc = 'Prev Warning' })
-  if client.supports_method 'textDocument/codeAction' then
+  if client.supports_method('textDocument/codeAction') then
     map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[c]ode [a]ction' })
   end
+
+  -- if client.supports_method('textDocument/formatting') then
+  --   map(
+  --     'n',
+  --     '<space>cf',
+  --     function() vim.lsp.buf.format { async = true } end,
+  --     { desc = 'format buffer', buffer = buffer }
+  --   )
+  -- end
   -- stylua: ignore
   map('n', '<leader>cw', telescope_builtin.lsp_dynamic_workspace_symbols,
     { desc = '[c]ode [w]orkspace symbols', buffer = buffer })
-  if client.supports_method 'textDocument/rename' then
+  if client.supports_method('textDocument/rename') then
     map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[c]ode [r]ename', buffer = buffer })
   end
-  -- map('n', '<space>cf', function() vim.lsp.buf.format { async = true } end, { desc = 'format buffer', buffer = buffer })
-  if client.supports_method 'textDocument/codeLens' then
+  if client.supports_method('textDocument/codeLens') then
     utils.add_buffer_autocmd('lsp_codelens', buffer, {
       events = { 'InsertLeave', 'BufEnter' },
       desc = 'Refresh coedlens',
@@ -85,20 +89,17 @@ local keymaps = function(client, buffer)
           utils.del_buffer_autocmd('lsp_codelens', buffer)
           return
         end
-        if vim.g.codelens_enabled then
-          vim.lsp.codelens.refresh()
-        end
+        if vim.g.codelens_enabled then vim.lsp.codelens.refresh() end
       end,
     })
-    if vim.g.codelens_enabled then
-      vim.lsp.codelens.refresh()
-    end
-    map('n', '<leader>cl', function()
-      vim.lsp.codelens.refresh()
-    end, { desc = 'lsp refresh codelens' })
-    map('n', '<leader>la', function()
-      vim.lsp.codelens.run()
-    end, { desc = 'lsp codelens run' })
+    if vim.g.codelens_enabled then vim.lsp.codelens.refresh() end
+    map(
+      'n',
+      '<leader>cl',
+      function() vim.lsp.codelens.refresh() end,
+      { desc = 'lsp refresh codelens' }
+    )
+    map('n', '<leader>la', function() vim.lsp.codelens.run() end, { desc = 'lsp codelens run' })
   end
 end
 
@@ -109,33 +110,30 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 M.setup = function(_, opts)
-  -- local client = {}
+  local client = {}
   vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
   utils.on_attach(function(client, bufnr)
     keymaps(client, bufnr)
+    client = client
   end)
 
   local servers = opts.servers
   local caps = utils.capabilities()
 
-  -- if client.name ~= 'yamlls' then
-  --   caps.textDocument.foldingRange = {
-  --     dynamicRegistration = false,
-  --     lineFoldingOnly = true,
-  --   }
-  -- end
+  if client.name ~= 'yamlls' then
+    caps.textDocument.foldingRange = {
+      dynamicRegistration = false,
+      lineFoldingOnly = true,
+    }
+  end
 
   local function setup(server)
     local server_opts = vim.tbl_deep_extend('force', { capabilities = caps }, servers[server] or {})
 
     if opts.setup[server] then
-      if opts.setup[server](server, server_opts) then
-        return
-      end
+      if opts.setup[server](server, server_opts) then return end
     elseif opts.setup['*'] then
-      if opts.setup['*'](server, server_opts) then
-        return
-      end
+      if opts.setup['*'](server, server_opts) then return end
     end
     require('lspconfig')[server].setup(server_opts)
   end

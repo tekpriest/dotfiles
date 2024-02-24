@@ -4,7 +4,7 @@ return {
     build = 'make install_jsregexp',
     opts = {
       history = true,
-      delete_check_events = 'TextChanged',
+      update_events = { 'TextChanged', 'TextChangedI' },
     },
     config = function(_, opts)
       require('luasnip').setup(opts)
@@ -15,7 +15,7 @@ return {
   },
   {
     'hrsh7th/nvim-cmp',
-    event = { 'InsertEnter' },
+    event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-buffer',
@@ -28,6 +28,8 @@ return {
       'amarakon/nvim-cmp-buffer-lines',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'davidsierradz/cmp-conventionalcommits',
+      'SergioRibera/cmp-dotenv',
+      'hrsh7th/cmp-omni',
     },
     init = function()
       vim.api.nvim_set_hl(
@@ -47,19 +49,35 @@ return {
       vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
     end,
     config = function()
-      local cmp = require 'cmp'
-      local luasnip = require 'luasnip'
-      local Utils = require 'core.utils'
+      local cmp = require('cmp')
+      local luasnip = require('luasnip')
+      local Utils = require('core.utils')
 
       cmp.setup {
-        completion = { completeopt = 'menu,menuone,noinsert,preview' },
+        -- completion = { completeopt = 'menu,menuone,noinsert,preview' },
         snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
+          expand = function(args) luasnip.lsp_expand(args.body) end,
         },
         formatting = {
           expandable_indicator = true,
+          fields = { 'abbr', 'kind' },
+          format = function(entry, item)
+            local maxLength = 50
+            if #item.abbr > maxLength then item.abbr = item.abbr:sub(1, maxLength) .. '...' end
+
+            -- distinguish emmet snippets
+            local ft = vim.bo[entry.context.bufnr].filetype
+            local isEmmet = entry.source.name == 'nvim_lsp'
+                and item.kind == 'Snippet'
+                and ft == 'css'
+
+            -- set icons
+            item.kind = entry.source.name == 'nvim_lsp' and Utils.cmp_kinds[item.kind] or ''
+
+            if isEmmet then item.menu = '' end
+
+            return item
+          end,
         },
         experimental = {
           hl_group = 'LspCodeLens',
@@ -95,36 +113,49 @@ return {
         -- },
         sources = cmp.config.sources({
           { name = 'luasnip' },
-          { name = 'nvim_lua' },
-          { name = 'nvim_lsp' },
-          { name = 'nvim_lsp_signature_help' },
+          {
+            name = 'nvim_lsp',
+            entry_filter = function(entry, _)
+              return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
+            end,
+          },
         }, {
-          { name = 'buffer' },
+          {
+            name = 'buffer',
+            option = {
+              -- use all buffers, instead of just the current one
+              get_bufnrs = function()
+                local allBufs = vim.fn.getbufinfo { buflisted = 1 }
+                local allBufNums = vim.tbl_map(function(buf) return buf.bufnr end, allBufs)
+                return allBufNums
+              end,
+              max_indexed_line_length = 120, -- no long lines (e.g. base64-encoded things)
+            },
+            keyword_length = 3,
+            max_item_count = 4, -- since searching all buffers results in many results
+          },
           { name = 'path' },
           { name = 'cmdline' },
-        }),
-
-        cmp.setup.filetype('gitcommit', {
-          sources = cmp.config.sources({
-            { name = 'git' },
-            { name = 'conventionalcommits' },
-          }, {
-            { name = 'buffer' },
-          }),
+          { name = 'nvim_lua' },
+          { name = 'nvim_lsp_signature_help' },
+          { name = 'dotenv' },
         }),
 
         cmp.setup.cmdline({ '/', '?' }, {
           mapping = cmp.mapping.preset.cmdline(),
           sources = {
-            { name = 'buffer',      option = { keyword_pattern = [[\k\+]] } },
+            { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
+          },
+        }),
+
+        cmp.setup.filetype({ 'c', 'cpp' }, {
+          sources = {
             { name = 'buffer-lines' },
           },
         }),
 
-        cmp.setup.filetype({ 'c', 'cpp', 'elixir' }, {
-          sources = {
-            { name = 'buffer-lines' },
-          },
+        cmp.setup.filetype('DressingInput', {
+          sources = cmp.config.sources { { name = 'omni' } },
         }),
       }
     end,

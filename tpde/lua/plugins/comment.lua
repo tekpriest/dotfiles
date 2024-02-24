@@ -24,16 +24,12 @@ return {
       },
       {
         ']t',
-        function()
-          require('todo-comments').jump_next()
-        end,
+        function() require('todo-comments').jump_next() end,
         desc = 'next todo comment',
       },
       {
         '[t',
-        function()
-          require('todo-comments').jump_prev()
-        end,
+        function() require('todo-comments').jump_prev() end,
         desc = 'previous todo comment',
       },
     },
@@ -41,6 +37,53 @@ return {
       signs = false,
       gui_style = {
         bg = 'ITALIC',
+      },
+    },
+  },
+  { -- surround
+    'kylechui/nvim-surround',
+    keys = {
+      { 'ys', desc = '󰅪 Add Surround Operator' },
+      { 'S', mode = 'x', desc = '󰅪 Add Surround Operator' },
+      { 'yS', 'ys$', desc = '󰅪 Surround to EoL', remap = true },
+      { 'ds', desc = '󰅪 Delete Surround Operator' },
+      { 'cs', desc = '󰅪 Change Surround Operator' },
+    },
+    opts = {
+      move_cursor = false,
+      -- aliases = u.textobjRemaps,
+      keymaps = {
+        visual = 'S',
+        normal_line = false,
+        normal_cur_line = false,
+        visual_line = false,
+        insert_line = false,
+        insert = false,
+      },
+      surrounds = {
+        invalid_key_behavior = { add = false, find = false, delete = false, change = false },
+        -- `dsl` -> delete surrounding call
+        -- (includes : for lua methods and css pseudo-classes)
+        ['l'] = {
+          find = '[%w.:]+%b()',
+          delete = '([%w.:]+%()().-(%))()',
+        },
+        ['R'] = { -- wikilink
+          find = '%[%[.-%]%]',
+          add = { '[[', ']]' },
+          delete = '(%[%[)().-(%]%])()',
+          change = {
+            target = '(%[%[)().-(%]%])()',
+          },
+        },
+        ['/'] = { -- regex
+          find = '/.-/',
+          add = { '/', '/' },
+          delete = '(/)().-(/)()',
+          change = {
+            target = '(/)().-(/)()',
+          },
+        },
       },
     },
   },

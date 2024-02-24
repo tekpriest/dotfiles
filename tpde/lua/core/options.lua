@@ -19,13 +19,13 @@ opt.clipboard = { 'unnamedplus', 'unnamed' }
 opt.hlsearch = false
 opt.incsearch = true
 opt.scrolloff = 8
-opt.isfname:append '@-@'
+opt.isfname:append('@-@')
 opt.updatetime = 65
 opt.splitright = true
 opt.splitbelow = true
 opt.textwidth = 80
 opt.showcmd = true
-opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv 'SHELL', ':t')
+opt.titleold = vim.fn.fnamemodify(vim.loop.os_getenv('SHELL'), ':t')
 opt.titlestring = ' ❐ %t %r %m - ' .. fn.fnamemodify(fn.getcwd(), ':t')
 opt.title = true
 opt.list = true
@@ -123,7 +123,7 @@ opt.linebreak = true
 opt.hidden = true
 opt.showmatch = false
 opt.smarttab = true
-opt.whichwrap:append 'h,l,<,>,[,]'
+opt.whichwrap:append('h,l,<,>,[,]')
 opt.pumheight = 10
 opt.laststatus = 3
 opt.showmode = false
@@ -150,7 +150,7 @@ opt.writebackup = false
 opt.confirm = false
 opt.cursorline = true
 opt.cursorlineopt = 'number'
-vim.cmd [[filetype plugin indent on]]
+vim.cmd([[filetype plugin indent on]])
 
 -- table.insert(opt.diffopt, 'vertical')
 -- table.insert(opt.diffopt, 'iwhite')
@@ -187,3 +187,4 @@ for i = 1, 10 do
   g[disabled_built_ins[i]] = 1
 end
 vim.g.codelens_enabled = true
+vim.g.borderStyle = 'single'

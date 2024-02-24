@@ -7,16 +7,22 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+config.check_for_updates = false
+config.automatically_reload_config = true
+
+config.quit_when_all_windows_are_closed = true
+
 config.color_scheme = 'Tokyo Night'
 config.font = wezterm.font_with_fallback {
+  { family = 'MonoLisa NF' },
   { family = 'OperatorMono Nerd Font', weight = 'Light' },
   { family = 'Dank Mono' },
 }
 -- config.font = wezterm.font{k}
-config.font_size = 9.8
+config.font_size = 8
 config.window_background_opacity = 0.95
 config.window_decorations = 'RESIZE'
--- config.window_close_confirmation = 'AlwaysPrompt'
+config.window_close_confirmation = 'NeverPrompt'
 config.scrollback_lines = 3000
 config.default_workspace = 'Code'
 config.enable_tab_bar = false
@@ -185,20 +191,24 @@ end
 
 config.key_tables = {
   resize_pane = {
-    { key = 'h', action = act.AdjustPaneSize { 'Left', 1 } },
-    { key = 'j', action = act.AdjustPaneSize { 'Down', 1 } },
-    { key = 'k', action = act.AdjustPaneSize { 'Up', 1 } },
-    { key = 'l', action = act.AdjustPaneSize { 'Right', 1 } },
+    { key = 'h',      action = act.AdjustPaneSize { 'Left', 1 } },
+    { key = 'j',      action = act.AdjustPaneSize { 'Down', 1 } },
+    { key = 'k',      action = act.AdjustPaneSize { 'Up', 1 } },
+    { key = 'l',      action = act.AdjustPaneSize { 'Right', 1 } },
     { key = 'Escape', action = 'PopKeyTable' },
-    { key = 'Enter', action = 'PopKeyTable' },
+    { key = 'Enter',  action = 'PopKeyTable' },
   },
   move_tab = {
-    { key = 'h', action = act.MoveTabRelative(-1) },
-    { key = 'j', action = act.MoveTabRelative(-1) },
-    { key = 'k', action = act.MoveTabRelative(1) },
-    { key = 'l', action = act.MoveTabRelative(1) },
+    { key = 'h',      action = act.MoveTabRelative(-1) },
+    { key = 'j',      action = act.MoveTabRelative(-1) },
+    { key = 'k',      action = act.MoveTabRelative(1) },
+    { key = 'l',      action = act.MoveTabRelative(1) },
     { key = 'Escape', action = 'PopKeyTable' },
-    { key = 'Enter', action = 'PopKeyTable' },
+    { key = 'Enter',  action = 'PopKeyTable' },
   },
 }
+
+config.native_macos_fullscreen_mode = false
+config.max_fps = 60
+
 return config

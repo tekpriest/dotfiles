@@ -1,15 +1,5 @@
 return {
   {
-    'tpope/vim-fugitive',
-    cmd = { 'Git', 'GBrowse', 'Gdiffsplit', 'Gvdiffsplit' },
-    dependencies = { 'tpope/vim-rhubarb' },
-    -- stylua: ignore
-    keys = {
-      { '<leader>gs', '<cmd>Git<cr>', desc = 'Git Status', },
-      { '<leader>gd', '<cmd>Git diff<cr>', desc = 'Git diff', },
-    },
-  },
-  {
     'lewis6991/gitsigns.nvim',
     ft = { 'gitcommit', 'diff' },
     init = function()
@@ -17,9 +7,9 @@ return {
       vim.api.nvim_create_autocmd({ 'BufRead' }, {
         group = vim.api.nvim_create_augroup('GitSignsLazyLoad', { clear = true }),
         callback = function()
-          vim.fn.system('git -C ' .. '"' .. vim.fn.expand '%:p:h' .. '"' .. ' rev-parse')
+          vim.fn.system('git -C ' .. '"' .. vim.fn.expand('%:p:h') .. '"' .. ' rev-parse')
           if vim.v.shell_error == 0 then
-            vim.api.nvim_del_augroup_by_name 'GitSignsLazyLoad'
+            vim.api.nvim_del_augroup_by_name('GitSignsLazyLoad')
             vim.schedule(function()
               require('lazy').load { plugins = { 'gitsigns.nvim' } }
               -- vim.cmd [[Gitsigns toggle_current_line_blame]]
@@ -64,16 +54,31 @@ return {
         '<cmd>Gitsigns blame_line<cr>',
         desc = 'blame line',
       },
+      {
+        '<leader>gf',
+        '<cmd>Gitsigns stage_buffer<cr>',
+        desc = 'blame line',
+      },
     },
-    config = true,
+    opts = {
+      max_file_length = 12000, -- lines
+      -- deletions greater than one line will show a count to assess the size
+      -- digits are actually nerdfont numbers to achieve smaller size
+      -- stylua: ignore
+      count_chars = { "", "󰬻", "󰬼", "󰬽", "󰬾", "󰬿", "󰭀", "󰭁", "󰭂", ["+"] = "󰿮" },
+      signs = {
+        delete = { show_count = true },
+        topdelete = { show_count = true },
+        changedelete = { show_count = true },
+      },
+      attach_to_untracked = true,
+    },
   },
   {
     'ruifm/gitlinker.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     opts = {},
-    config = function(_, opts)
-      require('gitlinker').setup(opts)
-    end,
+    config = function(_, opts) require('gitlinker').setup(opts) end,
     keys = {
       {
         '<leader>gy',
@@ -85,33 +90,15 @@ return {
   {
     'NeogitOrg/neogit',
     dependencies = {
-      'nvim-lua/plenary.nvim', -- required
+      'nvim-lua/plenary.nvim',         -- required
       'nvim-telescope/telescope.nvim', -- optional
-      'sindrets/diffview.nvim', -- optional
-      'ibhagwan/fzf-lua', -- optional
+      'sindrets/diffview.nvim',        -- optional
+      'ibhagwan/fzf-lua',              -- optional
     },
     config = true,
     keys = {
-      { '<leader>gg', '<cmd>Neogit<cr>', desc = 'Git Status' },
+      { '<leader>gg', '<cmd>Neogit<cr>',        desc = 'Git Status' },
       { '<leader>gc', '<cmd>Neogit commit<cr>', desc = 'Git Status' },
-    },
-  },
-  {
-    'ThePrimeagen/git-worktree.nvim',
-    opts = {
-      change_directory_command = '',
-    },
-    keys = {
-      {
-        '<leader>fp',
-        [[<CMD>lua require('telescope').extensions.git_worktree.git_worktrees()<CR>]],
-        desc = 'browse git work trees',
-      },
-      {
-        '<leader>fc',
-        [[<CMD>lua require('telescope').extensions.git_worktree.create_git_worktree()<CR>]],
-        desc = 'create git work trees',
-      },
     },
   },
 }

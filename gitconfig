@@ -4,7 +4,7 @@
 	useConfigOnly = true
 	name = Michael Enitan
 	email = asajuenitan@gmail.com
-	signingkey = 55CD838A1C55DEEE 
+	signingkey = 55CD838A1C55DEEE
 [core]
 	excludesfile = $HOME/.gitignore
 	editor = nvim
@@ -13,17 +13,18 @@
 	eol = lf
 [init]
 	defaultBranch = main
+  templateDir = "~/.git-templates/hooks"
 [color]
 	ui = true
 [interactive]
   diffFilter = delta --color-only --features=interactive
 [delta]
   features=decorations
- 
+
 [delta "interactive"]
   ; side-by-side = true
   keep-plus-minus-markers = true
- 
+
 [delta "decorations"]
 	features = diff-so-fancy line-numbers
 	file-modified-label = modified:
@@ -58,3 +59,5 @@
 	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 [diff]
 	submodule = log
+
+# vim: filetype=gitconfig

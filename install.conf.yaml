@@ -3,7 +3,7 @@
       relink: true
       create: true
 
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.gitconfig: gitconfig
@@ -12,7 +12,6 @@
     ~/.config/alacritty: alacritty
     ~/.config/tpde: tpde
     ~/.tmux.conf: tmux.conf
-    ~/.zshrc: zshrc
     ~/.config/wezterm: wezterm
     ~/.config/fish: fish
     ~/.config/foot: foot
@@ -24,10 +23,15 @@
     ~/.config/emacs: emacs
     ~/.config/doom: doom
     ~/.spacemacs: spacemacs
+    ~/.editorconfig: editorconfig
+    ~/.git-templates: git/templates
+    ~/.config/zsh: zsh
+    ~/.zshrc: zshrc
+    ~/.zshenv: zsh/.zshenv
+    ~/.zprofile: zprofile
 
 - create:
-  - ~/Code
-
+    - ~/Code
 
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
+    - [git submodule update --init --recursive, Installing submodules]

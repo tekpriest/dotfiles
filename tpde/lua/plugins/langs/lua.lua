@@ -1,15 +1,11 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { 'lua', 'luadoc', 'luap' })
-    end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed, { 'lua', 'luadoc', 'luap' }) end,
   },
   {
     'williamboman/mason.nvim',
-    opts = function(_, opts)
-      vim.list_extend(opts.ensure_installed, { 'stylua' })
-    end,
+    opts = function(_, opts) vim.list_extend(opts.ensure_installed, { 'stylua' }) end,
   },
   {
     'neovim/nvim-lspconfig',
@@ -27,12 +23,18 @@ return {
               workspace = {
                 checkThirdParty = false,
                 library = {
-                  vim.fn.expand '$VIMRUNTIME',
+                  vim.fn.expand('$VIMRUNTIME'),
                 },
               },
-              completion = { callSnippet = 'Replace' },
+              completion = {
+                callSnippet = 'Replace',
+                keywordSnippet = 'Replace',
+                showWord = 'Disable',  -- don't suggest common words as fallback
+                workspaceWord = false, -- already done by cmp-buffer
+                postfix = '.',         -- useful for `table.insert` and the like },
+              },
               telemetry = { enable = false },
-              hint = { enable = false },
+              hint = { enable = true, setType = true, arrayIndex = 'Disable' },
               runtime = { version = 'LuaJIT' },
             },
           },
@@ -40,7 +42,7 @@ return {
       },
       setup = {
         lua_ls = function(_, _)
-          local utils = require 'core.utils'
+          local utils = require('core.utils')
           utils.on_attach(function(client, buffer)
             -- stylua: ignore
             if client.name == 'lua_ls' then
