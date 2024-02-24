@@ -8,6 +8,9 @@ return {
     },
     config = function(_, opts)
       require('luasnip').setup(opts)
+
+      -- load snippets
+      require('luasnip.loaders.from_vscode').lazy_load()
     end,
   },
   {
@@ -15,31 +18,33 @@ return {
     event = { 'InsertEnter' },
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
-      'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
+      'saadparwaiz1/cmp_luasnip',
       'rafamadriz/friendly-snippets',
       'windwp/nvim-ts-autotag',
+      'L3MON4D3/LuaSnip',
+      'petertriho/cmp-git',
+      'amarakon/nvim-cmp-buffer-lines',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'davidsierradz/cmp-conventionalcommits',
     },
     init = function()
-      -- vim.api.nvim_set_hl(
-      --   0,
-      --   'CmpItemAbbrDeprecated',
-      --   { bg = 'NONE', strikethrough = true, fg = '#808080' }
-      -- )
-      -- vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindText', { link = 'CmpItemKindVariable' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
-      -- vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
-
-      -- load snippets
-      require('luasnip.loaders.from_vscode').lazy_load()
+      vim.api.nvim_set_hl(
+        0,
+        'CmpItemAbbrDeprecated',
+        { bg = 'NONE', strikethrough = true, fg = '#808080' }
+      )
+      vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
+      vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindText', { link = 'CmpItemKindVariable' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
+      vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
     end,
     config = function()
       local cmp = require 'cmp'
@@ -47,7 +52,7 @@ return {
       local Utils = require 'core.utils'
 
       cmp.setup {
-        -- completion = { completeopt = 'menu,menuone,noinsert,preview' },
+        completion = { completeopt = 'menu,menuone,noinsert,preview' },
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -55,11 +60,6 @@ return {
         },
         formatting = {
           expandable_indicator = true,
-          fields = { 'kind', 'abbr' },
-          --   format = function(_, item)
-          --     item.kind = Utils.cmp_kinds[item.kind] or ''
-          --     return item
-          --   end,
         },
         experimental = {
           hl_group = 'LspCodeLens',
@@ -89,17 +89,43 @@ return {
             end
           end, { 'i', 's' }),
         },
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
-        },
-        sources = cmp.config.sources {
-          { name = 'luasnip', max_item_count = 3 },
-          { name = 'path', max_item_count = 3 },
-          { name = 'buffer', max_item_count = 5 },
+        -- window = {
+        --   completion = cmp.config.window.bordered(),
+        --   documentation = cmp.config.window.bordered(),
+        -- },
+        sources = cmp.config.sources({
+          { name = 'luasnip' },
           { name = 'nvim_lua' },
           { name = 'nvim_lsp' },
-        },
+          { name = 'nvim_lsp_signature_help' },
+        }, {
+          { name = 'buffer' },
+          { name = 'path' },
+          { name = 'cmdline' },
+        }),
+
+        cmp.setup.filetype('gitcommit', {
+          sources = cmp.config.sources({
+            { name = 'git' },
+            { name = 'conventionalcommits' },
+          }, {
+            { name = 'buffer' },
+          }),
+        }),
+
+        cmp.setup.cmdline({ '/', '?' }, {
+          mapping = cmp.mapping.preset.cmdline(),
+          sources = {
+            { name = 'buffer',      option = { keyword_pattern = [[\k\+]] } },
+            { name = 'buffer-lines' },
+          },
+        }),
+
+        cmp.setup.filetype({ 'c', 'cpp', 'elixir' }, {
+          sources = {
+            { name = 'buffer-lines' },
+          },
+        }),
       }
     end,
   },

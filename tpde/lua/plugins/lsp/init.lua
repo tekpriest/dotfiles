@@ -7,16 +7,27 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
     },
+    ---@class PluginLspOpts
     opts = {
       servers = {},
       setup = {},
       format = {
         timeout_ms = 3000,
       },
+      diagnostics = {
+        severity_sort = true,
+        underline = false,
+        update_in_insert = false,
+        virtual_text = false,
+        float = {
+          focusable = false,
+        },
+        signs = true,
+      },
+      inlay_hints = { enabled = true },
     },
     config = function(_, opts)
       require('plugins.lsp.setup').setup(_, opts)
-      -- require('core.utils.notify').register_lsp()
     end,
   },
   {
@@ -45,7 +56,7 @@ return {
         dart = { 'dart_format' },
         yaml = { 'prettierd' },
         json = { 'prettierd' },
-        lua = { 'stylua' },
+        -- lua = { 'stylua' },
         go = { 'gofumpt', 'goimports-reviser' },
         sh = { 'shfmt' },
       },

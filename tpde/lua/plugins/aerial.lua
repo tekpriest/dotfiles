@@ -1,6 +1,7 @@
 return {
   {
     'stevearc/aerial.nvim',
+    event = 'VeryLazy',
     opts = {},
     -- Optional dependencies
     dependencies = {
@@ -11,10 +12,10 @@ return {
       require('aerial').setup()
       vim.keymap.set('n', '<leader>cs', '<cmd>AerialToggle<cr>')
     end,
-    -- keys = {
-    --   '<leader>cs',
-    --   '<cmd>AerialToggle<cr>',
-    --   desc = 'Toggle Aerial',
-    -- },
+    keys = {
+      '<leader>cs',
+      '<cmd>AerialToggle<cr>',
+      desc = 'Toggle Aerial',
+    },
   },
 }

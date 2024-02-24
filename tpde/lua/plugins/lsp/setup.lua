@@ -102,29 +102,28 @@ local keymaps = function(client, buffer)
   end
 end
 
-local capabilities = function()
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  return require('cmp_nvim_lsp').default_capabilities(capabilities)
-end
+-- local capabilities = function()
+--   local capabilities = vim.lsp.protocol.make_client_capabilities()
+--   capabilities.textDocument.completion.completionItem.snippetSupport = true
+-- end
+local capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 M.setup = function(_, opts)
-  local client = {}
-  vim.diagnostic.config(config)
+  -- local client = {}
+  vim.diagnostic.config(vim.deepcopy(opts.diagnostics))
   utils.on_attach(function(client, bufnr)
     keymaps(client, bufnr)
-    client = client
   end)
 
   local servers = opts.servers
   local caps = utils.capabilities()
 
-  if client.name ~= 'yamlls' then
-    caps.textDocument.foldingRange = {
-      dynamicRegistration = false,
-      lineFoldingOnly = true,
-    }
-  end
+  -- if client.name ~= 'yamlls' then
+  --   caps.textDocument.foldingRange = {
+  --     dynamicRegistration = false,
+  --     lineFoldingOnly = true,
+  --   }
+  -- end
 
   local function setup(server)
     local server_opts = vim.tbl_deep_extend('force', { capabilities = caps }, servers[server] or {})

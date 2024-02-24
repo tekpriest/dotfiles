@@ -15,7 +15,6 @@ return {
       sync_install = false,
       auto_install = true,
       ensure_installed = {
-        'dart',
         'elixir',
         'html',
         'http',
@@ -66,13 +65,4 @@ return {
       require('nvim-treesitter.configs').setup(opts)
     end,
   },
-  -- {
-  --   'RRethy/vim-illuminate',
-  --   event = 'VeryLazy',
-  --   init = function()
-  --     vim.cmd [[hi link IlluminatedWordText Visual ]]
-  --     vim.cmd [[hi link IlluminatedWordRead Visual ]]
-  --     vim.cmd [[hi link IlluminatedWordWrite Visual ]]
-  --   end,
-  -- },
 }

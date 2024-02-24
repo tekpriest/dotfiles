@@ -21,6 +21,9 @@
     ~/.config/nvim: nvim
     ~/.config/neovide: neovide
     # ~/.config/rebelot: rebelot/.config/nvim
+    ~/.config/emacs: emacs
+    ~/.config/doom: doom
+    ~/.spacemacs: spacemacs
 
 - create:
   - ~/Code
