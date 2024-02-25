@@ -30,16 +30,16 @@ args = ["-l", "-c", "tmux attach || tmux"]
 background = '#1E1E2E' # base
 foreground = '#CDD6F4' # text
 # Bright and dim foreground colors
-dim_foreground = '#CDD6F4' # text
+dim_foreground = '#CDD6F4'    # text
 bright_foreground = '#CDD6F4' # text
 
 # Cursor colors
 [colors.cursor]
-text = '#1E1E2E' # base
+text = '#1E1E2E'   # base
 cursor = '#F5E0DC' # rosewater
 
 [colors.vi_mode_cursor]
-text = '#1E1E2E' # base
+text = '#1E1E2E'   # base
 cursor = '#B4BEFE' # lavender
 
 # Search colors
@@ -66,27 +66,27 @@ background = '#A6ADC8' # subtext0
 
 # Selection colors
 [colors.selection]
-text = '#1E1E2E' # base
+text = '#1E1E2E'       # base
 background = '#F5E0DC' # rosewater
 
 # Normal colors
 [colors.normal]
-black   = '#1E2320'
-red     = '#D78787'
-green   = '#60B48A'
-yellow  = '#DFAF8F'
-blue    = '#506070'
+black = '#1E2320'
+red = '#D78787'
+green = '#60B48A'
+yellow = '#DFAF8F'
+blue = '#506070'
 magenta = '#DC8CC3'
-cyan    = '#8CD0D3'
-white   = '#DCDCCC'
+cyan = '#8CD0D3'
+white = '#DCDCCC'
 
 # Bright colors
 [colors.bright]
-black = '#585B70' # surface2
-red = '#F38BA8' # red
-green = '#A6E3A1' # green
-yellow = '#F9E2AF' # yellow
-blue = '#89B4FA' # blue
+black = '#585B70'   # surface2
+red = '#F38BA8'     # red
+green = '#A6E3A1'   # green
+yellow = '#F9E2AF'  # yellow
+blue = '#89B4FA'    # blue
 magenta = '#F5C2E7' # pink
-cyan = '#94E2D5' # teal
-white = '#A6ADC8' # subtext0
+cyan = '#94E2D5'    # teal
+white = '#A6ADC8'   # subtext0
