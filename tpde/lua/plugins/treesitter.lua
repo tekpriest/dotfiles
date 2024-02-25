@@ -3,14 +3,13 @@ return {
   {
     'windwp/nvim-ts-autotag',
     ft = { 'html', 'javascriptreact', 'typescriptreact' },
-    config = function()
-      require('nvim-ts-autotag').setup()
-    end,
+    config = function() require('nvim-ts-autotag').setup() end,
   },
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
+    main = 'nvim-treesitter.configs',
     opts = {
       sync_install = false,
       auto_install = true,
@@ -34,20 +33,20 @@ return {
         enable = true,
         use_languagetree = true,
       },
-      indent = { enable = true, disable = { 'dart' } },
+      indent = { enable = true, disable = { 'dart', 'markdown', 'gitrebase' } },
       autotag = { enabled = true },
       autopairs = { enabled = true },
       incremental_selection = {
         enable = true,
         keymaps = {
           -- mappings for incremental selection (visual mappings)
-          init_selection = '<CR>', -- maps in normal mode to init the node/scope selection
-          node_incremental = 'grn', -- increment to the upper named parent
+          init_selection = '<CR>',   -- maps in normal mode to init the node/scope selection
+          node_incremental = 'grn',  -- increment to the upper named parent
           scope_incremental = 'grc', -- increment to the upper scope (as defined in locals.scm)
-          node_decremental = 'grm', -- decrement to the previous node
+          node_decremental = 'grm',  -- decrement to the previous node
         },
       },
-      matchup = { enable = true },
+      matchup = { enable = true, enable_quotes = true, disable_virtual_text = false },
       query_linter = { enable = true },
     },
     config = function(_, opts)
@@ -55,9 +54,7 @@ return {
         -- @type table<string,boolean>
         local added = {}
         opts.ensure_installed = vim.tbl_filter(function(lang)
-          if added[lang] then
-            return false
-          end
+          if added[lang] then return false end
           added[lang] = true
           return true
         end, opts.ensure_installed)

@@ -18,6 +18,8 @@ return {
     event = 'InsertEnter',
     dependencies = {
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-nvim-lua',
+      'hrsh7th/cmp-cmdline',
       'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
       'saadparwaiz1/cmp_luasnip',
@@ -27,27 +29,8 @@ return {
       'petertriho/cmp-git',
       'amarakon/nvim-cmp-buffer-lines',
       'hrsh7th/cmp-nvim-lsp-signature-help',
-      'davidsierradz/cmp-conventionalcommits',
       'SergioRibera/cmp-dotenv',
-      'hrsh7th/cmp-omni',
     },
-    init = function()
-      vim.api.nvim_set_hl(
-        0,
-        'CmpItemAbbrDeprecated',
-        { bg = 'NONE', strikethrough = true, fg = '#808080' }
-      )
-      vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { bg = 'NONE', fg = '#569CD6' })
-      vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link = 'CmpIntemAbbrMatch' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { bg = 'NONE', fg = '#9CDCFE' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link = 'CmpItemKindVariable' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindText', { link = 'CmpItemKindVariable' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { bg = 'NONE', fg = '#C586C0' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link = 'CmpItemKindFunction' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', { bg = 'NONE', fg = '#D4D4D4' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link = 'CmpItemKindKeyword' })
-      vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link = 'CmpItemKindKeyword' })
-    end,
     config = function()
       local cmp = require('cmp')
       local luasnip = require('luasnip')
@@ -119,6 +102,9 @@ return {
               return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Text'
             end,
           },
+          { name = 'nvim_lua' },
+          { name = 'path' },
+          { name = 'cmdline' },
         }, {
           {
             name = 'buffer',
@@ -134,11 +120,13 @@ return {
             keyword_length = 3,
             max_item_count = 4, -- since searching all buffers results in many results
           },
-          { name = 'path' },
-          { name = 'cmdline' },
-          { name = 'nvim_lua' },
           { name = 'nvim_lsp_signature_help' },
-          { name = 'dotenv' },
+          {
+            name = 'dotenv',
+            option = {
+              trigger_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+            },
+          },
         }),
 
         cmp.setup.cmdline({ '/', '?' }, {
@@ -152,10 +140,6 @@ return {
           sources = {
             { name = 'buffer-lines' },
           },
-        }),
-
-        cmp.setup.filetype('DressingInput', {
-          sources = cmp.config.sources { { name = 'omni' } },
         }),
       }
     end,
