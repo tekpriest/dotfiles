@@ -1,0 +1,17 @@
+[Editor]
+BorderlessWindow = true
+HideTitleBar = true
+Transparent = 0.9
+FontFamily = 'DankMono Nerd Font Mono'
+FontSize = 10
+ExtCmdline = true
+DisableLigatures = false
+Macmeta = true
+HideMouseWhenTyping = true
+SmoothScroll = true
+
+[Cursor]
+SmoothMove = true
+
+[Pallette]
+Transparent = 0.9

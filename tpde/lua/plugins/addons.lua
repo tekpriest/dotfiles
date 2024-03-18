@@ -16,7 +16,8 @@ return {
       },
       text_format = function(symbol)
         if symbol.references == 0 then return '' end
-        return ' 󰈿 ' .. symbol.references
+        -- return ' 󰈿 ' .. symbol.references
+        return 'references ' .. symbol.references
       end,
     },
   },

@@ -149,27 +149,3 @@ autocmd('ColorScheme', {
   pattern = { '*' },
   command = [[highlight CursorLineNr cterm=bold term=bold gui=bold]],
 })
-
--- autocmd('BufReadPost', {
---   group = Utils.augroup 'set_maximize_buffer_keys',
---   pattern = '*',
---   callback = function()
---     local is_true = vim.fn.winwidth(0) == vim.fn.winwidth '%'
---       and vim.fn.winheight(0) == vim.fn.winheight '%'
---     if is_true then
---       vim.api.nvim_set_keymap(
---         'n',
---         '<C-w>z',
---         [[<cmd>wincmd =<cr>]],
---         { silent = true, noremap = true }
---       )
---     else
---       vim.api.nvim_set_keymap(
---         'n',
---         '<C-w>z',
---         [[<cmd>wincmd _  | wincmd |<cr>]],
---         { silent = true, noremap = true }
---       )
---     end
---   end,
--- })

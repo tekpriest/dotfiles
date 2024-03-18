@@ -6,7 +6,7 @@
 export FPATH="$ZDOTDIR/completions:$HOMEBREW_PREFIX/share/zsh/site-functions:$FPATH"
 
 # also loads compinit stuff, therefore has to be loaded before most plugins
-source "$HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
+# source "$HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 # INFO not needed when using zsh-autocomplete
 # autoload compinit -Uz +X && compinit
@@ -14,9 +14,9 @@ source "$HOMEBREW_PREFIX/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh"
 
 #───────────────────────────────────────────────────────────────────────────────
 
-source "$HOMEBREW_PREFIX/share/zsh-autopair/autopair.zsh"
+# source "$HOMEBREW_PREFIX/share/zsh-autopair/autopair.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-# source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 
 # must be loaded *after* zsh-syntax-highlighting
 source "$HOMEBREW_PREFIX/share/zsh-history-substring-search/zsh-history-substring-search.zsh"

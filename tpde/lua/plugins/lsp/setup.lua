@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local utils = require('core.utils')
+local utils = require 'core.utils'
 local M = {}
 
 local config = {
@@ -41,15 +41,15 @@ M.has_capability = function(capability, filter)
 end
 
 local keymaps = function(client, buffer)
-  local telescope_builtin = require('telescope.builtin')
+  local telescope_builtin = require 'telescope.builtin'
 
-  if client.supports_method('textDocument/definition') then
+  if client.supports_method 'textDocument/definition' then
     map('n', 'gd', vim.lsp.buf.definition, { desc = '[g]oto [d]efinition', buffer = buffer })
   end
   -- stylua: ignore
   map('n', 'gr', function() require('trouble').open 'lsp_references' end,
     { desc = '[g]oto [r]eferences', buffer = buffer })
-  if client.supports_method('textDocument/hover') then
+  if client.supports_method 'textDocument/hover' then
     map('n', 'K', vim.lsp.buf.hover, { desc = 'hover' })
   end
   map('n', 'gi', vim.lsp.buf.implementation, { desc = '[g]oto [i]mplementation', buffer = buffer })
@@ -62,8 +62,14 @@ local keymaps = function(client, buffer)
   map('n', '[e', diagnostic_goto(false, 'ERROR'), { desc = 'Prev Error' })
   map('n', ']w', diagnostic_goto(true, 'WARNING'), { desc = 'Next Warning' })
   map('n', '[w', diagnostic_goto(false, 'WARNING'), { desc = 'Prev Warning' })
-  if client.supports_method('textDocument/codeAction') then
+  if client.supports_method 'textDocument/codeAction' then
     map('n', '<leader>ca', vim.lsp.buf.code_action, { desc = '[c]ode [a]ction' })
+  end
+
+  if client.name ~= 'elixirls' then
+    map('n', '<space>fp', ':ElixirFromPipe<cr>', { buffer = true, noremap = true })
+    map('n', '<space>tp', ':ElixirToPipe<cr>', { buffer = true, noremap = true })
+    map('v', '<space>em', ':ElixirExpandMacro<cr>', { buffer = true, noremap = true })
   end
 
   -- if client.supports_method('textDocument/formatting') then
@@ -77,10 +83,10 @@ local keymaps = function(client, buffer)
   -- stylua: ignore
   map('n', '<leader>cw', telescope_builtin.lsp_dynamic_workspace_symbols,
     { desc = '[c]ode [w]orkspace symbols', buffer = buffer })
-  if client.supports_method('textDocument/rename') then
+  if client.supports_method 'textDocument/rename' then
     map('n', '<leader>cr', vim.lsp.buf.rename, { desc = '[c]ode [r]ename', buffer = buffer })
   end
-  if client.supports_method('textDocument/codeLens') then
+  if client.supports_method 'textDocument/codeLens' then
     utils.add_buffer_autocmd('lsp_codelens', buffer, {
       events = { 'InsertLeave', 'BufEnter' },
       desc = 'Refresh coedlens',
@@ -163,5 +169,7 @@ M.setup = function(_, opts)
     mlsp.setup_handlers { setup }
   end
 end
+
+M.capabilities = capabilities
 
 return M

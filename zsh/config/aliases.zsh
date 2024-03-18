@@ -16,10 +16,10 @@ alias ldot='ls -ld .*'
 alias ln='ln -sfnwi'
 
 
-alias cp='cp -i'
-alias mv='mv -i'
+# alias cp='cp -i'
+# alias mv='mv -i'
 alias mkdir='mkdir -p'
-alias rm='rm -I'
+# alias rm='rm -I'
 
 alias curl='curl -L --progress-bar'
 

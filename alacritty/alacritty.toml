@@ -1,26 +1,30 @@
 [font]
-size = 9
+size = 10
+glyph_offset = { x = 0, y = 0 }
+offset = { x = 0, y = 0 }
+builtin_box_drawing = true
 
 [font.bold_italic]
-family = 'MonoLisa NF'
+family = 'Dank Mono'
 
 [font.italic]
-family = 'MonoLisa NF'
+family = 'Dank Mono'
 
 [font.normal]
-family = 'MonoLisa NF'
+family = 'DankMono Nerd Font Mono'
 
 [font.bold]
-family = 'MonoLisa NF'
+family = 'Dank Mono'
 
 [window]
-decorations = "buttonless"
+decorations = "None"
 opacity = 0.93
 option_as_alt = 'Both'
+dynamic_padding = true
+padding = { x = 5, y = 5 }
 
-[window.padding]
-y = 5
-x = 6
+[mouse]
+hide_when_typing = true
 
 [shell]
 program = "/bin/zsh"

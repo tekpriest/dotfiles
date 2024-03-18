@@ -8,10 +8,10 @@ return {
         compile = true, -- enable compiling the colorscheme
         functionStyle = { italic = true },
         typeStyle = { italic = true },
-        transparent = true,  -- do not set background color
+        transparent = true, -- do not set background color
         dimInactive = false, -- dim inactive window
         statementStyle = { bold = true },
-        theme = 'dragon',    -- Load "wave" theme when 'background' option is not set
+        theme = 'dragon', -- Load "wave" theme when 'background' option is not set
         colors = {
           theme = {
             all = {
@@ -83,6 +83,12 @@ return {
           PmenuSel = { fg = 'none' },
         }
       end,
+    },
+  },
+  {
+    'LazyVim/LazyVim',
+    opts = {
+      colorscheme = 'catppuccin',
     },
   },
 }

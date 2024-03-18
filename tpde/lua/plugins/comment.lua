@@ -46,8 +46,8 @@ return {
       { 'ys', desc = '󰅪 Add Surround Operator' },
       { 'S', mode = 'x', desc = '󰅪 Add Surround Operator' },
       { 'yS', 'ys$', desc = '󰅪 Surround to EoL', remap = true },
-      { 'ds', desc = '󰅪 Delete Surround Operator' },
-      { 'cs', desc = '󰅪 Change Surround Operator' },
+      { 'ds', desc = '󰅪 Delete Surround Operator', mode = { 'n', 'v' } },
+      { 'cs', desc = '󰅪 Change Surround Operator', mode = { 'n', 'v' } },
     },
     opts = {
       move_cursor = false,

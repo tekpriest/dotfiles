@@ -188,3 +188,6 @@ for i = 1, 10 do
 end
 vim.g.codelens_enabled = true
 vim.g.borderStyle = 'single'
+
+-- load neovide settings
+if g.neovide then require 'core.neovide' end

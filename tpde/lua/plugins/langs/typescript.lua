@@ -1,3 +1,4 @@
+local utils = require 'core.utils'
 return {
   {
     'nvim-treesitter/nvim-treesitter',
@@ -17,7 +18,6 @@ return {
   {
     'neovim/nvim-lspconfig',
     opts = {
-      -- make sure mason installs the server
       servers = {
         tsserver = {
           settings = {
@@ -52,7 +52,7 @@ return {
             implicitProjectConfiguration = { checkJs = true, target = 'ES2022' },
           },
         },
-        -- -- ESLint
+        -- ESLint
         -- eslint = {
         --   settings = {
         --     -- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
@@ -60,30 +60,39 @@ return {
         --   },
         -- },
       },
-      -- setup = {
-      --   eslint = function()
-      --     vim.api.nvim_create_autocmd('BufWritePre', {
-      --       callback = function(event)
-      --         local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = 'eslint' })[1]
-      --         if client then
-      --           local diag = vim.diagnostic.get(
-      --             event.buf,
-      --             { namespace = vim.lsp.diagnostic.get_namespace(client.id) }
-      --           )
-      --           if #diag > 0 then
-      --             vim.cmd 'EslintFixAll'
-      --           end
-      --         end
-      --       end,
-      --     })
-      --   end,
-      -- },
+      setup = {
+        eslint = function()
+          vim.api.nvim_create_autocmd('BufWritePre', {
+            callback = function(event)
+              local client = vim.lsp.get_active_clients({ bufnr = event.buf, name = 'eslint' })[1]
+              if client then
+                local diag = vim.diagnostic.get(
+                  event.buf,
+                  { namespace = vim.lsp.diagnostic.get_namespace(client.id) }
+                )
+                if #diag > 0 then vim.cmd 'EslintFixAll' end
+              end
+            end,
+          })
+        end,
+      },
     },
   },
-  {
-    'ray-x/lsp_signature.nvim',
-    event = 'BufRead',
-    ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'go' },
-    config = function() require('lsp_signature').on_attach() end,
-  },
+  -- {
+  --   'ray-x/lsp_signature.nvim',
+  --   event = 'BufRead',
+  --   ft = { 'javascript', 'typescript', 'javascriptreact', 'typescriptreact', 'vue', 'go' },
+  --   config = function() require('lsp_signature').on_attach() end,
+  -- },
+  -- {
+  --   'pmizio/typescript-tools.nvim',
+  --   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+  --   opts = {
+  --     on_attach = utils.on_attach,
+  --     settings = {
+  --       expose_as_code_action = 'all',
+  --       -- code_lens = 'all',
+  --     },
+  --   },
+  -- },
 }

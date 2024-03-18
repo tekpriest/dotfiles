@@ -1,0 +1,22 @@
+colors:
+  body: none
+  date: black
+  tags: yellow
+  title: cyan
+default_hour: 9
+default_minute: 0
+editor: e
+encrypt: false
+highlight: true
+indent_character: '|'
+journals:
+  default:
+    journal: /Users/tp/Code/notes/journal.txt
+  work:
+    journal: /Users/tp/Code/notes/work.txt
+linewrap: 79
+tagsymbols: '#@'
+template: false
+timeformat: '%F %r'
+version: v4.1
+editor: 'neovide --no-fork'

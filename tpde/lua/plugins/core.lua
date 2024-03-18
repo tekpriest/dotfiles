@@ -14,7 +14,7 @@ return {
     config = function(_, opts)
       require('nvim-autopairs').setup(opts)
       -- setup cmp for autopairs
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      local cmp_autopairs = require('nvim-autopairs.completion.cmp')
       require('cmp').event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
@@ -114,62 +114,46 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
     },
-    config = function()
-      require('refactoring').setup()
-    end,
+    config = function() require('refactoring').setup() end,
     cmd = { 'Refactor' },
     keys = {
       {
         '<leader>rx',
-        function()
-          require('refactoring').refactor 'Extract Function'
-        end,
+        function() require('refactoring').refactor('Extract Function') end,
         desc = 'Extract Function',
         mode = { 'x' },
       },
       {
         '<leader>rf',
-        function()
-          require('refactoring').refactor 'Extract Function To File'
-        end,
+        function() require('refactoring').refactor('Extract Function To File') end,
         desc = 'Extract Function To File',
         mode = { 'x' },
       },
       {
         '<leader>rv',
-        function()
-          require('refactoring').refactor 'Extract Variable'
-        end,
+        function() require('refactoring').refactor('Extract Variable') end,
         desc = 'Extract Variable',
         mode = { 'x' },
       },
       {
         '<leader>rI',
-        function()
-          require('refactoring').refactor 'Inline Function'
-        end,
+        function() require('refactoring').refactor('Inline Function') end,
         desc = 'Inline Function',
       },
       {
         '<leader>ri',
-        function()
-          require('refactoring').refactor 'Inline Variable'
-        end,
+        function() require('refactoring').refactor('Inline Variable') end,
         desc = 'Inline Variable',
         mode = { 'n', 'x' },
       },
       {
         '<leader>rb',
-        function()
-          require('refactoring').refactor 'Extract Block'
-        end,
+        function() require('refactoring').refactor('Extract Block') end,
         desc = 'Extract Block',
       },
       {
         '<leader>rbf',
-        function()
-          require('refactoring').refactor 'Extract Block To File'
-        end,
+        function() require('refactoring').refactor('Extract Block To File') end,
         desc = 'Extract Block To File',
       },
     },
@@ -186,8 +170,20 @@ return {
   {
     'andymass/vim-matchup',
     event = { 'BufReadPost' },
-    config = function()
-      vim.g.matchup_matchparen_offscreen = { method = 'popup' }
-    end,
+    config = function() vim.g.matchup_matchparen_offscreen = { method = 'popup' } end,
+  },
+  {
+    'alexghergh/nvim-tmux-navigation',
+    opts = {
+      keybindings = {
+        left = '<C-h>',
+        down = '<C-j>',
+        up = '<C-k>',
+        right = '<C-l>',
+        last_active = '<C-\\>',
+        next = '<C-Space>',
+      },
+    },
+    config = function(_, opts) require('nvim-tmux-navigation').setup(opts) end,
   },
 }

@@ -1,19 +1,5 @@
 return {
   {
-    'L3MON4D3/LuaSnip',
-    build = 'make install_jsregexp',
-    opts = {
-      history = true,
-      update_events = { 'TextChanged', 'TextChangedI' },
-    },
-    config = function(_, opts)
-      require('luasnip').setup(opts)
-
-      -- load snippets
-      require('luasnip.loaders.from_vscode').lazy_load()
-    end,
-  },
-  {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
@@ -30,11 +16,24 @@ return {
       'amarakon/nvim-cmp-buffer-lines',
       'hrsh7th/cmp-nvim-lsp-signature-help',
       'SergioRibera/cmp-dotenv',
+      {
+        'L3MON4D3/LuaSnip',
+        opts = {
+          history = true,
+          update_events = { 'TextChanged', 'TextChangedI' },
+        },
+        config = function(_, opts)
+          require('luasnip').setup(opts)
+
+          -- load snippets
+          require('luasnip.loaders.from_vscode').lazy_load()
+        end,
+      },
     },
     config = function()
-      local cmp = require('cmp')
-      local luasnip = require('luasnip')
-      local Utils = require('core.utils')
+      local cmp = require 'cmp'
+      local luasnip = require 'luasnip'
+      local Utils = require 'core.utils'
 
       cmp.setup {
         -- completion = { completeopt = 'menu,menuone,noinsert,preview' },
@@ -44,23 +43,6 @@ return {
         formatting = {
           expandable_indicator = true,
           fields = { 'abbr', 'kind' },
-          format = function(entry, item)
-            local maxLength = 50
-            if #item.abbr > maxLength then item.abbr = item.abbr:sub(1, maxLength) .. '...' end
-
-            -- distinguish emmet snippets
-            local ft = vim.bo[entry.context.bufnr].filetype
-            local isEmmet = entry.source.name == 'nvim_lsp'
-                and item.kind == 'Snippet'
-                and ft == 'css'
-
-            -- set icons
-            item.kind = entry.source.name == 'nvim_lsp' and Utils.cmp_kinds[item.kind] or ''
-
-            if isEmmet then item.menu = '' end
-
-            return item
-          end,
         },
         experimental = {
           hl_group = 'LspCodeLens',
@@ -104,43 +86,24 @@ return {
           },
           { name = 'nvim_lua' },
           { name = 'path' },
-          { name = 'cmdline' },
         }, {
-          {
-            name = 'buffer',
-            option = {
-              -- use all buffers, instead of just the current one
-              get_bufnrs = function()
-                local allBufs = vim.fn.getbufinfo { buflisted = 1 }
-                local allBufNums = vim.tbl_map(function(buf) return buf.bufnr end, allBufs)
-                return allBufNums
-              end,
-              max_indexed_line_length = 120, -- no long lines (e.g. base64-encoded things)
-            },
-            keyword_length = 3,
-            max_item_count = 4, -- since searching all buffers results in many results
-          },
+          { name = 'buffer' },
           { name = 'nvim_lsp_signature_help' },
-          {
-            name = 'dotenv',
-            option = {
-              trigger_characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
-            },
-          },
+          { name = 'dotenv' },
         }),
 
-        cmp.setup.cmdline({ '/', '?' }, {
-          mapping = cmp.mapping.preset.cmdline(),
-          sources = {
-            { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
-          },
-        }),
+        -- cmp.setup.cmdline({ '/', '?' }, {
+        --   mapping = cmp.mapping.preset.cmdline(),
+        --   sources = {
+        --     { name = 'buffer', option = { keyword_pattern = [[\k\+]] } },
+        --   },
+        -- }),
 
-        cmp.setup.filetype({ 'c', 'cpp' }, {
-          sources = {
-            { name = 'buffer-lines' },
-          },
-        }),
+        -- cmp.setup.filetype({ 'c', 'cpp' }, {
+        --   sources = {
+        --     { name = 'buffer-lines' },
+        --   },
+        -- }),
       }
     end,
   },

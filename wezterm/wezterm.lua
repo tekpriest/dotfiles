@@ -14,17 +14,18 @@ config.quit_when_all_windows_are_closed = true
 
 config.color_scheme = 'Tokyo Night'
 config.font = wezterm.font_with_fallback {
-  { family = 'MonoLisa NF' },
-  { family = 'OperatorMono Nerd Font', weight = 'Light' },
-  { family = 'Dank Mono' },
+  { family = 'DankMono Nerd Font Mono', weight = 'Regular' },
+  -- { family = 'MonoLisa NF' },
+  -- { family = 'OperatorMono Nerd Font', weight = 'Light' },
+  -- { family = 'Dank Mono' },
 }
 -- config.font = wezterm.font{k}
-config.font_size = 8
+config.font_size = 10
 config.window_background_opacity = 0.95
 config.window_decorations = 'RESIZE'
 config.window_close_confirmation = 'NeverPrompt'
 config.scrollback_lines = 3000
-config.default_workspace = 'Code'
+-- config.default_workspace = 'Code'
 config.enable_tab_bar = false
 
 -- dim inactive panes
@@ -35,21 +36,21 @@ config.inactive_pane_hsb = {
 
 -- remove fancy tab bar
 config.use_fancy_tab_bar = false
-config.status_update_interval = 5000
-wezterm.on('update-right-status', function(window, pane)
-  local active_workspace = window:active_workspace()
-
-  local time = wezterm.strftime '%H:%M:%S'
-
-  window:set_right_status(wezterm.format {
-    { Foreground = { Color = 'FFB86C' } },
-    { Text = wezterm.nerdfonts.oct_table .. ' ' .. active_workspace },
-    -- { Text = wezterm.nerdfonts.oct_table .. " " .. cwd },
-    -- 'ResetAttributes',
-    -- { Text = ' | ' },
-    -- { Text = wezterm.nerdfonts.md_clock .. ' ' .. time },
-  })
-end)
+config.status_update_interval = 3000
+-- wezterm.on('update-right-status', function(window, pane)
+--   local active_workspace = window:active_workspace()
+--
+--   local time = wezterm.strftime '%H:%M:%S'
+--
+--   window:set_right_status(wezterm.format {
+--     { Foreground = { Color = 'FFB86C' } },
+--     { Text = wezterm.nerdfonts.oct_table .. ' ' .. active_workspace },
+--     -- { Text = wezterm.nerdfonts.oct_table .. " " .. cwd },
+--     -- 'ResetAttributes',
+--     -- { Text = ' | ' },
+--     -- { Text = wezterm.nerdfonts.md_clock .. ' ' .. time },
+--   })
+-- end)
 
 -- keys
 config.leader = { key = 'x', mods = 'CTRL', timeout_milliseconds = 1000 }
@@ -209,6 +210,6 @@ config.key_tables = {
 }
 
 config.native_macos_fullscreen_mode = false
-config.max_fps = 60
+-- config.max_fps = 60
 
 return config

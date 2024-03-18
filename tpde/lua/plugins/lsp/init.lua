@@ -52,7 +52,7 @@ return {
         dart = { 'dart_format' },
         yaml = { 'prettierd' },
         json = { 'prettierd' },
-        -- go = { 'gofumpt', 'goimports-reviser' },
+        go = { 'gofumpt', 'goimports-reviser', 'golines' },
         -- sh = { 'shfmt' },
       },
       format_on_save = false,
@@ -82,12 +82,12 @@ return {
     keys = {
       {
         '<leader>xd',
-        function() require('trouble').open('document_diagnostics') end,
+        function() require('trouble').open 'document_diagnostics' end,
         desc = 'document diagnostics',
       },
       {
         '<leader>xw',
-        function() require('trouble').open('workspace_diagnostics') end,
+        function() require('trouble').open 'workspace_diagnostics' end,
         desc = 'workspace diagnostics',
       },
     },
@@ -104,7 +104,7 @@ return {
     },
     config = function(_, opts)
       require('mason').setup(opts)
-      local mr = require('mason-registry')
+      local mr = require 'mason-registry'
       local function ensure_installed()
         for _, tool in ipairs(opts.ensure_installed) do
           local p = mr.get_package(tool)
