@@ -1,0 +1,9 @@
+[[session]]
+name = "Juice"
+path = "~/Code/juice"
+
+[[session]]
+name = "Personal"
+path = "~/Code/personal"
+
+blacklist = ["~/Code/furex", "~/Code/shiga"]

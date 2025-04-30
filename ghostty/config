@@ -1,0 +1,16 @@
+font-family = "Dank Mono"
+font-size = 10
+theme = rose-pine-moon
+window-padding-color = background
+mouse-hide-while-typing = true
+# background-opacity = 0.9
+background-blur-radius = 20
+window-decoration = false
+macos-option-as-alt = true
+initial-command = "/bin/zsh -lc tmux a || tmux"
+command = "/bin/zsh -lc tmux a"
+confirm-close-surface = false
+
+# keymaps
+keybind = alt+left=esc:B
+keybind = alt+right=esc:F

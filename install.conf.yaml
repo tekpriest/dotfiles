@@ -1,0 +1,46 @@
+- defaults:
+    link:
+      relink: true
+      create: true
+
+- clean: ["~"]
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/.gitignore: gitignore
+    ~/.config/kitty: kitty
+    ~/.config/alacritty: alacritty
+    ~/.config/tpde: tpde
+    ~/.tmux.conf: tmux.conf
+    ~/.config/wezterm: wezterm
+    ~/.config/fish: fish
+    ~/.config/foot: foot
+    ~/.config/contour: contour
+    ~/.config/nvim: nvim
+    ~/.editorconfig: editorconfig
+    ~/.git-templates: git/templates
+    ~/.config/zsh: zsh
+    ~/.zshrc: zshrc
+    ~/.zshenv: zsh/.zshenv
+    ~/.config/jrnl: jrnl
+    ~/.config/goneovim: goneovim
+    ~/.config/emacs: emacs
+    ~/.config/sesh: sesh
+    ~/.config/tmux: tmux
+    ~/.config/bin: bin
+    ~/.config/ohmyposh: ohmyposh
+    ~/.config/neovide: neovide
+    ~/.config/ios: ios
+    ~/.config/x: x
+    ~/.config/nix: nix
+    ~/.config/tms: tms
+    ~/.config/ghostty: ghostty
+    ~/.config/posting: posting
+    ~/.config/yabai: yabai
+    ~/.config/skhd: skhd
+
+- create:
+    - ~/Code
+
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]

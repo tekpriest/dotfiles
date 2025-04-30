@@ -1,0 +1,228 @@
+#!/bin/bash
+
+# ████████╗███╗   ███╗██╗   ██╗██╗  ██╗
+# ╚══██╔══╝████╗ ████║██║   ██║╚██╗██╔╝
+#    ██║   ██╔████╔██║██║   ██║ ╚███╔╝
+#    ██║   ██║╚██╔╝██║██║   ██║ ██╔██╗
+#    ██║   ██║ ╚═╝ ██║╚██████╔╝██╔╝ ██╗
+#    ╚═╝   ╚═╝     ╚═╝ ╚═════╝ ╚═╝  ╚═╝
+# Terminal multiplexer
+# https://github.com/tmux/tmux
+
+# base settings
+# TODO: learn how this works
+set-option -g focus-events on
+
+# TODO: find a way to toggle this?
+set-option -g display-time 3000
+
+# colors
+# set-option -sa terminal-features ",xterm-kitty:RGB"
+set-option -sa terminal-features ",xterm-256color:RGB"
+
+set -g set-titles on                        # set terminal title
+set -g set-titles-string '#h ❐ #S ● #I #W'
+set -g base-index 1          # start indexing windows at 1 instead of 0
+set -g detach-on-destroy off # don't exit from tmux when closing a session
+set -g escape-time 0         # zero-out escape time delay
+set -g history-limit 1000000 # increase history size (from 2,000)
+set -g mouse on              # enable mouse support
+set -g renumber-windows on   # renumber all windows when any window is closed
+set -g set-clipboard on      # use system clipboard
+set -g status-interval 3     # update the status bar every 3 seconds
+
+set -g status-left "#[fg=blue,bold]#S"
+# set -g status-right '#[fg=yellow,bg=default]%a, #[fg=yellow,bg=default]%d %b #[fg=white,bg=default]%H:%M:%S '
+set -g status-right "#[fg=blue,bold]#S #[fg=yellow,bold]#(gitmux -cfg $HOME/.tmux/gitmux.conf) "
+set -g status-left-length 200    # increase length (from 10)
+set -g status-right-length 200   # increase length (from 10)
+set -g status-position top       # macOS / darwin style
+set -g status-style 'bg=default' # transparent
+
+set -g window-status-current-format '*#[fg=magenta]#W'
+set -g window-status-format ' #[fg=gray]#W'
+
+set -g allow-passthrough on
+set -ga update-environment TERM
+set -ga update-environment TERM_PROGRAM
+
+set -g default-terminal "${TERM}"
+set -g message-command-style bg=default,fg=yellow
+set -g message-style bg=default,fg=yellow
+set -g mode-style bg=default,fg=yellow
+set -g pane-active-border-style 'fg=white,bg=default'
+set -g pane-border-style 'fg=brightblack,bg=default'
+# setw -g xterm-keys on
+
+set -g pane-base-index 1
+set -g clock-mode-style 24
+set -g history-limit 1000000
+set -g renumber-windows on
+set -g set-clipboard on
+set -g status-keys vi
+set -gs repeat-time 600
+set -g mouse on
+setw -g automatic-rename on
+set -g automatic-rename-format "#{?#{==:#{pane_current_command},zsh},#{b:pane_current_path},#{pane_current_command}}"
+set -g status-interval 1
+set -g set-titles on
+set -g monitor-activity on
+
+# keymaps
+unbind C-b
+set -g prefix C-a
+bind-key C-a send-prefix
+
+# splitting
+unbind %
+unbind '"'
+bind | split-window -c '#{pane_current_path}' -h
+bind - split-window -c '#{pane_current_path}' -v
+
+# run commands
+bind c new-window -c '#{pane_current_path}'
+# bind g new-window -n ' ' lazygit
+# bind G new-window -n ' ' gh dash
+bind t new-window -n ' ' -c '#{pane_current_path}'
+
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+bind-key -T copy-mode-vi 'C-h' select-pane -L
+bind-key -T copy-mode-vi 'C-j' select-pane -D
+bind-key -T copy-mode-vi 'C-k' select-pane -U
+bind-key -T copy-mode-vi 'C-l' select-pane -R
+bind-key -T copy-mode-vi 'v' send-keys -X begin-selection
+bind-key -T copy-mode-vi 'C-\' select-pane -l
+bind-key -T copy-mode-vi 'C-Space' select-pane -t:.+
+bind-key e send-keys "tmux capture-pane -p -S - | nvim -c 'set buftype=nofile' +" Enter
+
+
+# TODO: repeat this for all bindings
+bind -N "⌘+g lazygit " g new-window -c "#{pane_current_path}" -n "🌳" "lazygit 2> /dev/null"
+bind -N "⌘+G gh-dash " G new-window -c "#{pane_current_path}" -n "😺" "ghd 2> /dev/null"
+bind -N "⌘+b build" b split-window -v -l 10 build
+bind -N "⌘+d dev" D split-window -v -l 10 dev
+bind -N "⌘+Q kill current session" Q kill-session
+bind-key x kill-window # skip "kill-pane 1? (y/n)" prompt (cmd+w)
+
+# NOTE: has icons but is less stable
+# bind-key "K" run-shell "sesh_fzf_tmux_choose"
+bind-key "J" run-shell "sesh connect \"$(
+	sesh list -i | fzf-tmux -p 55%,60% \
+		--no-sort --border-label ' sesh ' --prompt '⚡  ' \
+		--header '  ^a all ^t tmux ^x zoxide ^g config ^d tmux kill ^f find' \
+		--bind 'tab:down,btab:up' \
+		--bind 'ctrl-a:change-prompt(⚡  )+reload(sesh list -i)' \
+		--bind 'ctrl-t:change-prompt(🪟  )+reload(sesh list -it)' \
+		--bind 'ctrl-g:change-prompt(⚙️  )+reload(sesh list -ic)' \
+		--bind 'ctrl-x:change-prompt(📁  )+reload(sesh list -iz)' \
+		--bind 'ctrl-f:change-prompt(🔎  )+reload(fd -H -d 2 -t d -E .Trash . ~)' \
+		--bind 'ctrl-d:execute(tmux kill-session -t {})+change-prompt(⚡  )+reload(sesh list)'
+)\""
+# NOTE: can be used for debugging
+# )\" 2> /tmp/sesh-$(date +"%Y-%m-%d-%H-%M-%S").txt"
+
+# decide whether we're in a Vim process
+# is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+#     | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
+#
+# bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h' 'select-pane -L'
+# bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j' 'select-pane -D'
+# bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k' 'select-pane -U'
+# bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
+
+# tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+#
+# if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+#     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+# if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+#     "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+#
+# bind-key -n 'C-Space' if-shell "$is_vim" 'send-keys C-Space' 'select-pane -t:.+'
+
+
+# reloading config
+bind r source-file ~/.tmux.conf \; display 'reloaded ~/.tmux.conf'
+
+# resize panes with uppercase keys
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+
+# use clear instead of C-l
+bind C-l send-keys C-l
+
+# vi mode
+set-window-option -g mode-keys vi
+
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+
+unbind -T copy-mode-vi MouseDragEnd1Pane
+
+# Toggle popup window with Alt-3
+# bind-key f display-popup -E 'tmux attach-session -t #{pane_current_path}-popup || tmux new-session -s #{pane_current_path}-popup'
+
+# open sessions all collapsed
+unbind w
+bind w choose-tree -sw
+
+# Disable confirmation
+bind-key x kill-pane
+bind-key X kill-window
+bind-key q kill-session
+bind-key Q kill-server
+
+# sesh
+bind-key "s" display-popup -E -w 40% "sesh connect \"$(
+          sesh list -i | gum filter --limit 1 --placeholder 'Pick a session'
+          --height 50 --prompt='⚡'
+)\""
+
+# bind C-w new-window -n "work-sessions" "ta ~/Code"
+# bind C-g new-window -n "work-sessions" "ta ~/Code/personal"
+
+# break pane into a window
+bind = select-layout even-vertical
+bind + select-layout even-horizontal
+# bind - break-pane
+bind _ join-pane
+
+# fzf find binding
+set -g @t-fzf-find-binding "ctrl-f:change-prompt(  )+reload(fd -H -d 2 -t d . ~)"
+
+# tpm plugin
+set -g @plugin "tmux-plugins/tpm"
+
+# plugins
+set -g @plugin "joshmedeski/tmux-nerd-font-window-name"
+# set -g @plugin "joshmedeski/t-smart-tmux-session-manager"
+set -g @plugin "joshmedeski/tmux-fzf-url"
+set -g @plugin "tmux-plugins/tmux-sensible"
+set -g @plugin "tmux-plugins/tmux-resurrect"
+set -g @plugin "tmux-plugins/tmux-continuum"
+# set -g @plugin "olimorris/tmux-pomodoro-plus"
+
+# t-smart-tmux-session-manager
+# set -g @t-fzf-prompt '  '
+# set -g @t-bind "s"
+set -g @fzf-url-fzf-options '-p 60%,30% --prompt="   " --border-label=" Open URL "'
+set -g @tmux-nerd-font-window-name-show-name false
+set -g @tmux-nerd-font-window-name-shell-icon ''
+set -g @fzf-url-history-limit '2000'
+
+# tmux resurrect
+set -g @resurrect-capture-pane-contents 'on'
+
+# continum
+set -g @continuum-restore 'on'
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'alacritty,fullscreen'
+
+# initialize tmux manager
+run "$HOME/.tmux/plugins/tpm/tpm"

@@ -1,0 +1,4 @@
+frame = "transparent"
+fork = true
+tabs = false
+title-hidden = false

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# cSpell:words worktree
+cd ~/Code/sesh || exit
+BRANCH=$(gum input --placeholder "New branch name")
+echo "Using branch '$BRANCH'"
+REMOTE_BRANCH=$(git ls-remote --heads origin "$BRANCH" | wc -l)
+if [ "$REMOTE_BRANCH" -eq 0 ]; then
+	echo "Branch '$BRANCH' does not exist on remote, creating it"
+	git worktree add ./"$BRANCH"
+else
+	echo "Branch '$BRANCH' exists on remote, using it"
+	git worktree add ./"$BRANCH" origin/"$BRANCH"
+fi
+
+cd "$BRANCH" || exit
+zoxide add "$PWD"
+echo "Connecting to session"
+sesh connect .

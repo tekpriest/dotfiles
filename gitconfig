@@ -1,0 +1,89 @@
+[credential "https://github.com"]
+	helper = !gh auth git-credential
+
+[user]
+	useConfigOnly = true
+	name = Michael Enitan
+	email = asajuenitan@gmail.com
+	signingkey = 55CD838A1C55DEEE
+
+[core]
+  excludesfile = $HOME/.gitignore
+	editor = nvim
+  pager = delta
+	autocrlf = input
+	eol = lf
+
+[init]
+	defaultBranch = main
+  templateDir = ~/.git-templates/hooks
+
+[color]
+	ui = true
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  features=decorations
+
+[delta "interactive"]
+  ; side-by-side = true
+  keep-plus-minus-markers = true
+
+[delta "decorations"]
+	features = diff-so-fancy line-numbers
+	file-modified-label = modified:
+	hunk-header-decoration-style = blue box
+	line-numbers-minus-style = red
+	line-numbers-plus-style = green
+	line-numbers-zero-style = 244
+  line-numbers-right-format = "| "
+  line-numbers-left-format = " "
+
+[tag]
+	gpgSign = true
+
+[fetch]
+	prune = true
+
+[pull]
+	rebase = true
+	verbose = true
+
+[push]
+	default = upstream
+
+[commit]
+	gpgsign = true
+	verbose = true
+
+[gpg]
+	program = gpg
+
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+
+[merge]
+	tool = nvim
+
+[mergetool "nvim"]
+	cmd = nvim -d $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
+[diff]
+	submodule = log
+
+[github]
+	user = tekpriest
+[includeIf "hasconfig:remote.*url:https://gitlab/**"]
+  path = ~/.gitconfig-gitlab
+
+# vim: filetype=gitconfig
+[credential]
+	helper = 
+	helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+	useHttpPath = true

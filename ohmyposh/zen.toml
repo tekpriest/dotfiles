@@ -1,0 +1,57 @@
+#:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+
+version = 2
+final_space = true
+console_title_template = '{{ .Shell }} in {{ .Folder }}'
+auto_upgrade = false
+
+[[blocks]]
+type = 'prompt'
+alignment = 'left'
+newline = true
+
+[[blocks.segments]]
+type = 'path'
+style = 'plain'
+background = 'transparent'
+foreground = 'blue'
+temmplate = '{{ .Path }}'
+[blocks.segments.properties]
+style = 'full'
+
+[[blocks.segments]]
+type = 'text'
+style = 'plain'
+template = '>>> '
+foreground_templates = [
+  "{{if gt .Code 0}}red{{end}}",
+  "{{if eq .Code 0}}magenta{{end}}",
+]
+background = 'transparent'
+
+[transient_prompt]
+foreground_templates = [
+  "{{if gt .Code 0}}red{{end}}",
+  "{{if eq .Code 0}}magenta{{end}}",
+]
+background = "transparent"
+template = '󰶻  '
+
+[secondary_prompt]
+foreground = 'magenta'
+background = 'transparent'
+template = '❯❯ '
+
+[[blocks]]
+type = "rprompt"
+overflow = "hidden"
+
+[[blocks.segments]]
+type = 'executiontime'
+style = 'plain'
+foreground = 'yellow'
+background = 'transparent'
+template = '{{ .FormattedMs }}'
+
+[blocks.segments.properties]
+threshold = 5000

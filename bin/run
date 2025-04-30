@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+run_npm() {
+	npm run $(jq -r '.scripts | keys[]' package.json | fzf --no-border)
+}
+
+run_mix() {
+	cmds='test\ndeps.get\ndeps.update --all\clean\compile'
+	mix $(echo "$cmds" | gum filter --fuzzy --no-sort --placeholder "run")
+}
+
+run_go() {
+	cmds='mod tidy\nbuild\nrun\nrun main.go'
+	go $(echo "$cmds" | gum filter --fuzzy --no-sort --placeholder "run")
+}
+
+if [ -f package.json ]; then
+	echo "node"
+	run_npm
+elif [ -f mix.exs ]; then
+	echo "elixir"
+	run_mix
+elif [ -f go.mod ]; then
+	echo "go"
+	run_go
+else
+	echo "no configuration file found"
+	exit 0
+fi

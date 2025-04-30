@@ -1,0 +1,25 @@
+yabai -m config
+    window_shadow on \
+    yabai -m active_window_opacity 1.0 \
+    yabai -m normal_window_opacity 1.0 \
+    top_padding 10 \
+    bottom_padding 10 \
+    right_padding 10 \
+    left_padding 10 \
+    mouse_follows_focus on \
+    mouse_modifier meta \
+    window_gap 10 \
+    mouse_action1 move \
+    mouse_action2 resize \
+    mouse_drop_action swap \
+
+yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^Karabiner-Element$" manage=off
+yabai -m rule --add app="^App Store$" manage=off
+yabai -m rule --add app="^Calendar$" manage=off
+yabai -m rule --add app="^Finder$" manage=off
+yabai -m rule --add app="^DBeaver$" manage=off
+yabai -m rule --add app="^Discord$" manage=off
+
+echo "yabai configuration loaded.."
