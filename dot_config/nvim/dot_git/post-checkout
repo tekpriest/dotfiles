@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+# vim: filetype=sh
+
+parent_env_file="../.env"
+current_envrc_file=".envrc"
+
+if [ -e "$parent_env_file" ]; then
+  cp "$parent_env_file" "$current_envrc_file"
+  echo "copied environment files to new worktree"
+else
+  echo "No .env file found. skipping"
+fi
