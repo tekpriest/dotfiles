@@ -1,0 +1,91 @@
+HISTFILE=~/.histfile
+HISTSIZE=100000000
+SAVEHIST=$HISTSIZE
+HYPHEN_INSENSITIVE='true'
+CASE_SENSITIVE='false'
+COMPLETION_WAITING_DOTS='true'
+HIST_STAMPS='yyyy-mm-dd'
+DISABLE_MAGIC_FUNCTIONS=true
+COMPLETION_WAITING_DOTS="true"
+
+setopt EXTENDED_HISTORY
+setopt autocd extendedglob
+unsetopt beep
+
+export BREW_PREFIX=$(brew --prefix)
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export GOBIN=$HOME/go/bin
+export CFLAGS="-I$BREW_PREFIX/include"
+export LDFLAGS="-L/$BREW_PREFIX/lib"
+export CPATH="$BREW_PREFIX/include"
+export LIBRARY_PATH="$BREW_PREFIX/lib"
+export LD_LIBRARY_PATH="$BREW_PREFIX/lib"
+# custom binaries
+export PATH=$PATH:$HOME/.config/bin/
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME}/.asdf/shims:$PATH"
+
+if [[ -n $ZSH_EXECUTION_STRING ]]; then
+	return
+fi
+
+# sources
+# FZF
+[ -f "$HOME"/.fzf.zsh ] && source "$HOME"/.fzf.zsh
+# aliases
+[ -f $HOME/.config/zsh/config/aliases.zsh ] && source "$HOME"/.config/zsh/config/aliases.zsh
+# z
+# [ -f "$BREW_PREFIX"/etc/profile.d/z.sh ] && source "$BREW_PREFIX"/etc/profile.d/z.sh
+# nvm
+[ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh # This loads nvm
+
+# kill running ports
+killport() {
+	lsof -i TCP:"$1" | grep LISTEN | awk "{print $2}" | xargs kill -9
+}
+
+# get current ip in terminal
+getip() {
+	curl "https://ip.ecp.plus"
+}
+
+# zoxide
+eval "$(zoxide init zsh)"
+
+# oh-my-posh
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/config.json)"
+
+# zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zi light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+zi snippet OMZP::git
+zi snippet OMZP::dotenv
+zi snippet OMZP::vi-mode
+zi snippet OMZ::plugins/git/git.plugin.zsh
+zi snippet https://gist.githubusercontent.com/hightemp/5071909/raw/
+
+zi light zsh-users/zsh-autosuggestions
+zi light zsh-users/zsh-completions
+zi light zdharma-continuum/fast-syntax-highlighting
+
+zi load zsh-users/zsh-history-substring-search
+zi ice wait atload'_history_substring_search_config'
+
+
+# snippet
+
+### End of Zinit's installer chunk
+
+
+# vim: filetype=sh
