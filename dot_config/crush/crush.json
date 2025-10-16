@@ -1,0 +1,44 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "lsp": {
+    "go": {
+      "command": "gopls"
+    },
+    "typescript": {
+      "command": "typescript-language-server",
+      "args": [
+        "--stdio"
+      ]
+    }
+  },
+  "permissions": {
+    "allowed_tools": [
+      "bash",
+      "view",
+      "ls",
+      "grep"
+    ]
+  },
+  "providers": {
+    "deepseek": {
+      "type": "openai",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "$DEEPSEEK_API_KEY",
+      "models": [
+        {
+          "can_reason": false,
+          "id": "deepseek-chat",
+          "name": "Deepseek v3",
+          "cost_per_1m_in": 0.27,
+          "cost_per_1m_out": 1.1,
+          "cost_per_1m_in_cached": 0.07,
+          "cost_per_1m_out_cached": 1.1,
+          "context_window": 64000,
+          "default_max_tokens": 5000,
+          "supports_attachments": true,
+          "has_reasoning_efforts": true
+        }
+      ]
+    }
+  }
+}
