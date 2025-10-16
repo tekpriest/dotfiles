@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 3,
+  "final_space": true,
+  "console_title_template": "{{ .Shell }} in {{ .Folder }}",
+  "pallete": {
+    "grey": "#6c6c6c"
+  },
+  "secondary_prompt": {
+    "template": "❯❯ ",
+    "foreground": "magenta",
+    "background": "transparent"
+  },
+  "transient_prompt": {
+    "template": "❯ ",
+    "foreground": "transparent",
+    "foreground_templates": ["{{if gt .Code 0}}red{{end}}", "{{if eq .Code 0}}green{{end}}"]
+  },
+  "blocks": [
+    {
+      "segments": [
+        {
+          "template": "{{ if .SSHSession }}   {{ .UserName }}@{{ .HostName }}{{ end }} ",
+          "foreground": "transparent",
+          "type": "session",
+          "style": "plain",
+          "properties": {
+            "cache_duration": "none"
+          }
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#61AFEF",
+          "template": "{{ .Path }}",
+          "properties": {
+            "style": "folder",
+            "cache_duration": "none"
+          },
+          "style": "plain",
+          "type": "path"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "type": "rprompt",
+      "overflow": "hidden",
+      "segments": [
+        {
+          "template": "{{ .FormattedMs }}",
+          "foreground": "p:grey",
+          "background": "transparent",
+          "type": "executiontime",
+          "style": "plain",
+          "properties": {
+            "threshold": 5000
+          }
+        }
+      ]
+    }
+  ]
+}
