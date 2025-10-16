@@ -1,0 +1,87 @@
+simplified_ui false
+pane_frames false
+
+layout {
+  pane_template name="neovim" {
+    command "nvim"
+  }
+
+  pane_template name="statusline" {
+    plugin location="file:~/.config/zellij/plugins/zjstatus.wasm" {
+        color_bg "bright_black"
+        color_fg "black"
+
+        format_left   "{mode}{tabs} #[fg=bright_black,italic]@{session}"
+        format_right  "{command_git_branch} {datetime} {command_battery}"
+        format_center ""
+        format_space ""
+
+        // {session}
+        hide_frame_for_single_pane "true"
+        border_enabled  "false"
+
+        format_hide_on_overlength "true"
+        format_precedence "lrc"
+
+        mode_normal  "#[fg=yellow]   "
+        mode_locked  "#[fg=red]   "
+        mode_tmux    "#[bg=cyan] >… "
+
+        // synmbols:  ●                            󰀱 󰚄 󰝆 󰡄 󰨈 󰩖 󰩗 󱂡 󱂛 󱂑 󱂐 󱂏 󱂎 󱂍 󱂌 󱂋 󱂊 󱂉 󱂅 󱂈 󰟹 󰟯 󰟲 󰟰 󰟽 󰎢 󰎣 󰎥 󰎦 󰎨 󰎩 󰎫 󰎬 󰎲 󰎮 󰎯 󰎰 󰎴 󰎵 󰎷 󰎸 󰎺 󰎻 󰎽 󰎾
+
+        tab_normal              "#[fg=#6C7086]{index}"
+        tab_normal_fullscreen   "#[fg=#6C7086]{index}"
+        tab_normal_sync         "#[fg=#6C7086]{index}"
+
+        // formatting for the current active tab
+        // tab_active              "#[fg=blue,bold]{name}#[fg=yellow,bold]{floating_indicator}"
+        // tab_active_fullscreen   "#[fg=yellow,bold]{name}#[fg=yellow,bold]{fullscreen_indicator}"
+        // tab_active_sync         "#[fg=green,bold]{name}#[fg=yellow,bold]{sync_indicator}"
+        tab_separator " "
+        tab_normal    "#[fg=$bg]#[bg=$bg,fg=$fg] {index}#[fg=$bg]"
+        tab_active    "#[fg=blue]#[bg=blue,fg=$fg] {index}#[fg=blue]"
+
+        // indicators
+        tab_sync_indicator       " "
+        tab_fullscreen_indicator " "
+        tab_floating_indicator   ""
+
+        command_git_branch_command     "git branch --show-current"
+        command_git_branch_format      "#[fg=blue] {stdout} "
+        command_git_branch_interval    "1"
+        command_git_branch_rendermode  "static"
+
+        command_battery_command "zelda-battery"
+        command_battery_format "#[fg=$bg]#[bg=$bg,fg=$fg]{stdout}#[fg=$bg]"
+        command_weather_interval "60"
+
+
+        datetime        "#[fg=#6867AF,bold] {format} "
+        datetime_format "%H:%M:%S"
+        datetime_timezone "Africa/Lagos"
+
+        // limit tab display count
+        tab_display_count          "3"  // limit to showing 3 tabs
+        tab_truncate_start_format  "#[fg=$fg,bg=$bg] < + {count} ... "
+        tab_truncate_end_format    "#[fg=$fg,bg=$bg] ... + {count} >"
+      }
+  }
+
+  default_tab_template { statusline size=2 borderless=true; children;  }
+  tab_template name="editor" { children; }
+
+  // editor name="editor" focus=true { neovim; }
+  // tab name="terminal" { pane; }
+
+  // tab name="󰎦" focus=true borderless=true    
+  // tab name="󰎩"
+  // tab name="󰎬"
+}
+
+keybinds {
+    shared {
+        bind "Alt 1" { NewTab; }
+        bind "Alt 2" { GoToNextTab; }
+        bind "Alt 3" { CloseTab; }
+    }
+}
