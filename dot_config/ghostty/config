@@ -1,0 +1,30 @@
+font-family = "OperatorMonoLig Nerd Font Mono"
+font-size = 10
+font-thicken = true
+# adjust-cell-height = 5% # disable for CartographCF
+adjust-cell-width = -10%
+theme = Rose Pine
+window-decoration = false
+macos-option-as-alt = true
+initial-command = /bin/zsh -l -c "tmux a || tmux"
+command = /bin/zsh -l -c "tmux a || tmux"
+confirm-close-surface = false
+clipboard-read = allow
+cursor-click-to-move = false
+mouse-hide-while-typing = true
+
+# background
+background-opacity = 0.85
+background-blur = true
+background-blur-radius = 90
+
+# keymaps
+keybind = alt+left=esc:B
+keybind = alt+right=esc:F
+keybind = cmd+right=text:\x05
+keybind = cmd+left=text:\x01
+keybind = alt+left=esc:b
+keybind = alt+right=esc:f
+keybind = cmd+delete=text:\x0b
+keybind = cmd+backspace=text:\x15
+keybind = opt+delete=esc:d
