@@ -1,0 +1,22 @@
+colors:
+  body: none
+  date: black
+  tags: yellow
+  title: cyan
+default_hour: 9
+default_minute: 0
+editor: 'nvim -c startinsert'
+encrypt: false
+highlight: true
+indent_character: '|'
+display_format: markdown
+journals:
+  juice: ~/Code/juice/notes.txt
+  gidi: ~/Code/gidi/notes.txt
+  default:
+    journal: /Users/tp/Code/notes/journal.txt
+linewrap: 79
+tagsymbols: '#@'
+template: false
+timeformat: '%F %r'
+version: v4.2.1
