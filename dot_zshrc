@@ -1,0 +1,105 @@
+HISTFILE=~/.histfile
+HISTSIZE=100000000
+SAVEHIST=$HISTSIZE
+HYPHEN_INSENSITIVE='true'
+CASE_SENSITIVE='false'
+COMPLETION_WAITING_DOTS='true'
+HIST_STAMPS='yyyy-mm-dd'
+DISABLE_MAGIC_FUNCTIONS=true
+COMPLETION_WAITING_DOTS="true"
+
+setopt EXTENDED_HISTORY
+setopt autocd extendedglob
+unsetopt beep
+
+export BREW_PREFIX=$(brew --prefix)
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export GOBIN=$HOME/go/bin
+export CFLAGS="-I$BREW_PREFIX/include"
+export LDFLAGS="-L/$BREW_PREFIX/lib"
+export CPATH="$BREW_PREFIX/include"
+export LIBRARY_PATH="$BREW_PREFIX/lib"
+export LD_LIBRARY_PATH="$BREW_PREFIX/lib"
+# custom binaries
+export PATH="$PATH:$HOME/.config/bin"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH=$PATH:$GOBIN
+# asdf
+export PATH="${ASDF_DATA_DIR:-$HOME}/.asdf/shims:$PATH"
+# NINJA
+export CMAKE_GENERATOR=Ninja
+# GPG
+export GPG_TTY=$(tty)
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# atuin
+export PATH="$HOME/.atuin/bin:$PATH"
+# flutter
+export PATH=$HOME/.local/bin/flutter/bin:$PATH
+# Gem
+# export PATH=$HOME/.gem/bin:$PATH
+# deepseek
+export DEEPSEEK_API_KEY=$(pass show deepseek)
+
+if [[ -n $ZSH_EXECUTION_STRING ]]; then
+	return
+fi
+
+# sources
+# FZF
+[ -f "$HOME"/.fzf.zsh ] && source "$HOME"/.fzf.zsh
+# bun
+[ -s "/Users/tp/.bun/_bun" ] && source "/Users/tp/.bun/_bun"
+# aliases
+[ -f $HOME/.config/zsh/config/aliases.zsh ] && source "$HOME"/.config/zsh/config/aliases.zsh
+# nvm
+[ -s "$NVM_DIR"/nvm.sh ] && source "$NVM_DIR"/nvm.sh # This loads nvm
+
+# kill running ports
+killport() {
+	lsof -i TCP:"$1" | grep LISTEN | awk "{print $2}" | xargs kill -9
+}
+
+# get current ip in terminal
+getip() {
+	curl "https://ip.ecp.plus"
+}
+
+juicestart() {
+  iex --sname $1 --cookie juice -S mix
+}
+
+mkcd() {
+  mkdir $1 && cd $_
+}
+
+# zoxide
+eval "$(zoxide init zsh --cmd cd)"
+# atuin
+eval "$(atuin init zsh)"
+
+# zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zi light-mode for \
+	zdharma-continuum/zinit-annex-as-monitor \
+	zdharma-continuum/zinit-annex-bin-gem-node \
+	zdharma-continuum/zinit-annex-patch-dl \
+	zdharma-continuum/zinit-annex-rust
+
+zi snippet OMZP::dotenv
+zi snippet OMZ::plugins/git/git.plugin.zsh
+
+zi light zsh-users/zsh-autosuggestions
+zi light zsh-users/zsh-completions
+zi light zdharma-continuum/fast-syntax-highlighting
+
+### End of Zinit's installer chunk
+
+# vim: filetype=sh
