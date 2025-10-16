@@ -1,0 +1,9 @@
+fork = true
+frame = "buttonless"
+
+# [font]
+# size = 10
+
+# [[font.normal]]
+# family = "CartographCF Nerd Font"
+# style = "Regular"
