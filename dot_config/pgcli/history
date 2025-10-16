@@ -1,0 +1,3868 @@
+
+# 2025-05-19 14:58:07.241001
++use juice_test
+
+# 2025-05-19 14:58:13.033341
++select * from webhooks.logs
+
+# 2025-05-19 14:58:15.803822
++select * from webhook.logs
+
+# 2025-05-19 14:58:21.207828
++\dt
+
+# 2025-05-19 15:12:43.149581
++use juice_test
+
+# 2025-05-19 15:12:45.166244
++select * from webhook.logs
+
+# 2025-05-19 15:12:47.407352
++\dt
+
+# 2025-05-19 15:13:41.465012
++use juice_dev
+
+# 2025-05-19 15:13:43.429083
++select * from webhook.logs
+
+# 2025-05-19 15:13:46.673163
++\dt
+
+# 2025-05-19 15:36:26.429736
++use juice_dev
+
+# 2025-05-19 15:36:28.278874
++select * from webhook.logs
+
+# 2025-05-19 15:37:15.121014
++use juice_test
+
+# 2025-05-19 15:37:18.213436
++\dt+
+
+# 2025-05-19 15:37:32.240897
++use juice_test
+
+# 2025-05-19 15:37:40.105887
++select * from webhook.logs
+
+# 2025-05-19 15:37:42.503073
++\dt
+
+# 2025-05-19 15:41:50.515780
++use postgres
+
+# 2025-05-19 15:41:52.042996
++\dt
+
+# 2025-05-19 15:43:11.702545
++use tp
+
+# 2025-05-19 15:43:13.825756
++\dt
+
+# 2025-05-19 15:46:50.031386
++use juice_test
+
+# 2025-05-19 15:46:56.410929
++select * from webhooks.logs
+
+# 2025-05-19 15:47:06.163764
++delete from webhooks.logs
+
+# 2025-05-19 20:46:44.660300
++use juice_dev
+
+# 2025-05-19 20:46:47.734351
++select * from webhooks.logs
+
+# 2025-05-19 20:46:50.641379
++delete from webhooks.logs
+
+# 2025-05-19 20:50:38.326981
++COPY gateway.payments (id,business_id,customer_id,channel_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,fee_charged_to,description,reversal,mode,customer,merchant,order,payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-05-19 20:50:53.195316
++COPY gateway.payments (id,business_id,customer_id,channel_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,fee_charged_to,description,reversal,mode,customer,merchant,`order`,payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-05-19 20:51:07.737815
++COPY gateway.payments (id,business_id,customer_id,channel_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-05-19 21:32:13.009043
++select * from gateway.payments
+
+# 2025-05-19 21:44:20.630775
++COPY gateway.payments (id,business_id,customer_id,channel_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-05-19 21:45:30.499181
++COPY gateway.payments (id,business_id,customer_id,channel_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,channel,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-05-19 21:46:03.666530
++COPY gateway.payments (id,business_id,customer_id,channel_reference,merchant_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,channel,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-05-20 13:21:50.164722
++use juice_dev
+
+# 2025-05-20 13:24:57.634210
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-20 13:26:11.908172
++select * from accounts.accounts
+
+# 2025-05-20 13:28:51.723721
++delete from accounts.accounts
+
+# 2025-05-20 13:28:55.603696
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-20 13:29:34.299071
++select * from accounts.accounts
+
+# 2025-05-20 13:31:05.586851
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-20 13:32:23.710913
++COPY accounts.customers(id,account_id,email,phone_number,first_name,last_name,billing_address,type,data,inserted_at,updated_at,bvn) FROM '/Users/tp/Downloads/ac.csv' WITH CSV HEADER
+
+# 2025-05-20 13:34:24.995611
++select * from accounts.customers
+
+# 2025-05-20 13:34:33.065189
++COPY accounts.customers(id,account_id,email,phone_number,first_name,last_name,billing_address,type,data,inserted_at,updated_at,bvn) FROM '/Users/tp/Downloads/ac.csv' WITH CSV HEADER
+
+# 2025-05-20 13:41:07.308371
++\COPY accounts.customers(id,account_id,email,phone_number,first_name,last_name,billing_address,type,data,inserted_at,updated_at,bvn) FROM '/Users/tp/Downloads/ac.csv' WITH CSV HEADER
+
+# 2025-05-20 13:42:28.219083
++select COUNT(*) from accounts.customers where account_id='3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'A
+
+# 2025-05-20 13:42:30.125335
++select COUNT(*) from accounts.customers where account_id='3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'
+
+# 2025-05-20 13:42:43.205070
++select COUNT(*) from accounts.customers where account_id not in ('3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b')
+
+# 2025-05-20 13:43:26.698488
++UPDATE accounts.customers ac
++SET account_id = aa.id
++FROM accounts.accounts aa
++WHERE
++    ac.email = aa.email
++    AND aa.type = 'personal'
++    AND ac.account_id IS DISTINCT FROM aa.id;
+
+# 2025-05-20 14:00:43.700830
++select * from accounts.accounts where email ilike '%root%
+
+# 2025-05-20 14:00:46.128606
++select * from accounts.accounts where email ilike '%root%'
+
+# 2025-05-20 14:01:12.917174
++clear
+
+# 2025-05-20 14:01:30.176113
++select COUNT(*) from accounts.customers where account_id not in ('3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b')
+
+# 2025-05-20 14:01:44.757823
++select COUNT(*) from accounts.customers where account_id in ('3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b')
+
+# 2025-05-20 14:03:56.199075
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-20 14:05:12.604043
++delete from accounts.accounts
+
+# 2025-05-20 14:05:15.328420
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-20 14:09:24.214030
++select * from accounts.accounts.where id='17ea6b7b-73b8-4b2d-8c51-b48fdedb488c'
+
+# 2025-05-20 14:09:30.780013
++select * from accounts.accounts where id='17ea6b7b-73b8-4b2d-8c51-b48fdedb488c'
+
+# 2025-05-21 14:16:49.576157
++use juice_dev
+
+# 2025-05-21 14:16:59.439481
++select * from accounts.accounts where address IS NOT NULL
+
+# 2025-05-21 14:19:08.608647
++select * from accounts.customers where billing_address IS NOT NULL limit 1
+
+# 2025-05-21 14:19:12.373318
++select * from accounts.customers where billing_address IS NOT NULL
+
+# 2025-05-21 14:21:49.358606
++select * from payment_methods.bank_accounts
+
+# 2025-05-21 14:47:49.620772
++use juice_dev
+
+# 2025-05-21 14:55:06.370311
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_account,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,questoin,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose,intermediary_bank) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 15:13:53.677119
++select pg_terminate_backend(pid) from pg_stat_activity where datname='juice_dev' and pid <> pg_backend_pid()
+
+# 2025-05-21 15:22:14.208709
++select * from accounts.customers where billing_address IS NOT NULL
+
+# 2025-05-21 15:23:54.923200
++use juice_dev
+
+# 2025-05-21 15:23:56.451665
++select * from accounts.customers where billing_address IS NOT NULL
+
+# 2025-05-21 15:24:03.244570
++select COUNT(*) from accounts.customers where account_id in ('3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b')
+
+# 2025-05-21 15:25:06.266160
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-21 15:25:12.125763
++select * from accounts.customers where billing_address IS NOT NULL
+
+# 2025-05-21 15:25:41.208569
++COPY accounts.customers(id,account_id,email,phone_number,first_name,last_name,billing_address,type,data,inserted_at,updated_at,bvn) FROM '/Users/tp/Downloads/ac.csv' WITH CSV HEADER
+
+# 2025-05-21 15:26:11.537626
++select * from accounts.customers where billing_address IS NOT NULL
+
+# 2025-05-21 15:26:27.562238
++SELECT * FROM accounts.accounts where address IS NOT NULL
+
+# 2025-05-21 15:27:51.074175
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_account,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,questoin,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose,intermediary_bank) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 15:29:53.207479
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_code,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,questoin,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose,intermediary_bank) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 15:30:03.214698
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_code,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,question,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose,intermediary_bank) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 15:30:33.212836
++\dt money_movements.beneficiaries
+
+# 2025-05-21 15:30:38.224833
++\dt+ money_movements.beneficiaries
+
+# 2025-05-21 15:30:44.207554
++describe money_movements.beneficiaries
+
+# 2025-05-21 15:30:56.081004
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_code,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,question,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 15:31:59.479343
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_code,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,question,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose,intermediary_bank) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 15:32:18.560374
++describe money_movements.beneficiaries
+
+# 2025-05-21 15:32:27.279998
++use juice_dev
+
+# 2025-05-21 15:32:28.810793
++COPY money_movements.beneficiaries(id,account_id,user_id,business_id,payment_method_id,profile_type,type,lifetime,currency,bank_code,bank_name,account_name,account_number,account_type,virtual,bic,routing_number,sort_code,bank_address,address,crypto_address, label,chain,wallet_id, provider,email,first_name,last_name,phone_number,question,answer, account_system,metadata,inserted_at, updated_at, relationship, purpose,intermediary_bank) FROM '/Users/tp/Downloads/mmb.csv' WITH CSV HEADER
+
+# 2025-05-21 16:06:43.271147
++delete from accounts.accounts
+
+# 2025-05-21 16:06:49.551197
++delete from accounts.customers
+
+# 2025-05-21 16:07:23.805242
++COPY accounts.customers(id,account_id,email,phone_number,first_name,last_name,billing_address,type,data,inserted_at,updated_at,bvn) FROM '/Users/tp/Downloads/ac.csv' WITH CSV HEADER
+
+# 2025-05-21 16:07:27.912830
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-05-21 16:07:42.252259
++select aa.* from accounts.customers ac inner join accounts.accounts aa on aa.email = ac.email where ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' and ac.type = (case when aa.type='personal' then 'individual' else 'business' end)
+
+# 2025-05-21 16:10:38.831431
++update accounts.customers ac set ac.account_id = aa.id from accounts.accounts aa where ac.email = aa.email and ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' and ac.type = (case when aa.type='personal' then 'individual' else 'business' end)
+
+# 2025-05-21 16:11:28.881517
++update accounts.customers ac set `ac`.account_id = aa.id from accounts.accounts aa where ac.email = aa.email and ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' and ac.type = (case when aa.type='personal' then 'individual' else 'business' end)
+
+# 2025-05-21 16:11:45.292034
++update accounts.customers ac set "ac".account_id = aa.id from accounts.accounts aa where ac.email = aa.email and ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' and ac.type = (case when aa.type='personal' then 'individual' else 'business' end)
+
+# 2025-05-21 16:12:01.660951
++update accounts.customers ac set account_id = aa.id from accounts.accounts aa where ac.email = aa.email and ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' and ac.type = (case when aa.type='personal' then 'individual' else 'business' end)
+
+# 2025-05-21 16:12:07.836361
++select aa.* from accounts.customers ac inner join accounts.accounts aa on aa.email = ac.email where ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' and ac.type = (case when aa.type='personal' then 'individual' else 'business' end)
+
+# 2025-05-21 16:12:23.023984
++select * from accounts.customers where billing_address IS NOT NULL limit 1
+
+# 2025-05-21 16:12:46.112219
++select * from accounts.accounts where email ilike '%dizzybones%
+
+# 2025-05-21 16:12:56.711165
++select * from accounts.accounts where email ilike '%dizzybones%'
+
+# 2025-05-21 16:15:58.399428
++UPDATE accounts.customers ac SET account_id = aa.id FROM accounts.accounts aa WHERE ac.email = aa.email AND ac.account_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' AND ac.type = (CASE WHEN aa.type='personal' THEN 'individual' ELSE 'business' END)
+
+# 2025-05-21 21:02:24.550861
++use juice_dev
+
+# 2025-05-21 21:03:52.477734
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/bv.csv' WITH CSV HEADER
+
+# 2025-05-21 21:05:09.600109
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/bv.csv' WITH CSV HEADER
+
+# 2025-05-21 21:06:05.686944
++select id, ROW_NUMBER(), over (partition by bridge_id order by id) as rn from bridge.virtual_accounts where destination_address = 'GcXzN6nA2UPHhsGWLCdkZ5A58QBpqyAqsj1VsFvojebm'
+
+# 2025-05-21 21:06:54.570543
++select id, ROW_NUMBER() over (partition by bridge_id order by id) as rn from bridge.virtual_accounts where destination_address = 'GcXzN6nA2UPHhsGWLCdkZ5A58QBpqyAqsj1VsFvojebm'
+
+# 2025-05-21 21:08:25.617466
++select * from (select id, ROW_NUMBER() over (partition by bridge_id order by id) as rn from bridge.virtual_accounts where destination_address = 'GcXzN6nA2UPHhsGWLCdkZ5A58QBpqyAqsj1VsFvojebm')  where rn > 1
+
+# 2025-05-22 08:44:58.409361
++select COUNT(*) from (select id, ROW_NUMBER() over (partition by bridge_id order by id) as rn from bridge.virtual_accounts where destination_address = 'GcXzN6nA2UPHhsGWLCdkZ5A58QBpqyAqsj1VsFvojebm')  where rn > 1
+
+# 2025-05-22 08:51:26.679360
++use juice_dev
+
+# 2025-05-22 08:51:27.632308
++select COUNT(*) from (select id, ROW_NUMBER() over (partition by bridge_id order by id) as rn from bridge.virtual_accounts where destination_address = 'GcXzN6nA2UPHhsGWLCdkZ5A58QBpqyAqsj1VsFvojebm')  where rn > 1
+
+# 2025-05-22 08:53:23.728479
++with ranked as (select id from (select id, ROW_NUMBER() over (partition by bridge_id order by id) as rn from bridge.virtual_accounts where destination_address = 'GcXzN6nA2UPHhsGWLCdkZ5A58QBpqyAqsj1VsFvojebm') sub where rn > 1) delete from bridge.virtual_accounts where id in (select id from ranked)
+
+# 2025-05-22 08:53:40.643121
++select COUNT(*) from bridge.virtual_accounts
+
+# 2025-05-22 22:47:52.966023
++use juice_dev
+
+# 2025-05-22 22:47:57.980937
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/bv.csv' WITH CSV HEADER
+
+# 2025-05-22 23:05:56.197500
++delete from bridge.virtual_accounts where destination_address='4HYJN9u32gkQpXESmmVcBbtPAiiGvdUvRq2V2GqAt9uN'
+
+# 2025-05-22 23:06:03.700766
++select COUNT(*) from bridge.virtual_accounts
+
+# 2025-05-26 11:41:07.056227
++use juice_test
+
+# 2025-05-26 11:41:27.435483
++delete from webhooks.logs
+
+# 2025-05-28 22:18:05.145870
++use juice_test
+
+# 2025-05-28 22:18:14.177135
++delete from money_movements.payouts
+
+# 2025-05-28 22:18:35.605127
++drop table money_movements.payouts
+
+# 2025-05-28 22:18:51.326363
++use juice_dev
+
+# 2025-05-28 22:18:53.746944
++drop table money_movements.payouts
+
+# 2025-05-28 22:19:25.625758
++use juice_test
+
+# 2025-05-28 22:19:35.663508
++select * from money_movements.payouts
+
+# 2025-05-28 23:18:13.483956
++use juice_test
+
+# 2025-05-28 23:18:20.033596
++describe money_movements.payouts
+
+# 2025-05-28 23:20:02.787407
++use juice_test
+
+# 2025-05-28 23:20:04.477457
++describe money_movements.payouts
+
+# 2025-05-29 19:06:38.595439
++use juice_dev
+
+# 2025-05-29 19:06:45.347941
++select * from money_movements.payouts
+
+# 2025-05-29 19:09:15.348019
++use juice_dev
+
+# 2025-05-29 19:09:24.878850
++select * from schema_migrations
+
+# 2025-05-29 19:09:34.459121
++select * from schema_migrations order by inserted_at desc
+
+# 2025-05-29 19:09:42.206812
++select * from schema_migrations order by inserted_at desc limit 2
+
+# 2025-05-29 19:09:57.524885
++delete from schema_migrations where version='20230813141829'
+
+# 2025-05-30 15:21:04.800325
++use juice_dev
+
+# 2025-05-30 15:21:16.961829
++delete from webhooks.logs
+
+# 2025-05-30 15:23:20.985191
++use juice_dev
+
+# 2025-05-30 15:23:22.624316
++delete from webhooks.logs
+
+# 2025-05-30 18:43:41.039673
++use juice_dev
+
+# 2025-05-30 18:43:45.940420
++delete from webhooks.logs
+
+# 2025-05-30 19:44:15.600767
++use juice_dev
+
+# 2025-05-30 19:44:16.754981
++delete from webhooks.logs
+
+# 2025-05-30 22:52:10.122689
++use juice_dev
+
+# 2025-05-30 22:52:14.768046
++delete from webhooks.logs
+
+# 2025-05-30 22:52:24.824475
++exit
+
+# 2025-06-01 22:20:31.877571
++CREATE ROLE postgres WITH LOGIN PASSWORD 'postgres';
+
+# 2025-06-01 22:22:06.958395
++ALTER ROLE postgres WITH SUPERUSER;
+
+# 2025-06-01 22:22:57.424697
++SELECT rolname,rolsuper FROM pg_roles WHERE rolname='postgres';
+
+# 2025-06-01 22:47:02.566990
++use juice_dev
+
+# 2025-06-01 22:47:04.772828
++select * from schema_migrations order by inserted_at desc limit 2
+
+# 2025-06-02 09:19:56.971607
++use juice_dev
+
+# 2025-06-02 09:21:59.098795
++select * from money_movements.payouts
+
+# 2025-06-02 09:22:04.875141
++use juice_test
+
+# 2025-06-02 09:22:06.420402
++select * from money_movements.payouts
+
+# 2025-06-03 08:13:42.863342
++use juice_test
+
+# 2025-06-03 08:13:50.979212
++describe money_movements.payouts
+
+# 2025-06-03 08:31:45.753941
++SELECT
++        business_id,
++        (metadata->>'user_id')::uuid as user_id,
++        provider,
++        metadata->>'provider_id' as provider_id,
++        reference,
++        source_amount,
++        destination_amount,
++        case when status = 'completed' then 'success' else status end as status,
++        sender as initiator,
++        jsonb_build_object('id', case when (metadata->>'user_id')::uuid is null then business_id else (metadata->>'user_id')::uuid end, 'type', case when (metadata->>'user_id')::uuid is null then 'business' else 'user' end, 'name', metadata->'beneficiary'->'params'->>'account_name') as beneficiary,
++        beneficiary as payment_method,
++        description,
++        error_message,
++        'payout' as activity,
++        correlation_id,
++        inserted_at as timestamp,
++        id,
++        'jrn:payout:payout:' || id as jrn,
++        null as merchant_reference,
++        metadata->>'transaction_hash' as transaction_hash,
++        null as source_address,
++        payment_id,
++        FROM money_movements.payouts
+
+# 2025-06-03 08:31:50.796267
++SELECT
++        business_id,
++        (metadata->>'user_id')::uuid as user_id,
++        provider,
++        metadata->>'provider_id' as provider_id,
++        reference,
++        source_amount,
++        destination_amount,
++        case when status = 'completed' then 'success' else status end as status,
++        sender as initiator,
++        jsonb_build_object('id', case when (metadata->>'user_id')::uuid is null then business_id else (metadata->>'user_id')::uuid end, 'type', case when (metadata->>'user_id')::uuid is null then 'business' else 'user' end, 'name', metadata->'beneficiary'->'params'->>'account_name') as beneficiary,
++        beneficiary as payment_method,
++        description,
++        error_message,
++        'payout' as activity,
++        correlation_id,
++        inserted_at as timestamp,
++        id,
++        'jrn:payout:payout:' || id as jrn,
++        null as merchant_reference,
++        metadata->>'transaction_hash' as transaction_hash,
++        null as source_address,
++        payment_id
++        FROM money_movements.payouts
+
+# 2025-06-03 08:40:05.883454
++use juice_dev
+
+# 2025-06-03 08:40:09.254658
++describe money_movements.payouts
+
+# 2025-06-03 09:58:52.930970
++select * from money_movements.transfers
+
+# 2025-06-03 09:59:07.436923
++use juice_dev
+
+# 2025-06-03 09:59:11.358889
++describe money_movements.transfers
+
+# 2025-06-03 10:00:32.468646
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-06-03 10:07:12.984592
++use juice_dev
+
+# 2025-06-03 10:11:34.924593
++alter table money_movements.payouts add column from_currency text, add column to_currency text;
+
+# 2025-06-04 10:27:39.116828
++use juice_dev
+
+# 2025-06-04 10:28:05.284840
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-06-04 10:29:02.450495
++use juice_dev
+
+# 2025-06-04 10:29:09.430407
++alter table money_movements.payouts add column from_currency text, add column to_currency text;
+
+# 2025-06-04 10:34:14.640455
++use juice_dev
+
+# 2025-06-04 10:36:44.749157
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-06-04 10:38:01.415109
++use juice_dev
+
+# 2025-06-04 10:38:05.098304
++describe money_movements.payouts
+
+# 2025-06-04 10:39:36.500198
++use juice_dev
+
+# 2025-06-04 10:39:39.121951
++drop table money_movements.payouts
+
+# 2025-06-04 10:41:17.652702
++use juice_dev
+
+# 2025-06-04 10:41:56.496552
++delete from schema_migrations where version in ('20250528204735','20250521171014')
+
+# 2025-06-04 10:44:40.077681
++use juice_dev
+
+# 2025-06-04 10:44:41.628629
++describe money_movements.payouts
+
+# 2025-06-04 10:46:13.660517
++use juice_dev
+
+# 2025-06-04 10:46:17.604872
++delete from schema_migrations
+
+# 2025-06-04 10:47:42.242568
++use juice_dev
+
+# 2025-06-04 10:47:44.459062
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-06-04 13:18:16.689298
++use juice_dev
+
+# 2025-06-04 13:18:18.096941
++CREATE VIEW money_movements.movements AS  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movementsORDER BY timestamp DESC
+
+# 2025-06-04 13:18:51.374127
++CREATE VIEW money_movements.movements AS  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements ORDER BY timestamp DESC
+
+# 2025-06-04 13:20:22.874604
++drop view money_movements.movements
+
+# 2025-06-04 13:20:24.893788
++CREATE VIEW money_movements.movements AS  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements  UNION ALL  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements ORDER BY timestamp DESC
+
+# 2025-06-04 13:25:18.654847
++use juice_dev
+
+# 2025-06-04 13:25:30.915126
++alter table money_movements.transfers drop column business_id;
+
+# 2025-06-04 13:35:31.005549
++use juice_dev
+
+# 2025-06-04 14:17:37.904930
++select * from money_movements.payout_movements
+
+# 2025-06-04 14:17:42.190514
++select * from money_movements.movements
+
+# 2025-06-04 14:40:17.401514
++COPY money_movements.payout
+
+# 2025-06-04 14:42:33.591478
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mmp.csv' WITH HEADER CSV
+
+# 2025-06-04 14:42:49.594207
++\COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mmp.csv' WITH HEADER CSV
+
+# 2025-06-04 14:45:55.841098
++alter table money_movements.payouts alter column documents type jsonb using documents::jsonb;
+
+# 2025-06-04 14:46:28.681491
++alter table money_movements.payouts alter column documents type jsonb[] using documents::jsonb[];
+
+# 2025-06-04 14:46:48.720705
++\COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mmp.csv' WITH HEADER CSV
+
+# 2025-06-04 15:22:45.712603
++use juice_dev
+
+# 2025-06-04 15:22:48.128786
++CREATE OR REPLACE FUNCTION normalize_amount(currency TEXT, amount NUMERIC)
++RETURNS BIGINT AS $$
++BEGIN
++  RETURN CASE UPPER(currency)
++   WHEN 'NGN' THEN (amount * 100)::BIGINT
++    WHEN 'USD' THEN (amount * 100)::BIGINT
++    WHEN 'CAD' THEN (amount * 100)::BIGINT
++    WHEN 'BUSD' THEN (amount * 100)::BIGINT
++    WHEN 'USDT' THEN (amount * 100)::BIGINT
++    WHEN 'USDC' THEN (amount * 100)::BIGINT
++    WHEN 'ADA' THEN (amount * 1000000)::BIGINT
++    WHEN 'ETH' THEN (amount * 1000000000000000000)::BIGINT
++    WHEN 'BTC' THEN (amount * 100000000)::BIGINT
++    WHEN 'TRX' THEN (amount * 1000000)::BIGINT
++    WHEN 'AVAX' THEN (amount * 1000000)::BIGINT
++    WHEN 'DOGE' THEN (amount * 100000000)::BIGINT
++    WHEN 'XRP' THEN (amount * 1000000)::BIGINT
++    WHEN 'SOL' THEN (amount * 1000000000)::BIGINT
++    ELSE RAISE EXCEPTION 'Unsupported currency: %', currency 
++  END;
++END;
++$$ LANGUAGE plpgsql IMMUTABLE STRICT;
++
+
+# 2025-06-04 15:31:57.840380
++CREATE OR REPLACE FUNCTION normalize_amount(currency TEXT, amount NUMERIC)
++RETURNS BIGINT AS $$
++DECLARE
++  result BIGINT;
++BEGIN
++  CASE UPPER(currency)
++    WHEN 'NGN' THEN (amount * 100)::BIGINT;
++    WHEN 'USD' THEN (amount * 100)::BIGINT;
++    WHEN 'CAD' THEN (amount * 100)::BIGINT;
++    WHEN 'BUSD' THEN (amount * 100)::BIGINT;
++    WHEN 'USDT' THEN (amount * 100)::BIGINT;
++    WHEN 'USDC' THEN (amount * 100)::BIGINT;
++    WHEN 'ADA' THEN (amount * 1000000)::BIGINT;
++    WHEN 'ETH' THEN (amount * 1000000000000000000)::BIGINT;
++    WHEN 'BTC' THEN (amount * 100000000)::BIGINT;
++    WHEN 'TRX' THEN (amount * 1000000)::BIGINT;
++    WHEN 'AVAX' THEN (amount * 1000000)::BIGINT;
++    WHEN 'DOGE' THEN (amount * 100000000)::BIGINT;
++    WHEN 'XRP' THEN (amount * 1000000)::BIGINT;
++    WHEN 'SOL' THEN (amount * 1000000000)::BIGINT;
++    ELSE RAISE EXCEPTION 'Unsupported currency: %', currency;
++  END CAE;
++  RETURN result;
++END;
++$$ LANGUAGE plpgsql IMMUTABLE STRICT;
++
+
+# 2025-06-04 15:32:34.985606
++CREATE OR REPLACE FUNCTION normalize_amount(currency TEXT, amount NUMERIC)
++RETURNS BIGINT AS $$
++DECLARE
++  result BIGINT;
++BEGIN
++  CASE UPPER(currency)
++    WHEN 'NGN' THEN result := (amount * 100)::BIGINT;
++    WHEN 'USD' THEN result := (amount * 100)::BIGINT;
++    WHEN 'CAD' THEN result := (amount * 100)::BIGINT;
++    WHEN 'BUSD' THEN result := (amount * 100)::BIGINT;
++    WHEN 'USDT' THEN result := (amount * 100)::BIGINT;
++    WHEN 'USDC' THEN result := (amount * 100)::BIGINT;
++    WHEN 'ADA' THEN result := (amount * 1000000)::BIGINT;
++    WHEN 'ETH' THEN result := (amount * 1000000000000000000)::BIGINT;
++    WHEN 'BTC' THEN result := (amount * 100000000)::BIGINT;
++    WHEN 'TRX' THEN result := (amount * 1000000)::BIGINT;
++    WHEN 'AVAX' THEN result := (amount * 1000000)::BIGINT;
++    WHEN 'DOGE' THEN result := (amount * 100000000)::BIGINT;
++    WHEN 'XRP' THEN result := (amount * 1000000)::BIGINT;
++    WHEN 'SOL' THEN result := (amount * 1000000000)::BIGINT;
++    ELSE
++      RAISE EXCEPTION 'Unsupported currency: %', currency;
++  END CASE;
++
++  RETURN result;
++END;
++$$ LANGUAGE plpgsql IMMUTABLE STRICT;
++
+
+# 2025-06-04 15:33:11.143659
++UPDATE money_movements.payouts SET source_amount = jsonb_set(source
+
+# 2025-06-04 15:35:38.657705
++UPDATE money_movements.payouts SET source_amount = jsonb_set(source_amount, '{amount}', to_jsonb(normalize_amount(currency :=source_amount->>'currency' , amount := (source_amount->>'amount')::numeric))) WHERE ((source_amount->>'amount')::numeric % 1) != 0;
+
+# 2025-06-04 15:36:09.948947
++select COUNT(*) from money_movements.payouts
+
+# 2025-06-04 15:36:31.480338
++select * from money_movements.payouts where ((source_amount->>'amount')::numeric % 1) != 0 order by inserted_at desc
+
+# 2025-06-04 15:37:40.114795
++use juice_dev
+
+# 2025-06-04 15:37:40.974952
++select * from money_movements.payouts where ((source_amount->>'amount')::numeric % 1) != 0 order by inserted_at desc
+
+# 2025-06-04 15:38:31.611401
++select * from money_movements.payouts where source_amount->>'amount'=798187.5
+
+# 2025-06-04 15:38:45.995432
++select * from money_movements.payouts where source_amount->>'amount'::numeric=798187.5
+
+# 2025-06-04 15:38:56.443967
++select * from money_movements.payouts where (source_amount->>'amount')::numeric=798187.5
+
+# 2025-06-04 15:39:47.705268
++UPDATE money_movements.payouts SET destination_amount = jsonb_set(destination_amount, '{amount}', to_jsonb(normalize_amount(currency :=destination_amount->>'currency' , amount := (destination_amount->>'amount')::numeric))) WHERE ((destination_amount->>'amount')::numeric % 1) != 0;
+
+# 2025-06-04 16:19:15.419399
++select * from money_movements.payouts where sender is null
+
+# 2025-06-04 16:21:32.440746
++select * from money_movements.payouts where id='952fffc6-eb70-11ee-8316-52ae04394a06
+
+# 2025-06-04 16:21:34.289999
++select * from money_movements.payouts where id='952fffc6-eb70-11ee-8316-52ae04394a06'
+
+# 2025-06-04 16:21:42.996162
++\x
+
+# 2025-06-04 16:21:44.067903
++select * from money_movements.payouts where id='952fffc6-eb70-11ee-8316-52ae04394a06'
+
+# 2025-06-04 19:05:03.217807
++use juice_dev
+
+# 2025-06-04 19:05:11.772100
++select 12.34::decimal::numeric
+
+# 2025-06-04 19:05:17.364867
++select 12.34::decimal
+
+# 2025-06-04 19:22:30.453633
++CREATE TYPE money_movements.money AS (amount decimal, currency varchar(5))
+
+# 2025-06-04 19:27:21.766543
++alter table money_movements.payouts add column source_money money_movements.money;
+
+# 2025-06-04 19:27:30.533169
++alter table money_movements.payouts add column destination_money money_movements.money;
+
+# 2025-06-04 19:28:12.157055
++update money_movements.payouts set source_money=((source_amount->>'amount')::decimal, source_amount->>'currency')::money_movements.money
+
+# 2025-06-04 19:28:39.669704
++select source_money.amount, source_money.currency from money_movements.payouts limit 10
+
+# 2025-06-04 19:29:55.805911
++select * from money_movements.payouts limit 10
+
+# 2025-06-04 19:30:00.706359
++\x
+
+# 2025-06-04 19:30:03.700468
++select * from money_movements.payouts limit 1
+
+# 2025-06-04 19:30:21.348290
++select source_money from money_movements.payouts limit 1
+
+# 2025-06-04 19:30:28.135397
++select source_money.amount from money_movements.payouts limit 1
+
+# 2025-06-04 19:30:35.902576
++select source_money from money_movements.payouts limit 1
+
+# 2025-06-04 19:30:52.786480
++SELECT source_money.amount, source_money.currency
++FROM money_movements.payouts
++LIMIT 10;
+
+# 2025-06-04 19:32:11.757060
++select (source_money).* from money_movements.payouts limit 1
+
+# 2025-06-04 19:32:16.538976
++select (source_money).amount from money_movements.payouts limit 1
+
+# 2025-06-04 21:00:14.810761
++update money_movements.payouts set source_money=((source_amount->>'amount')::decimal, source_amount->>'currency')::money_movements.money
+
+# 2025-06-04 21:00:37.193381
++alter table money_movements.payouts drop column source_amount
+
+# 2025-06-04 21:00:46.426735
++alter table money_movements.payouts drop column source_amount cascade
+
+# 2025-06-04 21:01:06.092392
++alter table money_movements.payouts rename source_money to source_amount;
+
+# 2025-06-04 21:07:01.126566
++create type money_movements.money to money_movements.money_type;
+
+# 2025-06-04 21:07:31.132638
++create type money_movements.money_type as (amount NUMERIC, currency varchar(5))
+
+# 2025-06-04 21:08:00.645276
++alter table money_movements.payouts add column source_money money_movements.money_type;
+
+# 2025-06-04 21:08:19.141206
++update money_movements.payouts set source_money=((source_amount->>'amount')::numeric, source_amount->>'currency')::money_movements.money_type
+
+# 2025-06-04 21:08:51.163401
++update money_movements.payouts set source_money=((source_amount).amount)::numeric, (source_amount).currency)::money_movements.money_type
+
+# 2025-06-04 21:09:14.294753
++update money_movements.payouts set source_money=((source_amount).amount)::numeric, (source_amount).currency))::money_movements.money_type
+
+# 2025-06-04 21:09:44.868438
++update money_movements.payouts set source_money=(((source_amount).amount)::numeric, (source_amount).currency)::money_movements.money_type
+
+# 2025-06-04 21:10:16.715545
++alter table money_movements.payouts drop column source_amount cascade
+
+# 2025-06-04 21:10:30.891765
++alter table money_movements.payouts rename source_money to source_amount;
+
+# 2025-06-04 21:10:45.157555
++drop type money_movements.money
+
+# 2025-06-04 21:11:22.458500
++alter table money_movements.payouts drop column destination_amount cascade
+
+# 2025-06-04 21:11:35.625637
++alter table money_movements.payouts rename destination_money to destination_amount;
+
+# 2025-06-04 21:11:40.489685
++drop type money_movements.money
+
+# 2025-06-04 21:12:17.168276
++alter table money_movements.payouts add column destination_money money_movements.money_type;
+
+# 2025-06-04 21:12:52.454996
++update money_movements.payouts set destination_money=(((destination_amount).amount)::numeric, (destination_amount).currency)::money_movements.money_type
+
+# 2025-06-04 21:13:10.306797
++alter TABLE money_movements.payouts drop COLUMN destination_amount
+
+# 2025-06-04 21:13:21.061089
++alter table money_movements.payouts rename destination_money to destination_amount;
+
+# 2025-06-04 21:13:25.867964
++drop type money_movements.money
+
+# 2025-06-04 21:13:36.241197
++alter type money_movements.money_type rename to money_movements.money;
+
+# 2025-06-04 21:13:54.017641
++alter type money_movements.money_type rename to money;
+
+# 2025-06-04 21:14:10.883429
++select (source_money).amount from money_movements.payouts limit 1
+
+# 2025-06-04 21:14:16.894844
++select (source_amount.amount from money_movements.payouts limit 1
+
+# 2025-06-04 21:14:21.457221
++select (source_amount).amount from money_movements.payouts limit 1
+
+# 2025-06-04 21:14:26.617569
++select (source_amount) from money_movements.payouts limit 1
+
+# 2025-06-04 21:14:46.301133
++drop table money_movements.payouts
+
+# 2025-06-04 21:14:53.277517
++drop table money_movements.payouts cascade
+
+# 2025-06-04 21:16:56.737919
++use juice_dev
+
+# 2025-06-04 21:16:59.715178
++select (source_amount) from money_movements.payouts limit 1
+
+# 2025-06-04 21:18:01.364294
++delete from schema_migrations
+
+# 2025-06-05 00:14:01.582590
++use juice_dev
+
+# 2025-06-05 00:14:15.994736
++exit
+
+# 2025-06-05 00:17:42.855445
++use juice_dev
+
+# 2025-06-05 00:18:05.034023
++alter table money_movements.transfers drop column business_id;
+
+# 2025-06-05 00:30:09.363297
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-06-05 00:31:48.585667
++describe money_movements.payouts
+
+# 2025-06-05 00:31:56.553611
++select (source_amount) from money_movements.payouts limit 1
+
+# 2025-06-05 00:34:29.214322
++alter table money_movements.payouts drop column source_temp_amount, drop column destination_temp_amount
+
+# 2025-06-05 00:35:47.110464
++use juice_dev
+
+# 2025-06-05 00:35:50.372655
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mmp.csv' WITH HEADER CSV
+
+# 2025-06-05 00:39:20.008840
++describe money_movements.payouts
+
+# 2025-06-05 00:40:25.582035
++alter table money_movements.payouts alter column sender type jsonb using sender::json
+
+# 2025-06-05 00:56:34.676436
++use juice_dev
+
+# 2025-06-05 00:57:00.704008
++select * from money_movements.payouts limit 1
+
+# 2025-06-05 10:46:06.238966
++use juice_dev
+
+# 2025-06-05 10:46:07.746652
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id') AS batch_id,
++    (metadata->>'sender') AS sender,
++    (metadata->>'correlation_id') AS correlation_id,
++    (metadata->>'beneficiary') AS beneficiary,
++    (metadata->>'idempotency_key') AS idempotency_key,
++    (metadata->>'description') AS description,
++    (metadata->>'payment_id') AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id') AS user_id,
++    (metadata->>'business_id') AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10),
++    ) AS retries
++    FROM payouts
++    WHERE sender IS NULL
++)
++UPDATE payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:46:26.597396
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id') AS batch_id,
++    (metadata->>'sender') AS sender,
++    (metadata->>'correlation_id') AS correlation_id,
++    (metadata->>'beneficiary') AS beneficiary,
++    (metadata->>'idempotency_key') AS idempotency_key,
++    (metadata->>'description') AS description,
++    (metadata->>'payment_id') AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id') AS user_id,
++    (metadata->>'business_id') AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM payouts
++    WHERE sender IS NULL
++)
++UPDATE payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:47:01.863686
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id') AS batch_id,
++    (metadata->>'sender') AS sender,
++    (metadata->>'correlation_id') AS correlation_id,
++    (metadata->>'beneficiary') AS beneficiary,
++    (metadata->>'idempotency_key') AS idempotency_key,
++    (metadata->>'description') AS description,
++    (metadata->>'payment_id') AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id') AS user_id,
++    (metadata->>'business_id') AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM money_movements.payouts
++    WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:47:54.602998
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender') AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary') AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    (metadata->>'description') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM money_movements.payouts
++    WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:48:19.659169
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary') AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    (metadata->>'description') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM money_movements.payouts
++    WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:48:34.780666
++
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    (metadata->>'description') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM money_movements.payouts
++    WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:48:40.688435
++select * from money_movements.payouts limit 1
+
+# 2025-06-05 10:48:42.849035
++\x
+
+# 2025-06-05 10:48:43.759713
++select * from money_movements.payouts limit 1
+
+# 2025-06-05 10:51:14.415238
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), "Payout") AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM money_movements.payouts
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
+
+# 2025-06-05 10:51:28.181411
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++      'max', COALESCE((metadata->>'max_retries')::int, 10),
++      'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++    FROM money_movements.payouts
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NULL THEN u.business_id
++    WHEN u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    ELSE u.user_id
++  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
+
+# 2025-06-05 10:51:36.461358
++select * from money_movements.payouts limit 1
+
+# 2025-06-05 10:55:07.237131
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), "Payout") AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++  WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:55:19.681992
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++  WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b' THEN u.user_id
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:55:38.366199
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++  WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'::uuid THEN u.user_id
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:56:00.143843
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++  WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'::uuid THEN u.user_id::uuid
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 10:56:23.760188
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++  WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'::uuid THEN u.user_id
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')::uuid  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
+
+# 2025-06-05 10:56:38.910197
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'::uuid THEN u.user_id
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')::uuid  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
+
+# 2025-06-05 10:56:43.139510
++select * from money_movements.payouts limit 1
+
+# 2025-06-05 11:02:31.686059
++select * from money_movements.payouts  limit 1
+
+# 2025-06-05 11:02:57.843450
++WITH updates AS (
++  SELECT
++    id,
++    (metadata->>'batch_id')::uuid AS batch_id,
++    (metadata->>'sender')::jsonb AS sender,
++    (metadata->>'correlation_id')::uuid AS correlation_id,
++    (metadata->>'beneficiary')::jsonb AS beneficiary,
++    (metadata->>'idempotency_key')::uuid AS idempotency_key,
++    COALESCE((metadata->>'description'), 'Payout') AS description,
++    (metadata->>'payment_id')::uuid AS payment_id,
++    (metadata->>'provider') AS provider,
++    (metadata->>'user_id')::uuid AS user_id,
++    (metadata->>'business_id')::uuid AS business_id,
++    json_build_object(
++    'max', COALESCE((metadata->>'max_retries')::int, 10),
++    'count', COALESCE((metadata->>'num_retries')::int, 10)
++    ) AS retries
++  FROM money_movements.payouts
++  WHERE sender IS NULL
++)
++UPDATE money_movements.payouts p
++SET
++  batch_id = u.batch_id,
++  sender = u.sender,
++  correlation_id = u.correlation_id,
++  beneficiary = u.beneficiary,
++  idempotency_key = u.idempotency_key,
++  description = u.description,
++  payment_id = u.payment_id,
++  provider = LOWER(u.provider),
++  account_id = CASE
++    WHEN u.user_id IS NOT NULL AND u.business_id = '3d6c9e2e-1caf-4807-97ff-bbd35fc4dc1b'::uuid THEN u.user_id
++    WHEN u.user_id IS NOT NULL THEN u.user_id
++    WHEN u.business_id IS NOT NULL THEN u.business_id
++    ELSE (u.beneficiary::jsonb ->> 'account_id')::uuid  END,
++  retries = u.retries
++FROM updates u
++WHERE p.id = u.id;
++
+
+# 2025-06-05 11:07:30.124580
++describe money_movements.payouts
+
+# 2025-06-05 11:07:33.253267
++\x
+
+# 2025-06-05 11:07:34.593080
++describe money_movements.payouts
+
+# 2025-06-05 11:24:19.209798
++CREATE OR REPLACE VIEW money_movements.movements AS\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements\n  UNION ALL\n  SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements\nORDER BY timestamp DESC\n
+
+# 2025-06-05 11:25:55.801853
++CREATE OR REPLACE VIEW money_movements.movements AS
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements
++ORDER BY timestamp DESC
+
+# 2025-06-05 11:26:08.631652
++  CREATE VIEW money_movements.payout_movements AS
++      SELECT
++        business_id,
++        (metadata->>'user_id')::uuid as user_id,
++        provider,
++        metadata->>'provider_id' as provider_id,
++        reference,
++        (source_amount->>'amount')::numeric as source_amount,
++        (destination_amount->>'amount')::numeric as destination_amount,
++        (source_amount->>'currency') as source_currency,
++        (destination_amount->>'currency') as destination_currency,
++        case when status = 'completed' then 'success' else status end as status,
++        sender as initiator,
++        jsonb_build_object('id', case when (metadata->>'user_id')::uuid is null then business_id else (metadata->>'user_id')::uuid end, 'type', case when (metadata->>'user_id')::uuid is null then 'business' else 'user' end, 'name', metadata->'beneficiary'->'params'->>'account_name') as beneficiary,
++        beneficiary as payment_method,
++        description,
++        error_message,
++        'payout' as activity,
++        correlation_id,
++        inserted_at as timestamp,
++        id,
++        'jrn:payout:payout:' || id as jrn,
++        null as merchant_reference,
++        metadata->>'transaction_hash' as transaction_hash,
++        null as source_address,
++        payment_id
++        FROM money_movements.payouts
+
+# 2025-06-05 11:26:14.410025
++use juice_dev
+
+# 2025-06-05 11:26:15.604127
++  CREATE VIEW money_movements.payout_movements AS
++      SELECT
++        business_id,
++        (metadata->>'user_id')::uuid as user_id,
++        provider,
++        metadata->>'provider_id' as provider_id,
++        reference,
++        (source_amount->>'amount')::numeric as source_amount,
++        (destination_amount->>'amount')::numeric as destination_amount,
++        (source_amount->>'currency') as source_currency,
++        (destination_amount->>'currency') as destination_currency,
++        case when status = 'completed' then 'success' else status end as status,
++        sender as initiator,
++        jsonb_build_object('id', case when (metadata->>'user_id')::uuid is null then business_id else (metadata->>'user_id')::uuid end, 'type', case when (metadata->>'user_id')::uuid is null then 'business' else 'user' end, 'name', metadata->'beneficiary'->'params'->>'account_name') as beneficiary,
++        beneficiary as payment_method,
++        description,
++        error_message,
++        'payout' as activity,
++        correlation_id,
++        inserted_at as timestamp,
++        id,
++        'jrn:payout:payout:' || id as jrn,
++        null as merchant_reference,
++        metadata->>'transaction_hash' as transaction_hash,
++        null as source_address,
++        payment_id
++        FROM money_movements.payouts
+
+# 2025-06-05 11:26:22.829986
++CREATE OR REPLACE VIEW money_movements.movements AS
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements
++ORDER BY timestamp DESC
++
+
+# 2025-06-05 11:32:50.857224
++select pg_get_functiondef(p.oid) from pg_proc p join pg_namespace n on n.oid = p.pronamespace where p.proname = 'to_decimal'
+
+# 2025-06-05 11:36:40.866924
++update money_movements.payouts mp set source_amount->>'amount' = gateway.to_decimal((mp.source_amount->>'amount')::bigint, source_amount->>'currency') from gateway.payments gp where gp.id = mp.payment_id AND (
++    (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    OR
++    (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++  )
+
+# 2025-06-05 11:37:35.573417
++update money_movements.payouts mp set mp.source_amount->>'amount' = gateway.to_decimal((mp.source_amount->>'amount')::bigint, mp.source_amount->>'currency') from gateway.payments gp where gp.id = mp.payment_id AND (
++    (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    OR
++    (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++  )
+
+# 2025-06-05 11:37:42.931945
++use juice_dev
+
+# 2025-06-05 11:37:55.267822
++update money_movements.payouts mp set mp.source_amount->>'amount' = gateway.to_decimal((mp.source_amount->>'amount')::bigint, mp.source_amount->>'currency') from gateway.payments gp where gp.id = mp.payment_id AND (
++    (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    OR
++    (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++  )
+
+# 2025-06-05 11:42:24.697612
++UPDATE money_movements.payouts mp
++SET 
++  source_amount = jsonb_set(
++                    mp.source_amount,
++                    '{amount}', 
++                    to_jsonb(gateway.to_decimal((mp.source_amount->>'amount')::bigint, mp.source_amount->>'currency'))
++                 )
++FROM gateway.payments gp
++WHERE gp.id = mp.payment_id
++  AND (
++    (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    OR
++    (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++  );
+
+# 2025-06-05 11:43:02.337852
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mp.csv' WITH HEADER CSV
+
+# 2025-06-05 11:56:38.322960
++CREATE TEMP TABLE tmp_payouts AS
++SELECT * FROM money_movements.payouts LIMIT 0;
++
++ALTER TABLE tmp_payouts
++ALTER COLUMN documents TYPE jsonb[] USING documents::jsonb[];
+
+# 2025-06-05 11:56:55.099698
++COPY tmp_payouts FROM '/Users/tp/Downloads/mp.csv' WITH HEADER CSV;
+
+# 2025-06-05 13:15:47.597676
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mpc.csv' WITH HEADER CSV
+
+# 2025-06-05 13:18:51.252383
++delete from money_movements.payouts
+
+# 2025-06-05 13:18:54.335948
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mpc.csv' WITH HEADER CSV
+
+# 2025-06-05 13:21:52.493058
++alter table money_movements.payouts alter column description type varchar(80)
+
+# 2025-06-05 13:22:07.269983
++alter table money_movements.payouts alter column description type varchar(80) cascade
+
+# 2025-06-05 13:22:17.127304
++alter table money_movements.payouts alter column description type varchar(80)
+
+# 2025-06-05 13:23:20.745997
++DROP VIEW money_movements.payout_movements cascade;
+
+# 2025-06-05 13:23:23.779025
++alter table money_movements.payouts alter column description type varchar(80)
+
+# 2025-06-05 13:23:26.909037
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mpc.csv' WITH HEADER CSV
+
+# 2025-06-05 14:06:36.219758
++alter table money_movements.payouts set description='Payout'
+
+# 2025-06-05 14:06:47.800333
++update money_movements.payouts set description='Payout'
+
+# 2025-06-05 15:43:08.463264
++ CREATE VIEW money_movements.payout_movements AS
++      SELECT
++        business_id,
++        (metadata->>'user_id')::uuid as user_id,
++        provider,
++        metadata->>'provider_id' as provider_id,
++        reference,
++        (source_amount->>'amount')::numeric as source_amount,
++        (destination_amount->>'amount')::numeric as destination_amount,
++        (source_amount->>'currency') as source_currency,
++        (destination_amount->>'currency') as destination_currency,
++        case when status = 'completed' then 'success' else status end as status,
++        sender as initiator,
++        jsonb_build_object('id', case when (metadata->>'user_id')::uuid is null then business_id else (metadata->>'user_id')::uuid end, 'type', case when (metadata->>'user_id')::uuid is null then 'business' else 'user' end, 'name', metadata->'beneficiary'->'params'->>'account_name') as beneficiary,
++        beneficiary as payment_method,
++        description,
++        error_message,
++        'payout' as activity,
++        correlation_id,
++        inserted_at as timestamp,
++        id,
++        'jrn:payout:payout:' || id as jrn,
++        null as merchant_reference,
++        metadata->>'transaction_hash' as transaction_hash,
++        null as source_address,
++        payment_id
++        FROM money_movements.payouts
+
+# 2025-06-05 15:43:12.468076
++use juice_dev
+
+# 2025-06-05 15:43:13.716538
++ CREATE VIEW money_movements.payout_movements AS
++      SELECT
++        business_id,
++        (metadata->>'user_id')::uuid as user_id,
++        provider,
++        metadata->>'provider_id' as provider_id,
++        reference,
++        (source_amount->>'amount')::numeric as source_amount,
++        (destination_amount->>'amount')::numeric as destination_amount,
++        (source_amount->>'currency') as source_currency,
++        (destination_amount->>'currency') as destination_currency,
++        case when status = 'completed' then 'success' else status end as status,
++        sender as initiator,
++        jsonb_build_object('id', case when (metadata->>'user_id')::uuid is null then business_id else (metadata->>'user_id')::uuid end, 'type', case when (metadata->>'user_id')::uuid is null then 'business' else 'user' end, 'name', metadata->'beneficiary'->'params'->>'account_name') as beneficiary,
++        beneficiary as payment_method,
++        description,
++        error_message,
++        'payout' as activity,
++        correlation_id,
++        inserted_at as timestamp,
++        id,
++        'jrn:payout:payout:' || id as jrn,
++        null as merchant_reference,
++        metadata->>'transaction_hash' as transaction_hash,
++        null as source_address,
++        payment_id
++        FROM money_movements.payouts
+
+# 2025-06-05 15:43:20.473363
++CREATE OR REPLACE VIEW money_movements.movements AS
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements
++ORDER BY timestamp DESC
+
+# 2025-06-05 15:43:30.463793
++select * from money_movements.movements limit 12
+
+# 2025-06-05 15:43:45.215773
++CREATE OR REPLACE VIEW money_movements.movements AS
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.payout_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM referrals.commission_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transaction_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM money_movements.transfer_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.invoice_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM billing.refund_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, NULL AS fee_currency, NULL::DECIMAL AS fee_amount FROM gateway.payment_movements
++UNION ALL
++SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method, fee_currency, fee_amount FROM exchange.swap_movements
++ORDER BY timestamp DESC
+
+# 2025-06-05 15:43:49.614199
++select * from money_movements.movements limit 12
+
+# 2025-06-05 15:54:30.349124
++use juice_dev
+
+# 2025-06-05 15:54:32.497742
++update money_movements.payouts mp set mp.sender = jsonb_set(json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name))::jsonb from accounts.accounts aa where mp.account_id = aa.id
+
+# 2025-06-05 15:54:55.354909
++update money_movements.payouts mp set mp.sender = json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name)::jsonb from accounts.accounts aa where mp.account_id = aa.id
+
+# 2025-06-05 15:55:11.080775
++select * from money_movements.payouts  limit 1
+
+# 2025-06-05 15:55:25.919143
++update money_movements.payouts mp set sender = json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name)::jsonb from accounts.accounts aa where mp.account_id = aa.id
+
+# 2025-06-05 15:56:18.532085
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-06-05 15:56:21.702581
++update money_movements.payouts mp set sender = json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name)::jsonb from accounts.accounts aa where mp.account_id = aa.id
+
+# 2025-06-05 15:58:42.318952
++UPDATE money_movements.payouts mp SET sender = jsonb_set(json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name))::jsonb FROM accounts.accounts aa WHERE mp.account_id = aa.id AND mp.sender IS NULL AND mp.metadata->>'sender' IS NULL
+
+# 2025-06-05 15:59:05.015727
++UPDATE money_movements.payouts mp SET sender = json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name)::jsonb FROM accounts.accounts aa WHERE mp.account_id = aa.id AND mp.sender IS NULL AND mp.metadata->>'sender' IS NULL
+
+# 2025-06-05 15:59:23.278994
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mpc.csv' WITH HEADER CSV
+
+# 2025-06-05 15:59:25.814999
++delete from money_movements.payouts
+
+# 2025-06-05 15:59:28.940978
++COPY money_movements.payouts (id, business_id, status, failure_reason,metadata,inserted_at,updated_at,description,account_id,batch_id,sender,correlation_id,source_amount,destination_amount,beneficiary,idempotency_key,retries,fee,reference,documents,error_message,payment_id,provider) FROM '/Users/tp/Downloads/mpc.csv' WITH HEADER CSV
+
+# 2025-06-05 15:59:34.063296
++UPDATE money_movements.payouts mp SET sender = json_build_object('id', aa.id, 'type', aa.type, 'email', aa.email, 'name', aa.name)::jsonb FROM accounts.accounts aa WHERE mp.account_id = aa.id AND mp.sender IS NULL AND mp.metadata->>'sender' IS NULL
+
+# 2025-06-05 16:05:19.892469
++select COUNT(*) from money_movements.payouts where idempotency_key is null
+
+# 2025-06-05 16:05:36.562443
++select COUNT(*) from money_movements.payouts where metadata->>'idempotency_key' is null
+
+# 2025-06-06 09:07:25.899635
++use juice_dev
+
+# 2025-06-06 09:07:28.584100
++select mp.* from money_movements.payouts mp left join gateway.payments gp on gp.id=mp.payment_id where (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric or (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric order by mp.inserted_at desc
+
+# 2025-06-06 09:08:17.816095
++COPY gateway.payments (id,business_id,customer_id,channel_reference,merchant_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,channel,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-06-06 09:08:20.105722
++select mp.* from money_movements.payouts mp left join gateway.payments gp on gp.id=mp.payment_id where (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric or (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric order by mp.inserted_at desc
+
+# 2025-06-06 09:08:37.886471
++select pg_get_functiondef(p.oid) from pg_proc p join pg_namespace n on n.oid = p.pronamespace where p.proname = 'to_decimal'
+
+# 2025-06-06 09:27:03.777780
++UPDATE money_movements.payouts mp
++SET source_amount = json_set(
++  source_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (source_amount->>'amount')::bigint,
++        source_amount->>'currency'
++      )
++    )
++  )
++FROM gateway.payments gp
++WHERE gp.id=mp.payment_id
++    AND (
++      (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++      OR (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    );
+
+# 2025-06-06 09:27:32.775404
++UPDATE money_movements.payouts mp
++SET source_amount = jsonb_set(
++  source_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (source_amount->>'amount')::bigint,
++        source_amount->>'currency'
++      )
++    )
++  )
++FROM gateway.payments gp
++WHERE gp.id=mp.payment_id
++    AND (
++      (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++      OR (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    );
+
+# 2025-06-06 09:27:49.428902
++select mp.* from money_movements.payouts mp left join gateway.payments gp on gp.id=mp.payment_id where (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric or (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric order by mp.inserted_at desc
+
+# 2025-06-06 09:28:39.502570
++UPDATE money_movements.payouts mp
++SET source_amount = json_set(
++  source_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (source_amount->>'amount')::bigint,
++        source_amount->>'currency'
++      )
++    )
++  ),
++destination_amount = json_set(
++  destination_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (destination_amount->>'amount')::bigint,
++        destination_amount->>'currency'
++      )
++    )
++  )
++FROM gateway.payments gp
++WHERE gp.id=mp.payment_id
++    AND (
++      (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++      OR (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    );
++
+
+# 2025-06-06 09:28:51.291221
++UPDATE money_movements.payouts mp
++SET source_amount = jsonb_set(
++  source_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (source_amount->>'amount')::bigint,
++        source_amount->>'currency'
++      )
++    )
++  ),
++destination_amount = json_set(
++  destination_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (destination_amount->>'amount')::bigint,
++        destination_amount->>'currency'
++      )
++    )
++  )
++FROM gateway.payments gp
++WHERE gp.id=mp.payment_id
++    AND (
++      (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++      OR (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    );
++
+
+# 2025-06-06 09:29:03.739314
++UPDATE money_movements.payouts mp
++SET source_amount = jsonb_set(
++  source_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (source_amount->>'amount')::bigint,
++        source_amount->>'currency'
++      )
++    )
++  ),
++destination_amount = jsonb_set(
++  destination_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (destination_amount->>'amount')::bigint,
++        destination_amount->>'currency'
++      )
++    )
++  )
++FROM gateway.payments gp
++WHERE gp.id=mp.payment_id
++    AND (
++      (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++      OR (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    );
++
+
+# 2025-06-06 09:29:40.439292
++UPDATE money_movements.payouts mp
++SET destination_amount = jsonb_set(
++  destination_amount,
++  '{amount}',
++  to_jsonb(
++    gateway.to_decimal(
++      (destination_amount->>'amount')::bigint,
++        destination_amount->>'currency'
++      )
++    )
++  )
++FROM gateway.payments gp
++WHERE gp.id=mp.payment_id
++    AND (
++      (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++      OR (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric
++    );
++
+
+# 2025-06-06 09:29:44.979829
++select mp.* from money_movements.payouts mp left join gateway.payments gp on gp.id=mp.payment_id where (mp.source_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric or (mp.destination_amount->>'amount')::numeric = (gp.amount->>'amount')::numeric order by mp.inserted_at desc
+
+# 2025-06-06 15:59:17.075441
++use juice_dev
+
+# 2025-06-06 15:59:23.616152
++describe money_movements.payout_movements
+
+# 2025-06-14 21:53:06.626454
++clear
+
+# 2025-06-14 21:53:18.031715
++use juice_dev
+
+# 2025-06-14 21:53:26.349712
++select * from accounts.users
+
+# 2025-06-14 21:53:32.514873
++select * from money_movements.payouts
+
+# 2025-06-18 13:10:49.320132
++use juice_dev
+
+# 2025-06-18 13:10:50.305713
++UPDATE money_movements.payouts mp 
++SET provider=gp.channel,
++payment_id=gp.id,
++provider_id=gp.provider_id
++FROM gateway.payments gp WHERE gp.merchant_reference in 
++(SELECT reference FROM money_movements.payouts WHERE correlation_id IS NULL)
+
+# 2025-06-18 13:31:52.928016
++UPDATE money_movements.payouts mp 
++ SET provider=gp.channel
++ payment_id=gp.id
++ FROM gateway.payments gp WHERE gp.merchant_reference in 
++ (SELECT reference FROM money_movements.payouts WHERE correlation_id IS NULL)
+
+# 2025-06-18 13:32:09.143983
++UPDATE money_movements.payouts mp 
++ SET provider=gp.channel,
++ payment_id=gp.id
++ FROM gateway.payments gp WHERE gp.merchant_reference in 
++ (SELECT reference FROM money_movements.payouts WHERE correlation_id IS NULL)
+
+# 2025-06-19 11:32:46.110338
++COPY gateway.payments (id,business_id,customer_id,channel_reference,merchant_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,channel,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-06-19 11:32:49.322574
++use juice_dev
+
+# 2025-06-19 11:32:51.204067
++COPY gateway.payments (id,business_id,customer_id,channel_reference,merchant_reference,data,inserted_at,updated_at,collection_mode,callback_urls,account_id,correlation_id,payment_link_id,status,direction,channel,fee_charged_to,description,reversal,mode,customer,merchant,"order",payer,merchant_metadata,payment_method,amount,amount_paid,provider_id) FROM '/Users/tp/Downloads/gp.csv' WITH CSV HEADER
+
+# 2025-06-19 11:34:21.809045
++WITH updates AS (
++  SELECT 
++  id,
++  COALESCE(account_id,business_id) as account_id,
++  customer
++  FROM gateway.payments
++  WHERE
++  customer->>'account_id' IS NULL
++)
++UPDATE gateway.payments gp
++SET gp.customer = jsonb_set(u.customer, '{account_id}', to_jsonb(u.account_id::text))
++FROM updates u
++WHERE gp.id=u.id
++AND gp.customer->>'account_id' IS NULL
+
+# 2025-06-19 11:34:38.667135
++WITH updates AS (
++  SELECT 
++  id,
++  COALESCE(account_id,business_id) as account_id,
++  customer
++  FROM gateway.payments
++  WHERE
++  customer->>'account_id' IS NULL
++)
++UPDATE gateway.payments gp
++SET customer = jsonb_set(u.customer, '{account_id}', to_jsonb(u.account_id::text))
++FROM updates u
++WHERE gp.id=u.id
++AND gp.customer->>'account_id' IS NULL
+
+# 2025-06-20 23:41:18.342858
++use juice_dev
+
+# 2025-06-20 23:41:48.197629
++select * from payment_methods.interac
+
+# 2025-06-20 23:42:49.936493
++select * from payment_methods.bank_accounts
+
+# 2025-06-20 23:46:22.917423
++drop table payment_methods.bank_accounts
+
+# 2025-06-20 23:46:31.068821
++drop table payment_methods.bank_accounts cascade
+
+# 2025-06-20 23:46:48.975542
++select * from payment_methods.interac
+
+# 2025-06-20 23:54:41.536409
++COPY payment_methods.interac(id,account_id,data,inserted_at,updated_at,beneficiary_type,lifetiime,currency,email,first_name,last_name,phone_number,question,answer,business_id_number,business_name,company_name,legal_name,registration_name,retail_name) FROM '/Users/tp/Downloads/pmi.csv' WITH CSV HEADER
+
+# 2025-06-20 23:54:51.605485
++select * from payment_methods.interac
+
+# 2025-06-20 23:55:12.857696
++COPY payment_methods.interac(id,account_id,data,inserted_at,updated_at,beneficiary_type,lifetiime,currency,email,first_name,last_name,phone_number,question,answer,business_id_number,business_name,company_name,legal_name,registration_name,retail_name) FROM '/Users/tp/Downloads/pmi.csv' WITH CSV HEADER
+
+# 2025-06-20 23:55:25.966841
++COPY payment_methods.interac(id,account_id,data,inserted_at,updated_at,beneficiary_type,lifetime,currency,email,first_name,last_name,phone_number,question,answer,business_id_number,business_name,company_name,legal_name,registration_name,retail_name) FROM '/Users/tp/Downloads/pmi.csv' WITH CSV HEADER
+
+# 2025-06-21 01:45:43.136585
++use juice_dev
+
+# 2025-06-21 01:45:54.160639
++select * from payment_methods.bank_accounts
+
+# 2025-06-21 01:45:57.908728
++\x
+
+# 2025-06-21 01:45:59.179544
++select * from payment_methods.bank_accounts
+
+# 2025-06-21 01:46:02.728388
++\x
+
+# 2025-06-21 01:46:13.962894
++describe payment_methods.bank_accounts
+
+# 2025-06-21 01:50:20.088800
++COPY payment_methods.bank_accounts(id,bank_id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,intermediay_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-06-21 01:50:51.322680
++COPY payment_methods.bank_accounts(id,bank_id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-06-21 01:51:31.771155
++exit
+
+# 2025-06-26 09:31:07.945384
++create database gidi_links_dev_db
+
+# 2025-06-30 02:08:45.093899
++use juice_dev
+
+# 2025-06-30 02:08:53.905414
++select * from money_movements.transactions
+
+# 2025-06-30 02:15:59.319962
++alter table money_movements.transactions drop column temp_currency
+
+# 2025-06-30 02:16:20.952500
++select * from money_movements.transactions
+
+# 2025-06-30 02:21:28.228628
++EXPLAIN (ANALYZE) SELECT * FROM money_movements.transactions
+
+# 2025-06-30 02:21:37.326068
++select * from money_movements.transactions
+
+# 2025-06-30 02:21:56.241163
++EXPLAIN (ANALYZE, RECOMPILE) SELECT * FROM money_movements.transactions
+
+# 2025-06-30 02:22:07.377768
++EXPLAIN (ANALYZE RECOMPILE) SELECT * FROM money_movements.transactions
+
+# 2025-06-30 02:22:19.780194
++EXPLAIN (RECOMPILE) SELECT * FROM money_movements.transactions
+
+# 2025-06-30 02:22:25.455567
++EXPLAIN (ANALYZE) SELECT * FROM money_movements.transactions
+
+# 2025-06-30 02:22:45.249786
++select * from money_movements.transactions
+
+# 2025-06-30 02:22:53.524844
++use juice_dev
+
+# 2025-06-30 02:22:55.845331
++select * from money_movements.transactions
+
+# 2025-06-30 02:24:41.371085
++describe  money_movements.transactions
+
+# 2025-06-30 08:42:59.246358
++use juice_dev
+
+# 2025-06-30 08:43:21.566838
++alter table money_movements.transactions add column description
+
+# 2025-06-30 08:45:41.555241
++alter table money_movements.transactions add column description varchar(50)
+
+# 2025-06-30 08:46:12.164178
++describe  money_movements.transactions
+
+# 2025-06-30 08:47:41.959745
++use juice_test
+
+# 2025-06-30 08:47:44.119270
++describe  money_movements.transactions
+
+# 2025-06-30 08:49:29.250791
++use juice_test
+
+# 2025-06-30 08:49:33.795531
++describe  money_movements.transactions
+
+# 2025-06-30 13:26:07.496234
++use juice_dev
+
+# 2025-06-30 13:30:31.646168
++COPY money_movements.transactions (id,business_id,correlation_id,currency,amount,provider,reference,type,created_at,data,inserted_at,updated_at,account_id,payment_method,fee) FROM '/Users/tp/Downloads/mmt.csv' WITH CSV HEADER
+
+# 2025-06-30 14:53:10.252741
++use juice_dev
+
+# 2025-06-30 14:53:11.842367
++COPY money_movements.transactions (id,business_id,correlation_id,currency,amount,provider,reference,type,created_at,data,inserted_at,updated_at,account_id,payment_method,fee) FROM '/Users/tp/Downloads/mmt.csv' WITH CSV HEADER
+
+# 2025-06-30 14:57:18.269873
++alter table money_movements.transactions alter column string varchar(150)
+
+# 2025-06-30 14:57:27.836871
++alter table money_movements.transactions alter column varchar(150)
+
+# 2025-06-30 14:57:52.638313
++alter table money_movements.transactions alter column TYPE varchar(150)
+
+# 2025-06-30 14:58:00.413755
++alter table money_movements.transactions alter column TYPE varchar(150);
+
+# 2025-06-30 14:58:35.557740
++alter table money_movements.transactions alter column reference TYPE varchar(150);
+
+# 2025-06-30 14:58:40.390020
++COPY money_movements.transactions (id,business_id,correlation_id,currency,amount,provider,reference,type,created_at,data,inserted_at,updated_at,account_id,payment_method,fee) FROM '/Users/tp/Downloads/mmt.csv' WITH CSV HEADER
+
+# 2025-06-30 14:58:49.285133
++delete from money_movements.transactions
+
+# 2025-06-30 14:58:51.978646
++COPY money_movements.transactions (id,business_id,correlation_id,currency,amount,provider,reference,type,created_at,data,inserted_at,updated_at,account_id,payment_method,fee) FROM '/Users/tp/Downloads/mmt.csv' WITH CSV HEADER
+
+# 2025-07-02 02:36:03.892432
++use juice_dev
+
+# 2025-07-02 02:36:09.077983
++describe  money_movements.transactions
+
+# 2025-07-02 02:41:24.893305
++use juice_test
+
+# 2025-07-02 02:41:26.597891
++describe  money_movements.transactions
+
+# 2025-07-02 09:55:57.174734
++use juice_dev
+
+# 2025-07-02 09:55:59.104443
++describe  money_movements.transactions
+
+# 2025-07-02 09:56:06.542436
++select * from money_movements.transactions
+
+# 2025-07-02 10:01:15.698989
++describe  money_movements.transactions
+
+# 2025-07-02 10:04:14.768462
++select * from money_movements.movements limit 1
+
+# 2025-07-02 10:05:06.116773
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-07-02 10:09:11.230202
++alter table money_movements.transactions add column from_currency varchar(40), add column to_currency(50)
+
+# 2025-07-02 10:09:20.866326
++alter table money_movements.transactions add column from_currency varchar(40), add column to_currency varchar(50)
+
+# 2025-07-02 10:10:19.104687
++alter table money_movements.payouts add column from_currency varchar(40), add column to_currency varchar(50)
+
+# 2025-07-02 10:12:36.609775
++describe gateway.payment_movements
+
+# 2025-07-02 10:42:27.021874
++CREATE VIEW money_movements.movements AS SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method FROM money_movements.payout_movements UNION ALL SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method FROM referrals.commission_movements UNION ALL SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method::jsonb FROM money_movements.transaction_movements UNION ALL SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method FROM money_movements.transfer_movements UNION ALL SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method FROM billing.invoice_movements UNION ALL SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method FROM billing.refund_movements UNION ALL SELECT business_id, user_id, provider, reference, source_currency, destination_currency, source_amount, destination_amount, status, initiator, beneficiary, provider_id, error_message, description, activity, correlation_id, timestamp, id, jrn, merchant_reference, transaction_hash, source_address, payment_id, payment_method FROM gateway.payment_movements ORDER BY timestamp DESC
+
+# 2025-07-02 10:45:07.851489
++CREATE VIEW money_movements.movements AS
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method
++FROM money_movements.payout_movements
++
++UNION ALL
++
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method
++FROM referrals.commission_movements
++
++UNION ALL
++
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method::jsonb
++FROM money_movements.transaction_movements
++
++UNION ALL
++
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method
++FROM money_movements.transfer_movements
++
++UNION ALL
++
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method
++FROM billing.invoice_movements
++
++UNION ALL
++
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method
++FROM billing.refund_movements
++
++UNION ALL
++
++SELECT
++    business_id,
++    user_id,
++    provider,
++    reference,
++    source_currency,
++    destination_currency,
++    source_amount,
++    destination_amount,
++    status,
++    initiator,
++    beneficiary,
++    provider_id,
++    error_message,
++    description,
++    activity,
++    correlation_id,
++    timestamp,
++    id,
++    jrn,
++    merchant_reference,
++    transaction_hash,
++    source_address,
++    payment_id,
++    payment_method
++FROM gateway.payment_movements
++
++ORDER BY timestamp DESC;
+
+# 2025-07-02 10:47:17.872779
++describe referrals.commission_movements
+
+# 2025-07-02 10:49:01.741351
++describe money_movements.payout_movements
+
+# 2025-07-02 11:03:56.152907
++DESCRIBE money_movements.transaction_movements;
+
+# 2025-07-02 11:06:18.390192
++alter table money_movements.payouts drop column from_currency, drop column to_currency
+
+# 2025-07-02 11:36:02.415507
++drop view referrals.commission_movements
+
+# 2025-07-02 11:36:35.162664
++drop function accounts.to_decimal
+
+# 2025-07-02 11:36:50.334940
++drop function referrals.to_decimal
+
+# 2025-07-02 11:37:57.739381
++delete from schema_migrations where version = '20250213184400'
+
+# 2025-07-02 11:38:19.423032
++select * from schema_migrations
+
+# 2025-07-02 11:41:22.641270
++use juice_dev
+
+# 2025-07-02 11:41:27.758732
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-07-02 11:43:18.364625
++alter table money_movements.payouts add column from_currency varchar(40), add column to_currency varchar(50)
+
+# 2025-07-02 11:48:12.972356
++alter table money_movements.payouts drop column from_currency, drop column to_currency
+
+# 2025-07-02 11:48:21.280368
++alter table money_movements.payouts drop column from_currency, drop column to_currency CASCADE
+
+# 2025-07-02 11:48:33.287914
++alter table money_movements.payouts drop column from_currency CASCADE, drop column to_currency CASCADE
+
+# 2025-07-02 12:01:34.002116
++alter table money_movements.payouts add column source_temp_amount jsonb, add destination_temp_amount jsonb
+
+# 2025-07-02 12:22:38.704793
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-07-02 12:23:02.539410
++use juice_test
+
+# 2025-07-02 12:23:04.085812
++alter table money_movements.transfers add column business_id uuid;
+
+# 2025-07-03 14:02:28.569128
++use juice_dev
+
+# 2025-07-03 14:05:31.832575
++COPY money_movements.transactions (id,business_id,correlation_id,provider,reference,type,created_at,data,inserted_at,updated_at,account_id,payment_method,fee,amount,source_payment_method,receiving_account,description) FROM '/Users/tp/Downloads/mmt.csv' WITH CSV HEADER
+
+# 2025-07-03 14:05:39.521061
++select * from money_movements.transactions where (amount->>'amount') ~ '^\d+\.\d+$'
+
+# 2025-07-07 02:58:31.713853
++create database gidi
+
+# 2025-07-07 12:53:47.876728
++use juice_dev
+
+# 2025-07-07 12:54:37.185465
++alter table money_movements.transactions add column business_id uuid;
+
+# 2025-07-09 12:47:20.254437
++use juice_test
+
+# 2025-07-09 12:47:24.019244
++delete from webhooks.logs
+
+# 2025-07-09 12:49:44.474755
++use juice_dev
+
+# 2025-07-09 12:49:47.608527
++delete from webhooks.logs
+
+# 2025-07-09 12:56:25.633725
++select * from webhooks.logs
+
+# 2025-07-09 13:17:51.130592
++use juice_dev
+
+# 2025-07-09 13:17:52.882887
++delete from webhooks.logs
+
+# 2025-07-09 13:27:52.860620
++exit
+
+# 2025-07-10 11:43:41.346616
++use juice_dev
+
+# 2025-07-10 11:43:42.436086
++delete from webhooks.logs
+
+# 2025-07-11 13:37:41.246898
++use juice_dev
+
+# 2025-07-11 13:37:42.338810
++delete from webhooks.logs
+
+# 2025-07-13 19:38:39.180681
++use gidi
+
+# 2025-07-13 19:38:45.454491
++describe links.users
+
+# 2025-07-13 20:00:41.957932
++create extension if not exists pgcrypto;
+
+# 2025-07-13 20:04:20.189644
++select * from links.users
+
+# 2025-07-13 20:05:45.326815
++delete from links.users
+
+# 2025-07-13 20:05:55.045118
++select * from links.users
+
+# 2025-07-14 11:33:46.393287
++use juice_dev
+
+# 2025-07-14 11:33:52.064480
++select * from accounts.accounts
+
+# 2025-07-16 12:56:20.800332
++use juice_dev
+
+# 2025-07-16 12:56:26.477079
++COPY payment_methods.bank_accounts(id,bank_id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-16 13:09:55.578276
++describe money_movements.transactions
+
+# 2025-07-16 13:29:14.752481
++select * from payment_methods.bank_accounts
+
+# 2025-07-16 13:32:33.882983
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-07-17 07:16:17.732334
++use juice_test
+
+# 2025-07-17 07:16:25.520984
++describe money_movements.transactions
+
+# 2025-07-17 07:16:43.552352
++drop database juice_test
+
+# 2025-07-17 07:16:53.242438
++use blog_development
+
+# 2025-07-17 07:16:54.542091
++drop database juice_test
+
+# 2025-07-17 07:17:21.565017
++ cd /Users/tp/Code/juice/juice-backend/apps/money_movements
+
+# 2025-07-17 07:17:48.973215
++use juice_test
+
+# 2025-07-17 07:17:51.279544
++describe money_movements.transactions
+
+# 2025-07-17 07:18:01.442172
++ cd /Users/tp/Code/juice/juice-backend/apps/money_movements
+
+# 2025-07-17 07:18:07.633696
++use tp
+
+# 2025-07-17 07:18:10.219516
++drop database juice_test
+
+# 2025-07-17 07:18:48.545799
++ cd /Users/tp/Code/juice/juice-backend/apps/money_movements
+
+# 2025-07-17 07:18:56.717991
++use juice_test
+
+# 2025-07-17 07:19:00.098357
++describe money_movements.transactions
+
+# 2025-07-17 17:05:31.890610
++use juice_test
+
+# 2025-07-17 17:05:50.125634
++alter table gateway.payments  add column business_id uuid;
+
+# 2025-07-17 17:06:19.091891
++describe gateway.payments
+
+# 2025-07-17 17:06:25.431931
++use juice_dev
+
+# 2025-07-17 17:06:39.612667
++describe gateway.payments
+
+# 2025-07-25 22:36:06.901535
++use juice_test
+
+# 2025-07-25 22:36:23.417019
++alter table gateway.merchants drop column logo_url
+
+# 2025-07-26 13:43:16.726684
++PRAGMA journal_mode='wal'
+
+# 2025-07-29 19:19:07.236208
++use juice_dev
+
+# 2025-07-29 19:22:58.801221
++COPY bridge.customers(id,bridge_id, type,status,data,inserted_at,updated_at,kyc_link) FROM '/USers/tp/Downloads/bc' WITH CSV HEADER
+
+# 2025-07-29 19:23:06.337510
++COPY bridge.customers(id,bridge_id, type,status,data,inserted_at,updated_at,kyc_link) FROM '/USers/tp/Downloads/bc.csv' WITH CSV HEADER
+
+# 2025-07-29 19:23:33.854579
++COPY payment_methods.bank_accounts(id,bank_id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 19:32:04.155676
++COPY payment_methods.bank_accounts(id,data,inserted_at,updated_at,account_id,metadata,address,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,bank_id,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 19:32:17.181203
++COPY payment_methods.bank_accounts(id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,bank_id,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 19:32:42.587217
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/va.csv' WITH CSV HEADER
+
+# 2025-07-29 20:22:41.989231
++use juice_dev
+
+# 2025-07-29 20:22:49.142093
++select * from bridge.virtual_accounts
+
+# 2025-07-29 21:35:43.466657
++select * from bridge.virtual_accounts where id='b241d1e0-7bd3-47da-99c8-e1a4d609905a'
+
+# 2025-07-29 21:36:17.499607
++select * from bridge.customers where bridge_id='e95080e6-74b8-4d87-8ee7-fbcddecd6a37'
+
+# 2025-07-29 21:37:10.506181
++select * from payment_methods.bank_accounts
+
+# 2025-07-29 21:37:30.333820
++select * from bridge.virtual_accounts where customer_id='55e31a99-0ea8-48a3-8c80-07c21f4de535'
+
+# 2025-07-29 21:39:34.576514
++COPY payment_methods.bank_accounts(id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,bank_id,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 21:42:36.167268
++select * from bridge.virtual_accounts where customer_id='55e31a99-0ea8-48a3-8c80-07c21f4de535'
+
+# 2025-07-29 21:42:45.094544
++select * from bridge.virtual_accounts
+
+# 2025-07-29 21:52:23.191549
++select * from bridge.virtual_accounts where id='0549f55d-9421-4547-8ca3-a4b8409d926f'
+
+# 2025-07-29 21:53:21.016734
++select * from bridge.customers where id='0549f55d-9421-4547-8ca3-a4b8409d926f'
+
+# 2025-07-29 21:56:57.367998
++select * from bridge.virtual_accounts
+
+# 2025-07-29 22:00:22.511135
++select * from bridge.virtual_accounts where id='ec923086-48e4-4493-8bee-330d30d7b0d3'
+
+# 2025-07-29 22:01:45.904609
++delete from bridge.virtual_accounts
+
+# 2025-07-29 22:01:53.906875
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/va.csv' WITH CSV HEADER
+
+# 2025-07-29 22:02:41.046773
++select * from bridge.virtual_accounts where id='5963a801-5a7c-4131-85a7-98f7246ba75d'
+
+# 2025-07-29 22:03:15.715321
++select * from bridge.customers where id='c0a4dd05-b948-4b59-b04e-4fe99a83a74c
+
+# 2025-07-29 22:03:16.708028
++'
+
+# 2025-07-29 22:03:20.370420
++select * from bridge.customers where id='c0a4dd05-b948-4b59-b04e-4fe99a83a74c'
+
+# 2025-07-29 22:04:04.654405
++select * from bridge.virtual_accounts where customer_id='c0a4dd05-b948-4b59-b04e-4fe99a83a74c'
+
+# 2025-07-29 22:05:03.884243
++select * from bridge.virtual_accounts
+
+# 2025-07-29 22:05:06.576593
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/va.csv' WITH CSV HEADER
+
+# 2025-07-29 22:05:09.403238
++COPY payment_methods.bank_accounts(id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,bank_id,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 22:05:23.389293
++select * from bridge.virtual_accounts
+
+# 2025-07-29 22:15:41.915107
++COPY payment_methods.bank_accounts(id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,bank_id,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 22:15:46.086358
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/va.csv' WITH CSV HEADER
+
+# 2025-07-29 22:16:49.701930
++select * from bridge.virtual_accounts
+
+# 2025-07-29 22:16:54.969390
++select * from payment_methods.bank_accounts
+
+# 2025-07-29 22:16:57.857093
++COPY bridge.virtual_accounts(id,customer_id,bridge_id,payment_rails,bank_name,bank_address,routing_number,account_number,status,currency,destination_currency,destination_chain,destination_address,data,inserted_at,updated_at,account_name) FROM '/Users/tp/Downloads/va.csv' WITH CSV HEADER
+
+# 2025-07-29 22:17:01.566679
++COPY payment_methods.bank_accounts(id,data,inserted_at,updated_at,account_id,metadata,address,bank_address,lifetime,virtual,account_name,bank_name,bank_code,bic,account_number,routing_number,sort_code,relationship,purpose,currency,account_system,account_type,bank_id,intermediary_bank) FROM '/Users/tp/Downloads/pmb.csv' WITH CSV HEADER
+
+# 2025-07-29 22:17:04.686069
++select * from payment_methods.bank_accounts
+
+# 2025-08-03 12:47:44.606588
++use juice_dev
+
+# 2025-08-03 12:47:54.006274
++select * from payment_methods.bank_accounts
+
+# 2025-08-03 12:48:32.804298
++select * from payment_methods.bank_accounts order by inserted_at desc
+
+# 2025-08-03 13:00:00.571355
++select * from accounts.accounts where id='3c0f96d4-04e8-4b87-98e7-248c1f4b8605'
+
+# 2025-08-03 13:00:32.268500
++select * from payment_methods.bank_accounts order by inserted_at desc
+
+# 2025-08-03 13:48:49.974363
++select * from ledger.entries
+
+# 2025-08-05 11:41:47.228124
++use juice_dev
+
+# 2025-08-05 11:41:53.761432
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-08-05 11:42:39.267125
++use juice_dev
+
+# 2025-08-05 11:42:55.012180
++alter table gateway.merchants add column brand_color text
+
+# 2025-08-05 22:41:02.186042
++use juice_dev
+
+# 2025-08-05 22:41:07.745490
++select * from bridge.customers
+
+# 2025-08-14 14:46:47.941233
++use juice_dev
+
+# 2025-08-14 14:46:54.272438
++describe ledger.accounts;
+
+# 2025-08-14 15:12:11.666458
++use juice_dev
+
+# 2025-08-14 15:15:42.091301
++alter table ledger.accounts alter column balance type NUMERIC(78, 0);
+
+# 2025-08-14 15:15:49.779385
++describe ledger.accounts;
+
+# 2025-08-14 15:17:17.322625
++insert into ledger.accounts(id,balance,inserted_at,updated_at) values (gen_random_uuid(),11992173136161243000,now(),now())
+
+# 2025-08-14 15:17:25.732897
++select * from ledger.accounts
+
+# 2025-08-14 15:17:40.853149
++select * from ledger.accounts order by inserted_at desc
+
+# 2025-08-14 16:27:23.181747
++use juice_dev
+
+# 2025-08-14 16:27:31.991430
++    CREATE OR REPLACE VIEW ledger.account_balances AS
++    WITH c AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS credit, credit_account_id AS account_id FROM ledger.entries GROUP BY credit_account_id
++    ),
++    d AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS debit, debit_account_id AS account_id FROM  ledger.entries GROUP BY debit_account_id
++    ),
++    a AS (
++      SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++    )
++    SELECT
++      id,
++      a.owner_id,
++      name,
++      type,
++      currency,
++      COALESCE(credit, 0) AS credit,
++      COALESCE(debit, 0) AS debit,
++      CAST(CASE WHEN type IN 'asset', 'expense') THEN COALESCE(debit, 0) - COALESCE(credit, 0) ELSE COALESCE(credit, 0) - COALESCE(debit, 0) END AS NUMERIC) AS balance
++    FROM a
++    LEFT JOIN c ON c.account_id=a.id
++    LEFT JOIN d ON d.account_id=a.id;
+
+# 2025-08-14 16:29:17.595360
++    CREATE OR REPLACE VIEW ledger.account_balances AS
++    WITH c AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS credit, credit_account_id AS account_id FROM ledger.entries GROUP BY credit_account_id
++    ),
++    d AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS debit, debit_account_id AS account_id FROM ledger.entries GROUP BY debit_account_id
++    ),
++    a AS (
++      SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++    )
++    SELECT
++      id,
++      a.owner_id,
++      name,
++      type,
++      currency,
++      COALESCE(credit, 0) AS credit,
++      COALESCE(debit, 0) AS debit,
++      CAST(CASE WHEN type IN 'asset', 'expense') THEN COALESCE(debit, 0) - COALESCE(credit, 0) ELSE COALESCE(credit, 0) - COALESCE(debit, 0) END AS NUMERIC) AS balance
++    FROM a
++    LEFT JOIN c ON c.account_id=a.id
++    LEFT JOIN d ON d.account_id=a.id;
+
+# 2025-08-14 16:31:01.781268
++    CREATE OR REPLACE VIEW ledger.account_balances AS
++    WITH c AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS credit, credit_account_id AS account_id FROM ledger.entries GROUP BY credit_account_id
++    ),
++    d AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS debit, debit_account_id AS account_id FROM ledger.entries GROUP BY debit_account_id
++    ),
++    a AS (
++      SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++    )
++    SELECT
++      id,
++      a.owner_id,
++      name,
++      type,
++      currency,
++      COALESCE(credit, 0) AS credit,
++      COALESCE(debit, 0) AS debit,
++      CAST(CASE WHEN type IN ('asset', 'expense') THEN COALESCE(debit, 0) - COALESCE(credit, 0) ELSE COALESCE(credit, 0) - COALESCE(debit, 0) END AS NUMERIC) AS balance
++    FROM a
++    LEFT JOIN c ON c.account_id=a.id
++    LEFT JOIN d ON d.account_id=a.id;
+
+# 2025-08-14 16:32:23.008054
++alter table ledger.credits alter column amount type NUMERIC(78, 0);
+
+# 2025-08-14 16:32:44.813980
++drop view ledger.account_balances
+
+# 2025-08-14 16:32:47.241673
++alter table ledger.credits alter column amount type NUMERIC(78, 0);
+
+# 2025-08-14 16:32:59.528137
++drop view ledger.entry_balances
+
+# 2025-08-14 16:33:02.518683
++alter table ledger.credits alter column amount type NUMERIC(78, 0);
+
+# 2025-08-14 16:33:10.347431
++alter table ledger.debits alter column amount type NUMERIC(78, 0);
+
+# 2025-08-14 16:33:20.970690
++    CREATE OR REPLACE VIEW ledger.account_balances AS
++    WITH c AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS credit, credit_account_id AS account_id FROM ledger.entries GROUP BY credit_account_id
++    ),
++    d AS (
++      SELECT CAST(sum(amount) AS NUMERIC) AS debit, debit_account_id AS account_id FROM ledger.entries GROUP BY debit_account_id
++    ),
++    a AS (
++      SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++    )
++    SELECT
++      id,
++      a.owner_id,
++      name,
++      type,
++      currency,
++      COALESCE(credit, 0) AS credit,
++      COALESCE(debit, 0) AS debit,
++      CAST(CASE WHEN type IN ('asset', 'expense') THEN COALESCE(debit, 0) - COALESCE(credit, 0) ELSE COALESCE(credit, 0) - COALESCE(debit, 0) END AS NUMERIC) AS balance
++    FROM a
++    LEFT JOIN c ON c.account_id=a.id
++    LEFT JOIN d ON d.account_id=a.id;
+
+# 2025-08-14 16:41:26.586454
++alter table ledger.debits alter column amount type NUMERIC(78, 0) CASCADE;
+
+# 2025-08-14 17:00:54.771478
++use juice_dev
+
+# 2025-08-14 17:01:01.688536
++select * from schema_migrations
+
+# 2025-08-14 17:01:07.283165
++select * from schema_migrations order by inserted_at desc limit 2
+
+# 2025-08-14 17:01:20.302131
++delete from schema_migrations where version='20250814153726'
+
+# 2025-08-14 17:01:59.867540
++use juice_dev
+
+# 2025-08-14 17:04:44.855598
++COPY ledger.account_balances(id,owner_id,name,type,currency,credit,debit,balance) FROM '/Users/tp/Downloads/lab.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:06:14.291656
++select * from ledger.accounts order by inserted_at desc limit 2
+
+# 2025-08-14 17:06:37.142014
++desc ledger.credits
+
+# 2025-08-14 17:06:43.116372
++describe ledger.credits
+
+# 2025-08-14 17:11:51.208363
++select * from ledger.credits
+
+# 2025-08-14 17:17:29.263061
++select * from ledger.account_balances where owner_id='abfeacd0-d51e-4dec-a585-fa844303fbdf'
+
+# 2025-08-14 17:18:10.332097
++insert into ledger.credits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'4043eca9-401b-4882-a20d-8d4e9ecc6bd5',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
+
+# 2025-08-14 17:18:16.147174
++select * from ledger.account_balances where owner_id='abfeacd0-d51e-4dec-a585-fa844303fbdf'
+
+# 2025-08-14 17:18:35.903279
++select * from ledger.entry_balances where owner_id='abfeacd0-d51e-4dec-a585-fa844303fbdf'
+
+# 2025-08-14 17:20:17.334818
++select * from ledger.accounts where user_id='abfeacd0-d51e-4dec-a585-fa844303fbdf'
+
+# 2025-08-14 17:21:02.040047
++insert into ledger.credits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'4043eca9-401b-4882-a20d-8d4e9ecc6bd5',
++'cash',
++'NGN',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
+
+# 2025-08-14 17:22:07.269743
++select * from ledger.entry_balances where owner_id='abfeacd0-d51e-4dec-a585-fa844303fbdf'
+
+# 2025-08-14 17:25:25.242845
++COPY ledger.debits(id,user_id,account_id,reference,transaction_type,currency,description,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/ld.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:25:41.072966
++COPY ledger.credits(id,user_id,account_id,reference,transaction_type,currency,description,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/lc.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:26:31.468606
++describe ledger.entries
+
+# 2025-08-14 17:26:44.808732
++describe ledger.entries;
+
+# 2025-08-14 17:28:03.039695
++COPY ledger.accounts(id,user_id,name,currency,type,balance,frozen,inserted_at,updated_at) FROM '/Users/tp/Downloads/la.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:28:18.891026
++use juice_dev
+
+# 2025-08-14 17:28:20.103201
++COPY ledger.accounts(id,user_id,name,currency,type,balance,frozen,inserted_at,updated_at) FROM '/Users/tp/Downloads/la.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:29:17.073391
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:30:11.003309
++insert into ledger.credits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
+
+# 2025-08-14 17:30:14.645167
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:30:50.199994
++select * from ledger.credits order by inserted_at desc limit 2
+
+# 2025-08-14 17:31:25.320931
++insert into ledger.credits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
+
+# 2025-08-14 17:31:28.614726
++select * from ledger.credits order by inserted_at desc limit 2
+
+# 2025-08-14 17:31:45.925343
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:32:06.837578
++describe ledger.entries;
+
+# 2025-08-14 17:34:19.541837
++insert into ledger.debits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
+
+# 2025-08-14 17:34:24.158620
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:35:01.591894
++select * from ledger.debits order by inserted_at desc limit 2
+
+# 2025-08-14 17:36:41.540638
++insert into ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,inserted_at,updated_at,posted_at)
++values (
++  gen_random_uuid(),
++  '681360af-ac14-4109-879f-5df645f1544f',
++  'e55223c1-f754-4bf3-9255-f210e082fd67',
++  'd7943486-f051-498e-8265-412889025842',
++  '3ae0234b-706f-4bea-9b88-0824c1e824f9',
++  'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++  'Increase deposit',
++  'ETH',
++  11992173136161243000,
++  now(),
++  now(),
++  now()
++);
+
+# 2025-08-14 17:36:53.647010
++describe ledger.entries;
+
+# 2025-08-14 17:37:29.264054
++alter table ledger.entries alter column amount type NUMERIC(78, 0)
+
+# 2025-08-14 17:37:36.450025
++drop view ledger.entry_balances
+
+# 2025-08-14 17:37:46.383272
++drop view ledger.account_balances
+
+# 2025-08-14 17:37:50.404222
++insert into ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,inserted_at,updated_at,posted_at)
++values (
++  gen_random_uuid(),
++  '681360af-ac14-4109-879f-5df645f1544f',
++  'e55223c1-f754-4bf3-9255-f210e082fd67',
++  'd7943486-f051-498e-8265-412889025842',
++  '3ae0234b-706f-4bea-9b88-0824c1e824f9',
++  'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++  'Increase deposit',
++  'ETH',
++  11992173136161243000,
++  now(),
++  now(),
++  now()
++);
+
+# 2025-08-14 17:37:53.953594
++alter table ledger.entries alter column amount type NUMERIC(78, 0)
+
+# 2025-08-14 17:37:56.265730
++insert into ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,inserted_at,updated_at,posted_at)
++values (
++  gen_random_uuid(),
++  '681360af-ac14-4109-879f-5df645f1544f',
++  'e55223c1-f754-4bf3-9255-f210e082fd67',
++  'd7943486-f051-498e-8265-412889025842',
++  '3ae0234b-706f-4bea-9b88-0824c1e824f9',
++  'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++  'Increase deposit',
++  'ETH',
++  11992173136161243000,
++  now(),
++  now(),
++  now()
++);
+
+# 2025-08-14 17:38:26.499118
++delete from schema_migrations order by inserted_at desc limit 1;
+
+# 2025-08-14 17:38:34.968201
++select * from schema_migrations order by inserted_at desc limit 2
+
+# 2025-08-14 17:38:50.473467
++delete from schema_migrations where version='20250814153726 '
+
+# 2025-08-14 17:39:04.715742
++select * from ledger.entries order by inserted_at desc limit 2
+
+# 2025-08-14 17:39:33.748294
++describe ledger.entries;
+
+# 2025-08-14 17:39:44.393580
++insert into ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,inserted_at,updated_at,posted_at)
++values (
++  gen_random_uuid(),
++  '681360af-ac14-4109-879f-5df645f1544f',
++  'e55223c1-f754-4bf3-9255-f210e082fd67',
++  'd7943486-f051-498e-8265-412889025842',
++  '3ae0234b-706f-4bea-9b88-0824c1e824f9',
++  'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++  'Increase deposit',
++  'ETH',
++  11992173136161243000,
++  now(),
++  now(),
++  now()
++);
++
++
+
+# 2025-08-14 17:40:06.868547
++select * from ledger.accounts where user_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:40:34.092037
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:40:45.747184
++insert into ledger.credits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
+
+# 2025-08-14 17:40:53.834748
++insert into ledger.debits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
+
+# 2025-08-14 17:41:01.213604
++insert into ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,inserted_at,updated_at,posted_at)
++values (
++  gen_random_uuid(),
++  '681360af-ac14-4109-879f-5df645f1544f',
++  'e55223c1-f754-4bf3-9255-f210e082fd67',
++  'd7943486-f051-498e-8265-412889025842',
++  '3ae0234b-706f-4bea-9b88-0824c1e824f9',
++  'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++  'Increase deposit',
++  'ETH',
++  11992173136161243000,
++  now(),
++  now(),
++  now()
++);
++
+
+# 2025-08-14 17:41:27.267645
++select * from ledger.accounts where user_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:43:13.536281
++select tgname, tgrelid::regclass as table_name,
++  from pg_trigger
++  join pg_proc on pg_proc.oid = pg_trigger.tgfoid
++  where not tgisinternal;
++
+
+# 2025-08-14 17:43:48.121393
++select tgname, tgrelid::regclass as table_name, proname as function_name, tgenabled
++  from pg_trigger
++  join pg_proc on pg_proc.oid = pg_trigger.tgfoid
++  where not tgisinternal;
++
+
+# 2025-08-14 17:46:05.415261
++ALTER TABLE ledger.credits ENABLE ALWAYS TRIGGER credits_disable_entry_mutation;
++ALTER TABLE ledger.debits ENABLE ALWAYS TRIGGER debits_disable_entry_mutation;
++ALTER TABLE ledger.credits ENABLE ALWAYS TRIGGER credits_update_account_balances;
++ALTER TABLE ledger.debits ENABLE ALWAYS TRIGGER debits_update_account_balances;
++ALTER TABLE ledger.entries ENABLE ALWAYS TRIGGER entries_update_account_balances_from_entries;
++ALTER TABLE webhooks.oban_jobs ENABLE ALWAYS TRIGGER oban_notify;
++ALTER TABLE kyx.oban_jobs ENABLE ALWAYS TRIGGER oban_notify;
++ALTER TABLE gateway.oban_jobs ENABLE ALWAYS TRIGGER oban_notify;
++ALTER TABLE money_movements.oban_jobs ENABLE ALWAYS TRIGGER oban_notify;
+
+# 2025-08-14 17:46:11.441182
++select tgname, tgrelid::regclass as table_name, proname as function_name, tgenabled
++  from pg_trigger
++  join pg_proc on pg_proc.oid = pg_trigger.tgfoid
++  where not tgisinternal;
++
+
+# 2025-08-14 17:46:17.132835
++select * from ledger.accounts where user_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:46:42.887976
++insert into ledger.credits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'e55223c1-f754-4bf3-9255-f210e082fd67',
++'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
++insert into ledger.debits (id,user_id,account_id,reference,transaction_type,currency,description,amount,inserted_at,updated_at) values (
++gen_random_uuid(),
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'abfeacd0-d51e-4dec-a585-fa844303fbdf',
++'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++'cash',
++'ETH',
++'Increase deposit',
++11992173136161243000,
++now(),
++now()
++);
++
++insert into ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,inserted_at,updated_at,posted_at)
++values (
++  gen_random_uuid(),
++  '681360af-ac14-4109-879f-5df645f1544f',
++  'e55223c1-f754-4bf3-9255-f210e082fd67',
++  'd7943486-f051-498e-8265-412889025842',
++  '3ae0234b-706f-4bea-9b88-0824c1e824f9',
++  'be181969-b3f7-420c-a8c6-09a0b6ab7920',
++  'Increase deposit',
++  'ETH',
++  11992173136161243000,
++  now(),
++  now(),
++  now()
++);
++
+
+# 2025-08-14 17:46:51.206675
++select * from ledger.accounts where user_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:47:01.416718
++select * from ledger.entry_balances
+
+# 2025-08-14 17:47:14.040120
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:49:16.683118
++select * from ledger.credits where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67' order by inserted_at desc limit 3
+
+# 2025-08-14 17:49:24.463711
++select * from ledger.credits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67' order by inserted_at desc limit 3
+
+# 2025-08-14 17:49:56.291682
++select * from ledger.debits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67' order by inserted_at desc limit 3
+
+# 2025-08-14 17:50:39.480030
++refresh materialized view ledger.entry_balances;
+
+# 2025-08-14 17:50:53.858453
++drop view ledger.account_balances
+
+# 2025-08-14 17:50:59.298759
++drop view ledger.entry_balances
+
+# 2025-08-14 17:53:59.992377
++CREATE OR REPLACE VIEW ledger.entry_balances AS
++WITH c AS (
++SELECT CAST(sum(amount) AS NUMERIC) AS credit_total, account_id FROM ledger.credits GROUP BY account_id
++),
++d AS (
++SELECT CAST(sum(amount) AS NUMERIC) AS debit_total, account_id FROM  ledger.debits GROUP BY account_id
++),
++a AS (
++SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++)
++SELECT
++id,
++a.owner_id,
++name,
++type,
++currency,
++COALESCE(credit_total, 0) AS credit_total,
++COALESCE(debit_total, 0) AS debit_total,
++CAST(CASE WHEN type IN ('liability', 'income', 'equity') THEN COALESCE(credit_total, 0) - COALESCE(debit_total, 0) ELSE COALESCE(debit_total, 0) - COALESCE(credit_total, 0) END AS NUMERIC) AS balance
++FROM a
++LEFT JOIN c ON c.account_id=a.id
++LEFT JOIN d ON d.account_id=a.id;
++
+
+# 2025-08-14 17:54:06.874582
++CREATE OR REPLACE VIEW ledger.account_balances AS
++WITH c AS (
++  SELECT CAST(sum(amount) AS NUMERIC) AS credit, credit_account_id AS account_id FROM ledger.entries GROUP BY credit_account_id
++),
++d AS (
++  SELECT CAST(sum(amount) AS NUMERIC) AS debit, debit_account_id AS account_id FROM ledger.entries GROUP BY debit_account_id
++),
++a AS (
++  SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++)
++SELECT
++  id,
++  a.owner_id,
++  name,
++  type,
++  currency,
++  COALESCE(credit, 0) AS credit,
++  COALESCE(debit, 0) AS debit,
++  CAST(CASE WHEN type IN ('asset', 'expense') THEN COALESCE(debit, 0) - COALESCE(credit, 0) ELSE COALESCE(credit, 0) - COALESCE(debit, 0) END AS NUMERIC) AS balance
++FROM a
++LEFT JOIN c ON c.account_id=a.id
++LEFT JOIN d ON d.account_id=a.id;
++
+
+# 2025-08-14 17:54:15.971230
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 17:54:58.403420
++delete from ledger.credits;
+
+# 2025-08-14 17:55:04.352210
++delete from ledger.debits;
+
+# 2025-08-14 17:55:13.187491
++COPY ledger.credits(id,user_id,account_id,reference,transaction_type,currency,description,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/lc.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:55:26.252547
++delete from ledger.credits where currency is not in ('ETH')
+
+# 2025-08-14 17:55:30.386305
++delete from ledger.credits where currency not in ('ETH')
+
+# 2025-08-14 17:55:42.307201
++delete from ledger.entries;
+
+# 2025-08-14 17:55:47.665783
++COPY ledger.debits(id,user_id,account_id,reference,transaction_type,currency,description,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/ld.csv' WITH CSV HEADER;
+
+# 2025-08-14 17:56:09.692887
++delete from ledger.debits where currency not  in ('ETH')
+
+# 2025-08-14 17:57:17.425367
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:02:47.890147
++COPY ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/le.csv' WITH HEADER CSV;
+
+# 2025-08-14 18:03:05.020704
++COPY ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,metadata,inserted_at,updated_at,posted_at) FROM '/Users/tp/Downloads/le.csv' WITH HEADER CSV;
+
+# 2025-08-14 18:03:14.193731
++drop view ledger.entry_balances
+
+# 2025-08-14 18:03:20.295183
++drop view ledger.account_balances
+
+# 2025-08-14 18:03:32.880650
++CREATE OR REPLACE VIEW ledger.account_balances AS
++WITH c AS (
++  SELECT CAST(sum(amount) AS NUMERIC) AS credit, credit_account_id AS account_id FROM ledger.entries GROUP BY credit_account_id
++),
++d AS (
++  SELECT CAST(sum(amount) AS NUMERIC) AS debit, debit_account_id AS account_id FROM ledger.entries GROUP BY debit_account_id
++),
++a AS (
++  SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++)
++SELECT
++  id,
++  a.owner_id,
++  name,
++  type,
++  currency,
++  COALESCE(credit, 0) AS credit,
++  COALESCE(debit, 0) AS debit,
++  CAST(CASE WHEN type IN ('asset', 'expense') THEN COALESCE(debit, 0) - COALESCE(credit, 0) ELSE COALESCE(credit, 0) - COALESCE(debit, 0) END AS NUMERIC) AS balance
++FROM a
++LEFT JOIN c ON c.account_id=a.id
++LEFT JOIN d ON d.account_id=a.id;
++
+
+# 2025-08-14 18:03:42.357103
++CREATE OR REPLACE VIEW ledger.entry_balances AS
++WITH c AS (
++SELECT CAST(sum(amount) AS NUMERIC) AS credit_total, account_id FROM ledger.credits GROUP BY account_id
++),
++d AS (
++SELECT CAST(sum(amount) AS NUMERIC) AS debit_total, account_id FROM  ledger.debits GROUP BY account_id
++),
++a AS (
++SELECT id, user_id AS owner_id, currency, type, name FROM  ledger.accounts
++)
++SELECT
++id,
++a.owner_id,
++name,
++type,
++currency,
++COALESCE(credit_total, 0) AS credit_total,
++COALESCE(debit_total, 0) AS debit_total,
++CAST(CASE WHEN type IN ('liability', 'income', 'equity') THEN COALESCE(credit_total, 0) - COALESCE(debit_total, 0) ELSE COALESCE(debit_total, 0) - COALESCE(credit_total, 0) END AS NUMERIC) AS balance
++FROM a
++LEFT JOIN c ON c.account_id=a.id
++LEFT JOIN d ON d.account_id=a.id;
++
+
+# 2025-08-14 18:03:45.425643
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:04:10.551802
++select * from ledger.credits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67' order by inserted_at desc limit 3
+
+# 2025-08-14 18:04:17.997304
++select * from ledger.credits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67' order by inserted_at desc
+
+# 2025-08-14 18:05:03.114823
++describe ledger.credits
+
+# 2025-08-14 18:05:11.545904
++describe ledger.debits
+
+# 2025-08-14 18:05:16.176965
++describe ledger.entries
+
+# 2025-08-14 18:05:38.318086
++select tgname, tgrelid::regclass as table_name, proname as function_name, tgenabled
+
+# 2025-08-14 18:05:53.569252
++select tgname, tgrelid::regclass as table_name, proname as function_name, tgenabled
++from pg_trigger
++join pg_proc on pg_proc.oid = pg_trigger.tgfoid
++where not tgisinternal;
++
+
+# 2025-08-14 18:06:00.672220
++describe ledger.entries
+
+# 2025-08-14 18:08:36.228473
++select sum(amount) as amount from ledger.credits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67' order by inserted_at desc
+
+# 2025-08-14 18:08:39.742723
++select sum(amount) as amount from ledger.credits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:08:48.337183
++select sum(amount) as amount from ledger.debits where user_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:09:01.799849
++select * from ledger.entry_balances where owner_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:10:18.399307
++select sum(amount) as amount from ledger.credits where account_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:13:15.549028
++update ledger.credits set account_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:13:26.549593
++select * from ledger.credits
+
+# 2025-08-14 18:13:34.985735
++update ledger.credits set account_id='e55223c1-f754-4bf3-9255-f210e082fd67'
+
+# 2025-08-14 18:14:17.224063
++select * from ledger.accounts
+
+# 2025-08-14 18:14:37.257898
++delete from ledger.accounts
+
+# 2025-08-14 18:14:42.215816
++COPY ledger.accounts(id,user_id,name,currency,type,balance,frozen,inserted_at,updated_at) FROM '/Users/tp/Downloads/la.csv' WITH CSV HEADER;
+
+# 2025-08-14 18:14:47.464600
++select * from ledger.accounts
+
+# 2025-08-14 18:16:25.276347
++delete from ledger.accounts
+
+# 2025-08-14 18:16:31.405055
++COPY ledger.accounts(id,user_id,name,currency,type,balance,frozen,inserted_at,updated_at) FROM '/Users/tp/Downloads/la.csv' WITH CSV HEADER;
+
+# 2025-08-14 18:18:26.616258
++delete from ledger.etr
+
+# 2025-08-14 18:18:32.223911
++delete from ledger.entries;
+
+# 2025-08-14 18:18:47.784632
++COPY ledger.entries(id,correlation_id,owner_id,credit_account_id,debit_account_id,reference,description,currency,amount,metadata,inserted_at,updated_at,posted_at) FROM '/Users/tp/Downloads/le.csv' WITH HEADER CSV;
+
+# 2025-08-14 18:21:41.020466
++delete from ledger.debits
+
+# 2025-08-14 18:21:48.881646
++COPY ledger.debits(id,user_id,account_id,reference,transaction_type,currency,description,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/ld.csv' WITH CSV HEADER;
+
+# 2025-08-14 18:22:11.556208
++delet from ledger.credits
+
+# 2025-08-14 18:22:15.677159
++delete from ledger.credits
+
+# 2025-08-14 18:22:20.621974
++COPY ledger.credits(id,user_id,account_id,reference,transaction_type,currency,description,amount,metadata,inserted_at,updated_at) FROM '/Users/tp/Downloads/lc.csv' WITH CSV HEADER;
+
+# 2025-08-14 18:22:44.156662
++select * from ledger.entry_balances
+
+# 2025-08-14 18:23:18.052165
++select * from ledger.account_balances
+
+# 2025-08-14 18:26:33.414453
++select * from ledger.accounts
+
+# 2025-08-14 18:44:24.142906
++describe ledger.entries
+
+# 2025-08-18 11:32:43.884655
++use juice_dev
+
+# 2025-08-18 11:34:32.484449
++COPY accounts.accounts (id,name,email,tag,type,status,address,settings,metadata,deleted_at,inserted_at,updated_at) FROM '/Users/tp/Downloads/aa.csv' WITH CSV HEADER
+
+# 2025-08-18 11:39:16.392212
++select * from gateway.merchants
+
+# 2025-08-18 11:39:52.022180
++delete from gateway.merchants where id='4128795c-dfa4-455f-a72b-8b36a02a9957'
+
+# 2025-08-18 12:57:09.699533
++select * from gateway.customers
+
+# 2025-08-21 01:08:42.599326
++exit
+
+# 2025-08-25 12:49:52.906807
++use juice_dev
+
+# 2025-08-25 12:49:58.767756
++select * from schema_migrations
+
+# 2025-09-08 14:48:25.432720
++use juice_dev
+
+# 2025-09-08 14:48:51.687392
++describe money_movements.transactions
+
+# 2025-09-08 14:49:41.225539
++alter table money_movements.transactions alter column description type varchar(250) cascade;
+
+# 2025-09-08 14:49:47.015804
++alter table money_movements.transactions alter column description type varchar(250);
+
+# 2025-09-08 15:39:13.549189
++100-50
+
+# 2025-09-08 15:39:21.063070
++50-100
+
+# 2025-09-08 15:39:38.902222
++Kernel.-(200,40)
+
+# 2025-10-02 16:11:26.418213
++use juice_test
+
+# 2025-10-02 16:11:30.856336
++describe risks.risks
