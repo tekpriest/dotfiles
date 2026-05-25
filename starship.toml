@@ -1,0 +1,27 @@
+# ~/.config/starship.toml
+
+add_newline = false
+command_timeout = 10000
+format = "$directory$git_branch$package$character"
+
+[directory]
+truncate_to_repo = true
+truncation_length = 2
+style = "bold blue"
+format = "[$path]($style)[$read_only]($read_only_style)"
+
+[character]
+success_symbol = " "
+error_symbol = " "
+format = "$symbol"
+
+[git_branch]
+format = " [$symbol$branch(:$remote_branch)]($style)"
+
+[package]
+format = " is [$symbol$version]($style)"
+
+# Avoid prompt width issues caused by emoji variation selectors (e.g. ☁️)
+# in some shell/font/wcwidth combinations.
+[aws]
+disabled = true
