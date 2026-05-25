@@ -1,0 +1,194 @@
+
+# 2026-02-19 10:47:36.281530
++\dt
+
+# 2026-02-19 10:47:45.689551
++describe agents
+
+# 2026-02-26 18:39:41.007515
++\dt
+
+# 2026-02-26 18:39:54.362034
++select * from schema_migrations
+
+# 2026-02-26 18:40:51.142589
++delete from schema_migrations
+
+# 2026-03-04 14:17:47.194286
++\d+
+
+# 2026-03-04 14:17:56.505104
++\q
+
+# 2026-03-06 10:37:44.651300
++start;
+
+# 2026-03-09 08:29:32.298465
++use hestia_dev;
+
+# 2026-03-09 08:29:42.497298
++delete from schema_migrations;
+
+# 2026-03-09 08:30:00.724992
++drop table trunks
+
+# 2026-03-09 08:30:23.076653
++delete from schema_migrations;
+
+# 2026-03-09 08:30:28.187090
++use tp
+
+# 2026-03-09 08:30:33.751597
++drop database hestia_dev
+
+# 2026-03-09 08:30:54.555567
++create database hestia_dev;
+
+# 2026-03-09 08:32:26.114996
++CREATE TYPE text_range AS RANGE (
++  subtype = text
++)
+
+# 2026-03-09 08:34:10.044701
++delete from schema_migrations;
+
+# 2026-03-09 08:34:19.452446
++drop database hestia_dev;
+
+# 2026-03-09 08:34:29.297812
++create database hestia_dev;
+
+# 2026-03-09 08:35:25.116519
++drop database hestia_dev;
+
+# 2026-03-09 08:35:28.885131
++create database hestia_dev;
+
+# 2026-03-10 13:28:48.733780
++\dt+
+
+# 2026-03-10 17:57:07.530359
++describe agents
+
+# 2026-03-10 20:31:54.770482
++use hestia_dev;
+
+# 2026-03-10 20:35:04.513646
++select * from hestia.dids;
+
+# 2026-03-10 21:16:32.801577
++use hestia_dev;
+
+# 2026-03-10 21:16:45.555253
++select * from schema_migrations;
+
+# 2026-03-10 21:17:07.243516
++update schema_migrations set dirty=False
+
+# 2026-03-10 21:17:36.450384
++select * from hestia.agents;
+
+# 2026-03-10 21:17:46.988886
++\dt+
+
+# 2026-03-10 21:17:49.228172
++\dt
+
+# 2026-03-10 21:17:55.855340
++select * from hestia.dids;
+
+# 2026-03-10 21:23:43.243854
++update schema_migrations set dirty=False
+
+# 2026-03-10 21:23:55.565416
++\dt
+
+# 2026-03-10 21:24:16.036746
++select * from hestia.dids;
+
+# 2026-03-10 21:24:20.321602
++select * from hestia.trunks
+
+# 2026-03-10 21:24:32.374216
++drop table hestia.trunks;
+
+# 2026-03-10 21:25:00.147604
++drop type text_range;
+
+# 2026-03-10 21:25:14.819709
++drop table hestia.dids;
+
+# 2026-03-10 21:25:22.915908
++select * from hestia.trunks
+
+# 2026-03-10 21:25:25.255421
++select * from hestia.dids
+
+# 2026-03-10 21:25:27.852744
++select * from hestia.agents
+
+# 2026-03-10 21:25:45.055793
++drop table hestia.agents
+
+# 2026-03-10 21:26:41.826080
++select * from hestia.agents
+
+# 2026-03-10 21:26:49.581383
++select * from hestia.dids
+
+# 2026-03-10 21:27:06.369127
++select * from hestia.agents
+
+# 2026-03-10 21:27:11.405220
++select * from hestia.trunks
+
+# 2026-03-18 21:05:53.519999
++select * from schema_migrations;
+
+# 2026-03-18 21:05:56.526953
++update schema_migrations set dirty=False
+
+# 2026-03-18 21:09:27.783578
++describe hestia.outbound_plans
+
+# 2026-03-18 21:09:58.265807
++alter table hestia.outbound_plans alter column call_list_id drop not null
+
+# 2026-03-18 21:10:19.334618
++select * from hestia.outbound_plans
+
+# 2026-03-18 21:10:25.497436
++delete from hestia.outbound_plans
+
+# 2026-03-31 21:56:42.375241
++drop database hestia_dev;
+
+# 2026-03-31 21:56:46.566643
++create database hestia_dev;
+
+# 2026-04-02 09:25:25.694201
++select * from hestia.trunks
+
+# 2026-04-02 09:26:27.566312
++\x
+
+# 2026-04-02 09:26:29.522328
++select * from hestia.trunks
+
+# 2026-04-02 09:26:59.070538
++\x
+
+# 2026-04-02 09:27:01.151096
++select * from hestia.trunks
+
+# 2026-04-02 09:27:20.094586
++describe hestia.trunks
+
+# 2026-04-02 09:32:10.792812
++delete from hestia.trunks where sip_auth_method='ip_whitelisting'
+
+# 2026-04-08 11:50:34.856520
++select * from hestia.queues
+
+# 2026-04-08 11:50:52.490604
++select * from hestia.queues where id='5923984a-1620-445e-abc3-4d4ef602a89b'

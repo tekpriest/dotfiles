@@ -1,0 +1,1 @@
+/Users/tp/Code/tree-sitter-mora/queries/highlights.scm

@@ -1,0 +1,602 @@
+#+TITLE: Doom Emacs Configuration
+#+AUTHOR: Michael Enitan
+#+PROPERTY: header-args :tangle config.el
+
+* Identification
+#+begin_src elisp
+(setq user-full-name "Michael Enitan"
+      user-mail-address "asajuenitan@gmail.com")
+#+end_src
+
+* UI Settings
+#+begin_src elisp
+(custom-set-faces!
+  '(font-lock-comment-face :slant italic)
+  '(font-lock-keyword-face :slant italic))
+
+;; (set-frame-parameter nil 'alpha-background 90)
+;; (set-frame-parameter (selected-frame) 'alpha '(90 . 90))
+;; (add-to-list 'default-frame-alist '(alpha . (90 . 90)))
+;; (add-to-list 'default-frame-alist '(alpha-background . 90))
+(add-to-list 'default-frame-alist '(undecorated . t))
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+
+(map! :n "C-=" #'doom/reset-font-size
+      :n "C-+" #'doom/increase-font-size
+      :n "C--" #'doom/decrease-font-size)
+
+(setq world-clock-list
+      '(("Africa/Lagos" "Lagos")))
+#+end_src
+
+** Rainbow brackets
+#+begin_src elisp
+(add-hook 'prog-mode-hook #'prism-mode)
+(add-hook 'elixir-mode-hook #'prism-whitespace-mode)
+(after! prism
+  :config
+  (setq
+   prism-comments t)
+  (prism-set-colors :num 16
+    :desaturations (cl-loop for i from 0 below 16
+                            collect (* i 2.5))
+    :lightens (cl-loop for i from 0 below 16
+                       collect (* i 2.5))
+    :colors (list "dodgerblue" "medium sea green" "sandy brown")
+
+    :comments-fn
+    (lambda (color)
+      (prism-blend color
+                   (face-attribute 'font-lock-comment-face :foreground) 0.25))
+
+    ;; :strings-fn
+    ;; (lambda (color)
+    ;;   (prism-blend color "white" 0.5))
+    ))
+#+end_src
+
+* Basic Settings
+#+begin_src elisp
+(setq display-line-numbers-type 'relative
+      confirm-kill-emacs nil
+      native-comp-async-report-warnings-errors nil
+      doom-font (font-spec :family "CartographCF Nerd Font" :size 12)
+      make-backup-files nil
+      auto-save-default nil
+      create-lockfiles nil
+      mouse-highlight nil
+      evil-ex-search-persistent-highlight nil)
+(setq-default tab-width 2
+              word-wrap t
+              truncate-lines nil)
+#+end_src
+
+** Mouse
+#+begin_src elisp
+(xterm-mouse-mode -1)
+(mouse-wheel-mode -1)
+#+end_src
+
+** Theme
+#+begin_src elisp
+(setq doom-themes-enable-bold t
+      doom-themes-enabled-italic t)
+
+;; (setq
+;;  catppuccin-flavor 'mocha
+;;  doom-theme 'catppuccin)
+;; (add-hook 'server-after-make-frame-hook #'catppuccin-reload)
+(setq doom-theme 'doom-rose-pine)
+
+(use-package solaire-mode
+  :ensure t
+  :hook (after-init . solaire-global-mode))
+#+end_src
+
+** Modeline
+#+begin_src elisp
+;; (doom-themes-treemacs-config)
+
+(setq-default c-basic-offset 2
+              c-default-style "linux"
+              indent-tabs-mode nil
+              fill-column 100
+              tab-width 2)
+
+(after! doom-modeline
+  (setq doom-modeline-header-line nil
+        doom-modeline-buffer-encoding nil
+        doom-modeline-icon t
+        doom-modeline-major-mode-icon t
+        doom-modeline-buffer-modification-icon t
+        doom-modeline-lsp t
+        doom-modeline-github nil
+        doom-modeline-indent-info nil))
+
+(custom-set-faces!
+  '(mode-line          :background "none")
+  '(mode-line-inactive :background "none"))
+#+end_src
+
+* Development Utils
+** Evil
+#+begin_src elisp
+(after! evil
+  (setq
+   evil-move-cursor-back nil
+   evil-shift-width 2
+   evil-split-window-below t
+   evil-vsplit-window-right t
+   evil-echo-state nil
+   evil-mode-line-format nil
+   evil-kill-on-visual-paste nil))
+
+(evil-define-key 'visual 'global
+  "gc" 'comment-line
+  "q"  nil
+  "Q"  'evil-record-macro
+  ">"  (lambda () (interactive) (call-interactively #'evil-shift-right) (evil-visual-restore))
+  "<"  (lambda () (interactive) (call-interactively #'evil-shift-left)  (evil-visual-restore)))
+
+(evil-define-key 'normal 'global
+  "q" nil
+  "Q" 'evil-record-macro)
+
+(evil-define-key 'normal 'global
+  (kbd "SPC wk") 'evil-window-up
+  (kbd "SPC wj") 'evil-window-down
+  (kbd "SPC wl") 'evil-window-right
+  (kbd "SPC wh") 'evil-window-left
+  (kbd "SPC w=") 'balance-windows
+  (kbd "SPC ba") 'evil-switch-to-windows-last-buffer
+  (kbd "SPC bd") 'kill-current-buffer
+  (kbd "SPC tn") '+workspace/new
+  (kbd "SPC tc") '+workspace/close-window-or-workspace)
+
+;; arrow keys resize windows
+(evil-define-key 'normal 'global
+  (kbd "<up>")    (lambda () (interactive) (evil-window-decrease-height 2))
+  (kbd "<down>")  (lambda () (interactive) (evil-window-increase-height 2))
+  (kbd "<left>")  (lambda () (interactive) (evil-window-decrease-width 2))
+  (kbd "<right>") (lambda () (interactive) (evil-window-increase-width 2)))
+
+;; TAB / S-TAB workspace navigation
+(map! :n "<tab>"   #'+workspace/switch-right
+      :n "<S-tab>" #'+workspace/switch-left)
+
+;; jk / jj escape
+(after! evil-escape
+  (setq evil-escape-key-sequence "jk"
+        evil-escape-delay 0.15
+        evil-escape-unordered-key-sequence nil))
+
+(remove-hook 'doom-first-input-hook #'evil-snipe-mode)
+(with-eval-after-load 'evil
+  (general-add-hook 'after-init-hook
+                    (lambda (&rest _)
+                      (when-let ((messages-buffer (get-buffer "*Messages")))
+                        (with-current-buffer messages-buffer
+                          (evil-normalize-keymaps))))
+                    nil
+                    nil
+                    t))
+#+end_src
+
+** Git
+#+begin_src elisp
+(use-package! git-link
+  :commands
+  (git-link git-link-commit git-link-homepage)
+  :custom
+  (git-link-use-commit t))
+#+end_src
+
+** Move Text
+#+begin_src elisp
+(move-text-default-bindings)
+(after! move-text
+  (evil-define-key 'normal 'global
+    (kbd "M-k") 'move-text-up
+    (kbd "M-j") 'move-text-down))
+
+(defun indent-region-advice (&rest _)
+  (let ((deactivate deactivate-mark))
+    (if (region-active-p)
+        (indent-region (region-beginning) (region-end))
+      (indent-region (line-beginning-position) (line-end-position)))
+    (setq deactivate-mark deactivate)))
+
+(advice-add 'move-text-up :after 'indent-region-advice)
+(advice-add 'move-text-down :after 'indent-region-advice)
+#+end_src
+
+** SQL
+#+begin_src elisp
+(require 'auth-source)
+
+(defun tp/fetch-db-password (machine user &optional port)
+  "Fetch a password securely from ~/.authinfo.gpg"
+  (let* ((auth-info (car (auth-source-search :max 1 :host machine :user user :port port)))
+         (secret (plist-get auth-info :secret)))
+    (if (functionp secret)
+        (funcall secret)
+      secret)))
+
+(use-package sql
+  :custom
+  (sql-pop-to-buffer-after-send-region t)
+
+  :config
+  (map! :map sql-mode-map
+        :localleader
+        "c" #'sql-send-paragraph
+        "r" #'sql-send-region
+        "r" #'sql-send-buffer))
+
+(use-package sqlup-mode
+  :hook ((sql-mode . sqlup-mode)
+         (sql-interactive-mode . sqlup-mode)))
+
+(use-package sqlformat
+  :custom
+  (sqlformat-command 'pgformatter)
+  (sqlformat-args '("-s2" "-g"))
+  :hook
+  (sql-mode . sqlformat-on-save-mode)
+  :config
+  (map! :map sql-mode-map
+        :localleader
+        ("f" #'sqlformat)))
+#+end_src
+
+** AI
+If you can't beat them...
+#+begin_src elisp
+(with-eval-after-load 'gptel
+  (setq gptel-model 'deepseek-reasoner
+        gptel-backend (gptel-make-deepseek "DeepSeek"
+                        :stream t
+                        :key (getenv "DEEPSEEK_API_KEY")))
+
+  (gptel-make-gemini "Gemini"
+    :stream t
+    :key (getenv "GEMINI_API_KEY"))
+
+  (gptel-make-anthropic "Claude"
+    :stream t
+    :key (getenv "ANTHROPIC_API_KEY")))
+
+(map! :leader
+      (:prefix-map ("a" . "ai")
+       :n "c" #'gptel
+       :n "f" #'gptel-display-buffer
+       :v "s" #'gptel-send))
+#+end_src
+
+** Rest Client
+#+begin_src elisp
+(map! :leader
+      (:prefix-map ("r" . "rest")
+       :n "s" #'restclient-http-send-current
+       :n "n" #'restclient-jump-next
+       :n "p" #'restclient-jump-prev
+       :n "c" #'restclient-copy-curl-command
+       :n "q" #'kill-current-buffer))
+#+end_src
+
+** Workspaces
+#+begin_src elisp
+(map! :leader
+      (:prefix-map ("TAB" . "workspace")
+       :n "TAB" #'+workspace/new
+       :n "d" #'+workspace/delete
+       :n "o" #'+workspace/close-others))
+#+end_src
+
+** Tailwindcss
+#+begin_src elisp
+(defun tp/sort-tailwind ()
+  (interactive)
+  (when (derived-mode-p 'typescript-tsx-mode 'react-native-mode 'web-mode)
+    (lsp-tailwindcss-rustywind-before-save)))
+
+(use-package! lsp-tailwindcss :after lsp-mode)
+
+(evil-define-key 'normal 'global
+  (kbd "SPC sg") #'tp/sort-tailwind)
+
+;; (add-hook 'before-save-hook 'lsp-tailwindcss-rustywind-before-save)
+#+end_src
+
+** Wakatime
+#+begin_src elisp
+(use-package wakatime-mode
+  :ensure t)
+(global-wakatime-mode)
+#+end_src
+
+** File Operations (genghis port)
+File manipulation commands matching =<leader>m*= from nvim-genghis.
+#+begin_src elisp
+(defun tp/copy-relative-path ()
+  (interactive)
+  (if (buffer-file-name)
+      (let ((path (file-relative-name (buffer-file-name) (or (projectile-project-root) default-directory))))
+        (kill-new path)
+        (message "Copied: %s" path))
+    (user-error "Buffer has no file")))
+
+(defun tp/copy-filename ()
+  (interactive)
+  (if (buffer-file-name)
+      (let ((name (file-name-nondirectory (buffer-file-name))))
+        (kill-new name)
+        (message "Copied: %s" name))
+    (user-error "Buffer has no file")))
+
+(defun tp/rename-file ()
+  (interactive)
+  (unless (buffer-file-name) (user-error "Buffer has no file"))
+  (let* ((old (buffer-file-name))
+         (new (read-file-name "Rename to: " (file-name-directory old) nil nil
+                              (file-name-nondirectory old))))
+    (rename-file old new 1)
+    (set-visited-file-name new t t)))
+
+(defun tp/move-file ()
+  (interactive)
+  (unless (buffer-file-name) (user-error "Buffer has no file"))
+  (let* ((old (buffer-file-name))
+         (dir (read-directory-name "Move to: "))
+         (new (expand-file-name (file-name-nondirectory old) dir)))
+    (rename-file old new 1)
+    (set-visited-file-name new t t)))
+
+(defun tp/duplicate-file ()
+  (interactive)
+  (unless (buffer-file-name) (user-error "Buffer has no file"))
+  (let* ((old (buffer-file-name))
+         (new (read-file-name "Duplicate to: " (file-name-directory old) nil nil
+                              (concat "copy-of-" (file-name-nondirectory old)))))
+    (copy-file old new 1)
+    (find-file new)))
+
+(defun tp/trash-file ()
+  (interactive)
+  (unless (buffer-file-name) (user-error "Buffer has no file"))
+  (let ((file (buffer-file-name)))
+    (when (yes-or-no-p (format "Trash %s? " (file-name-nondirectory file)))
+      (move-file-to-trash file)
+      (kill-buffer))))
+
+(defun tp/chmodx ()
+  (interactive)
+  (unless (buffer-file-name) (user-error "Buffer has no file"))
+  (let ((file (buffer-file-name)))
+    (set-file-modes file (logior (file-modes file) #o111))
+    (message "chmod +x %s" (file-name-nondirectory file))))
+
+(defun tp/create-new-file ()
+  (interactive)
+  (let ((dir (if (buffer-file-name)
+                 (file-name-directory (buffer-file-name))
+               default-directory)))
+    (find-file (read-file-name "New file: " dir))))
+
+(defun tp/move-selection-to-new-file (beg end)
+  (interactive "r")
+  (let* ((text (buffer-substring-no-properties beg end))
+         (dir  (if (buffer-file-name) (file-name-directory (buffer-file-name)) default-directory))
+         (dest (read-file-name "Move selection to: " dir)))
+    (delete-region beg end)
+    (with-temp-file dest (insert text))
+    (message "Moved selection → %s" dest)))
+
+(map! :leader
+      :n "mp" #'tp/copy-relative-path
+      :n "mc" #'tp/copy-filename
+      :n "mr" #'tp/rename-file
+      :n "mm" #'tp/move-file
+      :n "mx" #'tp/chmodx
+      :n "md" #'tp/duplicate-file
+      :n "me" #'tp/trash-file
+      :n "mn" #'tp/create-new-file
+      :v "mm" #'tp/move-selection-to-new-file)
+#+end_src
+
+* Language Support
+** LSP
+#+begin_src elisp
+(after! lsp-mode
+  (setq lsp-ui-sideline-enable nil
+        lsp-ui-doc-enable nil
+        lsp-inlay-hints-enable nil
+        lsp-enable-indentation nil))
+
+(after! flycheck
+  (setq flycheck-indication-mode 'left-fringe))
+
+(custom-set-faces!
+  '(flycheck-error   :underline nil)
+  '(flycheck-warning :underline nil)
+  '(flycheck-info    :underline nil))
+
+(setq +format-on-save-enabled-modes '(not t))
+#+end_src
+
+** DevDocs (devdocs.nvim port)
+Browse devdocs.io from Emacs. =SPC ho= lookup, =SPC hi= install, =SPC hv= search.
+#+begin_src elisp
+(use-package! devdocs
+  :commands (devdocs-install devdocs-lookup devdocs-search devdocs-delete)
+  :init
+  (map! :leader
+        :n "ho" #'devdocs-lookup
+        :n "hi" #'devdocs-install
+        :n "hv" #'devdocs-search)
+  :config
+  (add-hook 'go-mode-hook       (lambda () (setq-local devdocs-current-docs '("go"))))
+  (add-hook 'go-ts-mode-hook    (lambda () (setq-local devdocs-current-docs '("go"))))
+  (add-hook 'web-mode-hook      (lambda () (setq-local devdocs-current-docs '("html" "http"))))
+  (add-hook 'html-mode-hook     (lambda () (setq-local devdocs-current-docs '("html" "http"))))
+  (add-hook 'lua-mode-hook      (lambda () (setq-local devdocs-current-docs '("lua~5.1")))))
+#+end_src
+
+** Folding (nvim-ufo port)
+LSP fold ranges as primary provider via =lsp-origami=, falling back to origami's parser.
+=zo/zc/za= open/close/toggle, =zR/zM= open-all/close-all, =zp= focus node.
+#+begin_src elisp
+(use-package! origami
+  :hook (prog-mode . origami-mode)
+  :config
+  (map! :map origami-mode-map
+        :n "zo" #'origami-open-node
+        :n "zO" #'origami-open-node-recursively
+        :n "zc" #'origami-close-node
+        :n "zC" #'origami-close-node-recursively
+        :n "za" #'origami-toggle-node
+        :n "zA" #'origami-toggle-node
+        :n "zr" #'origami-open-all-nodes
+        :n "zR" #'origami-open-all-nodes
+        :n "zm" #'origami-close-all-nodes
+        :n "zM" #'origami-close-all-nodes
+        :n "zp" #'origami-show-only-node))
+
+(use-package! lsp-origami
+  :after (lsp-mode origami)
+  :hook (lsp-after-open . lsp-origami-try-enable))
+#+end_src
+
+** Go
+#+begin_src elisp
+(defun tp/go-fmt ()
+  (interactive)
+  (lsp-organize-imports)
+  (+format/buffer))
+
+(after! go-mode
+  (setq lsp-go-use-gofumpt t
+        lsp-go-use-placeholders t
+        lsp-go-analyses '((nilness . t)
+                          (unusedparams . t)
+                          (unusedwrite . t)
+                          (useany . t)
+                          (shadow . t))
+        lsp-go-build-flags ["-tags=integration"]
+        lsp-go-directory-filters ["-.git" "-.vscode" "-.idea" "-.vscode-test" "-node_modules"]
+
+        lsp-go-codelenses '((gc_details . :json-false)
+                            (generate . t)
+                            (regenerate_cgo . t)
+                            (run_govulncheck . t)
+                            (test . t)
+                            (tidy . t)
+                            (upgrade_dependency . t)
+                            (vendor . t)))
+  (setq lsp-go-extra-init-params
+        '(:hints (:assignVariableTypes t
+                  :compositeLiteralFields t
+                  :compositeLiteralTypes t
+                  :constantValues t
+                  :functionTypeParameters t
+                  :parameterNames t
+                  :rangeVariableTypes t)))
+  (setq go-tab-width 2)
+  :config
+  (map! :map go-mode-map
+        :localleader
+        ("f" #'tp/go-fmt)))
+(add-hook 'go-mode-hook #'lsp-deferred)
+(add-hook 'go-mode-hook #'lsp-lens-mode)
+(set-formatter! 'gofumpt '("gofumpt") :modes '(go-mode go-ts-mode))
+(after! go-ts-mode
+  (add-hook! 'go-ts-mode-hook
+    (setq tab-width 2
+          indent-tabs-mode nil)))
+#+end_src
+
+** Rust
+#+begin_src elisp
+(after! rustic
+  (setq rustic-format-on-save t
+        lsp-rust-analyzer-completion-postfix-enable nil))
+#+end_src
+
+** C++
+#+begin_src elisp
+(with-eval-after-load 'lsp-clangd
+  (setq lsp-clients-clangd-args
+        '("-j=3"
+          "--background-index"
+          "--clang-tidy"
+          "--completion-style=detailed"
+          "--header-insertion=never"
+          "--header-insertion-decorators=0"))
+  (set-lsp-priority! 'clangd 2))
+(with-eval-after-load 'ccls
+  (setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
+  (set-lsp-priority! 'ccls 1))
+#+end_src
+
+** Elixir
+#+begin_src elisp
+(use-package lsp-mode
+  :ensure t
+  :hook ((elixir-mode elixir-ts-mode heex-ts-mode) . lsp-deferred)
+  :config
+  (add-to-list 'lsp-disabled-clients 'elixir-ls)
+
+  (lsp-register-client
+   (make-lsp-client
+    :new-connection (lsp-stdio-connection
+                     '("/Users/tp/.local/share/mise/installs/dexter/0.5.3/bin/dexter" "lsp"))
+    :activation-fn (lsp-activate-on "elixir")
+    :server-id 'dexter-elixir)))
+#+end_src
+
+* Org Settings
+#+begin_src elisp
+(setq org-directory "~/Code/notes/"
+      org-roam-directory "~/Code/notes/roam"
+      org-agenda-files '("~/Code/notes/inbox.org" "~/Code/notes/projects.org")
+      org-adapt-indentation nil
+      org-habit-show-habits-only-for-today t
+      org-log-done 'time ;; Log when a task is completed
+      org-display-custom-times t ;; Highlight short timestamps like [2026-01-01 Mon]
+      )
+#+end_src
+Quick capture templates
+#+begin_src elisp
+(setq org-capture-templates
+      '(("t" "Todo" entry (file+headline "index.org" "Tasks")
+         "* TODO %?\n %U\n %i")
+        ("n" "Quick Note" entry (file+datetree "notes.org")
+         "* %?\n %U\n %i")))
+#+end_src
+Plugins
+- Nice Bullets
+#+begin_src elisp
+(use-package org-superstar
+  :hook (org-mode . org-superstar-mode))
+#+end_src
+Hooks
+#+begin_src elisp
+(add-hook 'prog-mode-hook 'orgtbl-mode)
+#+end_src
+
+* Mobile Development
+** React
+#+begin_src elisp
+(after! rjsx-mode
+  (setq rjsx-indent-level 2)
+  (add-hook 'rjsx-mode-hook #'lsp-deferred))
+
+(after! tree-sitter
+  (add-hook 'typescript-tsx-mode-hook #'tree-sitter-hl-mode))
+#+end_src
+
+* Project Setup
+#+begin_src elisp
+(after! projectile
+  (setq projectile-project-search-path '("~/Code" ("~/Code/juice" . 1) ("~/Code/bfree" . 1))))
+#+end_src

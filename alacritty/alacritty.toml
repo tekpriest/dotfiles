@@ -1,0 +1,57 @@
+[window]
+padding = { x = 5, y = 5 }
+decorations = "none"
+# opacity = 0.85
+blur = true
+option_as_alt = "Both"
+dynamic_padding = true
+
+[font]
+normal = { family = "CartographCF Nerd Font", style = "Regular" }
+size = 11
+
+[terminal]
+shell = { program = "/bin/zsh", args = ["-lc", "tmux a || tmux"] }
+
+[mouse]
+hide_when_typing = true
+
+[colors.primary]
+background = "0x181820"  # Slightly darker than sumiInk0
+foreground = "0xE6E1C9"  # Brighter than fujiWhite
+
+[colors.cursor]
+text = "0x181820"
+cursor = "0xC8C093"
+
+[colors.selection]
+text = "0xE6E1C9"
+background = "0x2D4F67"
+
+[colors.normal]
+black = "0x1F1F28"
+red     = "0xC34043"
+green   = "0x76946A"
+yellow  = "0xC0A36E"
+blue    = "0x7E9CD8"
+magenta = "0x957FB8"
+cyan    = "0x6A9589"
+white   = "0xDCD7BA"
+
+[colors.bright]
+black = "0x2A2A37"
+red     = "0xE82424"
+green   = "0x98BB6C"
+yellow  = "0xE6C384"
+blue    = "0x7FB4CA"
+magenta = "0x938AA9"
+cyan    = "0x7AA89F"
+white   = "0xF0EAD6"  # Bright fujiWhite
+
+[[colors.indexed_colors]]
+index = 16
+color = "0xFFA066"
+
+[[colors.indexed_colors]]
+index = 17
+color = "0xFF5D62"

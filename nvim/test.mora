@@ -1,0 +1,9 @@
+struct User {}
+
+impl Account for User {}
+
+fn register(user Account) {
+    match user {
+        _ => @log("not an account")
+      }
+  }
